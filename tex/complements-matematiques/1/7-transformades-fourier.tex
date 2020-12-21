@@ -1,0 +1,227 @@
+%----------------------------------------------------------------------------------------
+%    TRANSFORMADES DE FOURIER
+%----------------------------------------------------------------------------------------
+\section{Transformades de Fourier}
+\subsection{Definició}
+
+\begin{defi}[Transformada de Fourier]
+    Donada la funció $f(x)$, definim la seva transformada de Fourier com:
+    \begin{align}
+        \mc{F}\lrbra{f(x)}(k) \equiv \hat{f}(k) = \frac{1}{\sqrt{2\pi}} \int_{-\infty}^{\infty} f(x)\,e^{-ikx} \diff x
+    \end{align}
+\end{defi}
+
+\begin{defi}[Transformada de Fourier inversa]
+    Donada la funció $g(k)$, definim la seva transformada de Fourier inversa com:
+    \begin{align}
+        \mc{F}^{-1}\lrbra{g(k)}(x) \equiv \tilde{g}(x) = \frac{1}{\sqrt{2\pi}} \int_{-\infty}^{\infty} g(k)\,e^{ixk} \diff k
+    \end{align}
+\end{defi}
+
+\begin{thm}
+    Sigui $f(x) \in \mc{L}^{1}_{[a,b]}$ una funció tal que $f(x)$ i $f'(x)$ siguin contínues a trossos. Llavors, es compleix
+    \begin{align*}
+        \tilde{\hat{f}}(x) = \frac{1}{2} \lim_{\varepsilon \to 0^{+}} \lrbra{f(x + \varepsilon) + f(x - \varepsilon)} = f(x)
+    \end{align*}
+\end{thm}
+\begin{sproof}
+    \begin{align*}
+    \begin{aligned}
+        \tilde{\hat{f}}(x) &= \frac{1}{\sqrt{2\pi}} \int_{-\infty}^{\infty} e^{i \omega x} \lrbra{\frac{1}{\sqrt{2\pi}} \int_{-\infty}^{\infty} f(t)\,e^{-i\omega t} \diff t} \diff \omega \\
+        &= \int_{-\infty}^{\infty} f(t) \lrbra{\frac{1}{2\pi} \int_{-\infty}^{\infty} e^{-i\omega (t-\omega)} \diff \omega} \diff t = \int_{-\infty}^{\infty} f(t) \delta(t-x) \diff t  = f(x)
+    \end{aligned}
+    \end{align*}
+\end{sproof}
+
+\begin{defi}
+    $\mc{S}$ és l'espai de les funcions complexes de variable real, infinitament derivables, i que decreixen (ella i les seves derivades) més ràpidament que tota potència de $\dfrac{1}{\abs{x}}$ quan $\abs{x} \to \infty$.
+\end{defi}
+\begin{example}
+    $f(x) \sim e^{-x^{2}} \in \mc{S}$: $e^{-x^{2}} \abs{x}^{n} \to 0$, $\forall n$.
+\end{example}
+
+\begin{thm}
+    La transformada de Fourier és una operació bijectiva en l'espai $\mc{S}$, i la seva inversa és la transformada de Fourier inversa:
+    \begin{align*}
+        \begin{matrix}
+            \mc{F}^{-1} \circ \mc{F}: & \mc{S} & \to & \mc{S} & \to & \mc{S} \\
+            & \varphi & \mapsto & \hat{\varphi} & \mapsto & \tilde{\hat{\varphi}} = \varphi
+        \end{matrix}
+    \end{align*}
+\end{thm}
+
+\subsubsection*{Relacions de les integrals de Fourier}
+\begin{example}
+    Sigui $g(x) = f(x+a)$. Sabent l'expressió de $\hat{f}(k)$ podem esbrinar com es transforma $f(x)$ respecte una trasl·lació, és a dir, podem saber $\hat{g}(k)$?
+    \begin{align*}
+    \begin{aligned}
+        \hat{g}(k) &= \frac{1}{\sqrt{2\pi}} \int_{-\infty}^{\infty} g(x)\,e^{-ikx} \diff x = \frac{1}{\sqrt{2\pi}} \int_{-\infty}^{\infty} f(x+a)\,e^{-ikx} \diff x \\
+        &= \frac{1}{\sqrt{2\pi}} \int_{-\infty}^{\infty} f(\tilde{x})\,e^{-ik (\tilde{x} - a)} \diff \tilde{x} = e^{ika} \lrbra{\frac{1}{\sqrt{2\pi}} \int_{-\infty}^{\infty} f(\tilde{x})\,e^{-ik\tilde{x}} \diff \tilde{x}} \\
+        &= e^{ika} \hat{f}(k)
+    \end{aligned}
+    \end{align*}
+\end{example}
+A continuació podem veure una llista de les relacions més comunes a les integrals de Fourier:
+\begin{itemize}
+    \item $\mc{F} \lrbra{f(x+a)} = e^{ika} \hat{f}(k)$.
+    \item $\mc{F} \lrbra{e^{iax} f(x)} = \hat{f}(k-a)$.
+    \item $\mc{F} \lrbra{x f(x)} = i \hat{f}'(k)$.
+    \item $\mc{F} \lrbra{f'(x)} = i k \hat{f}(k)$.
+    \item $\mc{F} \lrbra{f^{\star}(x)} = \hat{f}^{\star}(-k)$.
+    \item $\mc{F} \lrbra{f(\lambda x)} = \dfrac{1}{\abs{\lambda}} \hat{f}\lrpar{\dfrac{k}{\lambda}}$.
+    \item $\mc{F} \lrbra{f(x) \star g(x)} = \sqrt{2\pi} \hat{f}(k) \cdot \hat{g}(k)$.
+    \item $\mc{F} \lrbra{f(x) \cdot g(x)} = \sqrt{2\pi} \hat{f}(k) \star \hat{g}(k)$.
+\end{itemize}
+
+%----------------------------------------------------------------------------------------
+\subsection{Teorema de convolució i identitat de Parseval}
+\begin{thm}[de convolució]
+    Siguin $f(x)$, $g(x)$ dues funcions complexes i definim $h(x) = \displaystyle \int_{-\infty}^{\infty} f(y) g(x-y) \diff y \equiv f(x) \star g(x)$. Llavors, es compleix 
+    \begin{align}
+        \hat{h}(k) = \sqrt{2\pi} \hat{f}(k) \hat{g}(k)
+    \end{align}
+\end{thm}
+\begin{sproof}
+    \begin{align*}
+    \begin{aligned}
+        \hat{h}(k) &= \frac{1}{\sqrt{2\pi}} \int_{-\infty}^{\infty} e^{-ikx} \lrbra{\int_{-\infty}^{\infty} f(y) g(x-y) \diff y} \diff x \\ 
+        &= \frac{1}{\sqrt{2\pi}} \int_{-\infty}^{\infty} f(y) g(u)\,e^{-ik(u+y)} \diff y \diff u \\
+        &= \sqrt{2\pi} \lrbra{\frac{1}{\sqrt{2\pi}} \int_{-\infty}^{\infty} f(y)\,e^{-iky} \diff y} \lrbra{\frac{1}{\sqrt{2\pi}} \int_{-\infty}^{\infty} g(u)\,e^{-iku} \diff u} \\ 
+        &= \sqrt{2\pi} \hat{f}(k) \hat{g}(k)
+    \end{aligned}
+    \end{align*}
+\end{sproof}
+
+\begin{thm}[de Parseval]
+    Siguin $f(x)$ i $g(x)$ dues funcions complexes de variable real. Llavors, es compleix
+    \begin{align}
+        \int g^{\star}(x) f(x) \diff x = \int \hat{g^{\star}}(k) \hat{f}(k) \diff k
+    \end{align}
+\end{thm}
+
+%----------------------------------------------------------------------------------------
+\subsection{Transformada de Fourier del tipus cosinus}
+Sigui $f(x)$ definida a $[-\infty,\infty]$. Definim $F(x) = \begin{cases} f(x), & x \geq 0 \\ f(-x), & x \leq 0 \end{cases}$, que és una funció parella. Llavors, definim la seva transformada de Fourier de tipus cosinus:
+\begin{align}
+    \hat{f}_{c}(\omega) \equiv \sqrt{\frac{2}{\pi}} \int_{0}^{\infty} f(x) \cos (\omega x) \diff x
+\end{align}
+de manera que es compleix
+\begin{align}
+    f(x) = \sqrt{\frac{2}{\pi}} \int_{0}^{\infty} \hat{f}_{c}(\omega) \cos (\omega x) \diff \omega
+\end{align}
+Observem que es conserva la paritat de la transformada: $\hat{F}(\omega) = \hat{F}(\omega)$.
+\begin{sproof}
+    \begin{align*}
+    \begin{aligned}
+        \hat{F}(\omega) &= \frac{1}{\sqrt{2}} \int_{-\infty}^{\infty} F(x)\,e^{-i\omega x} \diff x = \frac{1}{\sqrt{2}} \int_{0}^{\infty} f(x)\,e^{-i\omega x} \diff x \\ 
+        &+ \frac{1}{\sqrt{2}} \int_{-\infty}^{0} f(-x)\,e^{-i\omega x} \diff x = \frac{1}{\sqrt{2}} \int_{0}^{\infty} f(x) \lrbra{e^{-i\omega x} + e^{i\omega x}} \diff x \\ 
+        &= \frac{2}{\sqrt{2 \pi}} \int_{0}^{\infty} f(x) \cos (\omega x) \diff x \equiv \hat{f}_{c}(\omega)
+    \end{aligned}
+    \end{align*}
+\end{sproof}
+
+%----------------------------------------------------------------------------------------
+\subsection{Transformada de Fourier del tipus sinus}
+Sigui $f(x)$ definida a $[-\infty,\infty]$. Definim $F(x) = \begin{cases} f(x), & x > 0 \\
+0, & x = 0 \\ -f(-x), & x < 0 \end{cases}$, que és una funció senar. Llavors, definim la seva transformada de Fourier de tipus sinus:
+\begin{align}
+    \hat{f}_{s}(\omega) \equiv \sqrt{\frac{2}{\pi}} \int_{0}^{\infty} f(x) \sin (\omega x) \diff x
+\end{align}
+de manera que es compleix
+\begin{align}
+    f(x) = \sqrt{\frac{2}{\pi}} \int_{0}^{\infty} \hat{f}_{s}(\omega) \sin (\omega x) \diff \omega
+\end{align}
+% Observem que $\hat{F}(k) = \pm i \hat{f}_{s}(\omega).
+
+%----------------------------------------------------------------------------------------
+\subsection{Transformada de Fourier de més d'una variable}
+\begin{defi}
+    Sigui $f(\vec{x})$ una funció complexa de varies variables reals. Llavors definim la seva transformada de Fourier com
+    \begin{align}
+        \hat{f}(\vec{k}) = \frac{1}{(2\pi)^{n/2}} \int_{\mbb{R}^{n}} f(\vec{x})\,e^{-i \omega \vec{x}} \diff^{n} \vec{x}
+    \end{align}
+    i compleix les següents propietats:
+    \begin{enumerate}[i)]
+        \item $\mc{F}\lrbra{\partial_{j} f(\vec{x})}(\vec{k}) = i k_{j} f(\vec{k})$.
+        \item $\mc{F}\lrbra{\partial_{j_{1}, \dots, j_{m}} f(\vec{x})}(\vec{k}) = (i)^{m} k_{j_{1}} \dots k_{j_{m}} f(\vec{k})$.
+        \item $\displaystyle \mc{F}\lrbra{f(\mat{A} \vec{x})}(\vec{k}) = \frac{1}{\det \mat{A}} \hat{f}\lrpar{(\mat{A}^{-1})^{t} \vec{k}}$.
+    \end{enumerate}
+\end{defi}
+
+%----------------------------------------------------------------------------------------
+\subsection{Delta de Dirac}
+\begin{defi}[Delta de Dirac]
+    Sigui $f(x) = \dfrac{1}{\sqrt{2\pi}} \exp \lrbra{-\dfrac{x^{2}}{2a^{2}}}$ una gaussiana. Considerem la seva transformada de Fourier:
+    \begin{align}
+        \hat{f}_{a}(k) = \frac{1}{\sqrt{2\pi}} a \, \exp \lrbra{-\frac{k^{2}a^{2}}{2}}
+    \end{align}
+    Llavors es pot veure que quan $a \to \infty$, $\hat{f}_{a}(k) = \delta(x) \equiv$ delta de Dirac.
+    \begin{align}
+        \delta(x) \equiv \frac{1}{\sqrt{2\pi}} \lrbra{\frac{1}{\sqrt{2\pi}} \int_{-\infty}^{\infty} e^{-ikx} \diff k} = \frac{\mc{F}\lrbra{1}(x)}{\sqrt{2\pi}}
+    \end{align}
+\end{defi}
+
+De l'expressió integral de la delta de Dirac podem fer les següents observacions:
+\begin{enumerate}[i)]
+    \item $\displaystyle \int_{-\infty}^{\infty} \hat{f}_{a}(y) \diff y = 1$.
+    \item $\displaystyle \int_{-\infty}^{\infty} \hat{f}_{a}(y) y^{2n+1} \diff y = 0$, $n \in \mbb{N}$.
+    \item $\displaystyle \int_{-\infty}^{\infty} \hat{f}_{a}(y) y^{2n} \diff y = \frac{\#}{a^{2n}}$.
+    \item $\displaystyle \int_{-\infty}^{\infty} \delta(y) g(y) \diff y \equiv g(0)$, quan $a \to \infty$.
+\end{enumerate}
+
+%----------------------------------------------------------------------------------------
+\subsection{Aplicacions de la delta de Dirac}
+\subsubsection*{Equació de Poisson}
+\begin{defi}[Equació de Poisson]
+    \begin{align}
+        \vnabla^{2} \phi(\vec{x}) = - 4 \pi \rho(\vec{x})
+    \end{align}
+    La solució de l'equació d'ona és $\phi(\vec{x}) = \dfrac{q}{\abs{\vec{x} - \vec{a}}}$.
+\end{defi}
+\begin{sproof}
+    \begin{align*}
+    \begin{aligned}
+        \phi(\vec{x}) &\equiv - \int 4\pi \rho(\vec{x}') G(\vec{x} - \vec{x}') \diff^{3} \vec{x}' \\
+        \Rightarrow \vnabla^{2} \phi(\vec{x}) & = - \int 4\pi \rho(\vec{x}') \lrpar{\vnabla^{2} G(\vec{x} - \vec{x}')} \diff^{3} \vec{x}' = - 4 \pi \rho(\vec{x})
+    \end{aligned}
+    \end{align*}
+    on $G(\vec{x})$ s'anomena funció de Green. Considerem la seva transformada de Fourier:
+    \begin{align*}
+        \hat{G}(\vec{k}) = \frac{1}{\lrpar{2\pi}^{3/2}} \int e^{-i \vec{k}\cdot \vec{y}} G(\vec{y}) \diff^{3} \vec{y} \Rightarrow G(\vec{x} - \vec{x}') = \frac{1}{\lrpar{2\pi}^{3/2}} \int e^{i \vec{k}\cdot (\vec{x} - \vec{x}')} \hat{G}(\vec{k}) \diff^{3} \vec{k}
+    \end{align*}
+    Calculant explícitament $\vnabla^{2} G(\vec{x} - \vec{x}')$ i fent la seva transformada de Fourier inversa podem arribar a l'expressió $\hat{G}(\vec{k}) = \dfrac{1}{(2\pi)^{3/2}} \frac{1}{\vec{k}^{2}}$. Coneguda aquesta expressió podem trobar $G(\vec{x} - \vec{x}')$ fent la seva transformada inversa:
+    \begin{align*}
+    \begin{gathered}
+        G(\vec{x} - \vec{x}') = - \frac{1}{4\pi} \frac{1}{\abs{\vec{x} - \vec{x}'}} \\
+        \Rightarrow \phi(\vec{x}) = \iiint \frac{\rho(\vec{x}')}{\abs{\vec{x} - \vec{x}'}} \diff^{3} \vec{x}' =  \iiint \frac{q \, \delta^{(3)} (\vec{x}' - \vec{a})}{\abs{\vec{x} - \vec{x}'}} \diff^{3} \vec{x}' = \frac{q}{\abs{\vec{x} - \vec{a}}}
+        \end{gathered}
+    \end{align*}
+\end{sproof}
+
+\subsubsection*{Equació d'ona}
+\begin{defi}[Equació d'ona]
+    \begin{align}
+        \pder[2]{y}{x} = \frac{1}{v^{2}} \pder[2]{y}{t}
+    \end{align}
+    La solució de l'equació d'ona és $y(x,t) = f(x \mp vt)$.
+\end{defi}
+\begin{sproof}
+    Coneixem les condicions inicials de la funció: $y(x, t=0)$. Primer de tot fem la transformada de Fourier de l'equació d'ona
+    \begin{align*}
+    \begin{aligned}
+        \int_{-\infty}^{\infty} \lrpar{\pder[2]{y}{x}} e^{i\alpha x} \diff x = \frac{1}{v^{2}} \int_{-\infty}^{\infty} \lrpar{\pder[2]{y}{t}} e^{i\alpha x} \diff x
+    \end{aligned}
+    \end{align*}
+    Considerant $\hat{y}(\alpha , t) = \dfrac{1}{\sqrt{2}} \int_{-\infty}^{\infty} y(x,t)\,e^{i\alpha x} \diff x$ i integrant per parts arribem a
+    \begin{align*}
+    \begin{gathered}
+        (-i \alpha)^{2} \hat{y}(\alpha, t) = \frac{1}{v^{2}} \pder[2]{\hat{y}(\alpha, t)}{t} \\
+        \Rightarrow \hat{y}(\alpha, t) = F(\alpha)\,e^{\pm iv\alpha t} = \hat{y}(\alpha, 0)\,e^{\pm iv\alpha t} = \lrpar{\frac{1}{\sqrt{2\pi}} \int_{-\infty}^{\infty} f(x)\,e^{i\alpha x} \diff x} e^{\pm iv \alpha t}
+    \end{gathered}
+    \end{align*}
+    Fent la tranformada de Fourier inversa arribem a 
+    \begin{align*}
+        y(x,t) = \frac{1}{\sqrt{2\pi}}\int_{-\infty}^{\infty} F(\alpha)\,e^{-i \alpha (x \mp vt)} \diff \alpha = f(x \mp vt)
+    \end{align*}
+\end{sproof}
+

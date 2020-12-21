@@ -1,0 +1,143 @@
+%----------------------------------------------------------------------------------------
+%    TEMA
+%----------------------------------------------------------------------------------------
+\section{Teoria d'Sturm--Liouville}
+\subsection{Sèries de Fourier}
+\begin{defi}
+    Les sèries de Fourier són molt importants a la Física. Les escriurem de la següent forma:
+    \begin{align}
+        S(x) = \frac{a_{0}}{2} + \sum\limits_{n=1}^{\infty} \left( a_{n} \cos \frac{n \pi x}{L} + b_{n} \sin \frac{n \pi x}{L} \right)
+    \end{align}
+\end{defi}
+Aquesta sèrie funcional pot ser o no convergent, i en cas de convergir, pot fer-ho puntualment o uniforme. Com que les funcions $\cos (n \pi x / L)$ i $\sin (n \pi x / L)$ són periòdiques amb període $2L$, si la sèrie convergeix cap a la funció $S(x)$, aquesta també serà periòdica, és a dir,
+\begin{align}
+    S(x) = S(x + 2L)
+\end{align}
+
+\subsubsection*{Càlcul dels coeficients}
+A partir de la funció $f(x)$ donada, calculem les integrals següents:
+\begin{align}
+    a_{n} = \frac{1}{L} \int_{c}^{c+2L} f(x) \cos \frac{n \pi x}{L} \dif x , \quad (n = 0, 1, 2 \dots)
+\end{align}
+\begin{align}
+    b_{n} = \frac{1}{L} \int_{c}^{c+2L} f(x) \sin \frac{n \pi x}{L} \dif x , \quad (n = 1, 2, 3 \dots)
+\end{align}
+on $c$ és un punt qualsevol. De fet, podem integrar sobre qualsevol interval de longitud $2L$. Pel que fa a l'existència de les integrals, n'hi ha prou amb que $f$ sigui integrable al llarg d'un període.
+
+\subsubsection*{Funcions parelles i senars}
+En el cas que ens trobem amb funcions parelles o senars, l'expressió de les sèries de Fourier se simplifica força.
+\begin{itemize}
+    \item Funcions parelles: $f(-x) = f(x) \sim \frac{a_{0}}{2} + \sum a_{n} \dots$
+        \subitem $\displaystyle b_{n} = 0 $
+        \subitem $\displaystyle a_{n} = \frac{1}{L} \int_{c}^{c+2L} f(x) \cos \frac{n \pi x}{L} \dif x $
+    \item Funcions senars: $f(-x) = -f(x) \sim \sum b_{n} \dots$
+        \subitem $\displaystyle a_{n} = 0$
+        \subitem $\displaystyle b_{n} = \frac{1}{L} \int_{c}^{c+2L} f(x) \sin \frac{n \pi x}{L} \dif x $
+\end{itemize}
+
+\subsubsection*{Identitat de Parseval}
+En anàlisi matemàtica, la identitat de Parseval és un resultat fonamental sobre la suma de certes sèries obtingudes a partir de la sèrie de Fourier d'una funció.
+\begin{defi}
+    \begin{align}
+        \frac{a_{0}^{2}}{2} + \sum_{n=1}^{\infty} (a_{n}^{2} + b_{n}^{2} ) = \frac{1}{L} \int_{c}^{c+2L} \left[ f(x) \right]^{2} \diff x
+    \end{align}
+\end{defi}
+
+%----------------------------------------------------------------------------------------
+\subsection{Problemes d'Sturm--Liouville}
+Un problema general d'Sturm--Liouville pot ser escrit com
+\begin{align}\label{eq:S-L}
+    (p(x)y')' + (q(x) + \lambda w(x)) y = 0, \quad \text{amb} \begin{cases} C_{1} y(a) + C_{2}y'(a) = 0 \\ C_{3}y(b) + C_{4}y'(b) = 0  \end{cases}
+\end{align}
+On $p(x)$, $q(x)$ i $w(x)$ són funcions donades, $C_{1}y(a) \dots = 0$, $C_{2}y(b) \dots = 0$ són el que anomenem condicions de contorn i $\lambda$ és una constant que només pot prendre certs valors: els valors propis corresponents al problema. La funció $w(x)$ s'anomena funció pes i té un paper important per estudiar les propietats del problema.
+
+\begin{defi}[Valors i funcions pròpies]
+    Una manera intuïtiva d'entendre els problemes d'Sturm--Liouville és mirar el problema des d'una altra perspectiva. L'equació \eqref{eq:S-L} es pot expressar com
+    \begin{align}
+        Ly = \lambda y
+    \end{align}
+    En aquesta equació $L$ és un operador lineal que aplicat a una funció resulta la funció multiplicada per un escalar. Així doncs, $\lambda$ és un valor propi i $y$ la seva funció pròpia associada.
+\end{defi}
+
+\begin{example}
+    $y'' + \lambda y = 0$, amb $\begin{cases} y(0) = 0 \\ y(L) = 0  \end{cases}$. Resolent l'equació auxiliar $m^2 + \lambda = 0$, veiem que les arrels són $m = \pm\sqrt{-\lambda}$. Ens interessa estudiar la solució segons si $\lambda$ és positiva, negativa o zero.
+    \begin{itemize}
+        \item Els casos $\lambda = 0$ i $\lambda<0$, aplicant les condicions de contorn, només porten a la solució $y\equiv0$ (solució trivial) i altres casos no interessants.
+        \item Estudiem $\lambda>0$. Com que $m = \pm\sqrt{-\lambda}$, tenim que $m = \pm \imath \sqrt{\lambda}$; d'aquí veiem que la solució serà de la forma $y =  C_{1} \sin (\sqrt{\lambda} x) + C_{2} \cos (\sqrt{\lambda} x)$.
+
+        Considerem les condicions de contorn:
+        \subitem $y(0) = C_{2} \cos (0) = C_{2} = 0 \Rightarrow C_{2} = 0$.
+        \subitem $y(L) = C_{1} \sin (\sqrt{\lambda} L) = 0 \Rightarrow$ les possibilitats són $\begin{cases} C_{1} = 0. \\ \sqrt{\lambda} L = n \pi. \end{cases}$
+    \end{itemize}
+    Llavors, els valors propis del problema són $\boxed{\lambda_{n} = \left( \frac{n\pi}{L} \right)^{2}}$ i les funcions pròpies
+
+    $\boxed{y_{n} = C_{n} \sin \left( \frac{n\pi x}{L} \right)}$.
+\end{example}
+
+\subsubsection*{Trobar la forma auto-adjunta}
+No sempre ens trobarem les ED de la forma auto-adjunta, com a \eqref{eq:S-L}; en general ens trobarem amb funcions de la forma
+\begin{align}
+    y'' + P(x)y' + [Q(x) + R(x) \lambda]y = 0
+\end{align}
+Per treballar amb aquestes equacions multipliquem tota l'equació pel factor $e^{\int P(x) \diff x} = p(x)$, de manera que la podem re-agrupar:
+\begin{align}
+    (p(x) y')' + [p(x)Q(x) + p(x)R(x)\lambda]y = 0
+\end{align}
+Observem que trobar la forma auto-adjunta d'una ED ens permet identificar la funció pes $w(x) = p(x)R(x)$.
+
+\begin{example}
+    Sigui $\displaystyle xy'' + y' + \frac{\lambda}{x} y = 0 \Rightarrow y'' + \frac{1}{x}y' + \frac{\lambda}{x^{2}} y = 0$. Trobem el factor $p(x) = e^{\int x^{-1} \diff x} = x$. Així doncs, multiplicant tota l'equació pel factor $p(x) = x$, trobem la forma auto-adjunta: $\boxed{(x y')' + \frac{\lambda}{x}y = 0}$.
+\end{example}
+
+\subsubsection*{Ortogonalitat de les funcions pròpies}
+\begin{thm}
+    Diem que dues funcions pròpies són ortogonals si el seu producte interior s'anul·la:
+    \begin{align}
+        \left< y_{n} \mid y_{m} \right> \equiv \int_{a}^{b} w(x) y_{n}(x) y_{m}(x) \diff x = 0
+    \end{align}
+    Aquest teorema és vàlid $\forall y_{n}, y_{m}$ amb $n \neq m$, ja que totes les funcions pròpies de valors propis diferents generen una base ortogonal.
+\end{thm}
+
+\begin{thm}
+    Diem que una funció pròpia és normalitzada si la seva norma és la unitat:
+    \begin{align}
+        \| y_{n} \|^{2} \equiv \int_{a}^{b} w(x) y_{n}^{2}(x) \diff x = 1
+    \end{align}
+    Aquelles funcions que siguin normalitzades les denotarem com $u_{n}(x)$.
+\end{thm}
+
+La següent llista resumeix les integrals típiques que surten en aquests càlculs:
+\begin{itemize}
+    \item $\displaystyle \int_{0}^{L} \sin \left( \frac{n \pi x}{L} \right) \sin \left( \frac{m \pi x}{L} \right) = \int_{0}^{L} \cos \left( \frac{n \pi x}{L} \right) \cos \left( \frac{m \pi x}{L} \right) = \frac{L}{2} \delta_{nm}$.
+    \item $\displaystyle \int_{0}^{L} \sin \left( \frac{n \pi x}{L} \right) \cos \left( \frac{n \pi x}{L} \right) = \begin{cases} 0, & \text{si } n+m \text{ parell.} \\ \displaystyle \frac{2mL}{(m^{2}-n^{2})\pi}, &  \text{si } n+m \text{ senar.} \end{cases}$
+    \item $\displaystyle \int_{0}^{2L} \sin \left( \frac{n \pi x}{L} \right) \sin \left( \frac{m \pi x}{L} \right) = \int_{0}^{2L} \cos \left( \frac{n \pi x}{L} \right) \cos \left( \frac{m \pi x}{L} \right) = L \delta_{nm}$.
+    \item $\displaystyle \int_{0}^{2L} \sin \left( \frac{n \pi x}{L} \right) \cos \left( \frac{n \pi x}{L} \right) = 0$.
+\end{itemize}
+
+%----------------------------------------------------------------------------------------
+\subsection{Sèrie de Fourier generalitzada}
+Sigui $f(x)$ una funció que volem expressar com a sèrie de Fourier i $u(x)$ la funció pròpia d'un problema d'Sturm--Liouville. Llavors, tenim la sèrie de Fourier generalitzada:
+\begin{align}
+    S(x) = \sum_{n=1}^{\infty} a_{n} y_{n}(x); \quad \text{on } a_{n} = \frac{\left< f \mid y_{n} \right>}{\| y_{n} \|^{2}}
+\end{align}
+O alternativament:
+\begin{align}
+    S(x) = \sum_{n=1}^{\infty} a_{n} u_{n}(x); \quad \text{on } a_{n} = \left< f \mid u_{n} \right>
+\end{align}
+
+\begin{example}
+    Sigui $\displaystyle y'' + \frac{\lambda}{4x^{2}} y = 0$, amb condicions de contorn $y(1) = 0$, $y(e^{\pi}) = 0$. Volem calcular la sèrie de Fourier de $f(x) = \sqrt{x}$ associada a aquest problema d'Sturm--Liouville.
+
+    Resolent el problema dels valors i funcions pròpies, obtenim $\lambda_{n} = 4n^{2} + 1$ i $y_{n}(x) = C_{n} \sqrt{x} \sin (n \ln x)$.
+
+    A continuació veurem com els dos mètodes per trobar la sèrie de Fourier de $f(x)$ són equivalents.
+    \begin{enumerate}[i)]
+        \item $\displaystyle a_{n} = \frac{\left< f \mid y_{n} \right>}{\| y_{n} \|^{2}} = \frac{\int_{1}^{e^{\pi}}\frac{1}{4x^{2}} \sqrt{x} \sqrt{x} \sin (n \ln x) \diff x}{\int_{1}^{e^{\pi}}\frac{1}{4x^{2}} \sqrt{x}^{2} \sin^{2} (n \ln x) \diff x} = \frac{\int_{1}^{e^{\pi}} \frac{1}{x} \sin (n \ln x) \diff x}{\int_{1}^{e^{\pi}} \frac{1}{x} \sin^{2} (n \ln x) \diff x}$. Fent el canvi $t = \ln x$ arribem fàcilment a $\boxed{a_{n} = \frac{1-(-1)^{n}}{n \pi/2}}$.
+        \item Imposant que $\| y_{n} \|^{2} = 1$, podem determinar que $ C_{n} = 2\sqrt{\frac{2}{\pi}}$. Llavors $u_{n}(x) = 2\sqrt{\frac{2}{\pi}} \sqrt{x} \sin (n \ln x)$. Així doncs, $ a_{n} = \left< f \mid u_{n} \right> = \int_{1}^{e^{\pi}} \frac{1}{4 x^{2}} 2 \sqrt{x} \sqrt{\frac{2}{\pi}} \sqrt{x} \sin (n \ln x) \diff x = \frac{1}{\sqrt{2\pi}} \int_{1}^{e^{\pi}} \frac{1}{x} \sin (n \ln x) \diff x$. Llavors arribem a $\boxed{a_{n} = \frac{1-(-1)^{n}}{n \sqrt{2 \pi}}}$.
+    \end{enumerate}
+    Tot i que els dos resultats semblen diferents, com que construïm la sèrie amb $y_{n}(x)$ i $u_{n}(x)$, respectivament, a partir d'ambdós mètodes arribem a la mateixa expressió general:
+    \begin{align*}
+        \boxed{\sqrt{x} = \sum_{n=1}^{\infty} [1 - (-1)^{n}] \frac{2}{n \pi} \sqrt{x} \sin (n \ln x)}
+    \end{align*}
+    A l'enllaç següent es pot veure la representació gràfica de $\sqrt{x}$ i la seva sèrie $S(x)$: \url{https://www.desmos.com/calculator/m5cb68noq1}. Notem que la sèrie només convergeix per $1 < x < e^{\pi}$, que són precisament els límits de les condicions de contorn del problema d'Sturm--Liouville.
+\end{example}

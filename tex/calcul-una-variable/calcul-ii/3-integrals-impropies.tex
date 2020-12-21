@@ -1,0 +1,112 @@
+%----------------------------------------------------------------------------------------
+%    INTEGRALS IMPRÒPIES
+%----------------------------------------------------------------------------------------
+\section{Integrals impròpies}
+\subsection{Restriccions de la integral de Riemann}
+La teoria de la integral de Riemann només és aplicable a funcions definides i fitades en un interval tancat finit $[a, b]$. La integral impròpia estén la teoria d'integració a funcions que no compleixen aquests requisits, com ara $\int_{0}^{+\infty} xe^{-x} \diff x$ o $\int_{0}^{1} \frac{1}{\sqrt{x}} \diff x$.
+
+%----------------------------------------------------------------------------------------
+\subsection{Integral impròpia d'una funció localment integrable}
+\subsubsection*{Funcions localment integrables}
+Direm que $f$ és una funció localment integrable a $[a, b)$ si és integrable en qualsevol subinterval finit de $[a, b)$, és a dir, si $\forall z \in (a,b), \, \exists \int_{a}^{z}$.
+
+Similarment, direm que $f$ és una funció localment integrable a $(a, b]$ si és integrable en qualsevol subinterval finit de $(a, b]$, és a dir, si $\forall z \in (a,b), \, \exists \int_{z}^{b}$.
+
+\subsubsection*{Integrals impròpies}
+Si $f$ és localment integrable a $[a, b)$, definim la integral impròpia de $f$ en aquest interval com:
+\begin{align}
+    \int_{a}^{\triangleright b} f(x) \diff x \equiv \lim_{z \to b^{-}} \int_{a}^{z} f(x) \diff x
+\end{align}
+Similarment, es defineix la integral impròpia quan $f$ és localment integrable en $(a, b]$:
+\begin{align}
+    \int_{a \triangleleft}^{b} f(x) \diff x \equiv \lim_{z \to a^{+}} \int_{z}^{b} f(x) \diff x
+\end{align}
+
+\subsubsection*{Linealitat de les integrals impròpies}
+Si $f$ i $g$ són integrables a $[a, b)$ i $\lambda, \mu \in \mathbb{R}$, es compleix:
+\begin{align}
+    \int_{a}^{\triangleright b} [ \lambda f(x) + \mu g(x) ] \diff x = \lambda \int_{a}^{\triangleright b} f(x) \diff x + \mu \int_{a}^{\triangleright b} g(x) \diff x
+\end{align}
+Les integrals impròpies del tipus $\int_{a \triangleleft}^{b}$ tenen propietats de linealitat similars.
+
+\subsubsection*{Integrals doblement impròpies}
+Quan $f$ és localment integrable a $(a, b)$, tenim una integral doblement impròpia. En aquest cas es defineix:
+\begin{align}
+    \int_{a \triangleleft}^{\triangleright b} f(x) \diff x = \int_{a \triangleleft}^{c} f(x) \diff x + \int_{c}^{\triangleright b} f(x) \diff x , \quad \forall c \in (a, b)
+\end{align}
+En particular, estudiarem el cas $f(x) = 1/x^{p}$, que serà de molta utilitat a l'hora de comparar funcions:
+\begin{align}
+    \int_{0 \triangleleft}^{1} \frac{dx}{x^{p}} 
+    \begin{cases} \text{convergeix} & \text{si } p < 1 \\ \text{divergeix} & \text{si } p \geq 1 \end{cases} \\
+    \int_{1}^{\triangleright \infty} \frac{dx}{x^{p}} 
+    \begin{cases} \text{convergeix} & \text{si } p > 1 \\ \text{divergeix} & \text{si } p \leq 1 \end{cases}
+\end{align}
+
+\subsubsection*{Integrabilitat absoluta}
+Si $f$ és localment integrable a $[a, b)$, direm que és absolutament impròpia en aquest interval si $\int_{a}^{\triangleright b} |f (x)| \diff x$ és convergent. Llavors:
+\begin{align}
+    \int_{a}^{\triangleright b} |f(x)| \diff x \text{ convergent} \Rightarrow \int_{a}^{\triangleright b} f(x) \diff x \text{ convergent.}
+\end{align}
+
+%----------------------------------------------------------------------------------------
+\subsection{Integrals impròpies de funcions no negatives}
+Si $f$ és localment integrable i no negativa a $[a, b)$, i $S(z) = \int_{a}^{z} f(x) \diff x$, llavors:
+\begin{align}
+    \int_{a}^{\triangleright b}f(x) \diff x \text{ convergeix} \Leftrightarrow S(z) \text{ és fitada superiorment a } [a, b)
+\end{align}
+Cal notar que aquesta condició també és vàlida en el cas en què $f$ estigui definida a $(a, b]$.
+
+\subsubsection*{Criteri de comparació}
+Si $f$ i $g$ són localment integrables i no negatives a $[a ,b)$, i $\lambda \in \mathbb{R}$ tal que, en algun entorn de $b$ es compleix que $f(x) < \lambda g(x)$, llavors:
+\begin{align}
+    \int_{a}^{\triangleright b} g(x) \diff x \text{ convergent} \Rightarrow \int_{a}^{\triangleright b} f(x) \diff x \text{ convergent}.
+\end{align}
+(i consegüentment, $\int_{a}^{\triangleright b} f$ divergent $\Rightarrow$ $\int_{a}^{\triangleright b} g$ divergent).
+
+La següent condició és una conseqüència directa del criteri de comparació:
+
+Si $f$ i $g$ són localment integrables i no negatives a $[a ,b)$, i $A = \lim_{x \to b^{-}} \frac{f(x)}{g(x)}$, llavors:
+\begin{enumerate}[i)]
+    \item Si $A \neq \infty$: $\int_{a}^{\triangleright b} g$ convergent $\Rightarrow \int_{a}^{\triangleright b} f$ convergent.
+    \item Si $A \neq 0$: $\int_{a}^{\triangleright b} f$ convergent $\Rightarrow \int_{a}^{\triangleright b} g$ convergent.
+\end{enumerate}
+En conseqüència, si $A \neq 0, \infty$, les integrals $\int_{a}^{\triangleright b} f$ i $\int_{a}^{\triangleright b} g$ són ambdues convergents o divergents.
+
+Aquests criteris també es compleixen quan l'interval és $(a, b]$.
+%----------------------------------------------------------------------------------------
+\subsection{La funció $\Gamma$ d'Euler}
+Per $x > 0$ es defineix
+\begin{align}
+    \Gamma (x) \equiv \int_{0}^{\infty} t^{x-1} e^{-t} \diff t
+\end{align}
+Es tracta d'una integral impròpia definida a l'interval $(0 , \infty)$ que convergeix $\forall x > 0$ i, per tant, $\Gamma (x)$ està definida a $(0 , \infty)$.
+
+\subsubsection*{Fórmula de recurrència: extensió a $x<0$}
+\begin{align}
+    \Gamma (x + 1) = \int_{0}^{\infty} t^{x} e^{-t} \diff t = \left. \left[ -t e^{-t} \right] \right|_{0}^{\infty} + x \int_{0}^{\infty} t^{x-1} e^{-t} \diff t = x \Gamma (x)
+\end{align}
+Hem trobat, doncs, una fórmula de recurrència que relaciona els valors de $\Gamma$ en dos punts que distin $1$ entre ells:
+\begin{align}
+    \Gamma (x) = \frac{\Gamma (x+1)}{x}
+\end{align}
+D'aquesta manera tenim definida $\Gamma (x)$ a tota la recta real excepte ens els enters no positius. Notem, però, que per a $x < 0$ la funció $\Gamma (x)$ no ve donada per la integral $\int_{0}^{\infty} t^{x-1} e^{-t} \diff t$, ja que aquesta integral és divergent quan $x < 0$.
+
+\subsubsection*{Funció factorial}
+Quan $x = n \in \mathbb{N}$ la fórmula de recurrència aplicada $n$ vegades ens dóna:
+\begin{align*}
+    \Gamma (n+1) = n \Gamma (n) = n(n-1) \Gamma (n-1) = \dots = n! \Gamma (1)
+\end{align*}
+D'altra banda, $\Gamma (1) = 1$. Per tant, 
+\begin{align}
+    \Gamma (n+1) = n!
+\end{align}
+Es pot utilitzar aquesta relació com a definició del factorial de qualsevol número real que no sigui un enter negatiu, és a dir,
+\begin{align}
+    x! \equiv \Gamma (x+1) , \quad (x \neq -1, -2, -3, \dots)
+\end{align}
+
+\subsubsection*{Fórmula de Stirling}
+Aquesta relació és molt útil per al càlcul aproximat del factorial de números grans:
+\begin{align}
+    n! \approx n^{n} e^{-n} \sqrt{2 \pi n}
+\end{align}

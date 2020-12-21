@@ -1,0 +1,82 @@
+%-----------------------------------------------------------------
+%    FUNCIONS D'UNA VARIABLE COMPLEXA
+%-----------------------------------------------------------------
+\section{Funcions d'una variable complexa}
+\subsection{Definició}
+\begin{defi}
+    Una funció de variable complexa és una funció univaluada que ve definida per l'aplicació següent:
+    \begin{align}
+        \begin{matrix}
+            f: & \mbb{C} & \to & \mbb{C} \\
+            & z & \mapsto & f(z) = w \\
+            & (x,y) & \mapsto & (u(x,y),v(x,y))
+        \end{matrix}
+    \end{align}
+\end{defi}
+
+%-----------------------------------------------------------------
+\subsection{Funcions elementals}
+\begin{itemize}
+    \item Funcions exponencials:
+    
+    $f(z) = e^{z} = e^{x} e^{iy}, \quad \abs{e^{z}} = e^{x}$.
+    
+    $f(z) = e^{iz} = e^{ix} e^{-y}, \quad \abs{e^{iz}} = e^{-y}$.
+    \item Funcions trigonomètriques:
+    
+    $f(z) = \sin z = \dfrac{e^{iz} - e^{-iz}}{2i}$.
+    
+    $f(z) = \cos z = \dfrac{e^{iz} + e^{-iz}}{2}$.
+    \item Funcions hiperbòliques:
+    
+    $f(z) = \sinh z = \dfrac{e^{z} - e^{-z}}{2} = -i \sin iz$.
+    
+    $f(z) = \cosh z = \dfrac{e^{z} + e^{-z}}{2} = \cos iz$.
+\end{itemize}
+Obsevem que les funcions trigonomètriques i les hiperbòliques no són fitades, és a dir $\nexists M \in \mbb{R}^{+} \mid \abs{f(z)} < M, \; \forall z \in \text{domini de } f(z)$.
+
+%-----------------------------------------------------------------
+\subsection{Límits i continuïtat}
+Sigui $f(z)$ definida i unívoca a un entorn reduït de $z-z_{0}$. Llavors, es compleix el següent:
+\begin{itemize}
+    \item $\displaystyle \lim_{z \to z_{0}} = l \in \mbb{C}$, si $\forall \varepsilon > 0, \; \exists \delta(\varepsilon, z_{0}) > 0 \mid f(z) - l < \varepsilon, \; \forall z \in B^{\star}(z_{0}, \delta)$.
+    \item $f(z)$ és contínua a $z_{0}$ si $\lim_{z \to z_{0}} f(z) = f(z_{0})$.
+\end{itemize}
+
+%-----------------------------------------------------------------
+\subsection{Funcions multivaluades}
+Per treballar de forma eficient amb funcions multivaluades, distingirem tant entre el valor principal de l'argument d'un nombre complex i la resta d'arguments, com entre el valor principal del logaritme i la resta de logaritmes.
+\begin{itemize}
+    \item Funció logarítmica:
+    
+    $f(z) = \ln (z) = \ln \abs{z} + i \operatorname{arg} z = \ln r + i(\theta + 2\pi k)$.
+    
+    $f(z) = \operatorname{Ln} (z) = \ln \abs{z} + i \operatorname{Arg} z$.
+    \item Polinomis:
+    
+    $f(z) = z^{n} = e^{n \operatorname{Ln} (z)}$, amb $n \in \mbb{Z}$.
+    \item Exponencial de base complexa:
+    
+    $f(z) = a^{z} = e^{z \ln (a)}, \quad \abs{a^{z}} = e^{x \ln (a)}$.
+\end{itemize}
+
+\subsubsection*{Superfícies de Riemann}
+Per una informació detallada de les superfícies o fulls de Riemann podeu consultar  \url{http://www.math.odu.edu/~jhh/ch45.PDF}\footnote{Del llibre \textit{Introduction to Complex Variables} per John H. Heinbockel.}.
+
+Per una classificació dels diferents talls de branques dirigiu-vos a \url{http://mathworld.wolfram.com/BranchCut.html}.
+
+%-----------------------------------------------------------------
+\subsection{Funcions inverses}
+\begin{itemize}
+    \item Funcions trigonomètriques:
+    
+    $f(z) = \arcsin z = -i \ln \lrpar{iz \pm \sqrt{1-z^{2}}}$.
+    
+    $f(z) = \arccos z = -i \ln \lrpar{z \pm \sqrt{z^{2}-1}}$.
+    \item Funcions hiperbòliques:
+    
+    $f(z) = \operatorname{arcsinh} z = \ln \lrpar{z \pm \sqrt{z^{2} + 1}}$.
+    
+    $f(z) = \operatorname{arccosh} z = \ln \lrpar{z \pm \sqrt{z^{2} - 1}}$.
+\end{itemize}
+Observem que aquestes funcions són multivaluades, ja que el logaritme és multivaluat i l'arrel quadrada és bivaluada.

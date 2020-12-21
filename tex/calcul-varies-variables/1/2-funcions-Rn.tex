@@ -1,0 +1,74 @@
+%----------------------------------------------------------------------------------------
+%    FUNCIONS A R^N
+%----------------------------------------------------------------------------------------
+\section{Funcions a $\mathbb{R}^{n}$, límits i continuïtat}
+\subsection{Funcions a $\mathbb{R}^{n}$}
+Sigui $D \subseteq \mathbb{R}^{n}$. Una funció és una aplicació de $D$ sobre $\mathbb{R}^{n}$: $\vec{x} \mapsto \vec{f}(\vec{x})$.
+    \begin{defi}
+    Són funcions amb valors a $\mathbb{R}$.
+    \begin{itemize}
+        \item $n=m=1$: funcions escalars d'una variable real, $y = f(x)$.
+        \item $n>1, m=1$: camps escalars, $y = f(\vec{x})$.
+    \end{itemize}
+\end{defi}
+\begin{defi}
+    Són funcions amb valors a $\mathbb{R}^{m}$.
+    \begin{itemize}
+        \item $n=1, m>1$: funcions vectorials d'una variable real, $\vec{y} = \vec{f}(x)$.
+        \item $n>1, m>1$: camps vectorials, $\vec{y} = \vec{f}(\vec{x})$.
+    \end{itemize}
+\end{defi}
+
+%----------------------------------------------------------------------------------------
+\subsection{Límit d'una funció}
+Sigui $\vec{f}(\vec{x})$ una funció definida a $D \subseteq \mathbb{R}^{n}$, amb valors a $\mathbb{R}^{m}$ i sigui $\vec{a}$ un punt d'acumulació de $D$. Llavors, direm que
+\begin{align}
+    \lim_{\vec{x} \to \vec{a}} \vec{f}(\vec{x}) = \vec{l} \text{ si } \forall \varepsilon > 0, \exists \delta > 0 \mid \text{si }d(\vec{x}, \vec{a}) < \delta \Rightarrow d(\vec{f}(\vec{x}), \vec{l}) < \varepsilon
+\end{align}
+Propietats dels límits de funcions: si $\lim\limits_{\vec{x} \to \vec{a}} \vec{f}(\vec{x}) = \vec{A}$ i $\lim\limits_{\vec{x} \to \vec{a}} \vec{g}(\vec{x}) = \vec{B}$
+\begin{enumerate}[i)]
+    \item $\lim\limits_{\vec{x} \to \vec{a}} (\vec{f}(\vec{x}) + \vec{g}(\vec{x})) = \vec{A} + \vec{B}$.
+    \item $\lim\limits_{\vec{x} \to \vec{a}} ( \lambda \vec{f}(\vec{x})) = \lambda \vec{A}$.
+    \item $\lim\limits_{\vec{x} \to \vec{a}} ( \vec{f}(\vec{x}) \cdot \vec{g}(\vec{x}))= \vec{A} \cdot \vec{B}$.
+    \item $\lim\limits_{\vec{x} \to \vec{a}} \| \vec{f}(\vec{x}) \| = \| \vec{A} \|$.
+\end{enumerate}
+
+%----------------------------------------------------------------------------------------
+\subsection{Límits direccionals}
+\begin{defi}
+    Els límits d'una funció de $n$ variables en un punt $\vec{a}$ són els límits d'aquesta funció quan $\vec{x} \to \vec{a}$ seguint una trajectòria rectilínia.
+\end{defi}
+
+\subsubsection*{Límits direccionals de camps escalars}
+Si $f(\vec{x})$ és un camp escalar i $\vec{u}$ és un vector de $\mathbb{R}^{n}$, definim el límit de $f(\vec{x})$ quan $\vec{x} \to \vec{a}$ en la direcció $\vec{u}$ com
+\begin{align}
+    \lim_{\vec{x} \to \vec{a}} f(\vec{x}) \equiv \lim_{\lambda \to 0^{+}} f(\vec{a} + \lambda \vec{u})
+\end{align}
+Si $\exists \lim\limits_{\vec{x} \to \vec{a}} f(\vec{x}) \Rightarrow \exists$ els límits direccionals de $f(\vec{x})$ i coincideixen en el punt $\vec{a}$. El recíproc no és cert.
+
+\subsubsection*{Límits direccionals de camps vectorials}
+Tal com passa als camps escalars, si $\exists \lim\limits_{\vec{x} \to \vec{a}} \vec{f}(\vec{x}) \Rightarrow \exists$ els límits direccionals de $\vec{f}(\vec{x})$ i coincideixen en el punt $\vec{a}$. El recíproc no és cert.
+
+%----------------------------------------------------------------------------------------
+\subsection{Continuïtat}
+L'existència o no del $\lim\limits_{\vec{x} \to \vec{a}} ( \vec{f}(\vec{x})$ , així com el seu propi valor, depèn dels valors de $\vec{f}(\vec{x})$ al voltant del punt $\vec{a}$ i no del seu valor en el propi punt. De la comparació del límit amb el valor de la funció en surt el concepte de continuïtat:
+\begin{align}
+    \vec{f}(\vec{x}) \text{ és contínua en el punt } \vec{a} \text{ si } \lim\limits_{\vec{x} \to \vec{a}} \vec{f}(\vec{x}) = \vec{f}(\vec{a})
+\end{align}
+Propietats de les funcions contínues:
+\begin{enumerate}[i)]
+    \item Si $\vec{f}(\vec{x})$ i $\vec{g}(\vec{x})$ són contínues $\Rightarrow \vec{f}(\vec{x}) + \vec{g}(\vec{x})$, $\vec{f}(\vec{x}) \cdot \vec{g}(\vec{x})$ i $\vec{f}(\vec{x}) / \vec{g}(\vec{x})$ (si $\vec{g}(\vec{x}) \neq 0)$ són contínues.
+    \item Si $\vec{f}(\vec{x})$ és contínua en $\vec{x} = \vec{a}$ i $\vec{g}(\vec{y})$ és contínua en $\vec{y} = \vec{f}(\vec{x}) \Rightarrow \vec{g}(\vec{f}(\vec{x}))$ és contínua en el punt $\vec{a}$.
+    \item Una funció pot ser no contínua en el punt $\vec{a}$ i, en canvi, ser-ho a cadascuna de les variables separadament.
+\end{enumerate}
+
+\subsubsection*{Continuïtat uniforme en un domini}
+\begin{defi}
+    $\vec{f}(\vec{x})$ és uniformement contínua a $D$ si
+    \begin{align}
+        \forall \varepsilon > 0, \exists \delta > 0 \mid \text{si } \vec{x}, \vec{x}' \in D \text{ i } d(\vec{x}, \vec{x}') < \delta \Rightarrow d(\vec{f}(\vec{x}), \vec{f}(\vec{x})') < \varepsilon
+    \end{align}
+\end{defi}
+\begin{thm}
+    Si $\vec{f}(\vec{x})$ és contínua en un compacte $D \Rightarrow \vec{f}(\vec{x})$ és uniformement contínua en $D$.
+\end{thm}

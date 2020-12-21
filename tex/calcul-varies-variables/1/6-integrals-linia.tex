@@ -1,0 +1,137 @@
+%----------------------------------------------------------------------------------------
+%    INTEGRALS DE LÍNIA
+%----------------------------------------------------------------------------------------
+\section{Integrals de línia}
+En aquest capítol estendrem el concepte d'integral de funcions d'una variable, $\displaystyle \int_{a}^{b} f(x) \diff x$ (inicialment definit per a funcions fitades en un interval finit $[a,b]$), a quan l'interval d'integració no és $[a,b]$ de $\mathbb{R}$, sinó un arc de corba de $\mathbb{R}^{n}$. Aquesta nova extensió ens porta al concepte d'integral de línia o integral curvilínia.
+
+\subsection{Integral de línia d'un camp vectorial}
+Sigui
+\begin{itemize}
+    \item $\vec{f}(\vec{x}) = (f_{1}(\vec{x}), \dots, f_{n}(\vec{x}))$ un camp vectorial definit a $D \subseteq \mathbb{R}^{n}$, amb valors a $\mathbb{R}^{n}$.
+    \item $\mathcal{C}$ una corba $\vec{x}(u)$, $a\leq u \leq b$, de classe $C^{1}_{[a,b]}$ a trossos, continguda a $D$, d'extrems $\vec{a}$ i $\vec{b}$, amb $\vec{x}(a) = \vec{a}$ i $\vec{x}(b) = \vec{b}$.
+    \item $\vec{f}(\vec{x})$ fitat sobre els punts de la corba $\mathcal{C}$.
+\end{itemize}
+\begin{defi}
+    Definim la integral de línia del camp vectorial $\vec{f}(\vec{x})$ al llarg de la corba $\mathcal{C}$ com
+    \begin{align}
+        \int_{\mathcal{C}} \vec{f}(\vec{x}) \cdot \dif \vec{x} \equiv \int_{a}^{b} \vec{f}[\vec{x}(u)] \cdot \vec{x}'(u) \diff u = \int_{a}^{b} \vec{f}[\vec{x}(u)] \cdot \dif \vec{x}(u)
+    \end{align}
+\end{defi}
+La notació que s'acostuma a fer servir és 
+\begin{align}
+    \int_\mathcal{C} \vec{f}(\vec{x}) \cdot \dif \vec{x} = \int_{\vec{a}}^{\vec{b}} \vec{f}(\vec{x}) \cdot \dif \vec{x}
+\end{align}
+però cal tenir present que la integral depèn del camí d'integració $\mathcal{C}$ i no únicament dels seus extrems $\vec{a}$ i $\vec{b}$.
+
+Si la corba és tancada (és a dir, si $\vec{a} = \vec{b}$), escriurem
+\begin{align}
+    \oint_\mathcal{C} \vec{f} (\vec{x}) \cdot \dif \vec{x}
+\end{align}
+
+\subsubsection*{Propietats de les integrals de línia}
+\begin{enumerate}[i)]
+    \item Linealitat:
+        \subitem $\displaystyle \int_{\mathcal{C}} (\vec{f} + \vec{g}) \cdot \dif \vec{x} = \int_{\mathcal{C}} \vec{f} \cdot \dif \vec{x} + \int_{\mathcal{C}} \vec{g} \cdot \dif \vec{x}$.
+        \subitem $\displaystyle \int_{\mathcal{C}} (\lambda \vec{f}) \cdot \dif \vec{x} = \lambda \int_{\mathcal{C}} \vec{f} \cdot \dif \vec{x}, \quad \forall \lambda \in \mathbb{R}$.
+    \item Additivitat del camí d'integració:
+        \subitem $\int_{\mathcal{C}} \vec{f} \cdot \dif \vec{x} = \int_{\mathcal{C}_{1}} \vec{f} \cdot \dif \vec{x} + \int_{\mathcal{C}_{2}} \vec{f} \cdot \dif \vec{x}$, $\quad$ on $\begin{cases}\mathcal{C}: &\{ \vec{x}(u) \mid u \in [a,b] \} \\ \mathcal{C}_{1}: &\{ \vec{x}(u) \mid u \in [a,c] \}\\ \mathcal{C}_{2}: &\{ \vec{x}(u) \mid u \in [c,b] \} \end{cases}$
+    \item Canvi de sentit:
+        \subitem $\displaystyle \int_{\underset{\to}{\mathcal{C}}} \vec{f} \cdot \dif \vec{x} = - \int_{\underset{\leftarrow}{\mathcal{C}}} \vec{f} \cdot \dif \vec{x}$.
+\end{enumerate}
+
+\subsubsection*{Invariància sota reparametritzacions}
+Sigui
+\begin{itemize}
+    \item $\vec{x}(u)$, $a\leq u \leq b$, una corba $\mathcal{C}$ de classe $C^{1}_{[a,b]}$, d'extrems $\vec{a}$ i $\vec{b}$.
+    \item $u = u(v)$ una funció de classe $C^{1}_{[c,d]}$ amb $u'(v) > 0$, és a dir, $u(v)$ és estrictament creixent a $[c,d]$ i tenim, per tant, $u(c) = a$ i $u(d) = 4$.
+\end{itemize}
+La funció $\vec{y}(v) \equiv \vec{x}[u(v)]$ descriu el mateix camí $\mathcal{C}$ i en el mateix sentit, ja que $\vec{y}(c) = \vec{x}[u(c)] = \vec{x}(a) = \vec{a}, \quad \vec{y}(d) = \vec{x}[u(d)] = \vec{x}(b) = \vec{b}$.
+
+Direm que $\vec{y}(v) \equiv \vec{x}[u(v)]$ és una reparametrització del camí $\mathcal{C}$ originalment definit per $\vec{x}(u)$. Aquesta reparametrització del camí $\mathcal{C}$ no modifica el valor de la integral.
+
+%----------------------------------------------------------------------------------------
+\subsection{Integral de línia d'un camp escalar respecte el paràmetre arc}
+Sigui
+\begin{itemize}
+    \item $\phi(\vec{x})$ un camp escalar definit a $D \subseteq \mathbb{R}^{n}$, amb valors a $\mathbb{R}$.
+    \item $\mathcal{C}$ una corba $\vec{x}(u)$, $a\leq u \leq b$, de classe $C^{1}_{[a,b]}$ a trossos, continguda a $D$, d'extrems $\vec{a}$ i $\vec{b}$, amb $\vec{x}(a) = \vec{a}$ i $\vec{x}(b) = \vec{b}$. Com que $\vec{x}(u)$ és de classe $C^{1}$, la corba $\mathcal{C}$ és rectificable i tenim el paràmetre arc $s(u) = \int_{a}^{u} \| \vec{x}'(u) \| \diff u$, la derivada del qual és $s'(u) = \| \vec{x}'(u) \|$.
+    \item $\phi(\vec{x})$ fitat sobre els punts de la corba $\mathcal{C}$.
+\end{itemize}
+\begin{defi}
+    Definim la integral de línia del camp escalar $\phi(\vec{x})$ al llarg de la corba $\mathcal{C}$ com
+    \begin{align}
+        \int_{\mathcal{C}} \phi(\vec{x}) \diff s \equiv \int_{a}^{b} \phi[\vec{x}(u)] s'(u) \diff u
+    \end{align}
+\end{defi}
+La relació entre $\int_{\mathcal{C}} \phi(\vec{x}) \diff s$ i $\int_{\mathcal{C}} \vec{f}(\vec{x}) \cdot \dif \vec{x}$ ve donada pel següent teorema.
+\begin{thm}
+    Si $\phi(\vec{x})$ és la component de $\vec{f}(\vec{x})$ en la direcció tangent a la corba $\mathcal{C}$, llavors
+    \begin{align}
+        \int_{\mathcal{C}} \phi(\vec{x}) \diff s = \int_{\mathcal{C}} \vec{f}(\vec{x}) \cdot \dif \vec{x}
+    \end{align}
+\end{thm}
+
+%----------------------------------------------------------------------------------------
+\subsection{Integrals de línia independents del camí}
+\subsubsection*{Conjunts connexos i conjunts convexos}
+Sigui un conjunt $S \subseteq \mathbb{R}^{n}$
+\begin{itemize}
+    \item $S$ és connex si $\forall \vec{a}, \vec{b} \in S, \quad \exists$ una corba contínua $\vec{x}(u)$, d'extrems $\vec{a}$ i $\vec{b}$, continguda a $S$.
+    \item $S$ és convex si $\forall \vec{a}, \vec{b} \in S$, si la recta que uneix $\vec{a}$ i $\vec{b}$ està continguda a $S$.
+\end{itemize}
+Evidentment, $S$ convex $\Rightarrow S$ connex.
+
+\subsubsection*{Integrals de línia independents del camí}
+Per als camps en què les integrals no depenen del camí $\mathcal{C}$ (és a dir que només depenen dels seus extrems), les següents afirmacions són equivalents:
+\begin{itemize}
+    \item $\displaystyle \int_{\vec{a}}^{\vec{b}} \vec{f} \cdot \dif \vec{x}$ és independent del camí que uneix $\vec{a}$ i $\vec{b}$ ($\forall \vec{a}, \vec{b} \in D$.
+    \item $\displaystyle \oint_{\mathcal{C}} \vec{f} \cdot \dif \vec{x} = 0$ per a qualsevol camí $\mathcal{C}$ tancat de $D$.
+\end{itemize}
+O en altres paraules
+\begin{align}
+    \int_{\underset{\to}{\mathcal{C}_{1}}} = \int_{\underset{\to}{\mathcal{C}_{2}}} \Leftrightarrow \int_{\underset{\to}{\mathcal{C}_{1}}} = - \int_{\underset{\leftarrow}{\mathcal{C}_{2}}} \Leftrightarrow \oint_{\underset{\to}{\mathcal{C}_{1}} + \underset{\leftarrow}{\mathcal{C}_{2}}} = 0
+\end{align}
+
+\subsubsection*{Condició per a la independència del camí d'integració}
+\begin{thm}[Generalització del 2n teorema fonamental del càlcul]
+    Sigui $\vec{f}(\vec{x})$ un camp vectorial continu definit en un conjunt obert connex $D \subseteq \mathbb{R}^{n}$, amb valors a $\mathbb{R}^{n}$.
+    
+    Si $\vec{f}(\vec{x})$ és el gradient d'un camp escalar $\phi(\vec{x})$ definit a $D$, és a dir $\vec{f}(\vec{x}) = \vnabla \phi (\vec{x})$, llavors $\forall \vec{a}, \vec{b} \in D$ es compleix
+    \begin{align}
+        \int_{\vec{a}}^{\vec{b}} \vec{f}(\vec{x}) \cdot \dif \vec{x} = \phi(\vec{b}) - \phi(\vec{a})
+    \end{align}
+    La integral no depèn, per tant, del camí que uneix $\vec{a}$ i $\vec{b}$.
+\end{thm}
+\begin{thm}[Generalització del 1r teorema fonamental del càlcul]
+    Sigui $\vec{f}(\vec{x})$ un camp vectorial continu definit en un conjunt obert connex $D \subseteq \mathbb{R}^{n}$, amb valors a $\mathbb{R}^{n}$.
+    
+    Si $\forall \vec{a}, \vec{b} \in D$ la integral $\displaystyle \int_{\vec{a}}^{\vec{b}} \vec{f}(\vec{x}) \cdot \dif \vec{x}$ és independent del camí que uneix $\vec{a}$ i $\vec{b}$, llavors $\forall \vec{x} \in D$, 
+    \begin{align}
+        \vec{f}(\vec{x}) \text{ és el gradient de } \phi(\vec{x}) = \int_{\vec{a}}^{\vec{x}} \vec{f}(\vec{x}) \cdot \dif \vec{x}
+    \end{align}
+\end{thm}
+\begin{cor}
+Els teoremes anteriors estableixen que si $\vec{f}(\vec{x})$ és continu en un conjunt obert connex, les següents afirmacions són equivalents
+\begin{itemize}
+    \item $\vec{f}(\vec{x})$ és un gradient.
+    \item $\displaystyle \int_{\vec{a}}^{\vec{b}} \vec{f} \cdot \dif \vec{x}$ és independent del camí.
+    \item $\displaystyle \oint_{\mathcal{C}} \vec{f} \cdot \dif \vec{x} = 0$ per a qualsevol camí tancat.
+\end{itemize}
+\end{cor}
+
+\subsubsection*{Condicions per què un camp vectorial de classe $C^{1}$ sigui un gradient}
+\begin{thm}[Condició necessària]
+    Si $\vec{f}(\vec{x})$ (de classe $C^{1}_{D}$) és el gradient de $\phi(\vec{x})$ a $D \subseteq \mathbb{R}^{n}$, llavors
+    \begin{align}
+        \frac{\partial f_{i}}{\partial x_{j}} = \frac{\partial f_{j}}{\partial x_{i}}, \quad \forall \vec{x} \in D
+    \end{align}
+\end{thm}
+Notem que a $\mathbb{R}^{3}$ la condició anterior equival a $\vnabla \times \vec{f} = \vec{0}$.
+
+\begin{thm}[Condició suficient]
+    Sigui $\vec{f}(\vec{x})$ un camp vectorial de classe $C^{1}_{D}$, on $D$ és un obert convex de $\mathbb{R}^{n}$. Llavors
+    \begin{align}
+        \text{Si } \frac{\partial f_{i}}{\partial x_{j}} = \frac{\partial f_{j}}{\partial x_{i}} \Rightarrow \vec{f}(\vec{x}) \text{ és un gradient.}
+    \end{align}
+\end{thm}
+

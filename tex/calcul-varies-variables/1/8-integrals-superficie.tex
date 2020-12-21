@@ -1,0 +1,150 @@
+%-------------------------------------------------------------------------------
+%          INTEGRALS DE SUPERFÍCIE
+%-------------------------------------------------------------------------------
+\section{Integrals de superfície}
+En aquest capítol estendrem el concepte d'integral doble quan la regió no és de $\mathbb{R}^{2}$ sinó que és una superfície de $\mathbb{R}^{3}$. Aquesta extensió ens porta al concepte d'integral de superfície.
+
+En molts sentits, les integrals de superfície són, respecte les integrals dobles, el que les integrals de línia són respecte les integrals simples.
+
+%-------------------------------------------------------------------------------
+\subsection{Superfícies a $\mathbb{R}^{3}$}
+En general, una superfície de $\mathbb{R}^{3}$ es pot descriure de tres formes:
+\begin{itemize}
+	\item Implícita: conjunt de punts que satisfan l'equació $F(x,y,z) = 0$, on $F$ és una funció contínua.
+	\item Explícita: quan és possible aïllar una de les variables de l'equació anterior, per exemple $z = f(x,y)$.
+	\item Paramètrica: expressant les coordenades dels punts com funcions contínues de dos paràmetres
+\end{itemize}
+\begin{align*}
+	\vec{r}(u,v) = (X(u,v), Y(u,v), Z(u,v))
+\end{align*}
+Les funcions $X(u,v)$, $Y(u,v)$ i $Z(u,v)$ generen els punts de la superfície quan els paràmetres $u$ i $v$ es mouen en una regió $T$ de $\mathbb{R}^{2}$:
+\begin{align*}
+	\mathcal{S} \equiv \vec{r}(T)
+\end{align*}
+Direm que la superfície $\mathcal{S}$ és simple si l'aplicació $T \to \mathcal{S}$ és un a un.
+
+Notem no que forma explícita és un cas particular de la paramètrica en què els paràmetres són $x$ i $y$.
+\begin{align*}
+	\vec{r}(x,y) = (x,y,f(x,y))
+\end{align*}
+
+\subsubsection*{Producte vectorial fonamental}
+\begin{defi}
+	Anomenem producte vectorial fonamental de la superfície $\mathcal{S}$ al vector
+	\begin{align}
+		\frac{\partial \vec{r}}{\partial u} \times \frac{\partial \vec{r}}{\partial v} \equiv \left( \frac{\partial (Y, Z)}{\partial (u,v)}, \frac{\partial (Z, X)}{\partial (u,v)}, \frac{\partial (X, Y)}{\partial (u,v)} \right)
+	\end{align}
+	El producte vectorial fonamental és ortogonal al pla tangent a $\mathcal{S}$ en cada punt. Quan ens movem dins la regió paramètrica $T$, l'orientació del pla tangent a $\mathcal{S}$ varia d'un punt a una altra. Aquesta variació és contínua si les funcions $X(u,v)$, $Y(u,v)$ i $Z(u,v)$ són de classe $C^{1}_{T}$.
+\end{defi}
+Si expressem $\mathcal{S}$ en forma explícita, $\vec{r}(x,y) = (x,y,f(x,y))$, el producte vectorial fonamental s'expressa
+\begin{align*}
+	\frac{\partial \vec{r}}{\partial u} \times \frac{\partial \vec{r}}{\partial v} = \left( -\frac{\partial f}{\partial x}, -\frac{\partial f}{\partial y}, 1 \right)
+\end{align*}
+Com veurem, a les integrals de superfície, el producte vectorial fonamental juga un paper similar al del factor $\vec{r}'(t)$ a les integrals de línia.
+
+\subsubsection*{Àrea d'una superfície $\mathcal{S}$}
+\begin{defi}
+	El mòdul del producte vectorial fonamental és el factor de proporcionalitat entre les àrees del pla $u-v$ i les corresponents àrees de la superfície $\mathcal{S}$. Llavors, si $\mathcal{S}$ és de classe $C^{1}$, definim l'àrea de $\mathcal{S}$
+	\begin{align}
+		a(\mathcal{S}) \equiv \iint_{T} \left\| \frac{\partial \vec{r}}{\partial u} \times \frac{\partial \vec{r}}{\partial v} \right\| \diff u \diff v = \iint_{\mathcal{S}} \dif \mathcal{S}
+	\end{align}
+\end{defi}
+Si expressem $\mathcal{S}$ en forma explícita, $z=f(x,y)$, la igualtat anterior esdevé
+\begin{align*}
+	a(\mathcal{S}) = \iint_{T} \sqrt{1 + \left( \frac{\partial f}{\partial x} \right)^{2} + \left( \frac{\partial f}{\partial y} \right)^{2} } \diff x \diff y
+\end{align*}
+
+%-------------------------------------------------------------------------------
+\subsection{Integrals sobre una superfície $\mathcal{S}$ de $\mathbb{R}^{3}$}
+\subsubsection*{Integral d'un camp escalar de $\mathbb{R}^{3}$ sobre una superfície $\mathcal{S}$}
+\begin{defi}[Integral de $f$ sobre $\mathcal{S}$]
+	Sigui
+	\begin{itemize}
+		\item $f(x,y,z)$ un camp escalar de $\mathbb{R}^{3}$, continu a trossos.
+		\item $\mathcal{S}$ una superfície regular de classe $C^{1}$, d'equacions paramètriques $x=X(u,v)$, $y=Y(u,v)$ i $z=Z(u,v)$.
+	\end{itemize}
+	Llavors, tenim
+	\begin{align}
+		\iint_{\mathcal{S}} f \diff \mathcal{S} \equiv \iint_{T} f(X(u,v), Y(u,v), Z(u,v)) \left\| \frac{\partial \vec{r}}{\partial u} \times \frac{\partial \vec{r}}{\partial v} \right\| \diff u \diff v
+	\end{align}
+\end{defi}
+En particular l'àrea de $\mathcal{S}$ és la integral sobre $\mathcal{S}$ de la funció constant $f(x,y,z) \equiv 1$.
+
+\subsubsection*{Integral d'un camp vectorial $\mathbb{R}^{3} \to \mathbb{R}^{3}$ sobre una superfície $\mathcal{S}$}
+\begin{defi}[Integral de $\vec{f}$ sobre $\mathcal{S}$]
+	Sigui
+	\begin{itemize}
+		\item $\vec{f}(x,y,z) = (P(x,y,z), Q(x,y,z), R(x,y,z))$ un camp vectorial $\mathbb{R}^{3} \to \mathbb{R}^{3}$, continu a trossos.
+		\item $\mathcal{S}$ una superfície regular de classe $C^{1}$, d'equacions paramètriques $x=X(u,v)$, $y=Y(u,v)$ i $z=Z(u,v)$.
+	\end{itemize}
+	Llavors, tenim
+	\begin{align}
+		\iint_{\mathcal{S}} \vec{f} \cdot \dif \vec{\mathcal{S}} \equiv \iint_{\mathcal{S}} (P,Q,R) \cdot (\dif y \wedge \dif z, \dif z \wedge \dif x, \dif x \wedge \dif z) 
+	\end{align}
+\end{defi}
+
+\subsubsection*{Invariància sota reparametritzacions}
+Sigui $\mathcal{S}$ és una superfície regular $\vec{r}(u,v) = (X(u,v), Y(u,v), Z(u,v))$, de classe $C^{1}_{T})$, i fem el canvi de paràmetres
+\begin{align*}
+	\begin{cases} u & = U(s,t) \\ v & = V(s,t) \end{cases} \quad \text{amb } \frac{\partial (U,V)}{\partial (s,t)} \neq 0
+\end{align*}
+on $U$ i $V$ són funcions de classe $C^{1}_{W}$ que generen els punts $(u,v)$ de $T$ quan $(s,t)$ es mou a $W$.
+
+Tenim doncs, dues parametritzacions de la superfície $\mathcal{S}$
+\begin{align*}
+	\vec{r} = \vec{r}(u,v) \leftrightarrow \vec{r} \vec{R}(s,t) = \vec{r}( U(s,t), V(s,t))
+\end{align*}
+Es pot veure que les reparametritzacions de classe $C^{1}$ i jacobià no nul no afecten les integrals de superfície:
+\begin{align}
+\begin{aligned}
+	\iint_{\mathcal{S}} f \diff \mathcal{S} & = \iint_{T} f(\vec{r}(u,v)) \left\| \frac{\partial \vec{r}}{\partial u} \times \frac{\partial \vec{r}}{\partial v} \right\| \diff u \diff v \\
+	& = \iint_{W} f(\vec{R}(s,t)) \left\| \frac{\partial \vec{r}}{\partial u} \times \frac{\partial \vec{r}}{\partial v} \right\| \left| \frac{\partial (U,V)}{\partial (s,t)} \right| \diff s \diff t \\
+	& = \iint_{W} f(\vec{R}(s,t)) \left\| \frac{\partial \vec{R}}{\partial s} \times \frac{\partial \vec{R}}{\partial t} \right\| \diff s \diff t
+\end{aligned}
+\end{align}
+En el cas de $\displaystyle \iint_{\mathcal{S}} \vec{f} \cdot \dif \vec{\mathcal{S}}$ el raonament és similar.
+%-------------------------------------------------------------------------------
+\subsection{Els teoremes d'Stokes i de Gauss}
+Es tracta de dos teoremes de $\mathbb{R}^{3}$, anàlegs al teorema de Green de $\mathbb{R}^{2}$. El d'Stokes relaciona una integral de superfície amb una integral de línia sobre el contorn d'aquesta superfície. El de Gauss relaciona una integral triple sobre una regió de $\mathbb{R}^{3}$ amb una integral de superfície sobre la frontera d'aquesta regió.
+\begin{thm}[d'Stokes]\label{thm:stokes}
+	Si
+	\begin{enumerate}[i)]
+		\item $\mathcal{S}$ és una superfície regular de $\mathbb{R}^{3}$ d'equacions paramètriques $\vec{r}(u,v)$, on $(u,v) \in T$.
+		\item La regió $T$ del pla $u-v$ està limitada per una corba $\Gamma$ tancada, simple, i de classe $C^{1}$ a trossos.
+		\item $\vec{r}(u,v) = (X(u,v), Y(u,v), Z(u,v))$ és de classe $C^{2}_{D}$, on $D$ és un obert i conté $T \cup \Gamma$.
+		\item $\mathcal{C}$ és la imatge per $\vec{r}(u,v)$ de $\Gamma$.
+		\item $P(x,y,z)$, $Q(x,y,z)$ i $R(x,y,z)$ són tres camps escalars de classe $C^{1}_{\mathcal{S}}$
+	\end{enumerate}
+	Llavors, tenim
+	\begin{align}
+	\begin{gathered}
+		\iint_{\mathcal{S}} \left[ \left( \frac{\partial R}{\partial y} - \frac{\partial Q}{\partial z} \right) \diff y \wedge \dif z + \left( \frac{\partial P}{\partial z} - \frac{\partial R}{\partial Q} \right) \diff z \wedge \dif x + \left( \frac{\partial Q}{\partial x} - \frac{\partial P}{\partial y} \right) \diff x \wedge \dif y \right] \\
+		= \oint_{\mathcal{C}} \left[ P \diff x + Q \diff y + R \diff z \right]
+	\end{gathered}
+	\end{align}
+\end{thm}
+Introduint el camp vectorial $\vec{f}(\vec{x}) \equiv (P(x,y,z), Q(x,y,z), R(x,y,z)$, podem expressar el teorema d'Stokes de la forma següent:
+\begin{align}
+	\iint_{\mathcal{S}} (\vnabla \times \vec{f}) \cdot \dif \vec{\mathcal{S}} = \oint_{\mathcal{C}} \vec{f}(\vec{x}) \cdot \dif \vec{x}
+\end{align}
+
+% V o \mathcal{V} a tot el teorema ( o fins i tot \mathcal{v})
+\begin{thm}[de Gauss]\label{thm:gauss}
+	Si
+	\begin{enumerate}
+		\item $\mathcal{V}$ és una regió sòlida (l'equivalent en 3 dimensions de regió connexa).
+		\item  La regió $\mathcal{V}$ està limitada per una superfície $\mathcal{S}$ tancada, regular de classe $C^{1}$ a trossos, i «orientable» (i.e., que té dues «cares», una interior i una exterior).
+		\item $P(x,y,z)$, $Q(x,y,z)$ i $R(x,y,z)$ són tres camps escalars de classe $C^{1}_{D}$, on $D$ és un obert que conté $\mathcal{V} \cup \mathcal{S}$.
+	\end{enumerate}
+	Llavors, tenim
+	\begin{align}
+	\begin{gathered}
+		\iiint_{\mathcal{V}} \left( \frac{\partial P}{\partial x} + \frac{\partial Q}{\partial y} + \frac{\partial R}{\partial z} \right) \diff x \diff y \diff z \\
+		= \iint_{\mathcal{S}} \left[ P \diff y \wedge \dif z + Q \diff z \wedge \dif x + R \diff x \wedge \dif y \right]
+	\end{gathered}
+	\end{align}
+\end{thm}
+Introduint el camp vectorial $\vec{f}(\vec{x}) \equiv (P(x,y,z), Q(x,y,z), R(x,y,z)$, i la notació $\dif \mathcal{V} = \dif x \diff y \diff z$, i recordant que $\dif \vec{\mathcal{S}} = (\dif y \wedge \dif z , \dif z \wedge \dif x, \dif x \wedge \dif y)$, podem expressar el teorema de Gauss de la forma següent:
+\begin{align}
+	\iiint_{\mathcal{V}} (\vnabla \cdot \vec{f}) \diff \mathcal{V} = \iint_{\mathcal{S}} \vec{f} \cdot \dif \vec{\mathcal{S}}
+\end{align}

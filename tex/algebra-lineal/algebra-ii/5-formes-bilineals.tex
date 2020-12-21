@@ -1,0 +1,227 @@
+%----------------------------------------------------------------------------------------
+%    FORMES BILINEALS
+%----------------------------------------------------------------------------------------
+\section{Formes bilineals}
+\subsection{Formes bilineals}
+Sigui $K$ un cos, i $V$ un $K$-espai vectorial. Una aplicació
+\begin{align}
+    \left< - \mid - \right>: V \times V \to K
+\end{align}
+es diu que és una forma bilineal sobre $V$ si es compleixen les propietats següents:
+\begin{enumerate}[i)]
+    \item $\left< \lambda u + \mu u' \mid v \right> = \lambda \left< u \mid v \right> + \mu \left< u' \mid v \right>, \quad \forall \lambda , \mu \in K , \, u , u' , v \in V$.
+    \item $\left< u \mid \lambda v + \mu v' \right> = \lambda \left< u \mid v \right> + \mu \left< u \mid v' \right>, \quad \forall \lambda , \mu \in K , \, u , v , v' \in V$.
+\end{enumerate}
+La forma bilineal $\left< - \mid - \right>$ es diu que és simètrica si $\left< u \mid v \right> = \left< v \mid u \right>, \quad \forall u , v \in V$.
+
+\subsubsection*{Producte escalar estàndard}
+El producte estàndard de $\mathbb{R}^{n}$ és l'aplicació $\left< - \mid - \right>: \mathbb{R}^{n} \times \mathbb{R}^{n} \to \mathbb{R}$ definida per
+\begin{align}
+    \left< (x_{1}, \dots , x_{n}) \mid (y_{1}, \dots , y_{n}) \right> = x_{1} y_{1} + \dots + x_{n} y_{n}
+\end{align}
+El producte escalar estàndard és una forma bilineal simètrica.
+
+%----------------------------------------------------------------------------------------
+\subsection{Matriu associada a una forma bilineal}
+Sigui $\left< - \mid - \right>: V \times V \to K$ una forma bilineal, i sigui $B = ( v_{1}, \dots , v_{n} )$ una base de $V$. Considerem la matriu $A = (a_{ij}) \in M(n,K)$, definida per 
+\begin{align}
+    a_{ij} = \left< v_{i} \mid v_{j} \right>
+\end{align}
+
+La matriu $A$ és diu que és la matriu associada a la forma bilineal $\left< - \mid - \right>$ en la base $B$ i la denotem per
+\begin{align}
+    A = M(\left< - \mid - \right>, B)
+\end{align}
+Amb aquesta matriu podem calcular la forma bilineal sobre qualsevol parell de vectors:
+\begin{align}
+    \left< u \mid v \right> = u^{t} A v \equiv C(u, B)^{t} A C(v, B)
+\end{align}
+\\
+Sigui $B = (v_{1}, \dots , v_{n})$ una base de $V$. Una forma lineal $\left< - \mid - \right>$ sobre $V$ és simètrica $\Leftrightarrow M(\left< - \mid - \right>, B)$ és una matriu simètrica.
+
+Un exemple n'és el producte escalar estàndard, on $\left< u \mid v \right> = u^{t} I(n) v$.
+
+\subsubsection*{Fórmula del canvi de base}
+\begin{align}
+    M(\left< - \mid - \right>, B_{2}) = M(B_{2}, B_{1})^{t} M(\left< - \mid - \right>, B_{1}) M(B_{2}, B_{1})
+\end{align}
+%----------------------------------------------------------------------------------------
+\subsection{L'espai vectorial de les formes bilineals}
+Considerem el conjunt
+\begin{align}
+    \operatorname{Bil} (V) \equiv \{ \left< - \mid - \right>: V \times V \to K \mid \left< - \mid - \right> \text{ és una forma bilineal} \}.
+\end{align}
+Sobre aquest conjunt, definim una suma i un producte per escalars de $K$ de la manera següent:
+\begin{align}
+    \begin{matrix} 
+        \left< - \mid - \right>_{1} + \left< - \mid - \right>_{2}: & V \times V & \to & K \\
+        & (v, w) & \mapsto & \left< v \mid w \right>_{1} + \left< v \mid w \right>_{2}
+    \end{matrix}
+\end{align}
+\begin{align}
+    \begin{matrix} 
+        \lambda \left< - \mid - \right>: & V \times V & \to & K \\
+        & (v, w) & \mapsto & \lambda \left< v \mid w \right>
+    \end{matrix}
+\end{align}
+Aquest conjunt té estructura de $K$-espai vectorial.
+
+La dimensió de $\operatorname{Bil} (V)$ és $n^{2}$ perquè és un $K$-espai vectorial isomorf a $M(n,K)$.
+
+\subsubsection*{Conjunt de les formes bilineals simètriques}
+El conjunt de les formes bilineals simètriques és un subespai vectorial de $\operatorname{Bil} (V)$:
+\begin{align}
+    \operatorname{SBil} (V) \equiv \{ \left< - \mid - \right>: V \times V \to K \mid \left< - \mid - \right> \text{ és simètrica} \}. 
+\end{align}
+La dimensió de $\operatorname{SBil} (V)$ és $\frac{n(n+1)}{2}$ perquè és un subespai vectorial isomorf al subespai vectorial de les matrius simètriques de $M(n,K)$.
+
+%----------------------------------------------------------------------------------------
+\subsection{Bases ortogonals}
+Sigui $\left< - \mid - \right>: V \times V \to \mathbb{R}$ una forma bilineal simètrica. Es diu que $u, v \in V$ són ortogonals si $\left< u \mid v \right> = 0 \Rightarrow u \perp v$.
+
+Un vector no nul $v \in V$ és isòtrop si és ortogonal a si mateix, és a dir, si $\left< v \mid v \right> = 0$.
+
+Sigui $B = (v_{1}, \dots , v_{n})$ una base de $V$. Es diu que $B$ és una base ortogonal respecte de $\left< - \mid - \right>$ si $\left< v_{i} \mid v_{j} \right> = 0, \quad \forall i \neq j$.
+
+Cal observar que la matriu associada a la forma bilineal simètrica en una base ortogonal és una matriu diagonal, és a dir, $M(\left< - \mid - \right>, B) \in D(n)$.
+
+\subsubsection*{Teorema}
+Sigui $\left< - \mid - \right>: V \times V \to \mathbb{R}$ una forma bilineal simètrica. Llavors $V$ té una base ortogonal respecte $\left< - \mid - \right>$.
+
+\subsubsection*{Complement ortogonal}
+Sigui $W$ un $\operatorname{SBil} (V)$ i $\left< u_{1}, \dots , u_{r} \right> = W$, llavors, definim el subespai ortogonal a $W$ com:
+\begin{align}
+    W^{\perp} \equiv \{ v \in V \mid u \perp v, \quad \forall u \in W \}
+\end{align}
+
+El complement ortogonal compleix les següents propietats:
+\begin{enumerate}[i)]
+    \item $W \oplus W^{\perp} = V$.
+    \item $\dim (W) + \dim (W^{\perp}) = \dim (V)$.
+\end{enumerate}
+
+\subsubsection*{Mètode de Gram--Schmidt d'ortogonalització}
+Sigui $B = (v_{1}, v_{2}, v_{3} \dots , v_{k})$ una base de $V$ i $\left< - \mid - \right>$ una forma bilineal simètrica. Llavors, per trobar uns vectors $u_{1}, u_{2}, u_{3}, \dots u_{k}$ que formin una base $B'$ ortogonal respecte de $\left< - \mid - \right>$, apliquem el mètode de Gram--Schmidt.
+
+Definim l'operador projector com:
+\begin{align}
+    \operatorname{proj}_{u} (v) \equiv \frac{\left< u \mid v \right>}{\left< u \mid u \right>} u
+\end{align}
+
+El mètode de Gram--Schmidt va de la manera següent:
+\begin{align*}
+    u_{1} & = v_{1}, \\
+    u_{2} & = v_{2} - \operatorname{proj}_{u_{1}} (v_{2}), \\
+    u_{3} & = v_{3} - \operatorname{proj}_{u_{1}} (v_{3}) - \operatorname{proj}_{u_{2}} (v_{3}), \\
+    & \, \, \, \vdots
+\end{align*}
+\begin{align}
+    u_{k} = v_{k} - \sum\limits_{j=1}^{k-1} \operatorname{proj}_{u_{j}} (v_{k})
+\end{align}
+
+Cal notar que per què aquest mètode es pugui aplicar, $\left< v_{1} \mid v_{1} \right> \neq 0$, és a dir, si el element $a_{1,1}$ de $M(\left< - \mid - \right>, B)$ és zero, haurem de permutar files abans de fer Gram--Schmidt.
+
+\subsubsection*{Definició d'una forma bilineal}
+Sigui $\left< - \mid - \right>: V \times V \to \mathbb{R}$ una forma bilineal simètrica i $v \in V$.
+\begin{enumerate}[i)]
+    \item $\left< - \mid - \right>$ és definida positiva $\Leftrightarrow \left< v \mid v \right> > 0  \Leftrightarrow M( \left< - \mid - \right> , B ) = I(n)$.
+    \item $\left< - \mid - \right>$ és definida negativa $\Leftrightarrow \left< v \mid v \right> < 0 \Leftrightarrow M( \left< - \mid - \right> , B ) = -I(n)$.
+    \item $\left< - \mid - \right>$ és semidefinida positiva $\Leftrightarrow \left< v \mid v \right> \geq 0$.
+    \item $\left< - \mid - \right>$ és semidefinida negativa $\Leftrightarrow \left< v \mid v \right> \leq 0$.
+\end{enumerate}
+
+Les formes bilineals definides positives s'anomenen productes escalars.
+
+\subsubsection*{Teorema de Sylvester}
+Sigui $\left< - \mid - \right>: V \times V \to \mathbb{R}$ una forma bilineal simètrica. Llavors $V$ té una base ortogonal respecte $\left< - \mid - \right>$ tal que la matriu associada respecte d'aquesta base és de la forma
+\begin{align}
+M(\left< - \mid - \right>, B) = 
+\begin{pmatrix}
+    1 & & & & & & & & \\
+    & \dots^{r_{+}} & & & & & & & \\
+    & & 1 & & & & & & \\
+    & & & -1 & & & & & \\
+    & & & & \dots^{r_{-}} & & & & \\
+    & & & & & -1 & & & \\
+    & & & & & & 0 & & \\
+    & & & & & & & \dots^{r_{0}} & \\
+    & & & & & & & & 0
+\end{pmatrix}
+\end{align}
+
+on $r_{+}$, $r_{-}$ i $r_{0}$ no depenen de la base $B$. És a dir, $\forall M(\left< - \mid - \right>, B) \in M(n, \mathbb{R})$, $r_{+} + r_{-} +r_{0} = n$.
+
+La terna $(r_{+}, r_{-}, r_{0})$ s'en diu signatura de la forma bilineal, i és un invariant.
+
+%----------------------------------------------------------------------------------------
+\subsection{Productes escalars}
+Aquesta secció la dedicarem a l'estudi dels $\mathbb{R}$-espai vectorials $V$ de dimensió finita amb un producte escalar. Aquests espais vectorials també es diuen espai euclidians.
+Algunes propietats importants del producte escalar són:
+\begin{itemize}
+    \item En una base ortogonal $B$, tots els elements de la diagonal de la matriu $M(\left< - \mid - \right>, B)$ són $> 0$.
+    \item $\exists$ una base $B$ tal que $M(\left< - \mid - \right>, B) = I(n)$.
+    \item $\forall v \in V, \quad \left< v \mid v \right> \geq 0$ i $\left< v \mid v \right> \Leftrightarrow v = 0$.
+\end{itemize}
+
+\subsubsection*{Desigualtat de Cauchy-Schwartz}
+Sigui $\left< - \mid - \right>$ un producte escalar sobre un $\mathbb{R}$-espai vectorial $V$. Llavors:
+\begin{align}
+    \left< u \mid v \right>^{2} \leq \left< u \mid u \right> \left< v \mid v \right>, \quad \forall u, v \in V
+\end{align}
+
+\subsubsection*{Norma sobre $V$}
+Sigui $V$ un $\mathbb{R}$-espai vectorial. Una norma sobre $V$ és una aplicació:
+\begin{align}
+    \begin{matrix} \|~\|: & V & \to & \mathbb{R} \\ & u & \mapsto & \| u \| \end{matrix}
+\end{align}
+que compleix les següents propietats:
+\begin{enumerate}[i)]
+    \item $\| u \| \geq 0, \quad \forall u \in V$.
+    \item $\| u \| = 0 \Leftrightarrow u = 0$.
+    \item $\| \lambda u \| = | \lambda | \| u \|, \quad \forall \lambda \in \mathbb{R}, \forall u \in V$
+    \item $\| u + v \| \leq \| u \| + \| v \|,  \quad \forall u, v \in V$ (desigualtat triangular).
+\end{enumerate}
+
+\subsubsection*{Norma associada a $\left< - \mid - \right>$}
+Sigui $\left< - \mid - \right>$ un producte escalar sobre un $\mathbb{R}$-espai vectorial $V$. Llavors l'aplicació
+\begin{align}
+    \begin{matrix} \|~\|_{\left< - \mid - \right>} : & V & \to & \mathbb{R} \\ & u & \mapsto & \| u \|_{\left< - \mid - \right>} \end{matrix}
+\end{align}
+\begin{align}
+    \text{on} \quad \| u \|_{\left< - \mid - \right>} = \sqrt{\left< u \mid u \right>}
+\end{align}
+és una norma, que es diu norma associada a $\left< - \mid - \right>$.
+
+%----------------------------------------------------------------------------------------
+\subsection{Bases ortonormals}
+Una base ortonormal és una base ortogonal $B$ que compleix que $\| u \| = 1, \forall u \in B$. Cal notar que $M(\left< - \mid - \right>, B) = I(n)$.
+
+Sigui $\left< - \mid - \right>$ un producte escalar sobre un $\mathbb{R}$-espai vectorial $V$ de dimensió finita. Llavors $V$ té una base ortonormal respecte $\left< - \mid - \right>$.
+
+Per calcular una base ortonormal $B'$ es pot calcular una base ortogonal $B$ pel mètode de Gramm--Schmidt i dividir els vectors de $B$ per la seva norma:
+\begin{align}
+    B = ( u_{1}, \dots , u_{n} ) \Rightarrow B' = \left( \frac{u_{1}}{\| u_{1} \|} , \dots , \frac{u_{n}}{\| u_{n} \|} \right)
+\end{align}
+
+%----------------------------------------------------------------------------------------
+\subsection{El Teorema Espectral}
+Tota matriu simètrica de $M(n,\mathbb{R})$ diagonalitza en una base ortonormal respecte el producte escalar estàndard de $\mathbb{R}^{n}$.
+
+\subsubsection*{Enfomorfisme autoadjunt}
+Es diu que $f$ és un endomorfisme autoadjunt si i només si:
+\begin{align}
+    \left< f(u) \mid v \right> = \left< u \mid f(v) \right>
+\end{align}
+
+Sigui $\left< - \mid - \right>$ un producte escalar sobre un $\mathbb{R}$-espai vectorial $V$ de dimensió finita $n>0$. Sigui $f: V \to V$ un endomorfisme autoadjunt de $V$. Llavors $\exists \lambda_{1}, \dots , \lambda_{n} \in \mathbb{R}$ tals que:
+\begin{align}
+    P_{f}(x) = (-1)^{n} (x - \lambda_{1}) \dots (x - \lambda_{n})
+\end{align}
+
+\subsubsection*{Teorema espectral}
+Sigui $\left< - \mid - \right>$ un producte escalar sobre un $\mathbb{R}$-espai vectorial $V$ de dimensió finita $n>0$. Sigui $f: V \to V$ un endomorfisme autoadjunt de $V$. Lavors $V$ té una base ortonormal de vectors propis de $f$. En particular, l'endomorfisme $f$ diagonalitza.
+\begin{align}
+    M(f, B, B) = M (\left< - \mid - \right>, B) \Rightarrow \left< u \mid v \right> = \left< f(u) \mid v \right>
+\end{align}
+
+Observació: si bé el mètode de Gramm--Schmidt d'ortonormalització és invàlid per a matrius no definides positives, sí que ho és el d'ortogonalització, ja que no treballa amb normes. De manera que es pot ortogonalitzar qualsevol forma bilineal sense haver d'utilitzar el teorema espectral, tot i que pot arribar a ser un procés més llarg.

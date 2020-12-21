@@ -1,0 +1,128 @@
+%----------------------------------------------------------------------------------------
+%    FUNCIONS D'UNA VARIABLE REAL
+%----------------------------------------------------------------------------------------
+\section{Funcions d'una variable real}
+Funció real $\equiv f:D \to \mathbb{R}, \quad D \subseteq \mathbb{R}$.
+\begin{itemize}
+    \item Domini $\equiv \{ x \in D \mid \exists f(x) \}$.
+    \item Imatge $\equiv \{ f(x) \mid x \in D \}$.
+    \item Gràfic $\equiv \{ (x, f(x)) \mid x \in D \} \subseteq D \times \mathbb{R}$.
+\end{itemize}
+
+\subsubsection*{Operacions}
+Siguin $f$ i $g$ funcions definides a $D$ i $E$ respectivament,
+\begin{itemize}
+    \item Suma: $(f+g)(x) \equiv f(x) + g(x), \quad \forall x \in D \cap E$.
+    \item Producte: $(fg)(x) \equiv f(x) g(x), \quad \forall x \in D \cap E$.
+    \item Composició: $(g \circ f)(x) \equiv g(f(x)), \quad \forall x \in D,$ tal que $f(x) \in E$.
+\end{itemize}
+
+%----------------------------------------------------------------------------------------
+\subsection{Límit d'una funció}
+$\lim\limits_{x \to a} = l$, si $\forall \varepsilon > 0, \quad \exists \delta > 0$ tal que si $|x-a| < \delta \Rightarrow |f(x) - l | < \varepsilon \Leftrightarrow$ és possible expressar una inequació entre $\delta$ i $\varepsilon$. 
+L'existència del límit no depèn del comportament de $f(x)$ en $a$, sinó al seu voltant.
+
+\subsubsection*{Propietats}
+\begin{itemize}
+    \item El $\lim f(x)$ és únic.
+    \item Si $\exists \lim\limits_{x \to a} f(x) \Rightarrow f$ és fitada en algun $\varepsilon ^{\ast} (a, \delta)$.
+    \item Si $\lim\limits_{x \to a} f(x) = k$ i $\lim\limits_{x \to a} g(x) = l$,
+    \begin{itemize}
+        \item $\lim (f(x) + g(x)) = k + l$.
+        \item $\lim (f(x) g(x)) = kl$.
+        \item $\lim (\sfrac{f(x)}{g(x)}) = \sfrac{k}{l}$ (si $l \neq 0$ i $g(x) \neq 0$ en $\varepsilon ^{\ast} (a, \delta)$.
+        \item $f (x) \leq g(x)$ en algun $\varepsilon ^{\ast} (a, \delta) \Rightarrow k \neq l$.
+    \end{itemize}
+\end{itemize} 
+
+\subsubsection*{Límits per la dreta i per l'esquerra (procediment)}
+\begin{itemize}
+    \item Dreta: $ x = a + \delta , \quad \lim\limits_{x \to a^{+}} \Rightarrow \lim\limits_{\delta \to 0^{-}} $.
+    \item Esquerra: $ x = a - \delta , \quad \lim\limits_{x \to a^{-}} \Rightarrow \lim\limits_{\delta \to 0^{+}} $.
+\end{itemize}
+
+%----------------------------------------------------------------------------------------
+\subsection{Continuïtat d'una funció}
+Si $x \in \varepsilon (a, \delta) \Rightarrow f(x) \in \varepsilon (f(a), \varepsilon ) \Rightarrow \lim\limits_{x \to a} f(x) = f(\lim\limits_{x \to a} x)$.
+
+\subsubsection*{Discontinuïtats}
+\begin{itemize}
+    \item Evitables: Quan $\exists \lim\limits_{x \to a} f(x)$ finit, però $\neq f(a)$. La discontinuïtat es pot eliminar igualant $f(a)$ a $\lim\limits_{x \to a} f(x)$.
+    \item Inevitables: $\lim\limits_{x \to a} f(x)$ és $\pm \infty$ o $\nexists \lim\limits_{x \to a} f(a)$.
+    \begin{itemize}
+        \item De salt: $\lim\limits_{x \to a^{-}} f(x) \neq \lim\limits_{x \to a^{+}} f(x)$.
+        \item Oscil·lant: $\nexists$ algun o els dos límits laterals, però $f$ és fitada a $\varepsilon ^{\ast} (a, \varepsilon)$.
+        \item Infinita: $f$ no és fitada a cap $\varepsilon ^{\ast} (a, \delta)$, tant si no existeixen els límits laterals com si són infinits.
+    \end{itemize}
+\end{itemize}
+
+\subsubsection*{Teorema del màxim i el mínim}
+Si $f$ és contínua al compacte $K \Rightarrow f(K)$ té màxim i mínim.
+
+\subsubsection*{Teorema del valor intermedi de Bolzano}
+Si $f$ és contínua a $[a,b]$, amb $f(a) \neq f(b)$ i $y_{0} \in (f(a),f(b)) \Rightarrow \exists! c \in (a,b)$ tal que $f(c) = y_{0}$. 
+
+\subsubsection*{Teorema de la continuïtat de la funció inversa}
+Si $f$ és invertible a l'interval $I \Rightarrow f$ creix o decreix estrictament a $I$ i $f^{-1}$ és contínua a $f(I)$.
+
+\subsubsection*{Continuïtat uniforme}
+$f$ és uniformement contínua si $\forall \varepsilon > 0, \quad \exists \delta > 0$ tal que $\frac{f(x) - f(x')}{x - x'} < \frac{\varepsilon}{\delta}$.
+
+\subsubsection*{Funció de Lipschitz}
+És útil en molts casos (no sempre) per establir si una $f$ és uniformement contínua en un interval.
+\begin{align*}
+\begin{gathered}
+    \text{Lipschitz } \Rightarrow \text{ uniformement contínua.} \\
+    \text{No Lipschitz } \not \Rightarrow \text{ no uniformement contínua.}
+\end{gathered}
+\end{align*}
+Sigui $f: A \rightarrow \mathbb{R}$. Si $\exists k \geq 0$ tal que $\displaystyle \frac{| f(a_{1}) - f(a_{2})|}{|a_{1} - a_{2}|} \leq k, \quad \forall a_{1}, a_{2} \in A$, amb $a_{1} \neq a_{2} \Rightarrow f$ és uniformement contínua a $A$.
+
+%----------------------------------------------------------------------------------------
+\subsection{Infinitèsims}
+$f(x)$ és un infinitèsim quan $x \to a \Leftrightarrow \lim\limits_{x \to a} f(x) = 0$.
+
+Si $f(x)$ i $g(x)$ són dos infinitèsims quan $x \to a$, 
+\begin{align}
+    \lim\limits_{x \to a} = 
+    \begin{cases} 
+        0 \quad \rightarrow f(x) \text{ és d'ordre superior a } g(x) \\ 
+        k \quad \rightarrow f(x) \text{ i } g(x) \text{ són del mateix ordre} \\ 
+        \pm \infty \quad \rightarrow f(x) \text{ és d'ordre inferior a } g(x) \\ 
+        \nexists \quad \rightarrow f(x) \text{ i } g(x) \text{ no són comparables}
+    \end{cases}
+\end{align}
+Prenent $g(x) = (x-a)^{n}, \; n \in \mathbb{N}$ com a infinitèsim de referència, 
+\begin{align}
+    f(x) \text{ és un infinitèsim d'ordre }
+        \begin{cases} 
+            > n \\ 
+            n \\ 
+            < n 
+        \end{cases} 
+    \text{ si } \lim\limits_{x \to a} \frac{f(x)}{(x-a)^{n}} =  
+        \begin{cases}
+            0 \\
+            k \\
+            \pm \infty
+        \end{cases}
+\end{align}
+Per tant, l'ordre d'un infinitèsim mesura la rapidesa amb què $f(x)$ tendeix a zero.
+\begin{align}
+\begin{gathered}
+    f(x) \text{ d'ordre } >n \Rightarrow f(x) = o[(x-a)]^{n} \\
+    f(x) \text{ d'ordre } \geq n \Rightarrow f(x) = O[(x-a)]^{n}
+\end{gathered}
+\end{align}
+
+\subsubsection*{Alguns infinitèsims equivalents quan $x \to 0$}
+\begin{itemize}
+    \item $f(x) \approx x$.
+    \item $\sin(x) \approx x$.
+    \item $\tan(x) \approx x$.
+    \item $1-\cos(x) \approx \frac {x^2}{2}$.
+    \item $\arcsin(x) \approx x$.
+    \item $\arctan (x) \approx x$.
+    \item $e^{x}-1 \approx x$.
+    \item $\ln(1+x) \approx x$.
+\end{itemize}

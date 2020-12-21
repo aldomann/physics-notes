@@ -1,0 +1,133 @@
+%-----------------------------------------------------------------
+%    INTRODUCCIÓ ALS NOMBRES COMPLEXOS
+%-----------------------------------------------------------------
+\section{Introducció als nombres complexos}
+\subsection{Definició}
+Considerem el conjunt $\mbb{C} = \mbb{R} \times \mbb{R} = \lrcur{(x,y) \mid x, y \in \mbb{R}}$. Denotarem els seus elements per $z = (x,y)$. Definim les seves operacions:
+\begin{itemize}
+    \item Suma: $(a,b) + (c,d) = (a+c, b+d)$.
+    \item Producte: $(a,b) \cdot (c,d) = (ac - bd, ad +bc)$.
+    \item Producte per un escalar: $\mu (a,b) = (\mu a, \mu b), \quad \forall \mu \in \mbb{R}$.
+    \item Distància: $d\lrpar{(a,b), (c,d)} = \sqrt{(a-c)^{2} + (b-d)^{2}}$.
+\end{itemize}
+
+%-----------------------------------------------------------------
+\subsection{Expressió dels nombres complexos}
+Qualsevol de les tres expressions són equivalents:
+\begin{itemize}
+    \item Forma binòmica: $z = x + iy$.
+    \item Forma trigonomètrica: $z = r \lrpar{\cos \theta + i \sin \theta}$.
+    \item Forma polar: $z = r\,e^{i\theta}$.
+\end{itemize}
+
+%-----------------------------------------------------------------
+\subsection{Propietats d'un nombre complex}
+\begin{defi}[Conjugat de $z$]
+    Sigui $z = x + i y$ un nombre complex. Definim el seu complex conjugat com 
+    \begin{align}
+        z^{\star} \equiv x - iy
+    \end{align}
+    i compleix les següents propietats:
+    \begin{enumerate}[i)]
+        \item $(z^{\star})^{\star} = z$
+        \item $(z\pm w)^{\star} = z^{\star} \pm w^{\star}$.
+        \item $(z w)^{\star} = z^{\star} w^{\star}$.
+        \item $(z / w)^{\star} = z^{\star} / w^{\star}$.
+    \end{enumerate}
+\end{defi}
+
+\begin{defi}[Mòdul de $z$]
+    Sigui $z = x + i y$ un nombre complex. Definim el seu mòdul com 
+    \begin{align}
+        r \equiv \abs{z} = \sqrt{z z^{\star}} = +\sqrt{x^{2} + y^{2}} = + \sqrt{(\operatorname{Re} z)^{2} + (\operatorname{Im} z)^{2}}
+    \end{align}
+\end{defi}
+
+\begin{defi}[Argument de $z$]
+    Sigui $z = x + i y$ un nombre complex. Definim el seu argument com
+    \begin{align}
+        \theta \equiv \operatorname{arg}(z) = \operatorname{Arg} (z) + 2 \pi n, \quad n \in \mbb{Z}
+    \end{align}
+    On $\operatorname{Arg} (z)$ és l'argument principal de $z$ i el definim com
+    \begin{align}
+        \operatorname{Arg} (z) = \arctan \frac{y}{x} \in (-\pi, \pi]
+    \end{align}
+    on l'ambigüitat entre els dos angles que tenen la mateixa tangent es resol tenint en consideració els signes de $x$ i $y$.
+\end{defi}
+\begin{example}
+    Sigui $z = -1 -i$. Llavors, tenim que $\operatorname{Arg} (z) = -\dfrac{3}{4} \pi$, però $\operatorname{arg} (z) = -\dfrac{3}{4}\pi + 2\pi n = \lrpar{\dfrac{5}{4} + 2n} \pi$.
+\end{example}
+
+\begin{defi}[Invers de $z$]
+    Sigui $z = r \lrpar{\cos \theta + i \sin \theta}$. Definim el seu invers com
+    \begin{align}
+        z^{-1} \equiv \lrcur{w \mid zw = 1} \Rightarrow z^{-1} = \frac{1}{r} \lrpar{\cos \theta - i \sin \theta}
+    \end{align}
+\end{defi}
+
+%-----------------------------------------------------------------
+\subsection{Fórmula d'Euler}
+\begin{align}
+    e^{i\theta} = \cos \theta + i \sin \theta
+\end{align}
+De manera que podem que podem expressar qualsevol complex com $z = r\,e^{i\theta} \in \mbb{C}$. A partir de la Fórmula d'Euler podem deduir les següents propietats:
+\begin{enumerate}[i)]
+    \item $z_{1} z_{2} = r_{1}r_{2}\,e^{i(\theta_{1} + \theta_{2})}$.
+    \item $z_{1} / z_{2} = r_{1}/r_{2}\,e^{i(\theta_{1} - \theta_{2})}$.
+    \item $\operatorname{arg}(z_{1} z_{2}) = \operatorname{arg}(z_{1}) + \operatorname{arg}(z_{2})$.
+    \item $\operatorname{arg}(z_{1} / z_{2}) = \operatorname{arg}(z_{1}) - \operatorname{arg}(z_{2})$.
+\end{enumerate}
+
+%-----------------------------------------------------------------
+\subsection{El teorema de de Moivre}
+\begin{thm}
+    Siguin $z = r\,e^{i \theta} = r \lrpar{\cos \theta + i \sin \theta} $ un nombre complex. Llavors, es compleix
+    \begin{align}
+        z^{n} = r^{n} \lrpar{\cos \theta + i \sin \theta}^{n} = \lrpar{r\,e^{i \theta}}^{n} = r^{n} \lrpar{\cos n\theta + i \sin n\theta}
+    \end{align}
+\end{thm}
+
+%-----------------------------------------------------------------
+\subsection{Arrels de nombres complexos}
+Donat un nombre complex $z = r\,e^{i\theta}$, sempre podem trobar un altre $w = \rho\,e^{i\alpha}$ tal que $w^{n} \equiv z$.
+
+Només cal prendre $\rho = \sqrt[n]{r}$ i $\alpha = \theta / n$. El nombre complex $w = \sqrt[n]{r} e^{i\alpha / n}$ és l'arrel $n$-èsima de $z$. Però, de fet, n'hi ha més d'arrels $n$-èsimes degut al fet que $z$ té infinits arguments $\theta + 2 \pi k$. Cada cop que augmentem $\theta$ en $2\pi$, l'argument de $w$ augmenta en $2\pi / n$. Llavors, hi ha $n$ arrels $n$-èsimes de z:
+\begin{align}
+    \sqrt[n]{z} \equiv \sqrt[n]{r} e^{i(\theta + 2\pi k) / n}, \quad k = 0, 1, 2, \dots, n-1
+\end{align}
+
+\subsubsection*{Arrel d'un polinomi}
+Sigui un polinomi de grau $n$: $a_{0}z^{n} + a_{1}z^{n-1} + \dots + a_{n-1} z + a_{n} = 0$, amb $a_{0} \neq 0$. Llavors, el polinomi té $n$ arrels complexes i es pot expressar com
+\begin{align}
+    a_{0} (z-z_{1}) (z-z_{2}) \dots (z-z_{n}) = 0
+\end{align}
+
+%-----------------------------------------------------------------
+\subsection{Topologia}
+\subsubsection*{Boles}
+\begin{itemize}    
+    \item Bola oberta de centre $z_{0} \in \mbb{C}$ de radi $r \in \mbb{R}$: $B(z_{0}, r) \equiv \lrcur{z \mid \abs{z - z_{0}} < r}$.
+    \item Bola perforada o reduïda: $B^{\star}(z_{0}, r) \equiv B(z_{0}, r)\backslash \lrcur{z_{0}}$.
+\end{itemize}
+
+\subsubsection*{Punts}
+\begin{itemize}
+    \item Punt interior a $\mc{S}$: si $\exists$ alguna bola $B(z_{0}, r) \subset \mc{S}$.
+    \item Punt exterior a $\mc{S}$: si $\exists$ alguna bola $B(z_{0}, r) \subset \bar{\mc{S}}$.
+    \item Punt d'acumulació (o límit) de $\mc{S}$: si tota bola de $z_{0}$ conté algun element de $\mc{S}$ diferent de $z_{0}$.
+\end{itemize}
+
+\subsubsection*{Conjunts}
+\begin{itemize}
+    \item Conjunt obert $\mc{S}$: si tots els seus punts són interiors.
+    \item Conjunt tancat $\mc{S}$: si conté els seus punts d'acumulació ($\Leftrightarrow \bar{\mc{S}}$ és obert).
+    \item Conjunt $\mc{S}'$ dens a $\mc{S}$: si $\forall z \in \mc{S}, \; \forall \varepsilon > 0, \; \exists z' \in \mc{S}' \mid d(z,z') < \varepsilon$.
+    \item Conjunt obert connex $\mc{S}$: conjunt que compleix que tota parella de dos punts poden ser unides per un camí format per un nombre finit de segments de recta contingut a $\mc{S}$.
+    \item Regió oberta o domini $\mc{R}$: un conjunt obert i connex.
+\end{itemize}
+
+\subsubsection*{Successions}
+\begin{itemize}
+    \item Successió $\lrcur{z_{i}}$ convergent cap a $z$: si $\forall \varepsilon > 0, \; \exists M_{\varepsilon} \in \mbb{N} \mid d(z_{n}, z) < \varepsilon, \; \forall n > M_{\varepsilon}$.
+    \item Successió $\lrcur{z_{i}}$ de Cauchy: si $\forall \varepsilon > 0, \; \exists M_{\varepsilon} \in \mbb{N} \mid d(z_{n}, z_{m}) < \varepsilon, \; \forall n, m > M_{\varepsilon}$.
+\end{itemize}

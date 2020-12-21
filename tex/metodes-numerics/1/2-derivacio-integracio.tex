@@ -1,0 +1,116 @@
+%-----------------------------------------------------------------
+%    TEMA
+%-----------------------------------------------------------------
+\section{Derivació i integració numèrica}
+\subsection{Derivació numèrica}
+Si bé la derivació numèrica és senzilla, s'hauria d'evitar sempre que sigui possible, ja que introdueix molt error numèric.
+\subsubsection*{Primera derivada}
+\begin{align}
+    \boxed{f'(x_{0}) \approx \frac{f(x_{0} + h) - f(x_{0} - h)}{2h} = \frac{\Delta f}{\Delta x}}
+\end{align}
+on $h$ és la llargada de cada pas de la discretització del domini de la funció $f(x)$.
+
+Observem que si s'avalua la funció als extrems del domini la fórmula anterior falla. No és difícil veure que les fórmules equivalents són les següents:
+\begin{align*}
+\begin{aligned}
+    \text{Extrem esquerre: } &  f'(x_{0}) \approx \dfrac{f(x_{0} + h) - f(x_{0})}{h} \\
+    \text{Extrem dret: } &  f'(x_{0}) \approx \dfrac{f(x_{0}) - f(x_{0} - h)}{h}
+\end{aligned}
+\end{align*}
+
+\subsubsection*{Segona derivada}
+A través de l'expansió per Taylor podem arribar fàcilment a una expressió per a la segona derivada:
+
+$f(x_{0} + h) = f(x_{0}) + f'(x_{0})h + \dfrac{1}{2} f''(x_{0})h^{2} + O(h^{3})$
+
+$f(x_{0} -h) = f(x_{0}) - f'(x_{0})h + \dfrac{1}{2} f''(x_{0})h^{2} + O(h^{3})$
+\begin{align}
+    \Rightarrow \boxed{f''(x_{0}) = \dfrac{f(x_{0} + h) + f(x_{0} - h) - 2f(x_{0}) }{h^{2}}}
+\end{align}
+
+%-----------------------------------------------------------------
+\subsection{Integració pel mètode del rectangle}
+Sigui $f(x)$ una funció de la qual volem saber la seva integral en $x \in [a,b]$. El mètode consisteix bàsicament en fer una suma de Riemann, on la seva discretització consisteix en partir el domini en $n$ subintervals de mida $h = \dfrac{b-a}{n}$.
+\begin{align}
+    \boxed{\int_{a}^{b} f(x) \diff x \approx \sum_{i=0}^{n} f\lrpar{a + h \lrpar{i + \frac{1}{2}}} h}
+\end{align}
+L'error associat al mètode és de $O(h)$, és a dir, lineal.
+
+%-----------------------------------------------------------------
+\subsection{Integració pel mètode del trapezi}
+Sigui $f(x)$ una funció de la qual volem saber la seva integral en $x \in [a,b]$. El mètode consisteix bàsicament en fer una suma de Riemann, on la seva discretització consisteix en partir el domini en $n$ subintervals de mida $h = \dfrac{b-a}{n}$. La diferència amb el mètode del rectangle és que en comptes de calcular àrees de rectangles es fa de trapezis.
+\begin{align}
+    \boxed{\int_{a}^{b} f(x) \diff x \approx \lrpar{f(a) + f(b) + 2 \sum_{i=1}^{n-1} f(a + hi)} \frac{h}{2}}
+\end{align}
+L'error associat al mètode és de $O(h^{2})$, és a dir, quadràtic.
+% En particular $e = \dfrac{b-a}{12} f''(\zeta) h^{2}$, amb $\zeta \in [a,b]$.
+
+%-----------------------------------------------------------------
+\subsection{Integració pel mètode de Simpson}
+Sense aprofundir gaire, el mètode consisteix en agafar el punt mitjà de cada subinterval. D'aquesta manera a cada subinterval hi ha definits tres punts, i es pot descriure unívocament una paràbola que passi pels tres.
+
+La primera aproximació per la suma de Simpson (per a $n = 1$) és
+\begin{align}
+    \boxed{\int_{a}^{b} f(x) \diff x \approx \frac{b-a}{6} \lrpar{f(a) + 4 f\lrpar{\frac{b-a}{2}} +f(b)}}
+\end{align}
+L'error associat al mètode és de $O(h^{3})$.
+
+%-----------------------------------------------------------------
+\subsection{Integració pel mètode de Romberg}
+El mètode es deriva del mètode del trapezi. Sigui $T(h)$ l'aproximació de la integral de $f(x)$ a $[a,b]$ pel mètode del trapezi associada al pas $h$. Aquesta suma la podem expressar (mitjançant l'expansió de MacLaurin) com:
+\begin{align*}
+\begin{aligned}
+    T(h) &\equiv \int_{a}^{b} f(x) \diff x + \alpha_{1}h^{2} + \alpha_{2}h^{4} + \dots \\
+    T\lrpar{h/2} &\equiv \int_{a}^{b} f(x) \diff x + \alpha_{1}\lrpar{h/2}^{2} + \alpha_{2}\lrpar{h/2}^{4} + \dots
+\end{aligned}
+\end{align*}
+
+Manipulant aquests dos valors arribem a una expressió exacta del valor de la integral:
+\begin{align}
+    \boxed{\int_{a}^{b} f(x) \diff x \equiv \frac{4T(h/2) - T(h)}{3} + O(h^{4})}
+\end{align}
+Observem que el que hem pogut aconseguir és eliminar l'error d'ordre $h^{2}$, de manera que aquest mètode és molt més precís que el del trapezi.
+
+\subsubsection*{Generalització de Romberg}
+Si en comptes de treballar amb dos valors de l'aproximació pel mètode del trapezi treballem amb $m$ valors, l'expressió de Romberg esdevé
+\begin{align}
+    \boxed{R_{m,j} = \frac{4^{j-1} R_{m,j-1} - R_{m-1,j-1}}{4^{j-1} - 1}}
+\end{align}
+on $R_{m,1}$ són les aproximacions de la integral pel mètode del trapezi, que segueixen la recurrència següent:
+\begin{align}
+    \boxed{R_{m,1} = T\lrpar{\frac{h}{2^{m-1}}}}
+\end{align}
+
+Una manera senzilla d'entendre l'algoritme és pensar en una matriu de resultats. Per exemple, a partir de quatre aproximacions inicials ($m_{\max} = 4)$, tenim:
+\begin{align*}
+    \begin{pmatrix}
+        R_{1,1} & 0 & 0 & 0 \\
+        R_{2,1} & R_{2,2} & 0 & 0\\
+        R_{3,1} & R_{3,2} & R_{3,3} & 0 \\
+        R_{4,1} & R_{4,2} & R_{4,3} & R_{4,4} 
+    \end{pmatrix}
+\end{align*}
+Notem que la precisió del resultat $R$ augmenta amb el creixement de $m$ i de $j$, de manera que el cal esperar que $R_{m,m}$ sigui el que s'aproximi amb més exactitud al resultat veritable.
+
+Observem que l'error associat al mètode de Romberg depèn de l'ordre $m$, en particular és de $O(h^{2m})$.
+
+\begin{example}
+    Volem saber $\displaystyle \int_{0}^{1} e^{x^{2}} \diff x$. Les tres primeres iteracions pel mètode del trapezi ens donen els següents resultats:
+    \begin{enumerate}[i)]
+        \item $T(1) \approx \num{1.859140914}$.
+        \item $T(1/2) \approx \num{1.571583165}$.
+        \item $T(1/4) \approx \num{1.490678862}$.
+    \end{enumerate}
+    Llavors, mitjançant el mètode de Romberg calculem els següents resultats:
+    \begin{enumerate}[i)]
+        \setcounter{enumi}{3}
+        \item $R_{2,2} \approx \num{1.475730582}$.
+        \item $R_{3,2} \approx \num{1.463710761}$.
+        \item $R_{3,3} \approx \num{1.462909439}$.
+    \end{enumerate}
+    Comparant amb el valor real de la integral, $\int_{0}^{1} e^{x^{2}} \diff x \approx \num{1.462651745}$, podem veure que per cada iteració, el valor calculat convergeix a la solució de la integral.
+\begin{Verbatim}
+# TODO: implement the code
+\end{Verbatim}
+\end{example}
+

@@ -1,0 +1,104 @@
+%----------------------------------------------------------------------------------------
+%    SÈRIES  DE FOURIER
+%----------------------------------------------------------------------------------------
+\section{Sèries de Fourier}
+\subsection{Definicions}
+\begin{defi}[Funció periòdica]
+    Diem que $f(x)$ és una funció de període $T$ si $f(x+T) \equiv f(x)$, $\forall x \in \mbb{R}$. Alternativament al període podem definir la longitud d'una funció com $L = T/2$.
+\end{defi}
+
+\begin{defi}[Sèrie de Fourier d'exponencials de període T]
+    Sigui $\phi_{n}(x) = \dfrac{e^{i n \omega x}}{\sqrt{T}}$ una funció amb periodicitat $T$, amb $n \in \mbb{Z}$ i $\omega = 2\pi/T$. Es pot demostrar que $\phi_{n}(x)$ es pot aproximar com el següent sumatori, que anomenem sèrie de Fourier:
+    \begin{align}\label{eq:fourier-c}
+        S_{\phi_{n}}(x) = \sum_{k=-\infty}^{\infty} c_{k}\,e^{i n \omega x}, \quad c_{k} \in \mbb{C}
+    \end{align}
+    o de forma alternativa
+    \begin{align}\label{eq:fourier-ab}
+        S_{\phi_{n}}(x) = a_{0} + \sum_{k=1}^{\infty} \lrbra{a_{k} \cos \lrpar{k \omega x} + b_{k} \sin \lrpar{k \omega x}}
+    \end{align}
+\end{defi}
+\begin{sproof} $\displaystyle \frac{1}{T} \int_{a}^{a+T} e^{im\omega x} \diff x = \delta_{0m}.$
+    \begin{align*}
+    \begin{aligned}
+         \Rightarrow \frac{1}{T} \int_{a}^{a+T} f(x)\,e^{-ik\omega x} \diff x &= \frac{1}{T} \int_{a}^{a+T} \lrpar{\sum_{l=-\infty}^{\infty} c_{l}\,e^{il\omega x}}\,e^{-ik\omega x} \diff x \\
+         &= \sum_{l=-\infty}^{\infty} c_{l} \lrpar{\frac{1}{T}  \int_{a}^{a+T} e^{i(l-k)\omega x} \diff x} = \sum_{l=\infty}^{\infty} c_{l} \delta_{lk} = c_{k}
+    \end{aligned}
+    \end{align*}
+\end{sproof}
+
+Les expressions \eqref{eq:fourier-c} i \eqref{eq:fourier-ab} es relacionen de la següents manera:
+\begin{align*}
+    \begin{cases}
+        a_{0} = c_{0} \\
+        a_{k} = c_{k} + c_{-k} \\
+        b_{k} = i\lrpar{c_{k} - c_{-k}}
+    \end{cases}
+\end{align*}
+
+\begin{thm}
+    Si $f$ i $f'$ són contínues a trossos $\Rightarrow \exists \displaystyle S_{f}(x) \equiv \sum_{k=-\infty}^{\infty} c_{k}\,e^{i\omega k x}$ i es compleix que $S_{f}(x) = \displaystyle \frac{1}{2} \lim_{\varepsilon \to 0^{+}} \lrbra{f(x + \varepsilon) + f(x - \varepsilon)}$.
+    
+    Si $f$ i $f'$ són contínues, llavors la sèrie de Fourier $S_{f}(x)$ convergeix absolutament i uniforme a $f(x)$.
+\end{thm}
+
+\subsubsection*{Funcions parelles i senars}
+\begin{defi}[Funció parella]
+    Una funció parella és aquella que compleix $f(-x) = f(x)$. Un exemple típic de funció parella és $f(x) = \cos x$.
+\end{defi}
+
+\begin{defi}[Funció senar]
+    Una funció senar és aquella que compleix $f(-x) = -f(x)$. Un exemple típic de funció senar és $f(x) = \sin x$.
+\end{defi}
+
+%----------------------------------------------------------------------------------------
+\subsection{Sèrie de Fourier del tipus cosinus}
+Sigui $f(x)$ definida a $[0,L]$. Definim $\tilde{f}(x) = \begin{cases} f(x), & x \in [0,L] \\ f(-x), & x \in [-L,0) \end{cases}$, que és una funció parella. Llavors, podem fer la sèrie de Fourier de $\tilde{f}(x)$:
+\begin{align*}
+\begin{gathered}
+    S_{\tilde{f}}(x) = a_{0} + \sum_{n=1}^{\infty} a_{n} \cos \lrpar{\frac{n\pi x}{L}}, \quad \text{on} \\
+a_{0} = \displaystyle \frac{1}{L} \int_{0}^{L} f(x) \diff x, \quad a_{n} = \frac{2}{L} \int_{0}^{L} f(x) \cos \lrpar{\frac{n \pi x}{L}} \diff x
+\end{gathered}
+\end{align*}
+L'expressió de $S_{\tilde{f}}(x)$ és certa a $[-L,L]$ i òbviament a $[0,L]$. Llavors, es pot demostrar que $S_{\tilde{f}}(x) = f(x) \Rightarrow$
+\begin{align}
+    f(x) = a_{0} + \sum_{n=1}^{\infty} a_{n} \cos \lrpar{\frac{n\pi x}{L}}, \quad 0 \leq x \leq L
+\end{align}
+
+%----------------------------------------------------------------------------------------
+\subsection{Sèrie de Fourier del tipus sinus}
+Sigui $f(x)$ definida a $[0,L]$. Definim $\tilde{f}(x) = \begin{cases} f(x), & x \in [0,L] \\ -f(-x), & x \in [-L,0) \end{cases}$, que és una funció senar. Llavors, podem fer la sèrie de Fourier de $\tilde{f}(x)$:
+\begin{align*}
+    S_{\tilde{f}}(x) = \sum_{n=1}^{\infty} b_{n} \sin \lrpar{\frac{n\pi x}{L}}, \quad \text{on} \quad b_{n} = \frac{2}{L} \int_{0}^{L} f(x) \sin \lrpar{\frac{n \pi x}{L}} \diff x
+\end{align*}
+L'expressió de $S_{\tilde{f}}(x)$ és certa a $[-L,L]$ i òbviament a $[0,L]$. Llavors, es pot demostrar que $S_{\tilde{f}}(x) = f(x) \Rightarrow$
+\begin{align}
+    f(x) = \sum_{n=1}^{\infty} b_{n} \sin \lrpar{\frac{n\pi x}{L}}, \quad 0 \leq x \leq L
+\end{align}
+
+\subsubsection*{Condicions d'ortogonalitat de funcions trigonomètriques}
+Les relacions següents, anomenades condicions d'ortogonalitat, poden ser de gran utilitat a l'hora de calcular els coeficients de Fourier:
+\begin{itemize}
+    \item $\displaystyle \int_{a}^{a+T} \cos (n\omega x) \sin (n\omega x) \diff x = 0$.
+    \item $\displaystyle \int_{a}^{a+T} \cos (m\omega x) \sin (n\omega x) \diff x = \delta_{mn} \dfrac{T}{2}$.
+    \item $\displaystyle \int_{a}^{a+T} \sin (m\omega x) \sin (n\omega x) \diff x = \delta_{mn} \dfrac{T}{2}$.
+\end{itemize}
+
+%----------------------------------------------------------------------------------------
+\subsection{Identitat de Parseval}
+\begin{thm}[de Parseval]
+    Sigui $f(x) = \displaystyle a_{0} + \sum_{n=1}^{\infty} a_{n} \cos (n\omega x) + b_{n} \sin (n \omega x)$ una sèrie de Fourier, amb $\omega = \dfrac{2\pi}{T} = \dfrac{\pi}{L}$. Llavors, es compleix
+    \begin{align}
+        \frac{1}{T} \int_{-T/2}^{T/2} \abs{f(x)}^{2} \diff x = a_{0}^{2} + \frac{1}{2}\sum_{n=1}^{\infty} \lrpar{a_{n}^{2} + b_{n}^{2}}
+    \end{align}
+\end{thm}
+
+\begin{thm}[de Parseval generalitzat]
+    Siguin $f(x) = \displaystyle a_{0} + \sum_{n=1}^{\infty} a_{n} \cos (n\omega x) + b_{n} \sin (n \omega x)$ i $g(x) = \displaystyle A_{0} + \sum_{n=1}^{\infty} A_{n} \cos (n\omega x) + B_{n} \sin (n \omega x)$ sèries de Fourier, amb $\omega = \dfrac{2\pi}{T} = \dfrac{\pi}{L}$. Llavors, es compleix
+    \begin{align}
+        \frac{1}{T} \int_{-T/2}^{T/2} f^{\star}(x) g(x) \diff x = a_{0}^{\star} A_{0} + \frac{1}{2} \sum_{n=1}^{\infty} \lrpar{a_{n}^{\star} A_{n} + b_{n}^{\star} B_{n}}
+    \end{align}
+\end{thm}
+
+\begin{sproof}
+    L'identitat de Parseval es pot derivar a partir de les condicions d'ortogonalitat de les funcions sinus i cosinus.
+\end{sproof}

@@ -1,0 +1,82 @@
+%----------------------------------------------------------------------------------------
+%    DETERMINANTS
+%----------------------------------------------------------------------------------------
+\section{Determinants}
+\subsection{Determinants}
+Un determinant és una aplicació $\det : M(n,K) \to K$ que compleix les propietats següents:
+\begin{enumerate}[i)]
+    \item Depèn linealment de les columnes.
+        \begin{enumerate}
+            \item $\det (C_{1}, \dots , C_{i}+C_{i'}, \dots , C_{n}) =  \det (C_{1}, \dots , C_{i}, \dots , C_{n}) \\ + \det (C_{1}, \dots , C_{i'}, \dots , C_{n})$.
+            \item $\det (C_{1}, \dots , \alpha C_{i}, \dots , C_{n}) = \alpha \det (C_{1}, \dots , C_{i}, \dots , C_{n}), \quad \forall \alpha \in K$.
+        \end{enumerate}
+    \item $\forall A \in M(n,K)$ amb dues columnes iguals $\Rightarrow \det(A) = 0$.
+    \item $\det (I(n)) = 1$.
+\end{enumerate}
+
+\subsubsection*{Teorema}
+\begin{enumerate}[i)]
+    \item $\det (C_{1}, \dots , C_{i}, \dots , C_{j} , \dots , C_{n}) = - \det (C_{1}, \dots , C_{j}, \dots , C_{i} , \dots , C_{n})$.
+    \item $\det (C_{1}, \dots , C_{i}, \dots , C_{j} , \dots , C_{n}) = \det (C_{1}, \dots , C_{i}+ \mu C_{j}, \dots , C_{j} , \dots , C_{n})$, $\forall \mu \in K$.
+    \item $\det(AB) = \det(A) \det(B)$.
+    \item $\det(A^{t}) = \det (A)$.
+    \item $U = M_{\text{triangular superior}} \Rightarrow \det(U) = \prod \, \text{elements de la diagonal} \Rightarrow \det(A) = \det(GJ (A)) = \prod \, \text{elements de la diagonal}$.
+    \item $\det(A) \neq 0 \Leftrightarrow A$ és invertible.
+    \item Totes les propietats són equivalents per a files.
+\end{enumerate}
+
+%----------------------------------------------------------------------------------------
+\subsection{Càlcul d'un determinant}
+\subsubsection*{Forma permutacional}
+\begin{align}
+    \begin{aligned}
+        \begin{vmatrix} a & b\\ c & d\end{vmatrix} &= \begin{vmatrix} a+0 & b \\ 0+c & d \end{vmatrix} = \begin{vmatrix} 0 & b \\ c & d \end{vmatrix} + \begin{vmatrix} a & b \\ 0 & d \end{vmatrix} = \begin{vmatrix} a & b \\ 0 & 0 \end{vmatrix} + \begin{vmatrix} a & 0 \\ 0 & d \end{vmatrix} + \begin{vmatrix} 0 & b \\ c & 0 \end{vmatrix} + \begin{vmatrix} 0 & 0 \\ c & d \end{vmatrix} \\
+    &= ab \begin{vmatrix} 1 & 1 \\ 0 & 0 \end{vmatrix} + ad \begin{vmatrix} 1 & 0 \\ 0 & 1 \end{vmatrix} + bc \begin{vmatrix} 0 & 1 \\ 1 & 0 \end{vmatrix} + cd \begin{vmatrix} 0 & 0 \\ 1 & 1 \end{vmatrix} \\
+    &= ab (0) + ad (1) +bc (-1) + cd (0) = ad - bc
+    \end{aligned}
+\end{align}
+
+Sigui $A \in M(n,K)$. $\det (A)$ és la suma dels productes de $n$ (2 en aquest cas) coeficients de columnes diferents pel determinant d'una matriu amb $n$ uns en $n$ columnes i la resta zeros.
+\begin{align}
+    \det (A) = \sum\limits_{\sigma \in S_{n}} \operatorname{sgn} (\sigma) \, a_{\sigma (1) 1} a_{\sigma (2) 2} \dots a_{\sigma (n) n}
+\end{align}
+
+Aquesta fórmula és important, ja que demostra que $\exists \det (A)$ i també que $\det (A) = \det (A)^{t}$, però a la pràctica és poc eficient.
+
+\subsubsection*{Desenvolupament per files/columnes}
+\begin{align}
+\begin{gathered}
+    \det (A) = \sum\limits_{i=1}^n a_{ij} C_{ij}, \quad C_{ij} \equiv (-1)^{i+j} M_{ij}, \\ M_{ij}\equiv \text{ matriu adjunta a } a_{ij}
+\end{gathered}
+\end{align}
+\begin{example}
+\begin{align*}
+    \begin{vmatrix} 3 & 2 & 1 \\ 4 & 7 & 8 \\ 0 & 1 & 2 \end{vmatrix} = 3 \begin{vmatrix} 7 & 8 \\ 1 & 2 \end{vmatrix} - 4 \begin{vmatrix} 2 & 1 \\ 1 & 2 \end{vmatrix} + 0 \begin{vmatrix} 2 & 1 \\ 7 & 8 \end{vmatrix} = 18 - 12 = 6
+\end{align*}
+\end{example}
+
+Aquest mètode a la pràctica és també poc eficient, ja que quan es treballa amb matrius amb incògnites el càlcul es complica força.
+
+\subsubsection*{Esglaonar}
+Com que $\det (U) = \prod \, \text{elements de la diagonal}$, es tracta de diagonalitzar la matriu aplicant canvis elementals. Un cop diagonalitzada, el càlcul de $\det(U)$ és trivial.
+\begin{example}
+\begin{align*}
+    \begin{vmatrix} b & b & b \\ c & c & b \\ d & c & b \end{vmatrix} = \begin{vmatrix} b & c & d \\ 0 & b-c & b-c \\ 0 & 0 & c-d \end{vmatrix} = b (b - c) (c - d)
+\end{align*}
+\end{example}
+
+Encara que aquest mètode és força eficient, el millor mètode és esglaonar quan convingui per fer zeros a files/columnes i després desenvolupar per files/columnes, estalviant molts càlculs.
+
+%----------------------------------------------------------------------------------------
+\subsection{Fórmula de la matriu inversa}
+Hem dit que $\det(A) = \sum\limits_{i=1}^n a_{ij} C_{ij}$. Si $j \neq i$, $a_{i1} A_{j1} + \dots + a_{ij} A_{ji} + \dots + a_{in} A_{jn} = \delta_{ij} \det (A)$.
+
+Així doncs,
+\begin{align}
+    \text{Si } \det(A) \neq 0 \Rightarrow A^{-1} = \frac{\operatorname{Adj}(A)^{t}}{\det(A)}
+\end{align}
+%----------------------------------------------------------------------------------------
+\subsection{Interpretació geomètrica}
+Es pot donar una interpretació geomètrica al valor del determinant d'una matriu $A \in M(n)$ amb entrades reals: el valor absolut del determinant ens dóna el factor pel qual una àrea o volum (o qualsevol anàleg de dimensió major) està multiplicat sota la transformació lineal associada, mentre que el signe indica si la transformació manté l'orientació.
+
+En altres paraules: $|\det(A)| \equiv$ volum del paral·lelepípede $n$-dimensional que formen els vectors fila/columna de $A$.

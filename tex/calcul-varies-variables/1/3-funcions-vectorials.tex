@@ -1,0 +1,143 @@
+%----------------------------------------------------------------------------------------
+%    FUNCIONS VECTORIALS D'UNA VARIABLE
+%----------------------------------------------------------------------------------------
+\section{Funcions vectorials d'una variable}
+\subsection{Funcions $\mathbb{R} \to \mathbb{R}^{m}$}
+Sigui $\vec{f}(u)$ una funció definida a $D \subseteq \mathbb{R}$, amb valors a $\mathbb{R}^{m}$: $\vec{f}(u) \equiv (f_{1}(u), f_{2}(u), \dots , f_{m}(u))$.
+\begin{defi}[Continuïtat]
+    $\vec{f}(u)$ és contínua en el punt $u=a$ si $\lim_{u \to a} \vec{f}(u) = \vec{f}(a)$.
+\end{defi}
+\begin{defi}[Derivada de $\vec{f}(u)$ en el punt $a$]
+    \begin{align*}
+        f'(a) \equiv \lim_{h \to 0} \frac{\vec{f}(a+h) - \vec{f}(a)}{h} = (f'(a)_{1}, f'(a)_{2} \dots , f'(a)_{m})
+    \end{align*}
+\end{defi}
+\begin{defi}[Integral de $\vec{f}(u)$ en el punt $a$]
+    \begin{align*}
+        \displaystyle \int_{a}^{b} \vec{f}(u) \diff u \equiv \left( \int_{a}^{b} f_{1}(u) \diff u, \int_{a}^{b} f_{2}(u) \diff u, \dots , \int_{a}^{b} f_{m}(u) \diff u \right)
+    \end{align*}
+\end{defi}
+\begin{thm}[Teorema fonamental del càlcul]
+    Si $\vec{f}(u)$ és integrable en $[a,b]$ i $\vec{F}(u)$ és primitiva de $\displaystyle \vec{f}(u) \Rightarrow \int_{a}^{b} \vec{f}(u) \diff u = \vec{F}(b) - \vec{F}(a)$.
+\end{thm}
+\begin{defi}[Funció mòdul]
+    \begin{align*}
+        \| \vec{f} \| (u) \equiv \| \vec{f}(u) \| = \sqrt{\sum\limits_{i=1}^{m} f_{i}(u)^{2}}
+    \end{align*}
+\end{defi}
+\begin{thm}
+    Si $\vec{f}(u)$ és integrable a $[a,b] \Rightarrow$ 
+    \begin{align*}
+        \left\| \int_{a}^{b} \vec{f}(u) \diff u \right\| \leq \int_{a}^{b} \| \vec{f}(u) \| \diff u
+    \end{align*}
+\end{thm}
+
+%----------------------------------------------------------------------------------------
+\subsection{Corbes}
+Si $\vec{f}(u)$ és contínua en $[a,b]$, defineix un arc de corba a $\mathbb{R}^{m}$.
+\begin{defi}[Classe d'una corba]
+    Una corba $\vec{f}(u)$ és de classe $C_{[a,b]}^{n}$ sí la seva $n$-èsima derivada és contínua a $[a,b]$.
+\end{defi}
+\begin{defi}[Corba rectificable]
+    Sigui $\Pi = \{u_{0}, u_{1}, u_{2}, \dots, u_{n}\}$ una partició de $[a,b]$, construïm la quantitat $\displaystyle l(\vec{f}, \Pi) = \sum\limits_{i=1}^{n} \| \vec{f}(u_{i}), \vec{f}(u_{i-1}) \|$. Òbviament $l(\vec{f}, \Pi') \geq l(\vec{f}, \Pi)$ si $\Pi'$ és és fina que $\Pi$.
+    
+    Si $\left\{ l(\vec{f}, \Pi);\forall \Pi \right\}$ és fitat superiorment direm que la corba $\vec{f}(u)$ és rectificable i al suprem $l(\vec{f}) = \sup \left\{ l(\vec{f}, \Pi);\forall \Pi \right\}$ l'anomenarem longitud de la corba.
+\end{defi}
+\begin{thm}
+    Si $\vec{f}(u)$ és de classe $C_{[a,b]}^{1} \Rightarrow \vec{f}$ és rectificable i
+    \begin{align}
+        l(\vec{f}) = \int_{a}^{b} \sqrt{\sum\limits_{i=1}^{m} f'_{i}(u)^{2}} \diff u = \int_{a}^{b} \| \vec{f}(u) \| \diff u
+    \end{align}
+\end{thm}
+\begin{defi}[Paràmetre arc]
+    Si $\vec{f}(u)$ és de classe $C_{[a,b]}^{1}$, definim el paràmetre arc com la funció
+    \begin{align}
+        s(u) \equiv \int_{a}^{u} \| \vec{f}'(u') \| \diff u'
+    \end{align}
+    que mesura la longitud de la corba en funció del paràmetre $u$. Notem que $\displaystyle \frac{\dif s}{\dif u} = \| \vec{f}' (u) \| \geq 0, \quad \forall u \in [a,b]$.
+\end{defi}
+\begin{defi}
+    Una corba $\vec{f}(u)$ és no singular si és de $C_{[a,b]}^{1}$ i $\vec{f}'(u) \neq 0, \quad \forall u \in [a,b]$.
+    
+    Si $\vec{f}(u)$ és no singular, llavors $s(u)$ és estrictament creixent, ja que $s'(u) = \| \vec{f}'(u) \| > 0$; també ho és la seva inversa $u(s)$, ja que $u'(s) = 1/s'(u) > 0$.
+\end{defi}
+
+%----------------------------------------------------------------------------------------
+\subsection{Geometria d'una corba de $\mathbb{R}^{2}$ i $\mathbb{R}^{3}$}
+Sigui $\vec{f}(u)$ una corba de classe $C_{[a,b]}^{2}$. Si entenem $u$ com a un temps, geomètricament entenem $\vec{f}(u)$ com a «posició», $\vec{f}'(u)$ com a  «velocitat» i $\vec{f}''(u)$: «acceleració».
+\begin{defi}[Vector tangent unitari]
+    És un vector tangent a la corba $\vec{f}(u)$.
+    \begin{align}
+        \hat{T} = \frac{\vec{f}'(u)}{\| \vec{f}'(u) \|}
+    \end{align}
+\end{defi}
+\begin{defi}[Curvatura]
+    $\kappa$ és la curvatura de la corba, que és $\geq 0$, per definició.
+        \begin{align}
+        \frac{\dif \hat{T}}{\dif s} = \kappa \hat{N} \quad \text{i} \quad \kappa = \frac{\| \vec{f}'(u) \times \vec{f}''(u) \|}{\| \vec{f}'(u) \|}^{3} 
+    \end{align}
+    On $\hat{N}$ és el vector normal unitari, perpendicular a $\hat{T}$.
+\end{defi}
+\begin{defi}[Radi de curvatura]
+    L'invers de la curvatura és el radi de curvatura.
+    \begin{align}
+        \rho \equiv \frac{1}{\kappa}
+    \end{align}
+\end{defi}
+\begin{defi}[Vector binormal unitari]
+    És un vector perpendicular a $\hat{T}$ i $\hat{N}$ alhora, que defineix el pla a on es mou la corba (pla osculador).
+    \begin{align}
+        \frac{\dif \hat{N}}{\dif s} = - \kappa \hat{T} + \tau \hat{B}
+    \end{align}
+    \begin{align}
+        \hat{T} \times \hat{N} = \hat{B} \quad \text{i} \quad \hat{B} = \frac{\vec{f}'(u) \times \vec{f}''(u)}{\| \vec{f}'(u) \times \vec{f}''(u) \|}
+    \end{align}
+\end{defi}
+\begin{defi}[Torsió]
+    $\tau$ indica la variació de $\hat{B}$, és a dir, indica la variació d'orientació del pla osculador. La torsió pot ser positiva, negativa o zero.
+    \begin{align}
+        \frac{\dif \hat{B}}{\dif s} = - \tau \hat{N}
+    \end{align}
+\end{defi}
+Utilitzant aquests vectors unitaris, podem parametritzar la «velocitat» i l'«acceleració»:
+\begin{align*}
+    \vec{f}'(u) = \| \vec{f}'(u) \| \hat{T}
+\end{align*}
+\begin{align*}
+    \vec{f}''(u) = \| \vec{f}'(u) \|' \hat{T} + \kappa \| \vec{f}'(u) \|^{2} \hat{N}
+\end{align*}
+
+\subsubsection*{Geometria 2D}
+Com que el pla osculador no canvia en funció del temps $u$, $\hat{B}$ és constant i, en particular $\tau \equiv 0$.
+
+En una corba a $\mathbb{R}^{2}$, el radi de curvatura $\rho$ coincideix amb el radi del cercle osculador; el cercle que millor s'ajusta a la corba en el punt considerat.
+
+\subsubsection*{Fórmules de Frénet}
+\begin{defi}[Tríedre de Frénet]
+    Geomètricament es compleix que $\hat{T} \times \hat{N} = \hat{B}$, $\hat{N} \times \hat{B} = \hat{T}$ i $\hat{B} \times \hat{T} = \hat{N}$. Aquestes relacions són el que anomenem tríedre de Frénet.
+\end{defi}
+Les derivades respecte el paràmetre arc de $\hat{T}$, $\hat{N}$ i $\hat{B}$ es poden reescriure de forma matricial:
+\begin{align}
+    \frac{\dif}{\dif s} \begin{pmatrix} \hat{T} \\ \hat{N} \\ \hat{B} \end{pmatrix} = \begin{pmatrix} 0 & \kappa & 0 \\ - \kappa & 0 & \tau \\ 0 & - \tau & 0 \end{pmatrix} \begin{pmatrix} \hat{T} \\ \hat{N} \\ \hat{B} \end{pmatrix}
+\end{align}
+
+\begin{example}
+    Considerem la corba $\vec{f}(t) = (\cos t, \sin t, 1)$.
+    \\
+    $\Rightarrow \vec{f}'(t) = (-\sin t, \cos t, 1) \Rightarrow \vec{f}''(t) = (-\cos t, -\sin t, 0)$, 
+    
+    $\displaystyle s'(t) = \| \vec{f}'(t) \| = \sqrt{2} \Rightarrow t'(s) = \frac{1}{\sqrt{2}}$, 
+    
+    $\vec{f}'(t) \times \vec{f}''(t) = (\sin t, -\cos t, 1) \Rightarrow \| \vec{f}'(t) \times \vec{f}''(t) \| = \sqrt{2}$
+    \begin{itemize}
+        \item Vectors $\hat{T}$ i $\hat{B}$:
+            \subitem $\displaystyle\hat{T} = \left( \frac{-\sin t}{\sqrt{2}}, \frac{\cos t}{\sqrt{2}}, \frac{1}{\sqrt{2}} \right)$ i $\displaystyle \hat{B} = \left( \frac{\sin t}{\sqrt{2}}, \frac{-\cos t}{\sqrt{2}}, \frac{1}{\sqrt{2}} \right)$.
+        \item Centre de curvatura: 
+            \subitem $\displaystyle \kappa = \frac{\| \vec{f}'(t) \times \vec{f}''(t) \|}{\| \vec{f}'(t) \|} = \frac{1}{2} \Rightarrow \rho = 2$.
+        \item Torsió: 
+            \subitem $\displaystyle \frac{\dif \hat{B}}{\dif s} = - \tau \hat{N} = (\frac{\cos t}{2}, \frac{\sin t}{2}, 0)$
+            \subitem $\displaystyle \hat{N} = \hat{B} \times \hat{T} = (-\cos t, -\sin t, 0) \Rightarrow \tau = \frac{1}{2}$.
+        \item Centre de curvatura: 
+            \subitem $\vec{c} = \vec{f} + \rho \hat{N} \Rightarrow \vec{c} = (-\cos t, -\sin t, t)$.
+        \end{itemize}
+\end{example}

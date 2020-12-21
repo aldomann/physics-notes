@@ -1,0 +1,252 @@
+%----------------------------------------------------------------------------------------
+%    INTEGRALS MÚLTIPLES
+%----------------------------------------------------------------------------------------
+\section{Integrals múltiples}
+En aquest capítol estendrem el concepte d'integral a regions d'integració $n$-dimensionals. Més concretament, si $f(\vec{x})$ és un camp escalar de $\mathbb{R}^{n}$, donarem sentit a $\displaystyle \int_{\mathcal{S}}f$, on $\mathcal{S}$ és una regió de $\mathbb{R}^{n}$. Ho denotarem
+\begin{align*}
+	\int_{\mathcal{S}} f \equiv \iint \overset{(n)}{\dots} \int_{\mathcal{S}} f(x_{1}, \dots, x_{n}) \diff x_{1} \dots \dif x_{n}
+\end{align*}
+Considerarem, primer, el cas en què $\mathcal{S}$ és una regió «rectangular», per estendre-ho a regions més generals. Detallarem el cas en què $\mathcal{S}$ és de $\mathbb{R}^{2}$. La generalització a més dimensions és òbvia.
+
+%----------------------------------------------------------------------------------------
+\subsection{Integral d'un camp escalar sobre un «interval rectangular»}
+La integració en intervals rectangulars és conceptualment idèntica al cas de les funcions d'una variable.
+\begin{defi}[Interval rectangular tancat de $\mathbb{R}^{n}$]
+	Un interval rectangular tancat $I$ de $\mathbb{R}^{n}$ és el producte cartesià de $n$ intervals tancats de $\mathbb{R}$:
+	\begin{align}
+		I = [a_{1}, b_{1}] \times [a_{2}, b_{2}] \times \dots [a_{n}, b_{n}] = \{ \vec{x} \mid x_{i} \in [a_{i}, b_{i}] \}
+	\end{align}
+\end{defi}
+\begin{defi}[Mesura d'un interval rectangular]
+	Si $I$ és el «rectangle $n$-dimensional» $[a_{1}, b_{1}] \times [a_{2}, b_{2}] \times \dots [a_{n}, b_{n}]$ de $\mathbb{R}^{n}$, s'anomena mesura de $I$, a $\mathbb{R}^{n}$, al producte
+	\begin{align}
+		\mu(I) \equiv (b_{1} - a_{1}) (b_{2} - a_{2}) \dots (b_{n} - a_{n})
+	\end{align}
+	Cal notar que a $\mathbb{R}^{n}$ la mesura d'un rectangle $r$-dimensional és 0 si $r<n$.
+\end{defi}
+
+\subsubsection*{Particions d'un interval rectangular}
+\begin{defi}
+	Sigui $I = [a_{1}, b_{1}] \times [a_{2}, b_{2}]	$ un interval rectangular de $\mathbb{R}^{2}$.
+
+	Si $\Pi_{1}$ és una partició de $[a_{1}, b_{1}]$: $a_{1} = x_{0} < \dots < x_{k_{1}} = b_{1}$; i $\Pi_{2}$ és una partició de $[a_{2}, b_{2}]$: $a_{2} = y_{0} < \dots < y_{k_{2}} = b_{2}$.
+
+	Llavors, $\Pi = \Pi_{1} \times \Pi_{2}$ és una partició del rectangle $I$ que el descompon en $k_{1}k_{2}$ subintervals rectangulars que denotem per $I_{ij}$, la mesura dels quals és $\mu(I_{ij}) = \Delta x_{i} \Delta y_{j}$.
+
+	El concepte es generalitza trivialment a intervals rectangulars de dimensió superior.
+\end{defi}
+Una partició $\Pi'$ és més fina que $\Pi$ si $\Pi'$ s'obté afegint punts a $\Pi$ (o equivalentment, si $\Pi' \supset \Pi$).
+
+En general, donades dues particions $\Pi_{a}$ i $\Pi_{b}$ del rectangle $I$, no es pot afirmar quina és més fina que l'altra, però sempre es pot construir una partició $\Pi_{ab}$ més fina que $\Pi_{a}$ i que $\Pi_{b}$ alhora.
+
+\subsubsection*{Sumer superiors i inferiors}
+Sigui $f(x,y)$ un camp escalar definit i fitat en un interval rectangular tancat $I$ de $\mathbb{R}^{2}$. Sigui $\Pi$ una partició de $I$.
+\begin{defi}[Suma superior]
+	\begin{align}
+		S(f,\Pi) \equiv \sum_{ij} M_{ij} \mu(I_{ij}) = \sum_{ij} M_{ij} \Delta x_{i} \Delta y_{j}
+	\end{align}
+	on $M_{ij}$ és el suprem de $f(x,y)$ al subinterval $I_{ij}$.
+\end{defi}
+\begin{defi}[Suma inferior]
+	\begin{align}
+		s(f,\Pi) \equiv \sum_{ij} m_{ij} \mu(I_{ij}) = \sum_{ij} m_{ij} \Delta x_{i} \Delta y_{j}
+	\end{align}
+	on $m_{ij}$ és l'ínfim de $f(x,y)$ al subinterval $I_{ij}$.
+\end{defi}
+Propietats:
+\begin{itemize}
+	\item El conjunt de les sumes superiors de $f$ és fitat inferiorment. El seu ínfim s'anomena integral superior de $f$ sobre l'interval $I$ i es denota $\displaystyle \overline{\int_{I}} f$.
+	\item El conjunt de les sumes inferiors de $f$ és fitat superiorment. El seu suprem s'anomena integral inferior de $f$ sobre l'interval $I$ i es denota $\displaystyle \underline{\int_{I}} f$.
+\end{itemize}
+Evidentment, es compleix
+\begin{align}
+	\underline{\int_{I}} f \leq \overline{\int_{I}} f
+\end{align}
+
+\subsubsection*{Funcions integrables}
+El camp escalar $f(x,y)$ és integrable a l'interval rectangular tancat de $I$ de $\mathbb{R}^{2}$ si $\displaystyle \underline{\int_{I}} f = \overline{\int_{I}} f$. En aquest cas, aquest valor comú s'anomena integral de $f(x,y)$ sobre l'interval rectangular i tancat $I$, i es denota per $\displaystyle \int_{I} f$.
+
+Aquesta definició d'integral és general per a camps escalars de $\mathbb{R}^{n}$. A $\mathbb{R}^{n}$ escriurem
+\begin{align}
+	\int_{I} f = \iint \cdot^{(n)} f(x_{1}, \dots x_{n}) \diff x_{1} \dots \dif x_{n} \quad \text{(integral $n$-múltiple)}
+\end{align}
+\begin{thm}[1r criteri d'integrabilitat]
+	$f(\vec{x})$ és integrable a l'interval rectangular tancat $I \Leftrightarrow \forall \varepsilon >0, \quad \exists \Pi \mid S(f, \Pi) - s(f, \Pi) < \varepsilon$.
+\end{thm}
+\begin{cor}
+	Si $f(\vec{x})$ és contínua a l'interval rectangular tancat $I \Rightarrow f(\vec{x})$ és integrable a $I$.
+\end{cor}
+
+\subsubsection*{Sumes de Riemann}
+\begin{defi}
+	Sigui $f(\vec{x})$ un camp escalar de $\mathbb{R}^{2}$, definit i fitat en l'interval rectangular tancat $I$; i $\Pi$ una partició que divideix $I$ en subintervals $I_{ij}$. Escollim un punt $\vec{t}_{ij}$ en cadascun dels subintervals $I_{ij}$.
+	% Comprovar que no quedi massa recarregat, sinó fer tots sigui per enumeració o simiars.
+
+	S'anomena suma de Riemann de $f(\vec{x})$, associada a la partició $\Pi$ i als punts $\vec{t}_{ij}$, a
+	\begin{align}
+		S_{R} (f, \Pi, \vec{t}_{ij}) \equiv \sum_{ij} f(\vec{t}_{ij}) \mu (I_{ij})
+	\end{align}
+\end{defi}
+Direm que les sumes de Riemann de $f$, a l'interval $I$, tenen límit si $\forall \varepsilon, \quad \exists \Pi_{0} \mid \forall \Pi \supset \Pi_{0}$, $|S_{R}(f, \Pi) - A| < \varepsilon \quad \forall$ elecció dels $\vec{t}_{ij}$.
+
+\begin{thm}[2n criteri d'integrabilitat]
+	$f(\vec{x})$ és integrable $\Leftrightarrow$ les sumes de Riemann de $f$, a $I$, tenen límit (en aquest cas, el límit és $\displaystyle \int_{I} f$).
+\end{thm}
+Propietats de $\displaystyle \int_{I} f$:
+\begin{enumerate}[i)]
+	\item $\displaystyle \int_{I} (\lambda f + \eta g) = \lambda \int_{I} f + \eta \int_{I} g, \quad \forall \mu, \eta \in \mathbb{R}$.
+	\item $\displaystyle \int_{I \cup J} f = \int_{I} f + \int_{J} f$ si $I$ i $J$ són dos intervals rectangulars amb un costat comú.
+	\item Si $f$ i $g$ són integrables i $\displaystyle f \geq g \Rightarrow \int_{I} f \geq \int_{I} g$.
+\end{enumerate}
+
+\subsubsection*{Càlcul d'una integral doble per integració unidimensional successiva}
+\begin{thm}
+	Sigui $f(x,y)$ definida i fitada a l'interval rectangular $I = [a_{1}, b_{1}] \times [a_{2}, b_{2}]$ de $\mathbb{R}^{2}$.
+
+	Si es dóna que
+	\begin{enumerate}[i)]
+		\item $f(x,y)$ és integrable a $I$.
+		\item $\displaystyle \exists A(y) = \int_{a_{1}}^{b_{1}} f(x,y) \diff x, \quad \forall y \in [a_{2}, b_{2}]$.
+		\item $A(y)$ és integrable a $[a_{2}, b_{2}]$.
+	\end{enumerate}
+	Llavors, es compleix que
+	\begin{align}
+		\int_{a_{2}}^{b_{2}} A(y) \diff y = \iint_{I} f(x,y) \diff x \diff y = \int_{a_{2}}^{b_{2}} \left[ \int_{a_{1}}^{b_{1}} f(x,y) \diff x \right] \diff y
+	\end{align}
+\end{thm}
+\newpage
+Notem que:
+\begin{itemize}
+	\item Si el teorema és aplicable, l'ordre de les integrals és l'indicat i no és permutable, llevat que es compleixi que $\displaystyle \int_{a_{2}}^{b_{2}} f(x,y) \diff y$ sigui, també integrable (respecte $x$) a $[a_{1}, b_{1}]$. En aquest cas tindríem també
+		\begin{align}
+		\iint_{I} f(x,y) \diff x \diff y = \int_{a_{1}}^{b_{1}} \left[ \int_{a_{2}}^{b_{2}} f(x,y) \diff y \right] \diff x
+		\end{align}
+	\item Si $f(x,y)$ és contínua a $I$, el teorema és aplicable, ja que $A(y)$ és, també, contínua (i, per tant, integrable).
+\end{itemize}
+\begin{cor}
+	Així doncs, la integral doble ($n$-múltiple) d'un camp escalar continu, sobre un interval rectangular, es pot obtenir sempre per integració successiva (i, en aquest cas, en qualsevol ordre) respecte cadascuna de les variables.
+\end{cor}
+
+\subsubsection*{Integrabilitat de funcions amb discontinuïtats}
+Sigui $f(\vec{x})$ un camp escalar, definit i fitat a l'interval rectangular $I$ de $\mathbb{R}^{n}$; i $D_{I}^{f}$ el conjunt de les discontinuïtats de $f$ a $I$.
+% Comprovar que no quedi massa recarregat, sinó fer tots sigui per enumeració o simiars.
+
+Llavors, direm que $D_{I}^{f}$ té contingut nul si $\forall \varepsilon > 0$ es pot cobrir $D_{I}^{f}$ amb un nombre finit d'intervals rectangulars de mesura total $\mu < \varepsilon$.
+\begin{thm}
+	Sigui $f(\vec{x})$ definida i fitada a l'interval rectangular $I$ i sigui $D^{f}_{I}$ el conjunt de les discontinuïtats de $f$ a $I$. Llavors, si $D^{f}_{I}$ té contingut nul $\Rightarrow f(\vec{x})$ és integrable a $I$.
+\end{thm}
+
+%----------------------------------------------------------------------------------------
+\subsection{Integració sobre regions més generals}
+Veurem ara com estendre el concepte d'integral per incloure regions d'integració que no siguin intervals rectangulars.
+
+Sigui $\mathcal{S}$ una regió fitada de $\mathbb{R}^{n}$; $f(\vec{x})$ un camp escalar, definit i fitat a $\mathcal{S}$; i $I$ un interval rectangular tancat e $\mathbb{R}^{n}$ que contingui $\mathcal{S}$. Llavors, definim, a $I$, la funció
+% Comprovar que no quedi massa recarregat, sinó fer tots sigui per enumeració o simiars.
+\begin{align}
+	\tilde{f} (\vec{x}) = \begin{cases} f(\vec{x}), &\text{si } \vec{x} \in \mathcal{S} \\ 0, &\text{si } \vec{x} \in I \backslash \mathcal{S} \end{cases}
+\end{align}
+Llavors, per definició
+\begin{align}
+	\iint \overset{(n)}{\dots} \int_{\mathcal{S}} f(\vec{x}) \diff x_{1} \dots \dif x_{n} = \iint \overset{(n)}{\dots} \int_{I} \tilde{f}(\vec{x}) \diff x_{1} \dots \dif x_{n}
+\end{align}
+A $\mathbb{R}^{2}$ considerarem únicament regions $\mathcal{S}$ que anomenarem de tipus I i de tipus II.
+
+\subsubsection*{Integrals dobles en regions de tipus I i de tipus II}
+\begin{defi}[Regions de tipus I (projectables--$x$)]
+	S'anomenen així les regions $\mathcal{S}$ limitades per
+	\begin{align*}
+		a \leq x \leq b, \quad \varphi_{1} (x) \leq y \leq \varphi_{2}(x)
+	\end{align*}
+	on $\varphi_{1}(x)$ i $\varphi_{2}(x)$ són contínues a $[a,b]$.
+
+	El que caracteritza aquestes regions és el fet que els segments verticals, d'extrems $\varphi_{1}(x)$ i $\varphi_{2}(x)$, (amb $a \leq x \leq b$) estan totalment dins $\mathcal{S}$.
+\end{defi}
+\begin{thm}
+    Si $f(x,y)$ és contínua a $\mathcal{S}$ (de tipus I) $\displaystyle \Rightarrow$
+    \begin{align*}
+        \iint_{\mathcal{S}} f(x,y) \diff x \diff y = \int_{a}^{b} \left[ \int_{\varphi_{1}(x)}^{\varphi_{2}(x)} f(x,y) \diff y \right] \diff x
+    \end{align*}
+% Consideraria utilitzar un entorn align* segons si queda bé o no.
+\end{thm}
+
+\begin{defi}[Regions de tipus II (projectables--$y$)]
+	S'anomenen així les regions $\mathcal{S}$ limitades per
+	\begin{align*}
+		c \leq y \leq d, \quad \psi_{1} (y) \leq x \leq \psi_{2}(y)
+	\end{align*}
+	on $\psi_{1}(y)$ i $\psi_{2}(y)$ són contínues a $[c,d]$.
+
+	El que caracteritza aquestes regions és el fet que els segments horitzontals, d'extrems $\psi_{1}(y)$ i $\psi_{2}(y)$, (amb $c \leq y \leq d$) estan totalment dins $\mathcal{S}$.
+\end{defi}
+\begin{thm}
+	Si $f(x,y)$ és contínua a $\mathcal{S}$ (de tipus II) $\displaystyle \Rightarrow$
+	\begin{align*}
+        \iint_{\mathcal{S}} f(x,y) \diff x \diff y = \int_{c}^{d} \left[ \int_{\psi_{1}(y)}^{\psi_{2}(y)} f(x,y) \diff x \right] \diff y
+    \end{align*}
+% Consideraria utilitzar un entorn align* segons si queda bé o no.
+\end{thm}
+
+\subsubsection*{Integrals dobles en altres regions}
+\begin{itemize}
+	\item Una regió $\mathcal{S}$ pot ser, alhora, de tipus I i II (e.g., si $\mathcal{S}$ és convex). Llavors l'ordre d'integració és irrellevant (però la dificultat pot ser diferent).
+	\item També pot succeir que una regió $\mathcal{S}$ no sigui de tipus I ni del II. No obstant, en la majoria de casos pràctics, $\mathcal{S}$ es pot descompondre em subregions de tipus I i/o II. La integració total és, llavors, la suma de les integracions sobre cadascuna d'aquestes subregions.
+\end{itemize}
+
+\subsubsection*{Integrals en més dimensions}
+Hem vist que les integrals dobles es poden calcular per integració successiva de les variables (en l'ordre adient) quan la regió és de tipus I o de tipus II.
+
+Això es pot generalitzar a integrals $n$-múltiples. Vegem-ho en el cas de les integrals triples. En aquest cas tindrem tres tipus de regions similars a les de tipus II i I de les integrals dobles.
+\begin{defi}[Regions projectables--$xy$]
+	S'anomenen així les regions d'integració $\mathcal{S} \subseteq \mathbb{R}^{3}$, definides per
+	\begin{align*}
+		(x,y) \in Q, \quad \phi_{1}(x,y) \leq z \leq \phi_{2}(x,y)
+	\end{align*}
+	on $Q$ és una regió del pla $x-y$, i $\phi_{1}(x,y)$ i $\phi_{2}(x,y)$ són contínues a $Q$.
+
+	El que caracteritza aquestes regions és el fet que els segments verticals (paral·lels a l'eix $z$) d'extrems $\phi_{1}(x,y)$ i $\phi_{2}(x,y)$ estan totalment continguts dins $\mathcal{S}$, $\forall (x,y) \in Q$. Q és la projecció de $\mathcal{S}$ sobre el pla $x-y$. Argumentant com en el cas de les integrals dobles, tenim
+	\begin{align}
+		\iiint_{\mathcal{S}} f(x,y,z) \diff x \diff y \diff z = \iint_{Q}\left[ \int_{\phi_{1}(x,y)}^{\phi_{2}(x,y)} f(x,y,z) \diff z \right] \diff x \diff y
+	\end{align}
+\end{defi}
+De forma similar, es defineixen a $\mathbb{R}^{3}$ regions projectables--$yz$ i projectables--$zx$. Cal notar que si $\mathcal{S}$ és convex, és simultàniament dels tres tipus i les seves projeccions sobre els plans $x-y$, $y-z$ i $z-x$ són simultàniament de tipus I i II. En aquest cas podem integrar successivament cada variable en qualsevol ordre, amb els límits d'integració adients.
+
+%----------------------------------------------------------------------------------------
+\subsection{Teorema de Green}
+\begin{thm}[de Green]
+	Siguin
+	\begin{enumerate}[i)]
+		\item $P(x,y)$ i $Q(x,y)$ dos camps escalars de classe $C^{1}_{D}$, on $D \subseteq \mathbb{R}^{2}$.
+		\item $\mathcal{C}$ una corba $\vec{x}(t)$ de classe $C^{1}_{[a,b]}$ a trossos, tancada (i.e., $\vec{x}(a) = \vec{x}(b)$) i simple (i.e., no es talla a si mateixa: $\vec{x}(t) \neq \vec{x}(t')$, si $t \neq t'$).
+		\item $\mathcal{S}$ la regió formada per $\mathcal{C}$ i el seu interior.
+	\end{enumerate}
+	Llavors, si $\mathcal{S}$ és simultàniament de tipus I i tipus II, es compleix
+	\begin{align}
+		\iint_{\mathcal{S}} \left( \frac{\partial Q}{\partial x} - \frac{\partial P}{\partial y} \right) \diff x \diff y = \oint_{\mathcal{C}} (P \diff x + Q \diff y)
+	\end{align}
+\end{thm}
+Notem que la igualtat anterior és equivalent a les igualtats
+\begin{align}
+	\iint_{\mathcal{S}} \left( \frac{\partial Q}{\partial x} \right) \diff x \diff y = \oint_{\mathcal{C}} Q \diff y \quad \text{i} \quad \iint_{\mathcal{S}} \left( - \frac{\partial P}{\partial y} \right) \diff x \diff y = \oint_{\mathcal{C}} P \diff x
+\end{align}
+El teorema de Green és específic de $\mathbb{R}^{2}$. Relaciona, sota determinades condicions, una integral doble sobre una regió de $\mathbb{R}^{2}$ amb una integral de línia sobre el contorn d'aquesta regió. Però és. de fet, un cas particular d'un teorema més general que relaciona integrals sobre regions $n$-dimensionals amb integrals sobre les fronteres $(n-1)$-dimensionals d'aquestes regions. A $\mathbb{R}^{3}$ hi ha dos casos particulars més d'aquest teorema general: el teorema d'Stokes i el teorema de Gauss (respectivament, teoremes \ref{thm:stokes} i \ref{thm:gauss}).
+
+\subsubsection*{Generalitzacions}
+\begin{itemize}
+	\item Tot i que el teorema de Green requereix que $\mathcal{S}$ sigui simultàniament de tipus I i II, també es compleix encara que no es compleixi aquest requisit si es pot descompondre en un nombre finit de subregions que siguin simultàniament de tipus I i II, ja que al sumar les contribucions de cadascuna d'aquestes subregions, les integrals de línies internes es cancel·len.
+	\item Si $\mathcal{S}$ té un nombre finit de «forats» el teorema de Green també es compleix, amb integrals de línia sobre els contorns fetes sobre el sentit contrari. En definitiva, el contorn es recorre de forma que l'interior de $\mathcal{S}$ quedi sempre a l'esquerra.
+\end{itemize}
+
+%----------------------------------------------------------------------------------------
+\subsection{Canvi de variables en una integral múltiple}
+\begin{thm}[del canvi de variables]
+	Si es dóna que
+	\begin{enumerate}[i)]
+		\item $f(\vec{x})$ és una funció $\mathbb{R}^{n} \to \mathbb{R}$, contínua a $\mathcal{S} \subseteq \mathbb{R}^{n}$.
+		\item $\vec{x} = \vec{g}(\vec{t})$ és un canvi de variables $\mathbb{R}^{n} \to \mathbb{R}^{n}$, de classe $C^{1}_{T}$, on $\mathcal{S} = \vec{g}(T)$.
+		\item $\displaystyle \left(\frac{\partial (g_{1}, \dots, g_{n})}{\partial (t_{1}, \dots, t_{n})} \right)_{T} \neq 0$.
+	\end{enumerate}
+	Llavors, es compleix
+	\begin{align}
+	\iint \overset{(n)}{\dots} \int_{\mathcal{S}} f(\vec{x}) \diff x_{1} \dots \dif x_{n} = \iint \overset{(n)}{\dots} \int_{T} f(\vec{g}(\vec{t})) \left| \frac{\partial (g_{1}, \dots, g_{n})}{\partial (t_{1}, \dots, t_{n})} \right| \diff t_{1} \dots \dif t_{n}
+	\end{align}
+\end{thm}

@@ -1,0 +1,74 @@
+%----------------------------------------------------------------------------------------
+%    DISTRIBUCIONS
+%----------------------------------------------------------------------------------------
+\section{Distribució}
+\subsection{Conceptes previs}
+\begin{itemize}
+    \item Sèrie de mesures: $x_{1}, x_{2}, \dots , x_{i}, \dots , x_{n-1}, x_{n}$.
+    \item Residus: $d_{i} = x_{i} - \bar{x}$.
+    \item Desviacions: $\varepsilon_{i} = x_{i} - x_{real}$.
+\end{itemize}
+\begin{align}
+    \bar{x} = \frac{\sum\limits_{i=1}^{n} x_{i}}{n}; \quad f_{i}= \frac{\# x_{i}}{n} \Rightarrow \bar{x} = \sum\limits_{i=1}^{n} f_{i} x_{i}
+\end{align}
+
+%----------------------------------------------------------------------------------------
+\subsection{Distribució binomial}
+Experiment: $\begin{cases} A \quad \text{èxit} \to p \equiv P(A) \\ B \quad \text{fracàs} \to q \equiv P(B) \end{cases}$. L'experiment es pot repetir $\Rightarrow$ intents.
+
+$\#$èxits si intentem $n$ vegades l'experiment = probabilitat de tenir $k$ èxits si fem $n$ intents $\equiv P(k)$.
+\begin{align}
+    P(k) = \begin{pmatrix} n \\ k \end{pmatrix} p^{k} q^{n-k} = \begin{pmatrix} n \\ k \end{pmatrix} p^{k} (1-p)^{n-k} \Rightarrow \sum\limits_{k=0}^{n} P(k) = 1
+\end{align}
+\begin{align}
+    \bar{k} & = \sum\limits_{k=0}^{n} P(k)k = pn \\
+    \sigma^{2} & = pn (1-p)
+\end{align}
+Exemple: tirar un da 10 vegades i treure $x\geq 3$.
+\begin{align*}
+\begin{split}
+    k \to & P(k) \\
+    0 \to & 0,0002 \\
+    1 \to & 0,0034 \\
+    2 \to & 0,0031 \\
+    3 \to & 0,0163 \\
+    4 \to & 0,0569 \\
+    5 \to & 0,1366 \\
+    6 \to & 0,2276 \\
+    7 \to & 0,2601 \\
+    8 \to & 0,1951 \\
+    9 \to & 0,0867 \\
+    10 \to & 0,0173
+\end{split}
+\end{align*}
+La màxima $P(k)$ és quan $k=7$; $\quad \bar{k} = \frac{2}{3} \cdot 10 = 6,\bar{6}$.
+
+%----------------------------------------------------------------------------------------
+\subsection{Distribució de Poisson}
+Es realitza el mateix experiment, però $\begin{cases} n \to \infty \\ p \to 0 \end{cases}$ i $pn = \text{finit}$.
+\begin{align}
+    P(k)= \frac{(pn)^{k} \exp [-pn]}{k!} = \frac{\bar{k}^{k} \exp [-\bar{k}]}{k!}
+\end{align}
+\begin{align}
+    \bar{k} & = pn \\
+    \sigma^{2} & = \bar{k} (1-p) = \bar{k}
+\end{align}
+Exemple: detectar 1 àtom radioactiu entre 10$^{\text{molt}}$ àtoms.
+
+Si fem 10 mesures durant 10 minuts i obtenim el registre de 250 desintegracions $\equiv \bar{k} \Rightarrow \sigma = \sqrt{\bar{k}} = 5$.
+
+%----------------------------------------------------------------------------------------
+\subsection{Distribució de Gauss}
+S'utilitza quan en comptes de fer servir variables discretes ($\mathbb{N}$) es fan servir variables contínues ($\mathbb{R}$) $\Rightarrow k \to x$. Tanmateix $p \to 0$.
+\begin{align}
+    P(x)= \frac{1}{\sqrt{2 \pi \bar{x}}} \exp \left[ - \frac{(x - \bar{x})^{2}}{2 \bar{x}} \right] = \frac{1}{\sigma \sqrt{2 \pi}} \exp \left[ - \frac{(x - \bar{x})^{2}}{2 \sigma^{2}} \right]
+\end{align}
+\begin{align}
+    \bar{x} & = pn \\
+    \sigma^{2} & = \bar{x}
+\end{align}
+\begin{figure}[H]
+\centering
+    % WIP: GRAFIC BONIC
+\caption{Gràfic d'una distribució de Gauss}
+\end{figure}

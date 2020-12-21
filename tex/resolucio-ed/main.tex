@@ -1,0 +1,178 @@
+%----------------------------------------------------------------------------------------
+%    PACKAGES AND OTHER DOCUMENT CONFIGURATIONS
+%----------------------------------------------------------------------------------------
+\documentclass[paper=a4, fontsize=13pt, twoside=semi]{scrartcl}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[catalan]{babel}
+\usepackage{lmodern}
+\usepackage[fixlanguage]{babelbib}
+\selectbiblanguage{catalan}
+
+\addtokomafont{sectioning}{\normalfont\scshape}
+\usepackage{tocstyle}
+\usetocstyle{standard}
+\renewcommand*\descriptionlabel[1]{\hspace\labelsep\normalfont\bfseries{#1}}
+
+\usepackage{fancyhdr}
+\pagestyle{fancyplain}
+\fancyhead[L]{\mytitle}
+\fancyhead[R]{\myauthor}
+\fancyfoot[C]{\thepage}
+\fancypagestyle{firststyle}
+{
+    \fancyhead[L]{\mytitle}
+    \fancyhead[R]{\myauthor}
+    \fancyfoot[C]{\thepage}
+}
+\renewcommand{\headrulewidth}{0.3pt}
+\renewcommand{\footrulewidth}{0pt}
+\setlength{\headheight}{13.6pt}
+
+\usepackage{etoolbox}
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.3\baselineskip plus2pt minus2pt}
+\newcommand{\sk}{\medskip\noindent}
+
+\usepackage{hyperref}
+\hypersetup{colorlinks, citecolor=black, filecolor=black, linkcolor=black, urlcolor=black}
+
+%----------------------------------------------------------------------------------------
+%    MATHS AND ENVIRONMENTS
+%----------------------------------------------------------------------------------------
+\usepackage{amsmath,amsfonts,amsthm,amssymb}
+\usepackage{xfrac}
+\usepackage[a]{esvect}
+\usepackage{pgfplots}
+\usepackage{tikz} 
+\usepackage{color}
+    \makeatletter
+        \color{black}
+        \let\default@color\current@color
+    \makeatother
+\usepackage{thmtools}
+\usepackage{environ}
+
+\usepackage{siunitx}
+
+\newcommand*{\dif}{\mathrm{d}}
+\newcommand*{\diff}{\mathop{}\!\mathrm{d}}
+\newcommand*{\vnabla}{\vec{\nabla}}
+
+\numberwithin{equation}{section}
+\numberwithin{figure}{section}
+\numberwithin{table}{section}
+
+\usepackage{enumerate}
+\usepackage{booktabs}
+\usepackage{float}
+    % \setlength{\intextsep}{8pt}
+
+\makeatletter
+\renewcommand*\env@matrix[1][*\c@MaxMatrixCols c]{%
+    \let\@ifnextchar\new@ifnextchar
+    \array{#1}}
+\makeatother
+
+\usepackage{lipsum}
+
+\makeatletter
+\newcommand*\NoIndentAfterEnv[1]{%
+  \AfterEndEnvironment{#1}{\par\@afterindentfalse\@afterheading}}
+\makeatother
+%\NoIndentAfterEnv{thm}
+\NoIndentAfterEnv{defi}
+\NoIndentAfterEnv{example}
+\NoIndentAfterEnv{table}
+
+%----------------------------------------------------------------------------------------
+%    THEOREMS
+%----------------------------------------------------------------------------------------
+\declaretheorem[style=plain,name=Teorema,qed=$\square$,numberwithin=section]{thm}
+\declaretheorem[style=plain,name=Corol·lari,qed=$\square$,sibling=thm]{cor}
+\declaretheorem[style=plain,name=Lemma,qed=$\square$,sibling=thm]{lem}
+
+\declaretheorem[style=definition,name=Definició,qed=$\blacksquare$,numberwithin=section]{defi}
+\declaretheorem[style=definition,name=Exemple,qed=$\blacktriangle$,numberwithin=section]{example}
+
+%----------------------------------------------------------------------------------------
+%    ELA MOTHERFUCKING GEMINADA
+%----------------------------------------------------------------------------------------
+\def\xgem{%
+   \ifmmode
+     \csname normal@char\string"\endcsname l%
+   \else
+     \leftllkern=0pt\rightllkern=0pt\raiselldim=0pt
+     \setbox0\hbox{l}\setbox1\hbox{l\/}\setbox2\hbox{.}%
+     \advance\raiselldim by \the\fontdimen5\the\font
+     \advance\raiselldim by -\ht2
+     \leftllkern=-.25\wd0%
+     \advance\leftllkern by \wd1
+     \advance\leftllkern by -\wd0
+     \rightllkern=-.25\wd0%
+     \advance\rightllkern by -\wd1
+     \advance\rightllkern by \wd0
+     \allowhyphens\discretionary{-}{}%
+     {\kern\leftllkern\raise\raiselldim\hbox{.}%
+       \kern\rightllkern}\allowhyphens
+   \fi
+   }
+\def\Xgem{%
+   \ifmmode
+     \csname normal@char\string"\endcsname L%
+   \else
+     \leftllkern=0pt\rightllkern=0pt\raiselldim=0pt
+     \setbox0\hbox{L}\setbox1\hbox{L\/}\setbox2\hbox{.}%
+     \advance\raiselldim by .5\ht0
+     \advance\raiselldim by -.5\ht2
+     \leftllkern=-.125\wd0%
+     \advance\leftllkern by \wd1
+     \advance\leftllkern by -\wd0
+     \rightllkern=-\wd0%
+     \divide\rightllkern by 6
+     \advance\rightllkern by -\wd1
+     \advance\rightllkern by \wd0
+     \allowhyphens\discretionary{-}{}%
+     {\kern\leftllkern\raise\raiselldim\hbox{.}%
+       \kern\rightllkern}\allowhyphens
+   \fi
+   }
+
+\expandafter\let\expandafter\saveperiodcentered
+   \csname T1\string\textperiodcentered \endcsname
+
+\DeclareTextCommand{\textperiodcentered}{T1}[1]{%
+   \ifnum\spacefactor=998
+     \Xgem
+   \else
+     \xgem
+   \fi#1}
+
+%----------------------------------------------------------------------------------------
+%    PDF INFO
+%----------------------------------------------------------------------------------------
+\newcommand*{\mytitle}{Resolució d'equacions diferencials}
+\newcommand*{\mysubtitle}{}
+\newcommand*{\myauthor}{Alfredo Hernández Cavieres}
+\newcommand*{\myuni}{Universitat Autònoma de Barcelona, Departament de Física}
+\newcommand*{\mydate}{\normalsize \today}
+
+\pdfstringdefDisableCommands{\def\and{i }}
+\usepackage{hyperxmp}
+\hypersetup{pdfauthor={\myauthor}, pdftitle={\mytitle}}
+
+%----------------------------------------------------------------------------------------
+%    TITLE SECTION AND DOCUMENT BEGINNING
+%----------------------------------------------------------------------------------------
+\begin{document}
+
+%----------------------------------------------------------------------------------------
+%    SECTIONS
+%----------------------------------------------------------------------------------------
+%\tableofcontents
+\thispagestyle{firststyle}
+\include{./full}
+
+%----------------------------------------------------------------------------------------
+\end{document}

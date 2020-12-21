@@ -1,0 +1,202 @@
+%----------------------------------------------------------------------------------------
+%    PACKAGES AND OTHER DOCUMENT CONFIGURATIONS
+%----------------------------------------------------------------------------------------
+\documentclass[paper=a4, fontsize=13pt, twoside=semi]{scrartcl}
+\usepackage[utf8]{inputenc}
+\usepackage[catalan]{babel}
+\usepackage[fixlanguage]{babelbib}
+\selectbiblanguage{catalan}
+
+\addtokomafont{sectioning}{\normalfont\scshape}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{tocstyle}
+\usetocstyle{standard}
+\renewcommand*\descriptionlabel[1]{\hspace\labelsep\normalfont\bfseries{#1}}
+
+\usepackage{fancyhdr}
+\pagestyle{fancyplain}
+\fancyhead[LO]{\thepage}
+\fancyhead[CO]{}
+\fancyhead[RO]{\nouppercase{\mytitle}}
+\fancyhead[LE]{\nouppercase{\leftmark}}
+\fancyhead[CE]{}
+\fancyhead[RE]{\thepage}
+\fancyfoot{}
+\renewcommand{\headrulewidth}{0.3pt}
+\renewcommand{\footrulewidth}{0pt}
+\setlength{\headheight}{13.6pt}
+
+\usepackage{etoolbox}
+\pretocmd{\section}{\cleardoubleevenemptypage}{}{}
+\pretocmd{\part}{\cleardoubleevenemptypage\thispagestyle{empty}}{}{}
+
+\renewcommand\partheadstartvskip{\clearpage\null\vfil} 
+\renewcommand\partheadmidvskip{\par\nobreak\vskip 20pt\thispagestyle{empty}}
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.3\baselineskip plus2pt minus2pt}
+\newcommand{\sk}{\medskip\noindent}
+
+\usepackage{hyperref}
+\hypersetup{colorlinks, citecolor=black, filecolor=black, linkcolor=black, urlcolor=black}
+
+%----------------------------------------------------------------------------------------
+%    MATHS AND ENVIRONMENTS
+%----------------------------------------------------------------------------------------
+\usepackage{amsmath,amsfonts,amsthm,amssymb}
+\usepackage{xfrac}
+\usepackage[a]{esvect}
+\usepackage{pgfplots}
+\usepackage{tikz}
+\usepackage{thmtools}
+\usepackage{environ}
+
+\usepackage{siunitx}
+
+\newcommand*{\dif}{\mathrm{d}}
+\newcommand*{\diff}{\mathop{}\!\mathrm{d}}
+\newcommand*{\vnabla}{\vec{\nabla}}
+
+\numberwithin{equation}{section}
+\numberwithin{figure}{section}
+\numberwithin{table}{section}
+
+\usepackage{enumerate}
+\usepackage{booktabs}
+\usepackage{float}
+    % \setlength{\intextsep}{8pt}
+
+\makeatletter
+\renewcommand*\env@matrix[1][*\c@MaxMatrixCols c]{%
+    \let\@ifnextchar\new@ifnextchar
+    \array{#1}}
+\makeatother
+
+\usepackage{ccicons}
+\usepackage{lipsum}
+
+\makeatletter
+\newcommand*\NoIndentAfterEnv[1]{%
+  \AfterEndEnvironment{#1}{\par\@afterindentfalse\@afterheading}}
+\makeatother
+%\NoIndentAfterEnv{thm}
+\NoIndentAfterEnv{defi}
+\NoIndentAfterEnv{example}
+\NoIndentAfterEnv{table}
+
+%----------------------------------------------------------------------------------------
+%    THEOREMS
+%----------------------------------------------------------------------------------------
+\makeatletter
+\providecommand{\@fourthoffour}[4]{#4}  
+\newcommand\fixstatement[2][\proofname\space del]{%
+    \ifcsname thmt@original@#2\endcsname
+        \AtEndEnvironment{#2}{%
+            \xdef\pat@label{\expandafter\expandafter\expandafter
+                \@fourthoffour\csname thmt@original@#2\endcsname\space\@currentlabel}%
+            \xdef\pat@proofof{\@nameuse{pat@proofof@#2}}%
+        }%
+    \else
+        \AtEndEnvironment{#2}{%
+            \xdef\pat@label{\expandafter\expandafter\expandafter
+                \@fourthoffour\csname #1\endcsname\space\@currentlabel}%
+            \xdef\pat@proofof{\@nameuse{pat@proofof@#2}}%
+        }%
+    \fi
+    \@namedef{pat@proofof@#2}{#1}%
+}
+\globtoksblk\prooftoks{1000}
+\newcounter{proofcount}
+\NewEnviron{proofatend}{%
+    \edef\next{%
+        \noexpand\begin{proof}[\pat@proofof\space\pat@label]%
+        \unexpanded\expandafter{\BODY}}%
+    \global\toks\numexpr\prooftoks+\value{proofcount}\relax=\expandafter{\next\end{proof}}
+    \stepcounter{proofcount}}
+\def\printproofs{%
+      \count@=\z@
+      \loop
+        \the\toks\numexpr\prooftoks+\count@\relax
+           \ifnum\count@<\value{proofcount}%
+           \advance\count@\@ne
+      \repeat}
+\makeatother
+
+\declaretheorem[style=plain,name=Teorema,qed=$\square$,numberwithin=section]{thm}
+\declaretheorem[style=plain,name=Corol·lari,qed=$\square$,sibling=thm]{cor}
+\declaretheorem[style=plain,name=Lemma,qed=$\square$,sibling=thm]{lem}
+    \fixstatement{thm}
+    \fixstatement[Demostració del]{lem}
+
+\declaretheorem[style=definition,name=Definició,qed=$\blacksquare$,numberwithin=section]{defi}
+\declaretheorem[style=definition,name=Exemple,qed=$\blacktriangle$,numberwithin=section]{example}
+
+%----------------------------------------------------------------------------------------
+%    PDF INFO
+%----------------------------------------------------------------------------------------
+\newcommand*{\mytitle}{Ones i òptica}
+\newcommand*{\myauthor}{Alfredo Hernández Cavieres} 
+\newcommand*{\myuni}{Universitat Autònoma de Barcelona, Departament de Física}
+\newcommand*{\mydate}{\normalsize 2012-2013}
+
+\usepackage{hyperxmp}
+\hypersetup{pdfauthor={\myauthor}, pdftitle={\mytitle}}
+
+%----------------------------------------------------------------------------------------
+%    TITLE SECTION AND DOCUMENT BEGINNING
+%----------------------------------------------------------------------------------------
+\newcommand{\horrule}[1]{\rule{\linewidth}{#1}}
+\title{
+    \normalfont
+    \small \scshape{\myuni} \\ [25pt] 
+    \horrule{0.5pt} \\[0.4cm]
+    \huge \mytitle \\
+    \horrule{2pt} \\[0.5cm]
+}
+\author{\myauthor}
+\date{\mydate}
+
+\begin{document}
+
+\clearpage\maketitle
+\thispagestyle{empty}
+\addtocounter{page}{-1}
+
+%----------------------------------------------------------------------------------------
+%    LLICÈNCIA
+%----------------------------------------------------------------------------------------
+\section*{}\thispagestyle{empty}
+\begin{centering}
+    \huge \ccbyncsaeu
+    
+    \normalsize Aquesta obra està subjecta a una llicència de 
+    
+    Reconeixement-NoComercial-CompartirIgual 4.0 
+    
+    Internacional de Creative Commons.
+    
+\end{centering}
+
+%----------------------------------------------------------------------------------------
+%    TABLE OF CONTENTS
+%----------------------------------------------------------------------------------------
+\tableofcontents
+
+%----------------------------------------------------------------------------------------
+%    SECTIONS
+%----------------------------------------------------------------------------------------
+\part*{Ones}
+\addcontentsline{toc}{part}{Ones}
+    \include{./ones/1-oscillacions}
+    \include{./ones/2-ones}
+
+\part*{Òptica}
+\addcontentsline{toc}{part}{Òptica}
+    \include{./optica/1-llum}
+    \include{./optica/2-optica}
+    \include{./optica/3-instruments}
+    \include{./optica/4-interferencia}
+
+%----------------------------------------------------------------------------------------
+\end{document}

@@ -1,0 +1,157 @@
+%----------------------------------------------------------------------------------------
+%    TEMA
+%----------------------------------------------------------------------------------------
+\section{\mytitle}
+
+\subsection*{Continuïtat}
+Estudi de la continuïtat de $f(\vec{x})$ en el punt $\vec{x} = \vec{a}$. 
+
+Si volem demostrar que és contínua, es tracta d'avaluar (generalment agafant $\delta = \sqrt{x^{2} + y^{2}}$)
+\begin{align}
+    d(\vec{x}, \vec{a}) < \delta \Rightarrow d(f(\vec{x}), f(\vec{a})) < \varepsilon
+\end{align}
+Per tal de trobar alguna relació del tipus 
+\begin{align}
+    \delta < \varepsilon
+\end{align}
+
+Si volem, en canvi, demostrar que no és contínua, es tracta de trobar un contraexemple mitjançant alguna relació $x \leftrightarrow y$ (e.g., $y = ax + bx^{2}$) i veure que 
+\begin{align}
+    \lim_{\vec{x} \to \vec{a}} f(\vec{x}) \neq f(\vec{a})
+\end{align}
+
+\subsubsection*{Derivada direccional}
+La derivada direccional de $f(\vec{x})$ en la direcció $\vec{u}$ en el punt $\vec{x} = \vec{a}$ es defineix com
+\begin{align}
+    \lim_{\vec{x} \to \vec{a}} f(\vec{x}) \equiv \lim_{\lambda \to 0^{+}} f(\vec{a} + \lambda \vec{u})
+\end{align}
+
+%----------------------------------------------------------------------------------------
+\subsection*{Funcions vectorials d'una variable}
+\subsubsection*{Corbes}
+El paràmetre arc d'una corba $\vec{f}(u)$ es defineix com
+\begin{align}
+    s(u) = \int_{a}^{u} \| \vec{f}'(u) \| \diff u
+\end{align}
+i defineix la longitud de la corba en funció del paràmetre $u$.
+
+\subsubsection*{Geometria}
+Tríedre de Frénet:
+\begin{align}
+    \hat{T} = \frac{\vec{f}'(u)}{\| \vec{f}'(u) \|}; \quad \hat{B} = \frac{\vec{f}'(u) \times \vec{f}''(u)}{\| \vec{f}'(u) \times \vec{f}''(u) \|}; \quad \hat{T} \times \hat{N} = \hat{B}
+\end{align}
+\begin{align}
+    \frac{\dif}{\dif s} \begin{pmatrix} \hat{T} \\ \hat{N} \\ \hat{B} \end{pmatrix} = \begin{pmatrix} 0 & \kappa & 0 \\ - \kappa & 0 & \tau \\ 0 & - \tau & 0 \end{pmatrix} \begin{pmatrix} \hat{T} \\ \hat{N} \\ \hat{B} \end{pmatrix}
+\end{align}
+Radi de corbatura:
+\begin{align}
+    \rho = \frac{1}{\kappa}    
+\end{align}
+%----------------------------------------------------------------------------------------
+\subsection*{Diferenciabilitat}
+\subsubsection*{Criteri de diferenciabilitat}
+El criteri consisteix en demostrar pas a pas que és contínua, derivable i diferenciable (en aquest ordre). S'han de complir les tres propietats perquè sigui diferenciable.
+
+Derivable $\Leftrightarrow \exists \frac{\partial f}{\partial x}, \frac{\partial f}{\partial y}, \dots$:
+\begin{align}
+    \exists \left( \frac{\partial f}{\partial x} \right)_{(x_{0}, y_{0})} \Leftrightarrow \exists \lim_{h \to 0} \frac{f(x_{0}+h, y_{0} - f(x_{0},y_{0})}{h}
+\end{align}
+
+Diferenciable:
+\begin{align}
+    \lim_{\vec{x} - \vec{a} \to \vec{0}} \frac{f(\vec{x}) - f(\vec{a}) - (\vnabla f)_{\vec{a}} \cdot (\vec{x} - \vec{a})}{\| \vec{x} - \vec{a} \|} = 0 \Leftrightarrow \frac{\partial f}{\partial x_{i}} \text{ contínua.}
+\end{align} 
+
+\subsubsection*{Diferenciació de superfícies}
+$f(x,y,z) = f(x) + f(y) + f(z) = n$, ($n \in \mathbb{R}$) al punt $\vec{r}_{0} = (x_{0}, y_{0}, z_{0})$. Llavors $\dif f = \vnabla f \cdot \dif \vec{r} \equiv 0$.
+
+Es veu fàcilment que $(\vnabla f)_{\vec{r}_{0}}$ dóna els coeficients de l'equació del pla. Així doncs, l'equació del pla és
+\begin{align}
+    (\vnabla f)_{(\vec{r}_{0})_{1}} (x - x_{0}) + (\vnabla f)_{(\vec{r}_{0})_{2}} (y - y_{0}) + (\vnabla f)_{(\vec{r}_{0})_{3}} (z - z_{0}) \equiv 0
+\end{align}
+
+%----------------------------------------------------------------------------------------
+\subsection*{Taylor i punts crítics}
+\subsubsection*{Polinomi de Taylor de segon ordre}
+\begin{align}
+    P_{2}^{(\vec{a})} = f(\vec{a}) + (\vnabla f)_{\vec{a}} \cdot (\vec{x} - \vec{a}) + \frac{1}{2!} (\vec{x} - \vec{a}) \cdot [(H^{f})_{\vec{a}} (\vec{x} - \vec{a})]
+\end{align}
+
+\subsubsection*{Punts crítics}
+Són els punts $\vec{a}$ en què $(\vnabla f)_{\vec{a}} \equiv 0$. Llavors es tracta d'estudiar els hessians pel criteri de Sylvester. 
+
+Segons la recurrència dels menors principals del vèrtex superior esquerre, podem tenir:
+\begin{itemize}
+    \item Mínim: $+, +, +, +, \dots$
+    \item Màxim: $-, +, -, +, \dots$
+    \item Punt de sella: $*, *, *, *, \dots$, on $* \neq 0$.
+    \item No conclusiu: $*, \dots , 0, \dots$, llevat que coneguem els valors propis de l'hessià.
+\end{itemize}
+
+%----------------------------------------------------------------------------------------
+\newpage
+\subsection*{Funció implícita i multiplicadors de Lagrange}
+
+%----------------------------------------------------------------------------------------
+\subsection*{Integrals de línia}
+\subsubsection*{$\vec{f}$ sobre $\mathcal{C}$}
+\begin{align}
+    \int_{\mathcal{C}} \vec{f}(\vec{x}) \cdot \dif \vec{x} = \int_{\mathcal{C}} \vec{f}(\vec{x}(u)) \cdot \vec{x}'(u) \diff u
+\end{align}
+
+\subsubsection*{$f$ sobre $\mathcal{C}$}
+\begin{align}
+    \int_{\mathcal{C}} \phi (\vec{x}) \diff s = \int_{\mathcal{C}} \phi (\vec{x}(u)) \| \vec{x}'(u) \| \diff u
+\end{align}
+
+%----------------------------------------------------------------------------------------
+\subsection*{Integrals múltiples}
+\begin{align}
+    \iiint_{\mathcal{S}} f(x,y,z) \diff x \diff y \diff z = \int_{x_{1}}^{x_{2}} \left[ \int_{\phi_{1}(x)}^{\phi_{2}(x)} \left[ \int_{\varphi_{1}(x,y)}^{\varphi_{2}(x,y)} \diff z \right] \diff y \right] \diff x
+\end{align}
+
+\begin{thm}[Green]
+\begin{align}
+    \iint_{\mathcal{S}} \left( \frac{\partial Q}{\partial x} - \frac{\partial P}{\partial y} \right)  \diff x \diff y = \oint_{\mathcal{C}} (P\diff x + Q \diff y)
+\end{align}
+\end{thm}
+%----------------------------------------------------------------------------------------
+\subsection*{Integrals de superfície}
+\subsubsection*{$\vec{f}$ sobre $\mathcal{S}$}
+\begin{align}
+    \iint_{\mathcal{S}} \vec{f}  \diff \mathcal{S} = \iint_{\mathcal{S}} \vec{f}(\vec{r}(u,v)) \cdot \left( \frac{\partial \vec{r}}{\partial u} \times \frac{\partial \vec{r}}{\partial v} \right) \diff u \diff v
+\end{align}
+
+\subsubsection*{$f$ sobre $\mathcal{S}$}
+\begin{align}
+    \iint_{\mathcal{S}} f  \diff \mathcal{S} = \iint_{\mathcal{S}} f(\vec{r}(u,v)) \left\| \frac{\partial \vec{r}}{\partial u} \times \frac{\partial \vec{r}}{\partial v} \right\| \diff u \diff v
+\end{align}
+
+\begin{thm}[Gauss]
+	\begin{align}
+    \begin{gathered}
+	    \iiint_{\mathcal{V}} \left( \frac{\partial P}{\partial x} + \frac{\partial Q}{\partial y} + \frac{\partial R}{\partial z} \right) \diff x \diff y \diff z \\
+		= \iint_{\mathcal{S}} \left[ P \diff y \wedge \dif z + Q \diff z \wedge \dif x + R \diff x \wedge \dif y \right]
+	\end{gathered}
+	\end{align}
+	o bé 
+	\begin{align}
+	    \iiint_{\mathcal{V}} (\vnabla \cdot \vec{f}) \diff \mathcal{V} = \iint_{\mathcal{S}} \vec{f} \cdot \dif \vec{\mathcal{S}}
+    \end{align}
+\end{thm}
+
+\begin{thm}[Stokes]
+\begin{align}
+	\begin{gathered}
+		\iint_{\mathcal{S}} \left[ \left( \frac{\partial R}{\partial y} - \frac{\partial Q}{\partial z} \right) \diff y \wedge \dif z + \left( \frac{\partial P}{\partial z} - \frac{\partial R}{\partial Q} \right) \diff z \wedge \dif x + \left( \frac{\partial Q}{\partial x} - \frac{\partial P}{\partial y} \right) \diff x \wedge \dif y \right] \\
+		= \oint_{\mathcal{C}} \left[ P \diff x + Q \diff y + R \diff z \right]
+	\end{gathered}
+	\end{align}
+    o bé
+    \begin{align}
+    	\iint_{\mathcal{S}} (\vnabla \times \vec{f}) \cdot \dif \vec{\mathcal{S}} = \oint_{\mathcal{C}} \vec{f}(\vec{x}) \cdot \dif \vec{x}
+    \end{align}
+\end{thm}
+
+%----------------------------------------------------------------------------------------
+\subsection*{Parametritzacions típiques}

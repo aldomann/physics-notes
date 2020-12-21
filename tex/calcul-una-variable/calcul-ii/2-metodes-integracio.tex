@@ -1,0 +1,153 @@
+%----------------------------------------------------------------------------------------
+%    MÈTODES D'INTEGRACIÓ
+%----------------------------------------------------------------------------------------
+\section{Mètodes d'integració}
+\subsection{Primitives immediates}
+\begin{table}[H]
+    \centering
+    \begin{tabular}{ll}
+        \toprule
+        \toprule
+        Derivades & Primitives \\
+        \midrule
+        $\displaystyle x^{n} \to n x^{n-1} $ & $\displaystyle  \int x^{n} \diff x = \frac{x^{n+1}}{n+1} + C , \quad (n \neq -1) $ \\
+        $\displaystyle \ln x \to \frac{1}{x} $ & $\displaystyle  \int \frac{1}{x} \diff x = \ln x + C $ \\
+        $\displaystyle e^{x} \to e^{x} $ & $\displaystyle  \int e^{x} \diff x = e^{x} + C $ \\
+        $\displaystyle \sin x \to \cos x $ & $\displaystyle  \int \cos x \diff x = \sin x + C $ \\
+        $\displaystyle \cos x \to - \sin x $ & $\displaystyle  \int \sin x \diff x = - \cos x + C $ \\
+        $\displaystyle \tan x \to \frac{1}{\cos^{2} x} $ & $\displaystyle  \int \frac{1}{\cos^{2} x} \diff x = \tan x + C $ \\
+        $\displaystyle \arcsin x \to \frac{1}{\sqrt{1 - x^{2}}} $ & $\displaystyle  \int \frac{1}{\sqrt{1 - x^{2}}} \diff x = \arcsin x + C $ \\
+        $\displaystyle \arccos x \to - \frac{1}{\sqrt{1 - x^{2}}} $ & $\displaystyle  \int - \frac{1}{\sqrt{1 - x^{2}}} \diff x = \arccos x + C $ \\
+        $\displaystyle \arctan x \to \frac{1}{1 + x^{2}} $ & $\displaystyle  \int \frac{1}{1 + x^{2}} \diff x = \arctan x + C $ \\
+        $\displaystyle \operatorname{arcsinh} x \to \frac{1}{\sqrt{1 + x^{2}}} $ & $\displaystyle  \int \frac{1}{\sqrt{1 + x^{2}}} \diff x = \operatorname{arcsinh} x + C $ \\
+        $\displaystyle \operatorname{arccosh} x \to - \frac{1}{\sqrt{- 1 + x^{2}}} $ & $\displaystyle  \int - \frac{1}{\sqrt{- 1 + x^{2}}} \diff x = \operatorname{arccosh} x + C $ \\
+        $\displaystyle \operatorname{arctanh} x \to \frac{1}{1 - x^{2}} $ & $\displaystyle  \int \frac{1}{1 - x^{2}} \diff x = \operatorname{arctanh} x + C $ \\
+    \bottomrule
+    \end{tabular}
+\end{table}
+
+%----------------------------------------------------------------------------------------
+\subsection{Canvi de variable o substitució}
+És una conseqüència de la regla de la cadena de la derivació:
+\begin{align}
+    \int_{a}^{b} f(g(x)) g'(x) \diff x = \int_{g(a)}^{g(b)} f(u) \diff u
+\end{align}
+Aquest mètode pot simplificar el càlcul d'una integral, a priori, no trivial.
+\begin{example}
+    $\displaystyle \int_{1}^{e} \left[ \ln (x) \right]^{2} \frac{1}{x} \diff x = \int_{0}^{1} u^{2} \diff u = \left. \frac{u^{3}}{3}\right|_{0}^{1} = \frac{1}{3}$
+
+    Es fan els canvis $\begin{cases} u = \ln (x) \\ \dif u = \frac{1}{x} \diff x \end{cases}$
+\end{example}
+
+%----------------------------------------------------------------------------------------
+\subsection{Integració per parts}
+És una conseqüència de la regla del producte de funcions de la derivació:
+\begin{align}
+    \int_{a}^{b} u \diff v = \left. uv \right|_{a}^{b} - \int_{a}^{b} v \diff u
+\end{align}
+
+\subsubsection*{Mètode LIATE}
+Aquesta regla proporciona un mètode mnemotècnic que facilita l'elecció de $u$ i $\dif v$.
+\begin{itemize}
+    \item L: Logarithmic functions.
+    \item I: Inverse trigonometric functions.
+    \item A: Algebraic functions.
+    \item T: Trigonometric functions.
+    \item E: Exponential functions.
+\end{itemize}
+Donada una funció qualsevol, $u$ serà aquella del tipus que es trobi primer a la llista.
+\begin{example}
+    $\displaystyle \int x e^{x} \diff x = x e^{x} - \int e^{x} \diff x = e^{x} (x - 1) + C$
+
+    Es fan els canvis $\begin{cases} u = x & \quad \dif u = \dif x\\ \dif v = e^{x} \diff x & \quad v = e^{x} \end{cases}$
+\end{example}
+
+%----------------------------------------------------------------------------------------
+\subsection{Polinomis trigonomètrics}
+Per calcular integrals del tipus $\int \cos^{n} x \, \cos^{m} x \diff x$, distingim tres casos:
+\begin{enumerate}[i)]
+    \item $n = 1$ (o $m = 1$). Es resol amb el canvi $u = \cos x$ (o $u = \sin x$).
+    \item $n$ o $m$ senar. Utilitzant la identitat $\sin^{2} x + \cos^{2} x = 1$ es redueix al cas anterior.
+    \item $n$ i $m$ parells. Es redueix als casos anteriors aplicant les fórmules de l'angle meitat, $\cos^{2} x = (1 + \cos 2x)/2$ i $\sin^{2} x = (1 - \cos 2x)/2$.
+\end{enumerate}
+
+%----------------------------------------------------------------------------------------
+\subsection{Funcions racionals}
+
+
+\subsubsection*{Completar el quadrat}
+\begin{align}
+    a x^{2} + b x + c = a ((x + \alpha)^{2} + \beta )
+\end{align}
+
+%----------------------------------------------------------------------------------------
+\subsection{Funcions racionals d'exponencials}
+Integrals de funcions del tipus $R(e^{x})$.
+
+Es poden reduir a integrals de funcions racionals amb el canvi de variable:
+\begin{align}
+    u = e^{x}, \quad \dif x = \frac{\dif u}{u}
+\end{align}
+
+%----------------------------------------------------------------------------------------
+\subsection{Integrals trigonomètriques}
+Inetgrals de funcions del tipus $R(\sin x , \cos x)$.
+\begin{enumerate}[i)]
+    \item Cas universal (canvi de Weirstrass).
+        \begin{align}
+            u = \tan \frac{x}{2} , \quad \dif x = \frac{2 \diff u}{1 + u^{2}} , \quad \sin x = \frac{2u}{1 + u^{2}} , \quad \cos x = \frac{1 - u^{2}}{1 + u^{2}}
+        \end{align}
+    \item $R$ senar en $\sin x$, $R(- \sin x , \cos x) = -R(\sin x , \cos x)$.
+        \begin{align}
+            u = \cos x , \quad \dif u = - \sin x \diff x, \quad \sin^{2} x = 1 - u^{2}
+        \end{align}
+    \item $R$ senar en $\cos x$, $R(\sin x , - \cos x) = -R(\sin x , \cos x)$.
+        \begin{align}
+            u = \sin x , \quad \dif u = \cos x \diff x, \quad \cos^{2} x = 1 - u^{2}
+        \end{align}
+    \item $R$ senar en $\sin x i \cos x$, $R(- \sin x , - \cos x) = R(\sin x , \cos x)$.
+        \begin{align}
+            u = \tan x , \quad \dif x = \frac{\dif u}{1 + u^{2}} , \quad \sin x = \frac{u}{\sqrt{1 + u^{2}}} , \quad \cos x = \frac{1}{\sqrt{1 + u^{2}}}
+        \end{align}
+\end{enumerate}
+
+%----------------------------------------------------------------------------------------
+\subsection{Funcions amb potències fraccionàries}
+Integrals de potències del tipus $\displaystyle \left( \frac{ax + b}{cx + d} \right)^{r_{i}}, \; \; r_{1} , \dots , r_{n} \in \mathbb{Q}$.
+
+Es poden reduir a integrals de funcions racionals amb el canvi de variable:
+\begin{align}
+    u^{m} = \frac{ax + b}{cx + d}, \quad m \equiv \text{ mínim comú denominador de $r_{i}$}.
+\end{align}
+
+%----------------------------------------------------------------------------------------
+\subsection{Radicals d'expressions quadràtiques}
+Integrals de funcions del tipus $R(x , \sqrt{ax^{2} + bx + c})$.
+
+Després d'eliminar el terme lineal completant el quadrat, el radical es redueix a un dels casos:
+\begin{enumerate}[i)]
+    \item $\sqrt{k^{2}-x^{2}}$. Canvi: $x = k \sin t$.
+    \item $\sqrt{k^{2}+x^{2}}$. Canvi: $x = k \tan t$.
+    \item $\sqrt{x^{2}-k^{2}}$. Canvi: $x = k \frac{1}{\cos t}$.
+\end{enumerate}
+
+%----------------------------------------------------------------------------------------
+\subsection{Identitats trigonomètriques útils}
+\begin{align}
+\begin{split}
+    \sin ^{2} \theta + \cos ^{2} \theta = 1 \\
+    \tan ^{2} \theta + 1 = \sec ^2 \theta
+\end{split}
+\end{align}
+\begin{align}
+\begin{split}
+    \sin (\alpha \pm \beta) &= \sin \alpha \cos \beta \pm \cos \alpha \sin \beta \\
+    \cos (\alpha \pm \beta) &= \cos \alpha \cos \beta \mp \sin \alpha \sin \beta
+\end{split}
+\end{align}
+\begin{align}
+\begin{split}
+    \sin^{2} \theta &= \frac{1 - \cos 2 \theta}{2} \\
+    \cos^{2} \theta &= \frac{1 + \cos 2 \theta}{2}
+\end{split}
+\end{align}

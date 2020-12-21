@@ -1,0 +1,217 @@
+%----------------------------------------------------------------------------------------
+%    LA DERIVADA
+%----------------------------------------------------------------------------------------
+\section{La derivada}
+\subsection{El problema del pendent}
+Quina és la recta que millor s'ajusta al gràfic d'una funció en un punt donat? La intuïció ens diu que és la recta tangent. No obstant, no sempre es pot parlar de recta tangent. El desenvolupament d'aquesta idea ens portarà als conceptes de derivada i funció derivable. Només per a aquestes funcions es podrà parlar de pendent i de recta tangent.
+
+%----------------------------------------------------------------------------------------
+\subsection{Derivada}
+\subsubsection*{Derivada d'una funció en un punt}
+Sigui $f$ una funció definida en algun entorn d'un punt $a$. Definim la derivada de $f$ en el punt $a$ com el límit (si existeix):
+\begin{align}
+    f'(a) \equiv \lim\limits_{x \to a} \frac{f(x)-f(a)}{x-a} = \lim\limits_{h \to 0} \frac{f(a+h) - f(a)}{h}
+\end{align}    
+Si aquest límit existeix, direm que la funció $f$ és derivable en el punt $a$.
+
+\subsubsection*{Derivada i pendent de la recta tangent}
+De totes les línies rectes que passen pel punt $(a, f(a))$, la recta tangent al gràfic de $f$ en aquest punt és la que millor s'ajusta al gràfic en el punt esmentat. Aquesta recta és:
+\begin{align}
+    y = f(a) + f'(a)(x-a)
+\end{align}
+Així doncs, derivabilitat $\Leftrightarrow$ existència de recta tangent.
+\subsubsection*{Diferencial}
+Podem reexpressar la recta tangent, $y = f(a) + f'(a)(x-a)$, en termes de nous eixos de coordenades, $(\dif x,\dif y)$, paral·leles a $(x,y)$ amb l'origen traslladat al punt $(a,f(a))$:
+\begin{align}
+    \dif y = f'(a) \diff x
+\end{align}
+Aquesta funció lineal s'anomena diferencial de la funció $f$ en el punt $a$. Els conceptes de derivabilitat i diferenciabilitat de $f$ en un punt són equivalents. Si $f$ és diferenciable en tots els punts de $D \subseteq \mathbb{R}$, escriurem:
+\begin{align}
+    f'(x)= \frac{\dif y}{\dif x} = \frac{\dif f}{\dif x} = \frac{\dif }{\dif x}f(x)
+\end{align}
+Aquesta notació, anomenada de Liebnitz, és molt útil perquè permet manipular els diferencials com a fraccions, respectant les propietats de les derivades. Pel que fa a derivades d'ordre superior $n$, escriurem:
+\begin{align}
+    f^{(n)}(x)= \frac{\dif ^{n}y}{\dif x^{n}} = \frac{\dif ^{n}f}{\dif x} = \frac{\dif }{\dif x^{n}}f(x)
+\end{align}
+
+\subsubsection*{Derivabilitat i continuïtat}
+Si $f$ és derivable en el punt $a$, la funció $f(x)-f(a)$ ha de ser un infinitèsim (d'ordre igual o superior a 1) quan $x \to a$. Per tant:
+\begin{align}
+    \lim\limits_{x \to a} f(x) = f(a)
+\end{align}
+Així doncs, $f$ derivable en el punt $a \Leftrightarrow f$ contínua en el punt $a$.
+
+\subsubsection*{Propietats de la derivada}
+\begin{itemize}
+    \item Linealitat de la derivada:
+        \subitem $(f+g)'(a) = f'(a) + g'(a)$.
+        \subitem $(kf)'(a) = kf'(a), \quad \forall k \in \mathbb{R}$.
+    \item Derivada del producte:
+        \subitem $(fg)'(a) = f'(a)g(a) + f(a)g'(a)$.
+    \item Derivada del quocient:
+        \subitem $(f/g)'(a)= [f'(a)g(a)-f(a)g'(a)]/[g(a)]^{2}$
+    \item Derivada d'una funció composta (regla de la cadena):
+        \subitem $(g \circ f)'(a) = g'[f(a)] f'(a)$
+    \item Derivada de la funció inversa:
+        \subitem $(f^{-1})'(a) = 1/[f'[f^{-1}(a)]]$
+\end{itemize}
+
+%----------------------------------------------------------------------------------------
+\subsection{Derivades elementals}
+\subsubsection*{Funcions polinòmiques}
+\begin{itemize}
+    \item $f(x) = k , \quad f'(x) = 0$
+    \item $f(x) = x^{n} , \quad f'(x) = n x^{n-1}$
+\end{itemize}
+
+\subsubsection*{Funcions exponencials}
+\begin{itemize}
+    \item $f(x) = \ln x , \quad f'(x) = \frac{1}{x}$
+    \item $f(x) = e^{x} , \quad f'(x) = e^{x}$
+    \item $f(x) = \log_{a} x, \quad f'(x) = \frac{1}{x \ln a}$
+    \item $f(x) = a^{x} , \quad f'(x) = a^{x} \ln a$
+\end{itemize}
+
+\subsubsection*{Funcions trigonomètriques}
+\begin{itemize}
+    \item $f(x) = \sin x , \quad f'(x) = \cos x$
+    \item $f(x) = \cos x , \quad f'(x) = - \sin x $
+    \item $f(x) = \tan x , \quad f'(x) = \frac{1}{\cos^{2} x} $
+    \item $f(x) = \arcsin x , \quad f'(x) = \frac{1}{\sqrt{1 - x^{2}}}$
+    \item $f(x) = \arccos x , \quad f'(x) = - \frac{1}{\sqrt{1 - x^{2}}}$
+    \item $f(x) = \arctan x , \quad f'(x) = \frac{1}{1 + x^{2}}$
+\end{itemize}
+
+\subsubsection*{Funcions hiperbòliques}
+\begin{itemize}
+    \item $f(x) = \sinh x , \quad f'(x) = \cosh x$
+    \item $f(x) = \cosh x , \quad f'(x) = \sinh x $
+    \item $f(x) = \tanh x , \quad f'(x) = \frac{1}{\cosh^{2} x} $
+    \item $f(x) = \sinh^{-1} x, \quad f'(x) = \frac{1}{\sqrt{1 + x^{2}}}$
+    \item $f(x) = \cosh^{-1} x, \quad f'(x) = \frac{1}{\sqrt{-1 + x^{2}}}$
+    \item $f(x) = \tanh^{-1} x, \quad f'(x) = \frac{1}{1-x^{2}}$
+\end{itemize}
+
+%----------------------------------------------------------------------------------------
+\subsection{Teoremes del valor mitjà}
+\subsubsection*{Teorema del valor mitjà de Rolle}
+Si $f$ és contínua a l'interval $[a,b]$ i derivable en el seu interior, 
+\begin{align}    
+    f(a) = f(b) \Rightarrow \exists c \in (a,b) \text{ tal que } f'(c) = 0 
+\end{align}
+En efecte, al ser $f$ contínua a $[a,b]$, ha de tenir màxim i mínim.
+
+\subsubsection*{Teorema del valor mitjà de Cauchy}
+Si $f$ i $g$ són contínues a l'interval $[a,b]$ iderivables en el seu interior, i es compleix que $g(a) \neq g(b)$ i que $f'(x)$ i $g'(x)$ no s'anul·len simultàniament en cap punt $\in [a,b]$
+\begin{align}
+    \Rightarrow \exists c \in (a,b) \text{ tal que } \frac{f(b)-f(b)}{g(b)-g(a)} = \frac{f'(c)}{g'(c)}
+\end{align}
+
+\subsubsection*{Teorema del valor mitjà de Lagrange}
+Si $f$ és contínua a l'interval $[a,b]$ i derivable en el seu interior
+\begin{align}
+    \Rightarrow \exists c \in (a,b) \text{ tal que } \frac{f(b)-f(b)}{b-a} = f'(c)
+\end{align}
+És un cas particular del teorema anterior; només cal prendre $g(x)=x$.
+
+%----------------------------------------------------------------------------------------
+\subsection{Creixement i concavitat}
+\subsubsection*{Creixement i decreixement}
+\begin{itemize}
+    \item $f$ és creixent a $(a,b) \Leftrightarrow f'(x) \geq 0, \quad \forall x \in (a,b)$.
+    \item $f$ és decreixent a $(a,b) \Leftrightarrow f'(x) \leq 0, \quad \forall x \in (a,b)$.
+\end{itemize}
+    
+\subsubsection*{Extrems relatius}
+\begin{itemize}
+    \item Hi ha un màxim al punt $c \in (a,b)$ si $f'(c)=0$, $f$ és creixent a $(a,c)$ i decreixent a $(c,b)$.
+    \item Hi ha un mínim al punt $c \in (a,b)$ si $f'(c)=0$, $f$ és decreixent a $(a,c)$ i creixent a $(c,b)$.
+\end{itemize}
+
+\subsubsection*{Concavitat i convexitat}
+\begin{itemize}
+    \item $f$ és còncava a $(a,b)$ si la seva derivada és monòtonament decreixent a l'interval.
+    \item $f$ és convexa a $(a,b)$ si la seva derivada és monòtonament creixent a l'interval.
+\end{itemize}
+
+\subsubsection*{Punts d'inflexió}
+Les condicions següents són equivalents:
+\begin{itemize}
+    \item Hi ha un punt d'inflexió al punt $c \in (a,b)$ si $f'(c)=0$ i $f$ és creixent (o decreixent) tant a $(a,c)$ com a $(c,b)$.
+    \item Hi ha un punt d'inflexió al punt $c \in (a,b)$ si $f'(c)=0$ i $f$ és convexa a $(a,c)$ i còncava a $(a,c)$ (o a l'inrevés).
+\end{itemize}
+
+%----------------------------------------------------------------------------------------
+\subsection{Regles de l'Hôpital}
+Amb aquest nom s'apleguen diversos teoremes que són de gran utilitat per al càlcul de límits de funcions. Les regles de l'Hôpital permeten resoldre moltes de les indeterminacions $0/0$ i $\infty / \infty$.
+
+\subsubsection*{Els casos $0/0$ i $\infty / \infty$}
+Si el límit d'una funció és una indeterminació d'aquest tipus, es pot aplicar l'Hôpital un nombre finit de vegades, $n$, fins desfer la indeterminació (només si és possible). El valor obtingut després de $n$ reiteracions és el valor del límit de la funció inicial:
+\begin{align}
+    \lim\limits_{x \to a} \frac{f(x)}{g(x)} \text{ és indeterminat, però }\lim\limits_{x \to a} \frac{f^{n}(x)}{g^{n}(x)}=l \Rightarrow \lim\limits_{x \to a} \frac{f(x)}{g(x)}=l
+\end{align}
+Pel que fa a la resta d'indeterminacions, es poden reduir als casos $0/0$ o $\infty / \infty$.
+
+\subsubsection*{El cas $0 \cdot \infty$}
+$\displaystyle \lim\limits_{x \to a} f(x)g(x)$ és indeterminat, però
+\begin{align}
+    \lim\limits_{x \to a} \frac{f(x)}{1/g(x)} = \frac{\infty}{\infty} \text{ o } \frac{0}{0} 
+\end{align}
+
+\subsubsection*{El cas $\infty - \infty$}
+$\displaystyle \lim\limits_{x \to a} f(x) - g(x)$ és indeterminat, però
+\begin{align}
+    \lim\limits_{x \to a} \frac{1/f(x) - 1/g(x)}{1/f(x)g(x)} = \frac{\infty}{\infty} \text{ o } \frac{0}{0}
+\end{align}
+
+\subsubsection*{Els casos $0^{0}$, $\infty^{0}$ i $1^{\infty}$}
+$\displaystyle \lim\limits_{x \to a} f(x)^{g(x)}$ és indeterminat, però
+\begin{align}
+    \lim\limits_{x \to a} e^{g(x) \ln f(x)} \text{ i }\lim\limits_{x \to a} g(x) \ln f(x) = 0 \cdot \infty
+\end{align}
+
+%----------------------------------------------------------------------------------------
+\subsection{Fórmula de Taylor}
+\subsubsection*{Polinomi de Taylor de grau $n$}
+Suposem que $f$ és derivable $n$ vegades en el punt $a$, busquem ara el polinomi $P_{n}(x)$, de grau $n$, que millor s'ajusti a $f$ en aquest punt.
+\begin{align}
+    f(x) \approx P_{n}^{(a)}(x) = \sum\limits_{k=0}^{n} \frac{f^{(k)}(a)}{k!} (x-a)^{k}
+\end{align}
+Si $a=0$, parlem del polinomi de Maclaurin.
+
+\subsubsection*{Fórmula de Taylor}
+\begin{align}
+    f(x) = P_{n}^{(a)}(x) + R_{n}(x,a)
+\end{align}
+
+\subsubsection*{Resta de Lagrange}
+Es pot avaluar l'error màxim que es comet quan es fa el polinomi de Taylor avaluant $R_{n}(x,a)$ en funció de $c$.
+\begin{align}
+    R_{n}(x,a) = \frac{f^{(n+1)}(c)}{(n+1)!}(x-a)^{n+1}
+\end{align}
+
+%----------------------------------------------------------------------------------------
+\subsection{Mètode Newton-Raphson}
+Permet estimar la solució d'una equació d'una variable real amb un alt grau de precisió.
+
+Sigui $f(x)$ una funció derivable que té una solució en $x=a$ i sigui $x_{1}$ una estimació arbitrària de $a$. La tangent a la gràfica en $(x_{1}, f(x_{1}))$ té per equació $y= f(x) + f'(x_{1})(x-x_{1})$ i talla l'eix $x$ en $0=f(x_{1})+f'(x_{1})(x_{2}-x_{1}) \Rightarrow x_{2}= x_{1} - \frac{f(x_{1})}{f'(x_{1})} \Rightarrow$ 
+\begin{align}
+    x_{n+1}= x_{n} - \frac{f(x_{n})}{f'(x_{n})}
+\end{align}
+Sota hipòtesis adequades, si es fa una reiteració del procés, la successió $\{ x_{1}, x_{2}, \dots , x_{n}, \dots \}$ convergeix ràpidament a $a$.
+
+%----------------------------------------------------------------------------------------
+\subsection{Representació gràfica d'una funció}
+Propietats d'una funció que cal tenir en compte  a l'hora de representar-la gràficament:
+\begin{enumerate}[i)]
+    \item Domini d'existència de la funció.
+    \item Simetries i periodicitat.
+    \item Punts de tall amb els eixos.
+    \item Creixement i decreixement.
+    \item Màxims, mínims i punts d'inflexió.
+    \item Concavitat i convexitat.
+    \item Asímptotes verticals.
+    \item Asímptotes oblíqües.
+    \item Asímptotes horitzontals.
+    \item Comportament parabòlic.
+\end{enumerate}

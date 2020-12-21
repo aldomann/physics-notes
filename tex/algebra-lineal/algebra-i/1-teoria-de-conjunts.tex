@@ -1,0 +1,108 @@
+%----------------------------------------------------------------------------------------
+%    TEORIA DE CONJUNTS
+%----------------------------------------------------------------------------------------
+\section{Teoria de conjunts}
+\subsection{Relacions binàries $\mathcal{R}$}
+$\mathcal{R}$ en $A \subseteq A^{2}, \quad (a,b) \in \mathcal{R} \subseteq A^{2} = a \mathcal{R} b$.
+\subsubsection*{Propietats}
+\begin{itemize}
+    \item Reflexiva: $a \mathcal{R} b, \quad \forall a \in A$.
+    \item Simètrica: $a \mathcal{R} b \Rightarrow b \mathcal{R} a$.
+    \item Antisimètrica: $a \mathcal{R} b$ i $b \mathcal{R} a \Rightarrow a = b$.
+    \item Transitiva: $a \mathcal{R} b$ i $b \mathcal{R} c \Rightarrow a \mathcal{R} c$.
+\end{itemize}
+
+\subsubsection*{Relacions d'ordre $\leq$}
+\begin{itemize}
+    \item Reflexiva: $a \leq b, \quad \forall a \in A$.
+    \item Antisimètrica: $a \leq b$ i $b \leq a \Rightarrow a = b$.
+    \item Transitiva: $a \leq b$ i $b \leq c \Rightarrow a \leq c$.
+\end{itemize}
+
+\subsubsection*{Relacions d'equivalència $\sim$}
+\begin{itemize}
+    \item Reflexiva: $a \sim b, \quad \forall a \in A$.
+    \item Simètrica: $a \sim b \Rightarrow b \sim a$.
+    \item Transitiva: $a \sim b$ i $b \sim c \Rightarrow a \sim c$.
+\end{itemize}
+
+\paragraph{Classe d'equivalència de $a$}
+$\left[ a \right]$ és el conjunt d'elements $\in A$ relacionats amb $a$.
+\begin{align}
+    \left[ a \right] \equiv \{b \in a \mid b \sim a \} 
+\end{align}
+
+\paragraph{Conjunt quocient de $A$}
+ $A / \sim$ és el conjunt de totes les classes (disjuntes, per definició) de $A$. 
+\begin{align}
+    a \in A \textrm{, } \left[ a \right] \subseteq A \textrm{, però } \left[ a \right] \in A / \sim
+\end{align}
+
+%----------------------------------------------------------------------------------------
+\subsection{Principi d'inducció}
+El principi d'inducció diu que si $S \subseteq \mathbb{N}$ tal que
+\begin{enumerate}[i)]
+    \item $0 \in S$ (a vegades, però, es treballa amb $S^{*} $).
+    \item $n \in S \Rightarrow n+1 \in S$.
+\end{enumerate}
+
+$\Rightarrow S = \mathbb{N}$, demostrant així que una propietat $P(n)$ que és certa $\forall n \in S$, ho serà també $\forall n \in \mathbb{N}$.
+
+%----------------------------------------------------------------------------------------
+\subsection{Aplicacions}
+Una aplicació de $A$ a $B$ és la tripleta $(A,B,f)$ on $f \subseteq A \times B$ que compleix:
+\begin{enumerate}[i)]
+    \item $\forall a \in A, \quad \exists b \in B$ tal que $(a,b) \in f$. 
+    \item $(a,b),(a',b') \in f \Rightarrow b = b'$.
+\end{enumerate}
+
+Per denotar que $(A,B,f)$ és aplicació, s'escriu $f: A \to B$.
+
+\subsubsection*{Tipus d'aplicacions}
+\begin{itemize}
+    \item Injectiva: $\hookrightarrow$ o $\iota$. 
+        \subitem $\iota \Leftrightarrow f(a) = f(a') \Rightarrow a = a'$.
+    \item Exhaustiva: $\twoheadrightarrow$ o $\pi$. 
+        \subitem $\pi \Leftrightarrow \forall b \in B, \exists a \in A$ tal que $f(a) = b$.
+    \item Bijectiva: $\leftrightarrow$ o $\tilde{f}$. 
+        \subitem $\tilde{f} \Leftrightarrow f$ és $\iota$ i $\pi$ alhora.
+\end{itemize}
+
+\subsubsection*{Descomposició canònica d'una aplicació}
+Tota aplicació $f:A \to B$ pot ésser expressada com a:
+\begin{align}
+    f = \iota \circ \tilde{f} \circ \pi = \iota ( \tilde{f} ( \pi (A))) \subseteq B
+\end{align}
+
+\begin{example}
+\begin{align*}
+    A \to B = A \twoheadrightarrow A / \sim \leftrightarrow f(A) \hookrightarrow B
+\end{align*}
+\end{example}
+
+\subsubsection*{Inclusió canònica}
+Sigui $B \subseteq A$,
+
+$\iota: B \to A$ és definida per $\iota (x), \quad \forall b \in B$.
+
+\subsubsection*{Aplicació identitat}
+És un cas concret de $\iota (x)$.
+
+$id_{A}: A \to A$ és definida per $\iota (x), \quad \forall a \in A$.
+
+\subsubsection*{Imatge i antiimatge}
+Sigui $f: A \to B$,
+
+Imatge de $A$: $\im(f) = f(A) \equiv \{ f(x) \mid x \in A \}$
+
+Antiimatge de $B$: $f^{-1} (B) \equiv \{ x \in A \mid f(x) \in B \}$
+
+\subsubsection*{Composició d'aplicacions}
+Siguin $f: A \to B$ i $g: B \to C$, 
+
+$g \circ f: A \to C$, on $(g \circ f)(x) = g(f(x)), \quad \forall x \in A$.
+
+\subsubsection*{Inversa d'una funció bijectiva}
+Sigui $\tilde{f}: A \to B, \;A \neq 0$ i $B \neq 0$,
+
+$\exists \tilde{g}: A \to B$ tal que $\tilde{g} \circ \tilde{f} = id_{A}$ i $\tilde{f} \circ \tilde{g} = id_{B}$

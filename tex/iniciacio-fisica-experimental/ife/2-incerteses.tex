@@ -1,0 +1,43 @@
+%----------------------------------------------------------------------------------------
+%    CÀLCUL D'INCERTESES
+%----------------------------------------------------------------------------------------
+\section{Càlcul d'incerteses}
+\subsection{Incertesa d'un conjunt de mostres}
+
+\subsubsection*{Millor estimació del valor real d'una magnitud física}
+\begin{align}
+    \boxed{\bar{x} = \frac{\sum\limits_{i=1}^{n} x_{i}}{n}}
+\end{align}
+On $x_{i} \equiv$valors de les mesures i $n \equiv$nre. total de mesures. Associem $\bar{x}$ amb el valor de la magnitud $\approx$ valor real.
+
+\subsubsection*{Variança $\sigma ^{2}$ i desviació estàndard $\sigma$ d'una mostra}
+\begin{align}
+    \boxed{\sigma ^{2} = \frac{\sum\limits_{i=1}^{n} \left( x_{i} - \bar{x} \right) ^{2}}{n-1}}; \qquad \boxed{\sigma = \sqrt{\sigma ^{2}}}
+\end{align}
+
+\subsubsection*{Variança $s^{2}$ i desviació estàndard $s$ de la mitjana}
+\begin{align}
+    \boxed{s^{2} = \frac{\sigma ^{2}}{n}}; \qquad \boxed{s = \sqrt{s^{2}} = \frac{\sigma}{\sqrt{n}}}
+\end{align}
+
+\subsubsection*{Incertesa total $u_{T}$}
+\begin{align}
+    \boxed{u_{T} = \sqrt{u_{T}^{2}}}; \qquad \boxed{u_{T}^{2} = u_{e}^{2} + u_{i}^{2}}
+\end{align}
+On $u_{e} \equiv$ incertesa d'origen estadístic ($=s$) i $u_{i} \equiv$ incertesa instrumental (valor més petit de les divisions de l'aparell de mesura.
+
+La ISO recomana utilitzar dues xifres significatives per a les incerteses$\Rightarrow$ el valor es talla tal que tingui el mateix nivell de significació que la incertesa (e.g., $\bar{x} = 9,28823$ $mm$ i $u_{T} = 0,01825$ $mm$ $\Rightarrow$ el valor serà $\left( 9,288 \pm 0,018 \right)$ $mm$.
+
+%----------------------------------------------------------------------------------------
+\subsection{Incertesa combinada}
+Sigui $y = f(x_{1} , \cdots , x_{n})$. L'incertesa combinada $u_{c}$ de $y$ es calcula de la forma següent:
+\begin{align}
+    \boxed{u_{c}^{2} \left( y \right) = \sum\limits_{i=1}^{n} \left( \frac{\partial f}{\partial x_{i}} \right) ^{2} u_{x_{i}}^{2}}
+\end{align}
+
+%----------------------------------------------------------------------------------------
+\subsection{Incertesa expandida}
+\begin{align}
+    \boxed{U = k \cdot u_{y}}
+\end{align}
+on, $k$ és el factor de cobriment.

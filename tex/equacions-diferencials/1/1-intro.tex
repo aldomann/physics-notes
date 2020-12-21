@@ -1,0 +1,112 @@
+%----------------------------------------------------------------------------------------
+%    INTRODUCCIÓ A LES EQUACIONS DIFERENCIALS
+%----------------------------------------------------------------------------------------
+\section{Introducció a les equacions diferencials}
+\subsection{Definició i classificació}
+\begin{defi}
+Una equació diferencial (ED) és una equació que té la següent forma:
+\begin{align}
+    f(x, y, \frac{\dif y}{\dif x}, \frac{\dif^{2} y}{\dif x^{2}}, \dots , \frac{\dif^{n} y}{\dif x^{n}}) = 0
+\end{align}
+\end{defi}
+\begin{itemize}
+    \item Variable independent $\equiv$ variable.
+    \item Variable dependent $\equiv$ funció.
+    \item Ordre: nombre de la derivada més alta.
+    	\subitem Si V.D. $> 1 \Rightarrow$ sistema d'EDs.
+		\subitem Si V.I. $> 1 \Rightarrow$ ED en derivades parcials.
+	\item Solució: funció $y(x)$ tal que $y, y', y'', \dots , y^{(n)}$ compleixin l'ED.
+\end{itemize}
+
+\subsubsection*{Exemples d'equacions diferencials i de solucions}
+\begin{enumerate}[i)]
+	\item $y'' + y = 0$ és una ED de 2n ordre.
+		\subitem $y = \cos x, y \sin x$ són solucions.
+	\item $\displaystyle \frac{\partial z}{\partial x} + \frac{\partial z}{\partial y} = x + y$ és una ED en derivades parcials de 1r ordre.
+		\subitem $z = xy$ és solució.
+	\item $\begin{cases} \frac{\dif x}{\dif t} = 2y + x \\ \frac{\dif y}{\dif t} = 3y + 4x \end{cases}$ és un sistema de dues EDs de 1r ordre.
+		\subitem $x = e^{-t}, y = - e^{-t}$ és solució.
+\end{enumerate}
+A vegades la solució és una relació implícita: $\displaystyle \frac{\partial y}{\partial x} = \frac{x y}{x^{2} + y^{2}}$. La solució és $x^{2} = 2 y^{2} \ln{y}$.
+
+%----------------------------------------------------------------------------------------
+\subsection{Tipus de solucions}
+\begin{itemize}
+	\item Solució general: conjunt complet de solucions.
+	\item Solució particular: és qualsevol element del conjunt de solucions generals.
+\end{itemize}
+
+\begin{example}
+    $\displaystyle \frac{\dif y}{\dif x} = x \Rightarrow \boxed{y = \frac{x^{2}}{2} + C}$ és la solució general. I $\displaystyle y = \frac{x^{2}}{2}$ i $\displaystyle y = \frac{x^{2}}{2} + 3$ són solucions particulars vàlides.
+\end{example}
+\begin{example}
+    $\displaystyle \frac{\dif y}{\dif x} + \frac{1}{y} = \frac{x}{y} \Rightarrow \frac{\dif y}{\dif x} = \frac{x - 1}{y} \Rightarrow y \diff y = (x - 1) \diff x$
+
+    $\displaystyle \Rightarrow \boxed{\frac{y^{2}}{2} = \frac{x^{2}}{2} - x + C}$.
+\end{example}
+\begin{example}
+    $\displaystyle x \frac{\dif^{2} y}{\dif x^{2}} + \frac{\dif y}{\dif x} = \frac{1}{x^{2}} \Rightarrow \boxed{x \frac{\dif y}{\dif x} = -\frac{1}{x} + C} \Rightarrow \frac{\dif y}{\dif x} = -\frac{1}{x^{2}} + \frac{C}{x}$
+
+    $\Rightarrow \boxed{y = \frac{1}{x} + C \ln x + D} \Rightarrow$ ED d'ordre $n \Leftrightarrow n$ constants.
+\end{example}
+
+%----------------------------------------------------------------------------------------
+\subsection{Família de corbes a un paràmetre}
+\begin{defi}
+Una relació de la forma $F(x,y,C) = 0$ representa una família de corbes a un paràmetre en el pla.
+Aquestes famílies són sempre solucions d'una ED de 1r ordre.
+\end{defi}
+Exemples:
+\begin{enumerate}[i)]
+    \item $\displaystyle  x^{2} + y^{2} = C^{2}$ cercles amb centre en l'origen.
+    \item $\displaystyle \frac{x^{2}}{a^{2}} + y^{2} = 1$ elipses amb centre en l'origen i semieix vertical unitat.
+\end{enumerate}
+Les EDs s'obtenen suprimint el paràmetre entre $\displaystyle F, \frac{\dif F}{\dif x}$:
+\begin{enumerate}[i)]
+	\item $2x + 2y \displaystyle \frac{\dif y}{\dif x} = 0$.
+	\item $\displaystyle \frac{2x}{a^{2}} + 2y \frac{\dif y}{\dif x} = 0 \Rightarrow \frac{x}{2} = \frac{1 - y^{2}}{-2 y \left( \frac{\dif y}{\dif x} \right)} \Rightarrow \frac{\dif y}{\dif x} = \frac{y^{2} - 1}{x y}$.
+\end{enumerate}
+
+\subsubsection*{Trajectòries}
+\begin{defi}
+La trajectòria d'una família de corbes talla cada corba de la família segons alguna regla, en general a cert angle. El cas més habitual són les trajectòries ortogonals.
+\end{defi}
+Sigui $F(x, y, C) = 0$ una família de corbes de la qual volem trobar la seva ED $f(x, y, \frac{\dif y}{\dif x}) = 0$.
+
+L'ED de les trajectòries serà $f(x, y, - \frac{\dif x}{\dif y}) = 0$ si són ortogonals, i en general, si són obliqües (formen cert angle $\alpha$) serà:
+\begin{align}
+	f\left(x, y, \frac{\dif y / \dif x - \tan{\alpha}}{1 + \tan{\alpha} \left( \frac{\dif y}{\dif x} \right)}\right) = 0
+\end{align}
+Resolent aquesta ED, es determinen les trajectòries.
+
+%----------------------------------------------------------------------------------------
+\subsection{Mètode de Picard}
+Sigui $\displaystyle \frac{\dif y}{\dif x} = f(x, y)$ una ED de 1r ordre. Podem trobar una solució tal que $y = b$ quan $x = a$ per aproximacions successives del mode següent:
+\begin{enumerate}[i)]
+	\item Es prova una primera funció $y_{0}(x)$ com a solució. Si $\displaystyle \frac{\dif y}{\dif x} = f \left[ x, y_{0}(x) \right]$ és integrable $\Rightarrow$
+		\begin{align*}
+			y_{1}(x) = b + \int_{a}^{x} f \left[ x, y_{0}(x) \right] \diff x
+		\end{align*}
+	\item Provem $y_{1}(x)$, o sigui, fem $\displaystyle \frac{\dif y}{\dif x} = f \left[ x, y_{1}(x) \right]$, i si és integrable $\Rightarrow$
+			\begin{align*}
+			y_{2}(x) = b + \int_{a}^{x} f \left[ x, y_{1}(x) \right] \diff x
+		\end{align*}
+	\item I així successivament:
+		\begin{align}
+			\boxed{y_{n}(x) = b + \int_{a}^{x} f \left[ x, y_{n-1}(x) \right] \diff x}
+		\end{align}
+\end{enumerate}
+
+Observem que el $\lim$ per a $n \to \infty$ és una solució de l'ED si inicialment s'agafa $y_{0}(x) = b$.
+
+\begin{example}
+	$\displaystyle \frac{\dif y}{\dif x} = x + y$, per a $y = 0$ quan $x = 0$.
+
+	$\displaystyle y_{0} = 0 \Rightarrow y_{1} = \int_{0}^{x} x \diff x = \frac{x^{2}}{2}$
+
+	$\displaystyle \Rightarrow y_{2} = \int_{0}^{x} \left( x + \frac{x^{2}}{2} \right) \diff x = \frac{x^{2}}{2} + \frac{x^{3}}{6}$
+
+	$\displaystyle \Rightarrow y_{3} = \int_{0}^{x} \left( x + \frac{x^{2}}{2} + \frac{x^{3}}{6} \right) \diff x = \frac{x^{2}}{2} + \frac{x^{3}}{6} + \frac{x^{4}}{24}$
+
+	$\displaystyle \Rightarrow y_{n} = \frac{x^{2}}{2} + \frac{x^{3}}{6} + \dots + \frac{x^{n}}{n!} = \sum_{n=2}^{\infty} \frac{x^{n}}{n!} = \boxed{y_{n} = e^{x} - x - 1}$ és solució de l'equació.
+\end{example}

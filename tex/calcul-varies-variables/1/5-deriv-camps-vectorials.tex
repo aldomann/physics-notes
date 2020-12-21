@@ -1,0 +1,180 @@
+%----------------------------------------------------------------------------------------
+%    DERIVACIÓ DE CAMPS VECTORIALS
+%----------------------------------------------------------------------------------------
+\section{Derivació de camps vectorials}
+\subsection{Matriu jacobiana}
+Sigui $\vec{f}(\vec{x}) = (f_{1}(\vec{x}), f_{2}(\vec{x}), \dots, f_{m}(\vec{x}))$ un camp vectorial definit a $D \subseteq \mathbb{R}^{n}$, amb valors a $\mathbb{R}^{m}$.
+\begin{defi}[Derivada direccional i derivades parcials]
+    Si $\hat{u}$ és un vector unitari de $\mathbb{R}^{n}$,
+    \begin{align}
+        (D_{\hat{u}} \vec{f})_{\vec{a}} = \lim_{\lambda \to 0} \frac{\vec{f}(\vec{a} - \lambda \hat{u})}{\lambda} = \begin{pmatrix} D_{\hat{u}} f_{1} \\ D_{\hat{u}} f_{2} \\ \vdots \\ D_{\hat{u}} f_{m} \end{pmatrix}_{\vec{a}}; \quad \left( \frac{\partial \vec{f}}{\partial x_{i}} \right)_{\vec{a}} = \begin{pmatrix} \displaystyle \frac{\partial f_{1}}{\partial x_{i}} \\ \displaystyle \frac{\partial f_{2}}{\partial x_{i}} \\ \vdots \\ \displaystyle \frac{\partial f_{m}}{\partial x_{i}} \end{pmatrix}_{\vec{a}}
+    \end{align}
+\end{defi}
+\begin{defi}[Matriu jacobiana]
+    \begin{align}
+        (\vec{J}^{\vec{f}})_{\vec{a}} \equiv \begin{pmatrix} \vnabla f_{1} \\ \vdots \\ \vnabla f_{m} \end{pmatrix}_{\vec{a}} = \begin{pmatrix} \displaystyle \frac{\partial f_{1}}{\partial x_{1}} & \dots & \displaystyle \frac{\partial f_{m}}{\partial x_{n}} \\ \vdots & \ddots & \vdots \\ \displaystyle \frac{\partial f_{1}}{\partial x_{1}} & \dots & \displaystyle \frac{\partial f_{m}}{\partial x_{n}} \end{pmatrix}_{\vec{a}}
+    \end{align}
+\end{defi}
+
+%----------------------------------------------------------------------------------------
+\subsection{Camps vectorials diferenciables}
+Un camp vectorial $\vec{f}(\vec{x}) = (f_{1}(\vec{x}), f_{2}(\vec{x}), \dots, f_{m}(\vec{x}))$ és diferenciable al punt $\vec{x} = \vec{a}$ si les seves components ho són, és a dir, si 
+\begin{align}
+    \vec{f}(\vec{x}) = \vec{f}(\vec{a}) + (\vec{J}^{\vec{f}})_{\vec{a}} (\vec{x} - \vec{a}) + \vec{o}[\| \vec{x} - \vec{a} \|]
+\end{align}
+
+\begin{thm}[Condició suficient per a la diferenciabilitat]
+    Si les components de la matriu jacobiana ($\partial f_{i} / \partial x_{j})$ existeixen en algun entorn del punt $\vec{a}$ i són contínues en aquest punt $\Rightarrow \vec{f}(\vec{x})$ és diferenciable en el punt $\vec{a}$.
+\end{thm}
+
+\subsubsection*{Diferencial d'un camp vectorial diferenciable}
+\begin{defi}[Diferencial]
+    És el «pla tangent» $\vec{y} = \vec{f}(\vec{a}) + (\vec{J}^{\vec{f}})_{\vec{a}} (\vec{x} - \vec{a})$ reexpressat en coordenades locals de $\mathbb{R}^{n+m}$ $(\dif \vec{x}, \dif \vec{y})$ que tenen l'origen en el punt de contacte $(\vec{a}, \vec{f}(\vec{a}))$ d'aquest pla amb el gràfic de la funció:
+    \begin{align}
+        (\dif \vec{y}) = (\vec{J}^{\vec{f}})_{\vec{a}} (\dif \vec{x})
+    \end{align}
+    o en forma matricial
+    \begin{align}
+        \begin{pmatrix} \dif y_{1} \\ \vdots \\ \dif y_{m} \end{pmatrix} = \begin{pmatrix} \displaystyle \frac{\partial f_{1}}{\partial x_{1}} & \dots & \displaystyle \frac{\partial f_{m}}{\partial x_{n}} \\ \vdots & \ddots & \vdots \\ \displaystyle \frac{\partial f_{1}}{\partial x_{1}} & \dots & \displaystyle \frac{\partial f_{m}}{\partial x_{n}} \end{pmatrix}_{\vec{a}} \begin{pmatrix} \dif x_{1} \\ \vdots \\ \dif x_{n} \end{pmatrix}
+    \end{align}
+\end{defi}
+\begin{defi}[Jacobià]
+    Quan $m = n$, la matriu jacobiana de $\vec{f}(\vec{x})$ és quadrada. El determinant s'anomena jacobià de $\vec{f}$ en el punt $\vec{a}$, i s'expressa
+    \begin{align}
+        \left( \frac{\partial(f_{1}, \dots, f_{n})}{\partial (x_{1}, \dots, x_{n})} \right)_{\vec{a}} = \det (\vec{J}^{\vec{f}})_{\vec{a}}
+    \end{align}
+    Utilitzarem el terme jacobià també en el cas $m \neq n$ per referir-nos a determinants de menors de matrius jacobianes. Per exemple, si $\vec{f}(\vec{x}) = (f_{1}(x,y,z),f_{2}(x,y,z))$, podem parlar del jacobià ($\partial (f_{1}, f_{2}) / \partial (x,y))$.
+\end{defi}
+
+%----------------------------------------------------------------------------------------
+\subsection{Regla de la cadena $l-n-m$}
+Sigui $\vec{x} = \vec{g}(\vec{u})$ una funció $\mathbb{R}^{l} \to \mathbb{R}^{n}$ diferenciable en el punt $\vec{u} = \vec{a}$; sigui $\vec{y}=\vec{f}(\vec{x})$ una funció $\mathbb{R}^{n} \to \mathbb{R}^{m}$ diferenciable en el punt $\vec{x} = \vec{g}(\vec{u})$; sigui $\vec{F}(\vec{u}) \equiv (\vec{f} \circ \vec{g})(\vec{u})$. Llavors $\vec{F}(\vec{u})$ és diferenciable en el punt $\vec{u} = \vec{a}$ i es compleix
+\begin{align}
+    (\vec{J}^{\vec{F}})_{\vec{a}} = (\vec{J}^{\vec{f}})_{\vec{g}(\vec{a})} (\vec{J}^{\vec{g}})_{\vec{a}}
+\end{align}
+o, també
+\begin{align}
+    \left( \frac{\partial F_{i}}{\partial u_{j}} \right)_{\vec{a}} = \sum_{k=1}^{n}  \left( \frac{\partial f_{i}}{\partial x_{k}} \right)_{\vec{g}(\vec{a})}  \left( \frac{\partial x_{k}}{\partial u_{j}} \right)_{\vec{a}}
+\end{align}
+
+%----------------------------------------------------------------------------------------
+\subsection{Funció inversa}
+\begin{defi}
+    Si $\vec{f}(\vec{x})$ és un camp vectorial, anomenem funció inversa de $\vec{f}$ a la funció $\vec{f}^{-1}$ que compleix $\vec{f} \circ \vec{f}^{-1} = \vec{f}^{-1} \circ \vec{f} = \vec{I}$ (si existeix), on $\vec{I}$ és la funció identitat. Per tal que una funció tingui inversa és necessari i suficient que sigui injectiva.
+\end{defi}
+
+\subsubsection*{Matriu jacobiana de la funció inversa}
+\begin{thm}
+    Si $\vec{f}$ i $\vec{f}^{-1}$ són diferenciables, la matriu jacobiana de $\vec{f}^{-1}$ és la inversa de la matriu jacobiana de $\vec{f}$.
+\end{thm}
+\begin{cor}
+    Si $\vec{f}$ és diferenciable i té inversa diferenciable, el jacobià de $\vec{f}$ ha de ser $\neq 0$.
+\end{cor}
+\begin{thm}[de la funció inversa]
+    Sigui $\vec{f}(\vec{x})$ un camp vectorial definit a $D \subseteq \mathbb{R}^{n}$ amb valors a $\mathbb{R}^{n}$. Si es compleix
+    \begin{enumerate}[i)]
+        \item $\vec{f}(\vec{x})$ és de classe $C^{1}_{D}$.
+        \item $\displaystyle \frac{\partial (f_{1}, \dots, f_{n})}{\partial (x_{1}, \dots, x_{n})} \neq 0$.
+    \end{enumerate}
+    Llavors, 
+    \begin{enumerate}[i)]
+        \item Hi ha un entorn $\varepsilon (\vec{x}_{0})$ de $\vec{x}_{0}$ en què $\vec{f}$ té inversa $\vec{f}^{-1}$.
+        \item $\vec{f}^{-1}$ és de classe $C^{1}$ en la imatge de $\varepsilon (\vec{x}_{0})$.
+    \end{enumerate}
+\end{thm}
+
+%----------------------------------------------------------------------------------------
+\subsection{Funcions implícites}
+\begin{thm}[de la funció implícita]
+    Sigui $\vec{F}(\vec{x}) = (F_{1}(\vec{x}), \dots, F_{n}(\vec{x}))$ un camp vectorial definit a $D \subseteq \mathbb{R}^{n}$ amb valors a $\mathbb{R}^{m}$, amb $m<n$. Si es compleix
+    \begin{enumerate}[i)]
+        \item $\vec{F}(\vec{x})$ és de classe $C^{1}_{D}$ (les derivades parcials són contínues).
+        \item $\vec{F}(\vec{x}_{0}) = \vec{0}$. 
+        \item $\displaystyle \left( \frac{\partial (f_{1}, \dots, f_{m})}{\partial (x_{1}, \dots, x_{m})} \right)_{\vec{x_{0}}} \neq 0$.
+    \end{enumerate}
+    Llavors, hi ha un entorn de $(x_{0_{m+1}}, \dots, x_{0_{n}}) \in \mathbb{R}^{n-m}$ en el qual existeixen $m$ funcions de classe $C^{1}$ úniques $g_{i} (x_{m+1}, \dots, x_{n})$, $i=1,\dots, m$, tals que 
+    \begin{align}
+        \vec{F}(g_{1}(\dots), \dots, g_{m}(\dots), x_{m+1}, \dots, x_{n}) \equiv \vec{0}
+    \end{align}
+\end{thm}
+\begin{cor}
+    $\vec{F}(\vec{x}) = \vec{0}$ defineix implícitament $m$ funcions $x_{i} = g_{i} (x_{m+1}, \dots, x_{n})$, $i=1,\dots, m$ en algun entorn de $(x_{0_{m+1}}, \dots, x_{0_{n}})$.
+\end{cor}
+En general, aplicant la regla de la cadena, podem arribar a la següent expressió
+\begin{align}
+    \frac{\partial g_{i}}{\partial x_{k}} = - \left( \frac{\displaystyle \frac{\partial (F_{1}, \dots , F_{m})}{\partial (x_{1}, \dots , x_{k} , \dots , x_{m})}}{\displaystyle \frac{\partial (F_{1}, \dots , F_{m})}{\partial (x_{1}, \dots , x_{m})}} \right)
+\end{align}
+amb $i = 1, 2, \dots, m$ i $k = m+1, m+2, \dots, n$; on la columna que correspon a $x_{k}$ del jacobià és la columna $i$. 
+
+És a dir, al jacobià del numerador se substitueix la columna de la variable que volem aïllar per la columna de la variable respecte la qual derivem parcialment.
+
+\begin{example}
+    Sigui $f(x,y) = x^{2}y^{2}+6x^{x}y + 5y^{3} + 3x^{2} - 12 = 0$. Es pot afirmar que $y = g(x)$ està definida implícitament?
+    \begin{enumerate}[i)]
+        \item $f(x,y)$ és de classe $C^{\infty}$.
+        \item $\displaystyle \frac{\partial f}{\partial y} \neq 0 = 2x^{2}y + 6x^{2} + 15 y^{2}$. 
+        \item $f(x_{0}, y_{0}) = 0$, per a algun $x_{0}, y_{0}$.
+    \end{enumerate}
+    Així doncs, es pot aïllar $y$ en funció de $x$.
+    \begin{align*}
+        \frac{\partial g}{\partial x} = - \frac{\displaystyle \frac{\partial f}{\partial x}}{\displaystyle \frac{\partial f}{\partial y}} = - \frac{2xy^{2} + 2xy + 6x}{2x^{2}y + 6x^{2} + 15 y^{2}}
+    \end{align*}
+\end{example}
+
+%----------------------------------------------------------------------------------------
+\subsection{Extrems condicionats: multiplicadors de Lagrange}
+Sigui $f(x_{1}, \dots , x_{n})$ un camp escalar $\mathbb{R}^{n} \to \mathbb{R}$ de classe $C^{1}$. Considerem el problema de trobar els màxims i mínims de $f(\vec{x})$, on les variables $\vec{x}$ estan condicionades a satisfer $F_{i} (\vec{x}) = 0$, $i = 1, \dots, m(<n)$.
+\begin{thm}[dels multiplicadors de Lagrange]
+    Sigui $f(x_{1}, \dots , x_{n})$ un camp escalar de classe $C^{1}$. Si es compleix
+    \begin{enumerate}[i)]
+        \item $F_{i}(x_{1}, \dots, x_{n})$, $i = 1, \dots, m(<n)$ són de classe $C^{1}$.
+        \item $S$ és el conjunt de punts que satisfan $F_{i}(\vec{x}) = 0$, $i = 1, \dots , m$ i $\partial (F_{1}, \dots, F_{m}) / \partial (x_{1}, \dots, x_{m}) \neq 0$.
+        \item $f(\vec{x})$ té un màxim o mínim relatiu a $\vec{x}_{0} \in S$.
+    \end{enumerate}
+    Llavors $(\vnabla f)_{x_{0}}$ és combinació lineal dels $(\vnabla F_{i})_{\vec{x}_{0}}$. És a dir existeixen $m$ números reals $\lambda_{1}, \dots, \lambda_{m}$ (multiplicadors de Lagrange) tals que 
+    \begin{align}
+        (\vnabla f)_{x_{0}} = \lambda_{1} (\vnabla F_{1})_{\vec{x}_{0}} + \dots + \lambda_{m} (\vnabla F_{m})_{\vec{x}_{0}}
+    \end{align}
+\end{thm}
+
+%----------------------------------------------------------------------------------------
+\subsection{Divergència, rotacional i laplaciana}
+\subsubsection*{Divergència d'un camp vectorial $\mathbb{R}^{n} \to \mathbb{R}^{n}$}
+\begin{defi}[Divergència]
+    Sigui $\vec{f}(\vec{x})$ un camp vectorial definit a $D \subseteq \mathbb{R}^{n}$, amb valors a $\mathbb{R}^{n}$. Si existeixen les derivades parcials de $\vec{f}$, definim la divergència de $\vec{f}$ com el camp escalar
+    \begin{align}
+        \operatorname{div} \vec{f} \equiv \vnabla \cdot \vec{f} = \begin{pmatrix} \displaystyle \frac{\partial}{\partial x_{1}} & \dots & \displaystyle \frac{\partial}{\partial x_{n}} \end{pmatrix} \begin{pmatrix} f_{1} \\ \vdots \\ f_{n} \end{pmatrix}
+    \end{align}
+\end{defi}
+Propietats: si $\vec{f}(\vec{x})$ i $\vec{g}(\vec{x})$ són camps vectorials $\mathbb{R}^{n} \to \mathbb{R}^{n}$ i $\phi (\vec{x})$ és un camp escalar de $\mathbb{R}^{n}$,
+\begin{enumerate}[i)]
+    \item $\vnabla \cdot (\vec{f} + \vec{g}) = \vnabla \cdot \vec{f} + \vnabla \cdot \vec{g}$.
+    \item $\vnabla \cdot (\phi \vec{f}) = (\vnabla \phi) \cdot \vec{f} + \phi (\vnabla \cdot \vec{f})$.
+\end{enumerate}
+
+\subsubsection*{Rotacional d'un camp vectorial $\mathbb{R}^{3} \to \mathbb{R}^{3}$}
+\begin{defi}[Rotacional]
+    Sigui $\vec{f}(\vec{x})$ un camp vectorial definit a $D \subseteq \mathbb{R}^{3}$, amb valors a $\mathbb{R}^{3}$. Si existeixen les derivades parcials de $\vec{f}$, definim la divergència de $\vec{f}$ com el camp vectorial
+    \begin{align}
+        \operatorname{rot} \vec{f} \equiv \vnabla \times \vec{f} = \begin{vmatrix} \hat{e}_{1} & \hat{e}_{2} & \hat{e}_{3} \\ \displaystyle \frac{\partial}{\partial x_{1}} & \displaystyle \frac{\partial}{\partial x_{2}} & \displaystyle \frac{\partial}{\partial x_{3}} \\ f_{1} & f_{2} & f_{3} \end{vmatrix}
+    \end{align}
+\end{defi}
+Propietats: si $\vec{f}(\vec{x})$ i $\vec{g}(\vec{x})$ són camps vectorials $\mathbb{R}^{3} \to \mathbb{R}^{3}$ i $\phi (\vec{x})$ és un camp escalar de $\mathbb{R}^{3}$,
+\begin{enumerate}[i)]
+    \item $\vnabla \times (\vec{f} + \vec{g}) = \vnabla \times \vec{f} + \vnabla \times \vec{g}$.
+    \item $\vnabla \times (\phi \vec{f}) = (\vnabla \phi) \times \vec{f} + \phi (\vnabla \times \vec{f})$.
+    \item Si $\phi (\vec{x})$ és de classe $C^{2}$: $\vnabla \times (\vnabla \phi) = \vec{0}$.
+    \item Si $\vec{f}(\vec{x})$ és de classe $C^{2}$: $\vnabla \cdot (\vnabla \times \vec{f}) = 0$. 
+\end{enumerate}
+
+\subsubsection*{Laplaciana}
+\begin{defi}[Laplaciana]
+    Si $\phi (\vec{x})$ és un camp escalar definit a $D \subseteq \mathbb{R}^{n}$, definim la laplaciana de $\phi$ com el camp escalar
+    \begin{align}
+        \nabla^{2} \phi \equiv \operatorname{div} (\operatorname{grad} \phi ) = \frac{\partial^{2} \phi}{\partial x_{1}^{2}} + \frac{\partial^{2} \phi}{\partial x_{2}^{2}} + \dots + \frac{\partial^{2} \phi}{\partial x_{n}^{2}}= \vnabla \cdot (\vnabla \phi) = (\vnabla \cdot \vnabla) \phi 
+    \end{align}
+    i si $\vec{f}(\vec{x})$ és un camp vectorial definit a $D \subseteq \mathbb{R}^{n}$, amb valors a $\mathbb{R}^{m}$, definim
+    \begin{align}
+        \nabla^{2} \vec{f} \equiv \left( \nabla^{2} f_{1}, \nabla^{2} f_{2}, \dots, \nabla^{2} f_{m} \right)
+    \end{align}
+\end{defi}

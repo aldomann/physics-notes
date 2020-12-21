@@ -1,0 +1,174 @@
+%-----------------------------------------------------------------
+%    INTEGRALS
+%-----------------------------------------------------------------
+\section{Integrals}
+\subsection{Definicions}
+\begin{defi}[Integral de camí]
+    Sigui $f(z)$ contínua $\forall z \in$ corba $\mc{C}$. Llavors es compleix
+    \begin{align}
+        \lim_{n \to \infty} S_{n} \equiv \int_{a}^{b} f(z) \diff z \quad  \lrpar{\text{si } \exists = \int_{\mc{C}} f(z) \diff z}
+    \end{align}
+    on $S_{n} \equiv \displaystyle \sum_{k=1}^{n} f(s_{k}) (z_{k} - z_{k-1})$ i $s_{k} \in [z_{k-1}, z_{k}]$.
+\end{defi}
+
+\begin{defi}[Arc]
+    Qualsevol corba que uneix dos punts. En particular, als complexos, aquests es poden parametritzar: $\begin{matrix} \mbb{R} & \to & \mbb{C} \\ t & \mapsto & z(t) \end{matrix}$.
+    \begin{itemize}
+        \item Arc simple (o de Jordan): $z(t_{1}) \neq z(t_{2}), \quad \forall t_{1} \neq t_{2}$.
+        \item Arc suau (o diferenciable): $\exists \dot{z}(t)$ contínua.
+        \item Arc suau a trossos: suma finita d'arcs suaus $\equiv$ camí.
+    \end{itemize}
+\end{defi}
+
+\begin{defi}[Corba tancada simple, o de Jordan]
+    Arc simple excepte pel fet que $z(a) = z(b)$.
+\end{defi}
+
+\begin{thm}[de Jordan]
+    Els punts de qualsevol corba tancada simple (de Jordan) són frontera de dues regions diferents ($\mc{R}_{1} \cap \mc{R}_{2} = \varnothing$):
+    \begin{enumerate}[i)]
+        \item $\mc{R}_{1}$ és interior i fitada ($\exists M \in \mbb{N} \mid \abs{z} < M$).
+        \item $\mc{R}_{2}$ és exterior i no fitada.
+    \end{enumerate}
+\end{thm}
+
+\begin{defi}[Regió connexa]
+    Sigui $\mc{R}$ una regió. Si $\forall z_{1}, z_{2} \in \mc{R}$ i $\forall \mc{C}_{1}, \mc{C}_{2} \in \mc{R}$, tots dos camins amb extrems a $z_{1}$ i  $z_{2}$, la regió definida per $\mc{C}_{1}$ i $\mc{C}_{2}$ està continguda a $\mc{R}$, diem que $\mc{R}$ és simplement connexa.
+    
+    Si no es compleix aquesta propietat, diem que $\mc{R}$ és múltiplement connexa.
+\end{defi}
+
+\subsubsection*{Propietats}
+\begin{enumerate}[i)]
+    \item $\displaystyle \int_{\mc{C}} \lrpar{f(z) + g(z)} \diff z = \displaystyle \int_{\mc{C}} f(z) \diff z + \displaystyle \int_{\mc{C}} g(z) \diff z$.
+    \item $\displaystyle \int_{\mc{C}} \mu \, f(z) \diff z = \mu \displaystyle \int_{\mc{C}} f(z) \diff z, \quad \forall \mu \in \mbb{C}$.
+    \item $\displaystyle \int_{a}^{b} f(z) \diff z = - \int_{b}^{a} f(z) \diff z \Leftrightarrow \cwoint_{\mc{C}} f(z) \diff z = - \ctrcwoint_{\mc{C}} f(z) \diff z$.
+    \item $\displaystyle \int_{a}^{b} f(z) \diff z = \int_{a}^{m} f(z) \diff z + \int_{m}^{b} f(z) \diff z$.
+    \item $\displaystyle \abs{\int_{a}^{b} f(z) \diff z} \leq \int_{\mc{C}} \abs{f(z)} \abs{\diff z} \leq M \int_{\mc{C}} \abs{\diff z} = M L_{\mc{C}}$. És a dir, si $f(z)$ és contínua $\exists M \mid \forall z \in \mc{C}, \, \abs{f(z)} \leq M$.
+\end{enumerate}
+
+%-----------------------------------------------------------------
+\subsection{Integrals reals de línia}
+Siguin $P(x,y)$ i $Q(x,y)$ funcions reals a la corba $\mc{C}$. Llavors, tenim
+\begin{align}
+    \int_{\mc{C}} \lrbra{P(x,y) \diff x + Q(x,y) \diff y} = \int_{t_{i}}^{t_{f}} \lrbra{P(x,y) \dot{x} + Q(x,y) \dot{y}} \diff t
+\end{align}
+
+Sigui $f(z) = u(x,y) + iv(x,y)$ una funció de variable complexa i contínua a la corba $\mc{C}$. Llavors, tenim
+\begin{align}
+\begin{aligned}
+    \int_{\mc{C}} f(z) \diff z &= \int_{\mc{C}} (u + iv) (\dif x + i \diff y) \\
+    &= \int_{t_{i}}^{t_{f}} \lrpar{\der{x}{t} + i \der{y}{t}} \lrbra{u (x(t), y(t)) + i v (x(t), y(t))} \\
+    & = \int_{\mc{C}} (u \diff x - v \diff y) + i \int_{\mc{C}} (v \diff x + u \diff y)
+\end{aligned}
+\end{align}
+
+%\begin{example}
+    %TODO: 3 exemples. LOL, he tirat els apunts. Queda aixó per a la posteritat.
+%\end{example}
+%-----------------------------------------------------------------
+%\subsection{Integrals i funcions contínues}
+
+%-----------------------------------------------------------------
+\subsection{Teorema de Green i de Cauchy}
+\begin{thm}
+    Sigui $f(z)$ contínua a un domini $\mc{D}$. Les següents propietats són equivalents entre si:
+    \begin{enumerate}[i)]
+        \item $f(z)$ té una primitiva $F(z)$ a $\mc{D}$: 
+        
+        $\exists F(z) \mid F'(z) = f(z)$.
+        \item Les integrals de $f(z)$ sobre camins continguts a $\mc{D}$, amb un punt inicial $z_{1}$, i final $z_{2}$ fixats, tenen totes el mateix valor: 
+        
+        $\int_{\mc{C}_{1}} f(z) \diff z = \int_{\mc{C}_{2}} f(z) \diff z$.
+        \item Les integrals de $f(z)$ sobre camins tancats continguts a $\mc{D}$ tenen totes valor zero:
+        
+        $\int_{\mc{C}} f(z) \diff z = 0, \quad \forall \mc{C} \subset \mc{D}$.
+    \end{enumerate}
+    Només el podem aplicar si el domini de $f(z)$ i el de $F(z)$ és el mateix.
+\end{thm}
+
+\begin{thm}[de Green en el pla $\mbb{R}$]
+    Siguin $P(x,y)$ i $Q(x,y)$ funcions reals contínues amb derivades parcials contínues a una regió $\mc{R}$ tancada per una corba $\mc{C}$. Llavors, es compleix
+    \begin{align}
+        \oint_{\mc{C}} \lrpar{P \diff x + Q \diff y} = \iint_{\mc{R}} \lrpar{\pder{Q}{x} - \pder{P}{y}} \diff x \diff y
+    \end{align}
+\end{thm}
+
+\begin{thm}[de Green a $\mbb{C}$]
+    Sigui $F(z,z^{\star})$ contínua i amb derivades parcials contínues a $\mc{R}$. Llavors es compleix
+    \begin{align}
+        \oint_{C} F(z, z^{\star}) \diff z = 2i \iint_{\mc{R}} \frac{\partial F}{\partial z^{\star}} \diff A
+    \end{align}
+\end{thm}
+
+\begin{thm}[de Cauchy]
+    Sigui $f(z)$ analítica en una regió $\mc{R}$ i sobre la seva frontera $\mc{C}$. Llavors, es compleix
+    \begin{align}
+        \oint_{\mc{C}} f(z) \diff z = 0
+    \end{align}
+\end{thm}
+
+\begin{thm}
+    Sigui $f(z)$ analítica en una regió separada per dues corbes simples tancades $\mc{C}$ i $\mc{C}_{1}$ (on $\mc{C}_{1} \subset \mc{R}$), i sobre $\mc{C}$ i $\mc{C}_{1}$. Llavors, es compleix
+    \begin{align}
+        \oint_{\mc{C}} f(z) \diff z = \oint_{\mc{C}_{1}} f(z) \diff z
+    \end{align}
+\end{thm}
+
+\begin{thm}
+    Sigui $f(z)$ analítica en una regió limitada per les corbes simples tancades disjuntes $\mc{C}, \mc{C}_{1}, \mc{C}_{2} \dots , \mc{C}_{n}$ (on $\mc{C}_{i} \subset \mc{R}$), i sobre aquestes corbes. Llavors, es compleix
+    \begin{align}
+        \oint_{\mc{C}} f(z) \diff z = \oint_{\mc{C}_{1}} f(z) \diff z + \oint_{\mc{C}_{2}} f(z) \diff z + \dots + \oint_{\mc{C}_{n}} f(z) \diff z
+    \end{align}
+\end{thm}
+
+%-----------------------------------------------------------------
+\subsection{Fórmula integral de Cauchy}
+\begin{thm}
+    Sigui $f(z)$ analítica en el domini interior $\mc{R}$ a un camí tancat simple $\mc{C}$, orientat positivament, i en tots els punts del camí. Si $z_{0} \in \mc{R}$, llavors, es compleix
+    \begin{align}
+        f(z_{0}) = \frac{1}{2 \pi i} \oint \frac{f(z) \diff z}{z-z_{0}}
+    \end{align}
+\end{thm}
+
+\begin{lem}
+    Sigui $\mc{C}$ un camí tancat simple, orientat positivament, i sigui $f(z)$ analítica a $\mc{C}$ i a dins. Sigui $z$ un punt interior del domini. Llavors, es compleix
+    \begin{align*}
+        f'(z) = \frac{1}{2 \pi i} \oint \frac{f(s) \diff s}{(s-z)^{2}} \quad \text{i} \quad f''(z) = \frac{1}{\pi i} \oint \frac{f(s) \diff s}{(s-z)^{3}}
+    \end{align*}
+\end{lem}
+
+\begin{cor}[Fórmula de diferenciació de Cauchy]
+    \begin{align}
+        f^{(n)}(z) = \frac{n!}{2 \pi i} \oint \frac{f(s) \diff s}{(s-z)^{n+1}}
+    \end{align}
+\end{cor}
+
+%-----------------------------------------------------------------
+\subsection{Teoremes relacionats}
+\begin{thm}[de Morera]
+    Sigui $f(z)$ contínua en un domini $\mc{D}$. Si $\oint_{\mc{C}} f(z) \diff z = 0, \; \forall \mc{C}$ tancat (on $\mc{C} \in \mc{D}$), llavors $f(z)$ és analítica en $\mc{D}$. 
+\end{thm}
+Aquest teorema és una conseqüència del teorema \ref{thm:exists-pder-cont}.
+
+\begin{lem}
+    Sigui $f(z)$ analítica a l'interior i els punts d'una circumferència $\mc{C}_{R}$ centrada a $z_{0}$ i de radi $R$. Si $\abs{f(z)} \leq M_{R}, \; \forall z \in \mc{C}_{R}$, llavors, es compleix
+    \begin{align}
+        \abs{f^{(n)}(z)} \leq \frac{n! M_{R}}{R^{n}}
+    \end{align}
+\end{lem}
+
+\begin{thm}[de Liouville]
+    Una funció $f(z)$ és analítica i fitada $\forall z \in \mbb{C} \Leftrightarrow f(z)$ és constant a tot el pla complex.
+\end{thm}
+\begin{sproof}
+    Sigui $f(z)$ una funció entera (analítica a tot $\mc{C}$). Llavors, es pot representar per la seva sèrie de Taylor al voltant de zero:
+    \begin{align*}
+        f(z) = \sum_{n=0}^{\infty} a_{n} z^{n}, \quad a_{n} = \frac{f^{(n)}(0)}{n!} = \frac{1}{2\pi i} \oint_{\mc{C}} \frac{f(s)}{s^{n+1}} \diff s
+    \end{align*}
+    on $\mc{C}$ és una circumferència centrada a $0$ de radi $r>0$. Suposem que $f$ és fitada $\Leftrightarrow \abs{f(z)} \leq M$, $\forall z$. Llavors podem estimar directament que 
+    \begin{align*}
+        \abs{a_{n}} \leq \frac{1}{2 \pi} \oint_{\mc{C}} \frac{ \abs{f(s)}}{\abs{s}^{n+1}} \abs{\dif s} \leq \frac{1}{2 \pi} \oint_{\mc{C}} \frac{M}{r^{n+1}} \abs{\dif s} = \frac{M}{2 \pi r^{n+1}} \oint_{\mc{C}} \abs{\dif s} = \frac{M}{2 \pi r^{n+1}} 2 \pi r = \frac{M}{r^n}
+    \end{align*}
+    Observem, no obstant, l'elecció de $r$ és un nombre positiu arbitrari. Així doncs, fent $r \to \infty$ fa que $a_{n} = 0$, $\forall n \geq 1$. Així doncs, $f(z) \equiv a_{0}$.
+\end{sproof}

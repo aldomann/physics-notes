@@ -1,0 +1,313 @@
+%----------------------------------------------------------------------------------------
+%	ANÀLISI VECTORIAL
+%	!TEX root = ./main.tex
+%----------------------------------------------------------------------------------------
+\section{\mytitle}
+\subsection{Àlgebra vectorial}
+Siguin $\va{A} = A_{x} \hat{e}_{x} + A_{y} \hat{e}_{y} + A_{z} \hat{e}_{z}$, $\va{B} = B_{x} \hat{e}_{x} + B_{y} \hat{e}_{y} + B_{z} \hat{e}_{z}$ i $\va{C} = C_{x} \hat{e}_{x} + C_{y} \hat{e}_{y} + C_{z} \hat{e}_{z}$ vectors d'un espai vectorial de 3 dimensions sobre el cos dels reals. Llavors, definim les següents operacions en l'espai:
+
+\subsubsection*{Producte escalar}
+\begin{align}
+	\begin{aligned}
+		\va{A} \vdot \va{B} & \equiv A_{x} B_{x} + A_{y} B_{y} + A_{z} B_{z} \\
+		\va{A} \vdot \va{B} & = \norm{\va{A}} \norm{\va{B}} \cos \angle (\va{A}, \va{B}) \\
+	\end{aligned}
+\end{align}
+Propietats:
+\begin{enumerate}[(i)]
+	\item Mòdul: $\norm{\va{A}} = \sqrt{\va{A} \vdot \va{A}}$.
+	\item Commutativa: $\va{A} \vdot \va{B} = \va{B} \vdot \va{A}$.
+\end{enumerate}
+
+\subsubsection*{Producte vectorial}
+\begin{align}
+	\va{A} \cross \va{B} \equiv \mqty| \hat{e}_{x} & \hat{e}_{y} & \hat{e}_{z} \\ A_{x} & A_{y} & A_{z} \\ B_{x} & B_{y} & B_{z} |.
+\end{align}
+Propietats:
+\begin{enumerate}[(i)]
+	\item Mòdul:$ \norm{\va{A} \cross \va{B}} = \norm{\va{A}} \norm{\va{B}} \sin \angle (\va{A}, \va{B})$.
+	\item Anticommutativa: $\va{A} \cross \va{B} = - \va{B} \cross \va{A}$.
+	\item Associativa: $\va{A} \cross (\va{B} + \va{C}) = \va{A} \cross \va{B} + \va{A} \cross \va{C}$.
+\end{enumerate}
+
+\subsubsection*{Altres operacions entre vectors}
+\begin{defi}[Producte mixt]
+	\begin{align}
+		\qty{ \va{A}, \va{B}, \va{C} } \equiv \va{A} \vdot (\va{B} \cross \va{C}) = \mqty| A_{x} & A_{y} & A_{z} \\ B_{x} & B_{y} & B_{z} \\ C_{x} & C_{y} & C_{z} |.
+	\end{align}
+\end{defi}
+\begin{defi}[Triple producte vectorial]
+	\begin{align}
+		\va{A} \cross (\va{B} \cross \va{C}) \equiv \va{B} (\va{A} \vdot \va{C}) - \va{C} (\va{A} \vdot \va{B}).
+	\end{align}
+\end{defi}
+
+%----------------------------------------------------------------------------------------
+\subsection{Concepte de camp}
+\begin{defi}[Camp escalar]
+	És una funció qualsevol que té un valor escalar per a cada punt de l'espai. Un exemple de camp escalar és la temperatura.
+\end{defi}
+\begin{example}
+	\begin{align*}
+		\phi (\va{r}) = x^{3} - 3x^{2}y + z^{2}y, \quad \phi (1,1,1) = -1
+	\end{align*}
+\end{example}
+
+\begin{defi}[Camp vectorial]
+	És una funció qualsevol que té un vector per a cada punt de l'espai. Un exemple de camp escalar és la velocitat del temps.
+\end{defi}
+\begin{example}
+	\begin{align*}
+		\va{A} (\va{r}) = x^{3} \hat{e}_{x} - 3x^{2}y \hat{e}_{y} + z^{2}y \hat{e}_{z}, \quad \va{A} (1,1,1) = (1,-3,1)
+	\end{align*}
+\end{example}
+
+%----------------------------------------------------------------------------------------
+\subsection{Gradient}
+Es defineix el gradient d'un camp escalar $\phi$ ($\grad{\phi} \equiv \operatorname{grad} \phi$) com un vector tal que multiplicat pel diferencial de longitud, $\dd{\va{l}} = (\dd{x}, \dd{y}, \dd{z})$, dóna la variació del camp entre dos punts:
+\begin{align}
+	\dd{\phi} \equiv \grad{\phi} \vdot \dd{\va{l}}
+\end{align}
+on $\dd{\va{l}}$ és el vector que dóna la direcció en què s'estableix la variació del camp.
+
+En coordenades rectangulars, tenim
+\begin{align}
+	\grad{\phi} \equiv \qty( \pdv{\phi}{x}, \pdv{\phi}{y}, \pdv{\phi}{z} ).
+\end{align}
+Com que $\dd{\phi} = \norm{\grad{\phi}} \norm{\dd{\va{l}}} \cos \angle(\grad{\phi}, \dd{ \va{l}})$, quan $\angle(\grad{\phi}, \dd{\va{l}}) = 0$, el valor de $\phi$ serà màxim. Per tant, el gradient en un punt indica la direcció de màxima variació i el sentit és que apunta cap al valor creixent de $\phi$ en el punt. Notem que el gradient és un camp vectorial.
+\begin{example}
+	Sigui $\phi (\va{r}) = x^{3} - 3x^{2}y + z^{2}y$ un camp escalar. Llavors, el seu gradient és
+	\begin{align*}
+		\grad{\phi} = (3x^{2}-6xy, -3x^{2} + z^{2}, 2zy)
+	\end{align*}
+	i, per exemple, $\grad{\phi} (1,1,1) = (9, -2, -2)$.
+\end{example}
+\begin{defi}[Operador nabla]
+	L'operador nabla ($\vnabla$) es pot definir com
+	\begin{align}
+		\vnabla = \qty( \pdv{}{x}, \pdv{}{y}, \pdv{}{z} ).
+	\end{align}
+\end{defi}
+
+%----------------------------------------------------------------------------------------
+\subsection{Flux d'un vector}
+Físicament, el flux es pot interpretar com la quantitat de línies de camp de velocitat d'un fluid que travessen una superfície. Amb aquesta imatge, podem entendre el flux de qualsevol camp vectorial com la suma de les línies de camp que travessen una superfície qualsevol. Llavors, matemàticament, es defineix el flux d'un vector $\va{A}$ com
+\begin{align}
+	\Phi = \int_{\mc{S}} \va{A} \vdot \hat{n} \dd{\mc{S}}
+\end{align}
+on $\hat{n}$ és un vector unitari perpendicular a l'element infinitesimal de la superfície $\dd{\mc{S}}$ ($\dd{\va{\mc{S}}} = \hat{n}\dd{\mc{S}}$).
+
+%----------------------------------------------------------------------------------------
+\subsection{Divergència}
+La divergència d'un camp vectorial és un camp escalar. Si considerem una superfície $\mc{S}$ que tanca un volum $\Delta \mc{V}$, en el centre del qual es troba el punt genèric en què volem determinar la divergència, aquesta ve donada pel flux del vector a través de la superfície dividit pel volum quan aquest tendeix a zero. Llavors, la divergència d'un camp vectorial $\va{A}$ es defineix matemàticament per
+\begin{align}
+	\operatorname{div} \va{A} \equiv \div{A} \equiv \lim_{\Delta \mc{V} \to 0} \frac{1}{\mc{V}} \oint_{\mc{S}} \va{A} \vdot \hat{n} \dd{\mc{S}}.
+\end{align}
+En coordenades rectangulars, tenim
+\begin{align}
+	\div{A} \equiv \pdv{A_{x}}{x} + \pdv{A_{y}}{y} + \pdv{A_{z}}{z}.
+\end{align}
+El significat geomètric de la divergència és el del flux que surt de la superfície infinitesimal que rodeja al punt, de manera que si la divergència és positiva hi ha una font de camp, i si és negativa hi ha un embornal.
+\begin{example}
+	Sigui $\va{A} (\va{r}) = (x^{3}, - 3x^{2}y, z^{2}y)$ un camp vectorial. Llavors la seva divergència és
+	\begin{align*}
+		\div{A} = 3x^{2} - 3x^{2} + 2zy = 2zy
+	\end{align*}
+
+	i, per exemple, $\div{A} (1,1,1) = 2$.
+\end{example}
+
+\begin{defi}[Laplaciana]
+	Un cas molt particular a Física és determinar la divergència d'un vector que prové del gradient d'un escalar. La divergència del gradient d'un camp escalar $\phi$ es denomina laplaciana del camp escalar
+	\begin{align}
+		\laplacian{\phi} = \vnabla \vdot \grad{\phi} = \pdv[2]{\phi}{x} + \pdv[2]{\phi}{y} + \pdv[2]{\phi}{z}
+	\end{align}
+	En coordenades rectangulars podem definir la laplaciana d'un vector que ve donada per la suma de les laplacianes de les seves components
+	\begin{align}
+		\laplacian{\va{A}} = \laplacian{A_{x}} + \laplacian{A_{y}} + \laplacian{A_{z}}
+	\end{align}
+\end{defi}
+
+%----------------------------------------------------------------------------------------
+\subsection{Teorema de Gauss}
+El teorema de Gauss, o de la divergència, relaciona el flux d'un camp vectorial a través d'una superfície tancada que conté un volum amb la integral de la divergència en el volum.
+\begin{thm}[de Gauss]\label{thm:gauss}
+	\begin{align}
+		\int_{\mc{V}} \div{A} \dd{\mc{V}} = \oint_{\mc{S}} \va{A} \vdot \hat{n} \dd{\mc{S}}.
+	\end{align}
+\end{thm}
+
+%----------------------------------------------------------------------------------------
+\subsection{Integrals de línia}
+Siguin un camp vectorial $\va{A}$ i una corba $\mc{C}$, que pot ser tancada o no. La integral de línia del camp $\va{A}$ al llarg de la corba $\mc{C}$ entre dos punts, els radi vectors dels quals són $\va{r}_{1}$ i $\va{r}_{2}$, es defineix com
+\begin{align}
+	I = \int_{\va{r}_{1}}^{\va{r}_{2}} \va{A} \vdot \dd{\va{l}}
+\end{align}
+essent $\dd{\va{l}}$ un element diferencial de longitud pres sobre la recta tangent a la corba en un punt donat, on s'avalua el seu producte escalar amb el vector $\va{A}$.
+\begin{cor}
+	Quan el camp vectorial procedeix d'un camp escalar $\phi$, la integral de línia d'aquest vector entre dos punts depèn exclusivament d'aquests i és independent de la trajectòria seguida entre ells (es denomina camp conservatiu):
+	\begin{align}
+		I(\va{r}_{1}, \va{r}_{2}) = \int_{\va{r}_{1}}^{\va{r}_{2}} \va{A} \vdot \dd{\va{l}} = \int_{\va{r}_{1}}^{\va{r}_{2}} \grad{\phi} \vdot \dd{\va{l}} = \int_{\va{r}_{1}}^{\va{r}_{2}} \dd{\phi} = \phi(\va{r}_{2}) - \phi(\va{r}_{1}).
+	\end{align}
+\end{cor}
+Quan la integral de línia corresponent a un vector es realitza sobre una corba tancada, es denomina circulació d'aquest vector. En conseqüència, la circulació d'un camp vectorial es pot formular
+\begin{align}
+	I = \oint_{\mc{C}} \va{A} \vdot \dd{\va{l}}.
+\end{align}
+Només als casos en què el camp $\va{A}$ procedeixi del gradient d'un camp escalar $\phi$, podem assegurar que aquesta integral, que no té límits, és zero; ja que òbviament, independentment de la corba $\mc{C}$,
+\begin{align*}
+	\oint_{\mc{C}} \grad{\phi} \vdot \dd{\va{l}} = \oint_{\mc{C}} \dd{\phi} \equiv 0.
+\end{align*}
+
+%----------------------------------------------------------------------------------------
+\subsection{Rotacional}
+El rotacional d'un camp vectorial és un nou camp vectorial. Per definir el vector rotacional d'un camp vectorial en un punt donat, considerem una superfície $\mc{S}$ que tanca un volum $\Delta \mc{V}$, en el centre del qual es troba el punt genèric en què calculem el rotacional, llavors
+\begin{align}
+	\operatorname{rot} \va{A} \equiv \rot{A} \equiv \lim_{\Delta \mc{V} \to 0} \frac{1}{\mc{V}} \oint_{\mc{S}} \hat{n} \cross \va{A} \dd{\mc{S}}.
+\end{align}
+En coordenades rectangulars, tenim
+\begin{align}
+	\rot{A} \equiv \mqty| \hat{e}_{x} & \hat{e}_{y} & \hat{e}_{z} \\ \pdv{}{x} & \pdv{}{y} & \pdv{}{z} \\ A_{x} & A_{y} & A_{z} |.
+\end{align}
+De forma intuïtiva podríem dir que un camp de forces faria girar un molinet si el rotacional fos diferent de zero. És a dir, el rotacional és no nul en tots els punts excepte en l'eix central.
+\begin{example}
+	Sigui $\va{A} (\va{r}) = (x^{3}, - 3x^{2}y, z^{2}y)$ un camp vectorial. Llavors el seu rotacional és
+	\begin{align*}
+		\rot{A} = (z^{2}, 0, -6xy)
+	\end{align*}
+
+	i, per exemple, $\rot{A} (1,1,1) = (1,0,-6)$.
+\end{example}
+
+%----------------------------------------------------------------------------------------
+\subsection{Teorema d'Stokes}
+De manera semblant al cas de la divergència també es pot demostrar de forma senzilla un teorema integral per al rotacional d'un camp vectorial. Segons aquest teorema, la integral de superfície del rotacional d'un camp vectorial és igual a la circulació del camp determinada sobre la corba tancada que conté aquesta superfície.
+\begin{thm}[d'Stokes]\label{thm:stokes}
+	La forma matemàtica d'aquest teorema requereix considerar una superfície $\mc{S}$ oberta i bilàtera l'entorn de la qual és una corba tancada $\mc{C}$ que no es talla a ella mateixa, llavors
+	\begin{align}
+		\int_{\mc{S}} (\rot{A}) \vdot \hat{n} \dd{\mc{S}} = \oint_{\mc{C}} \va{A} \vdot \dd{\va{l}}
+	\end{align}
+\end{thm}
+
+%----------------------------------------------------------------------------------------
+\subsection{Camps centrals i camps rotacionals}
+Sigui $\va{A}(\va{r}) \equiv \grad{\phi}$. Llavors, $\rot{A}(\va{r}) = \va{0}$. També es pot veure que $\vnabla \vdot \qty(\rot{A}(\va{r})) = 0$.
+\begin{cor}
+	Tot camp central no té fonts de camp rotacionals, i tot camp rotacional no té fonts de camp centrals.
+\end{cor}
+
+%----------------------------------------------------------------------------------------
+\subsection{Coordenades cilíndriques}
+A un sistema de coordenades rectangular, un punt queda definit per les components $x$, $y$ i $z$: $P \equiv (x,y,z)$. En canvi, a un sistema de coordenades cilíndriques, un punt està unívocament definit com
+\begin{align}
+	P \equiv (\rho, \varphi, z).
+\end{align}
+La seva equivalència està definida per les relacions
+\begin{align}
+	\begin{aligned}
+		x & = \rho \cos \varphi \\
+		y & = \rho \sin \varphi \\
+		z & = z \\
+	\end{aligned}
+\end{align}
+Així doncs, la base $(\hat{e}_{x}, \hat{e}_{y}, \hat{e}_{z})$ es veu transformada en la base ortonormal $(\hat{e}_{\rho}, \hat{e}_{\varphi}, \hat{e}_{z})$. Ara bé, a diferència de les coordenades rectangulars, on la base és unívoca; a les coordenades cilíndriques $\forall$ punt $\exists$ un conjunt $(\hat{e}_{\rho}, \hat{e}_{\varphi}, \hat{e}_{z})$. Matricialment, aquest canvi de base es pot expressar com
+\begin{align}
+	\mqty( \hat{e}_{\rho} \\ \hat{e}_{\varphi} \\ \hat{e}_{z} ) = \mqty( \cos \varphi & \sin \varphi & 0 \\ -\sin \varphi & \cos \varphi & 0 \\ 0 & 0 & 1 ) \mqty( \hat{e}_{x} \\ \hat{e}_{y} \\ \hat{e}_{z} )
+\end{align}
+Com que la matriu és unitària (la base és ortonormal), la seva inversa és equivalent a la seva transposada i obtenim que
+\begin{align*}
+	B_{\text{c}} = M B_{\text{r}} \Leftrightarrow B_{\text{r}} = M^{t} B_{\text{c}}
+\end{align*}
+
+\begin{defi}[Operador nabla]
+	En coordenades cilíndriques, l'operador nabla opera de la següent manera
+	\begin{align}
+		\grad{f} = \pdv{f}{\rho} \hat{e}_{\rho} + \frac{1}{\rho}\pdv{f}{\varphi} \hat{e}_{\varphi} + \pdv{f}{z} \hat{e}_{z}
+	\end{align}
+	\begin{align}
+		\div{A} = \frac{1}{\rho} \pdv{}{\rho} (\rho A_{\rho}) + \frac{1}{\rho} \pdv{A_{\varphi}}{\varphi} + \pdv{A_{z}}{z}
+	\end{align}
+	\begin{align}
+		\rot{A} = \qty( \frac{1}{\rho} \pdv{A_{z}}{\varphi} - \pdv{A_{\varphi}}{z} ) \hat{e}_{\rho} + \qty( \pdv{A_{\rho}}{z} - \pdv{A_{z}}{\rho} ) \hat{e}_{\varphi} + \frac{1}{\rho} \qty( \pdv{}{\rho} (\rho A_{\varphi}) - \pdv{A_{\rho}}{\varphi} ) \hat{e}_{z}
+	\end{align}
+	\begin{align}
+		\nabla^{2} f = \pdv[2]{f}{\rho} + \frac{1}{\rho} \pdv{f}{\rho} + \frac{1}{\rho^{2}} \pdv[2]{f}{\varphi} + \pdv[2]{f}{z}
+	\end{align}
+\end{defi}
+
+%----------------------------------------------------------------------------------------
+\subsection{Coordenades esfèriques}
+A un sistema de coordenades rectangular, un punt queda definit per les components $x$, $y$ i $z$: $P \equiv (x,y,z)$. En canvi, a un sistema de coordenades esfèriques, un punt està unívocament definit com
+\begin{align}
+	P \equiv (r, \theta, \varphi).
+\end{align}
+La seva equivalència està definida per les relacions
+\begin{align}
+	\begin{aligned}
+		x & = r \sin \theta \cos \varphi \\
+		y & = r \sin \theta \sin \varphi \\
+		z & = r \cos \theta \\
+	\end{aligned}
+\end{align}
+Així doncs, la base $(\hat{e}_{x}, \hat{e}_{y}, \hat{e}_{z})$ es veu transformada en la base ortonormal $(\hat{e}_{r}, \hat{e}_{\theta}, \hat{e}_{\varphi})$. Ara bé, al igual que a les coordenades cilíndriques; a les coordenades esfèriques $\forall$ punt $\exists$ un conjunt $(\hat{e}_{r}, \hat{e}_{\theta}, \hat{e}_{\varphi})$. Matricialment, aquest canvi de base es pot expressar com
+\begin{align}
+	\mqty( \hat{e}_{r} \\ \hat{e}_{\theta} \\ \hat{e}_{\varphi} ) = \mqty( \sin \theta \cos \varphi & \sin \theta \sin \varphi & \cos \theta \\ \cos \theta \cos \varphi & \cos \theta \sin \varphi & -\sin \theta \\ \sin \varphi & \cos \varphi & 0 ) \mqty( \hat{e}_{x} \\ \hat{e}_{y} \\ \hat{e}_{z} )
+\end{align}
+Com que la matriu és unitària (la base és ortonormal), la seva inversa és equivalent a la seva transposada i obtenim que
+\begin{align*}
+	B_{\text{e}} = M B_{\text{r}} \Leftrightarrow B_{\text{r}} = M^{t} B_{\text{e}}
+\end{align*}
+
+\begin{defi}[Operador nabla]
+	En coordenades esfèriques, l'operador nabla opera de la següent manera
+	\begin{align}
+		\grad{f} = \pdv{f}{r} \hat{e}_{r} + \frac{1}{r}\pdv{f}{\theta} \hat{e}_{\theta} + \frac{1}{r \sin \theta}\pdv{f}{\varphi} \hat{e}_{\varphi}
+	\end{align}
+	\begin{align}
+		\div{A} = \frac{1}{r^{2}} \pdv{}{r} (r^{2} A_{r}) + \frac{1}{r \sin \theta}\pdv{}{\theta} (A_{\theta} \sin \theta) + \frac{1}{r \sin \theta}\pdv{A_{\varphi}}{\varphi}
+	\end{align}
+	\begin{align}
+		\begin{aligned}
+			\rot{A} = & \frac{1}{r \sin \theta} \qty[ \pdv{}{\theta} (A_{\varphi} \sin \theta) - \pdv{A_{\theta}}{\varphi} ] \hat{e}_{r} + \frac{1}{r} \qty[ \frac{1}{\sin \theta} \pdv{A_{r}}{\varphi} - \pdv{}{r} (r A_{\varphi}) ] \hat{e}_{\theta} \\
+			&+ \frac{1}{r} \qty[ \pdv{}{r} (r A_{\theta}) - \pdv{A_{r}}{\theta} ] \hat{e}_{\varphi}
+		\end{aligned}
+	\end{align}
+	\begin{align}
+		\nabla^{2} f = \frac{1}{r^{2}} \pdv{}{r} \qty( r^{2} \pdv{f}{r} ) + \frac{1}{r^{2} \sin \theta} \pdv{}{\theta} \qty(\sin \theta \pdv{f}{\theta} ) + \frac{1}{r^{2} \sin^{2} \theta}\pdv[2]{f}{\varphi}
+	\end{align}
+\end{defi}
+
+%----------------------------------------------------------------------------------------
+\subsection{Diferencials}
+Heus aquí una comparació de l'expressió diferencial de longituds, volums i superfícies en els diferents sistemes de coordenades.
+\subsubsection*{Rectangulars}
+\begin{align*}
+	\begin{aligned}
+		\dd{\va{r}} &= (\dd{x}, \dd{y}, \dd{z}) \\
+		\dd{l} &= \sqrt{\dd{x}^{2} + \dd{y}^{2} + \dd{z}^{2}} \\
+		\dd{v} &= \dd{x} \dd{y} \dd{z} \\
+		\dd{\va{\mc{S}}} &= (\dd{y} \dd{z}, \dd{x} \dd{z}, \dd{x} \dd{y})
+	\end{aligned}
+\end{align*}
+
+\subsubsection*{Cilíndriques}
+\begin{align*}
+	\begin{aligned}
+		\dd{\va{r}} &= (\dd{\rho}, \rho \dd{\varphi}, \dd{z}) \\
+		\dd{l} &= \sqrt{\dd{\rho}^{2} + (\rho \dd{\varphi})^{2} + \dd{z}^{2}} \\
+		\dd{v} &= \rho \dd{\rho} \dd{\varphi} \dd{z} \\
+		\dd{\va{\mc{S}}} &= \begin{cases} R (\cos \varphi, \sin \varphi, 0) \dd{\varphi} \dd{z} \\ (0, 0, \rho) \dd{\rho} \dd{\varphi} \end{cases} \\
+		\dd{\mc{S}} &= R \dd{\varphi} \dd{z} \\
+	\end{aligned}
+\end{align*}
+
+\subsubsection*{Esfèriques}
+\begin{align*}
+	\begin{aligned}
+		\dd{\va{r}} &= (\dd{r}, r \dd{\theta}, r \sin \theta \dd{\varphi}) \\
+		\dd{l} &= \sqrt{\dd{r}^{2} + (r \dd{\theta})^{2} + (r \sin \theta \dd{\varphi})^{2}} \\
+		\dd{v} &= r^{2} \sin \theta \dd{r} \dd{\theta} \dd{\varphi} \\
+		\dd{\va{\mc{S}}} &= - r^{2} \sin \theta ( \cos \varphi \sin \theta , \sin \varphi \sin \theta , \cos \theta) \dd{\varphi} \dd{\theta} \\
+		\dd{\mc{S}} &= r^{2} \sin \theta \dd{\varphi} \dd{\theta} \\
+	\end{aligned}
+\end{align*}

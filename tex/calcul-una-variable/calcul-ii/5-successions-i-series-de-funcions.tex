@@ -1,0 +1,313 @@
+%----------------------------------------------------------------------------------------
+%    SUCCESSIONS I SÈRIES DE FUNCIONS
+%----------------------------------------------------------------------------------------
+\section{Successions i sèries de funcions}
+\subsection{Successions de funcions}
+Si denotem per $\mathcal{F}_{D}$ el conjunt de funcions definides en un domini $D$ de la recta real, una successió de funcions de $D$ és una aplicació del conjunt de números reals sobre el conjunt $\mathcal{F}_{D}$:
+\begin{align}
+    \begin{matrix}
+        \mathbb{N} & \to & \mathcal{F}_{D} \\
+        n & \mapsto & f_{n} (x)
+    \end{matrix}
+\end{align}
+que denotarem $\{ f_{n} (x) \}_{D} = \{ f_{1}(x), f_{2}(x), f_{3}(x), \dots \}_{D}$.
+
+\subsubsection*{Convergència puntual}
+Una successió de funcions $\{ f_{n} (x) \}_{D}$ convergeix puntualment en el domini $D$, cap ala funció $f(x)$ si $\forall x \in D$ es complei que $\lim_{n \to \infty} \{ f_{n} (x) \}_{D} = f(x)$. Ho escriurem així:
+\begin{align}
+    f(x) = \lim_{\text{punt}(D)} f_{n}(x) \quad \text{o, també} \quad \{ f_{n} (x)\} \overset{\text{punt}(D)}{\longrightarrow} f(x)
+\end{align}
+Per tant, $\{f_{n}(x)\}$ convergeix puntualment a $f(x)$ si:
+\begin{align}
+    \begin{gathered}
+        \forall \varepsilon > 0 \text{ i } \forall x \in D, \exists n_{0}(x,\varepsilon) \in \mathbb{N} \\
+        \text{ tal que } |f_{n} (x) - f(x) | < \varepsilon, \forall n > n_{0}
+    \end{gathered}
+\end{align}
+Exemples:
+\begin{enumerate}[i)]
+    \item La successió de funcions $f_{n}(x) = x/n$ convergeix puntualment, a tot $\mathbb{R}$, cap a la funció $f(x) = 0$.
+    \item La successió de funcions $f_{n}(x) = x^{n}$ convergeix puntualment, a l'interval $(-1, 1]$, cap a la funció $f(x) = \begin{cases} 0 & \text{si } x \in (-1,1) \\ 1 & \text{si } x = 1 \end{cases}$. Notem que el límit no és una funció contínua.
+    \item La successió de funcions $f_{n} (x) = \sin (n^{2}x)/n$ convergeix puntualment, a tot $\mathbb{R}$, a la funció $f(x) = 0$. En aquest exemple, és interessant notar que la successió de derivades, $f_{n}'(x) = n \cos (n^{2} x)$, no convergeix puntualment cap a $f'(x) = 0$.
+\end{enumerate}
+Com es pot veure en els exemples anteriors, la convergència puntal no transmet ni la continuitat, ni la integrabilitat, ni la derivabilitat de les funcions de la successió cap al seu límit. Introduirem ara un concepte més fort de convergència, la convergència uniforme, que sí que ho fa.
+
+\subsubsection*{Convergència uniforme}
+Si $n_{0}$ d'una funció contínua puntualment depèn únicament del valor $\varepsilon$ i no de $x$, parlarem d'una funció contínua uniformement. Ho escriurem així:
+\begin{align}
+    f(x) = \lim_{\text{unif}(D)} f_{n}(x) \quad \text{o, també} \quad \{ f_{n} (x)\} \overset{\text{unif}(D)}{\longrightarrow} f(x)
+\end{align}
+Per tant, $\{f_{n}(x)\}$ convergeix uniformement a $f(x)$ si:
+\begin{align}
+    \forall \varepsilon > 0 \text{ i } \forall x \in D, \exists n_{0}(\varepsilon) \in \mathbb{N} \text{ tal que } |f_{n} (x) - f(x) | < \varepsilon, \forall n > n_{0}
+\end{align}
+De la definició és desprèn que:
+\begin{align}
+    \{ f_{n} (x)\} \overset{\text{unif}(D)}{\longrightarrow} f(x) \Rightarrow \{ f_{n} (x)\} \overset{\text{punt}(D)}{\longrightarrow} f(x)
+\end{align}
+El recíproc no és cert, com comprovarem amb els exemples anteriors:
+\begin{enumerate}[i)]
+    \item La successió de funcions $f_{n}(x) = x/n$ no convergeix uniformement cap a la funció $f(x) = 0$, a $\mathbb{R}$. Sí que ho fa, en canvi, a qualsevol interval finit de $\mathbb{R}$.
+    \item La successió $f_{n}(x) = x^{n}$ no convergeix uniformement, a l'interval $(-1, 1]$, cap a la funció $f(x)$. Sí que ho fa, en canvi, en qualsevol subinterval tancat de $(-1,1)$.
+    \item La successió de funcions $f_{n} (x) = \sin (n^{2}x)/n$ convergeix uniformement, a tot $\mathbb{R}$, a la funció $f(x) = 0$. 
+\end{enumerate}
+
+\subsubsection*{Teoremes sobre la convergència uniforme de successions}
+Els teoremes següents estableixen que la continuïtat i la integrabilitat es transmeten de les funcions cap a la funció límit quan la convergència és uniforme. La derivabilitat és més complicada; no es transmet necessàriament a la funció límit. Cal que la successió de les derivades sigui també uniformement convergent.
+\begin{itemize}
+    \item Teorema de la continuïtat:
+        \subitem Si $f_{n}$ són contínues a $D$, i $\{ f_{n} (x) \} \overset{\text{unif}(D)}{\longrightarrow} f(x)$
+        \begin{align}
+            \Rightarrow f(x) \text{ és contínua a } D
+        \end{align}
+    \item Teorema de la integrabilitat terme a terme:
+        \subitem Si $f_{n}$ són integrables a $[a, b] \subseteq D$, i $\{ f_{n} (x) \} \overset{\text{unif}(D)}{\longrightarrow} f(x)$
+        \begin{align}
+            \Rightarrow f(x) \text{ és integrable a } [a, b] \subseteq D
+        \end{align}
+        \subitem i es compleix
+        \begin{align}
+            \left\{ \int_{a}^{b} f_{n} (x) \diff x \right\} \to \int_{a}^{b} f (x) \diff x
+        \end{align}
+    \item Teorema de la derivabilitat terme a terme:
+        \subitem Si $f_{n}$ són derivables a $D$, $\{ f_{n}' (x) \} \overset{\text{unif}(D)}{\longrightarrow} g(x)$, i $\{ f_{n} (x) \}$ convergeix en algun punt de $D$
+        \begin{align}
+            \Rightarrow \{ f_{n} (x) \} \overset{\text{unif}(D)}{\longrightarrow} f(x) \text{ (derivable)} \quad \text{i} \quad f'(x) = g(x)
+        \end{align}
+\end{itemize}
+
+%----------------------------------------------------------------------------------------
+\subsection{Sèries de funcions}
+Com en el cas de les sèries numèriques, definirem la suma d'una sèrie de funcions definides en un domini $D$ com el límit, si existeix, de la successió de sumes parcials:
+\begin{align}
+    \sum\limits_{k=1}^{\infty} f_{k} (x) \equiv \lim \{ F_{n} (k) \} \quad \text{on} \quad F_{n} (x) = \sum\limits_{k=1}^{n} f_{k} (x)
+\end{align}
+Si $\{ F_{n} (x) \} \overset{\text{unif}(D)}{\longrightarrow} F(x)$ direm que la sèrie $\sum_{k=1}^{\infty} f_{k} (x)$ convergeix uniformement en el domini $D$, i que $F(x)$ és la seva suma en el sentit uniforme. Ho escriurem:
+\begin{align}
+    \sum\limits_{k=1}^{\infty} f_{k} (x) \overset{\text{unif}(D)}{=} F(x)
+\end{align}
+Per tant, $\{F_{n}(x)\}$ convergeix uniformement a $F(x)$ si:
+\begin{align}
+    \begin{gathered}
+        \forall \varepsilon > 0 \text{ i } \forall x \in D, \exists n_{0}(\varepsilon) \in \mathbb{N} \\
+        \text{ tal que } | \sum\limits_{k=1}^{\infty} f_{k} (x) - F(x) | < \varepsilon, \forall n > n_{0}
+    \end{gathered}
+\end{align}
+
+\subsubsection*{Criteri de Weierstrass}
+Si $|f_{n} (x)| \leq C_{n} \forall x \in D$, i $\sum_{n \geq 1} f_{n} C_{n}$ convergeix, llavors:
+\begin{align}
+    \sum\limits_{n \geq 1} f_{n} (x) \text{ convergeix uniformement en } D
+\end{align}
+
+\subsubsection*{Teoremes sobre la convergència uniforme de sèries}
+\begin{itemize}
+    \item Teorema de la continuitat:
+        \subitem Si $f_{n}$ són contínues a $D$, i $\sum_{k = 1}^{\infty} f_{k} (x) \overset{\text{unif}(D)}{=} F(x)$
+        \begin{align}
+            \Rightarrow F(x) \text{ és contínua a } D
+        \end{align}
+    \item Teorema de la integrabilitat terme a terme:
+        \subitem Si $f_{n}$ són integrables a $[a, b] \subseteq D$, i $\sum_{k = 1}^{\infty} f_{k} (x) \overset{\text{unif}(D)}{=} F(x)$
+        \begin{align}
+            \Rightarrow F(x) \text{ és integrable a } [a, b] \subseteq D
+        \end{align}
+        \subitem i es compleix
+        \begin{align}
+            \sum\limits_{k = 1}^{\infty} \int_{a}^{b} f_{n} (x) \diff x = \int_{a}^{b} F(x) \diff x
+        \end{align}
+    \item Teorema de la derivabilitat terme a terme:
+        \subitem Si $f_{n}$ són derivables a $D$, $\sum_{k = 1}^{\infty} f_{k}' (x) \overset{\text{unif}(D)}{=} G(x)$, i $\sum_{k = 1}^{\infty} f_{k} (x)$ és sumable en algun punt de $D$
+        \begin{align}
+            \Rightarrow \sum\limits_{k = 1}^{\infty} f_{k} (x) \overset{\text{unif}(D)}{=} F(x) \text{ (derivable)} \quad \text{i} \quad F'(x) = G(x)
+        \end{align}
+\end{itemize}
+
+%----------------------------------------------------------------------------------------
+\subsection{Sèries de potències}
+Es tracta de sèries del tipus $\displaystyle \sum\limits_{n=0}^{\infty} a_{n} (x-c)^{n}$, que anomenarem sèrie de potències al voltant del punt $c$.
+
+Cal notar que qualsevol sèrie de potències al voltant d'un punt $c$, amb el canvi de variable $x' = x-c$ es pot convertir en una sèrie de potències al volant del punt $0$:
+\begin{align}
+    \sum\limits_{n=0}^{\infty} a_{n} (x-c)^{n} = \sum\limits_{n=0}^{\infty} a_{n} x'^{n}
+\end{align}
+
+\subsubsection*{Teorema de la convergència absoluta de les sèries de potències}
+Si $\sum_{n=0}^{\infty} a_{n} x^{n}$ és convergent en el punt $x = x_{0}$, 
+\begin{align}
+    \Rightarrow \sum\limits_{n=0}^{\infty} a_{n} x^{n} \text{és absolutament convergent $\forall x$ tal que } |x| < |x_{0}|
+\end{align}
+
+\subsubsection*{Radi de convergència d'una sèrie de potències}
+En una serie de potències $\sum\limits_{n=0}^{\infty} a_{n} (x-c)^{n}$, pot passar el següent:
+\begin{enumerate}[i)]
+    \item Convergeix a tot $x \in \mathbb{R}$.
+    \item Només convergeix al punt $x = c$.
+    \item $\exists R \geq 0$, anomenat radi de convergència, tal que la sèrie convergeix $\forall x \in (c-R , c+R)$.
+\end{enumerate}
+En realitat, tots casos es poden resumir en el tercer: al primer $R = \infty$, al segon $R = 0$, i al tercer $R$ és un escalar finit no nul.
+
+\subsubsection*{Càlcul del radi de convergència}
+Sigui $\sum\limits_{n=0}^{\infty} a_{n} x^{n}$ una sèrie de potències. Llavors, podem calcular el radi de convergència a partir del criteri de l'arrel i del criteri del quocient:
+\begin{align}
+    |x| < R = \left[ \lim \left\{ \sqrt[n]{|a_{n}|} \right\} \right]^{-1} = \left[ \lim \left\{ \frac{|a_{n+1}|}{|a_{n}|} \right\} \right]^{-1}
+\end{align}
+Ara bé, si tenim una sèrie que no depèn exactament de $x^{n}$, el radi serà lleugerament diferent (ja que la definció rigurosa de $R$ és sobre elements consecutius de la suma, no únicament dels índexs $a_{n}$).
+\begin{example}
+Sigui $\sum_{n}^{\infty} a_{n} x^{2n+1} = \sum_{n}^{\infty} a_{n} (x^{2})^{n} x$. Llavors, en fer $R = \lim \left\{ \frac{|a_{n}|}{|a_{n+1}|} \right\}$, estem calculant el radi de convergència per a $|x^{2}| < R$. Així doncs, el domini de convergència no serà $(-R, R)$ sinó $(-\sqrt{R}, \sqrt{R})$.
+\end{example}
+Cal notar que el càlcul del radi de convergència no ens assegura quin comportament té la funció als extrems de l'interval $[-R, R]$, de manera que a priori només podem assegurar que la sèrie $\sum_{n=0}^{\infty} a_{n} x^{n}$ convergeix $\forall x \in (-R , R)$.
+
+\subsubsection*{Radi de convergència de la sèrie de derivades}
+La sèrie de potències $\sum_{n=1}^{\infty} na_{n} x^{n-1}$ té el mateix radi de convergència que la sèrie $\sum_{n=0}^{\infty} a_{n} x^{n}$.
+
+\subsubsection*{Radi de convergència de la sèrie de primitives}
+La sèrie de potències $\sum_{n=0}^{\infty} \frac{a_{n}}{n+1} x^{n+1}$ té el mateix radi de convergència que la sèrie $\sum_{n=0}^{\infty} a_{n} x^{n}$.
+
+\subsubsection*{Teorema de la convergència uniforme de les sèries de potències}
+Si $\sum_{n=0}^{\infty} a_{n} x^{n}$ té radi de convergència $R$ i $[-A, A] \subseteq (-R, R)$
+\begin{align}
+    \Rightarrow \sum\limits_{n=0}^{\infty} a_{n} x^{n} \text{ convergeix uniformement a } [-A, A]
+\end{align}
+
+\subsubsection*{Teorema d'Abel}
+Si $\sum_{n=0}^{\infty} a_{n} x^{n}$ convergeix en $l > 0$
+\begin{align}
+    \Rightarrow \sum\limits_{n=0}^{\infty} a_{n} x^{n} \text{ convergeix uniformement en } [0, l]
+\end{align}
+El mateix teorema és aplicable si $l' < 0$, amb un interval de convergència $[l', 0]$.
+
+\subsubsection*{Teorema de la integrabilitat terme a terme de les sèries de potències}
+Si $\sum_{n=0}^{\infty} a_{n} t^{n} = f(t), \quad \forall t \in (-R, R)$
+\begin{align}
+    \Rightarrow \sum\limits_{n=0}^{\infty} \frac{a_{n}}{n+1} x^{n+1} = \int_{0}^{x} f(t) \diff t , \quad \forall x \in (-R, R)
+\end{align}
+
+\subsubsection*{Teorema de la derivabilitat terme a terme de les sèries de potències}
+Si $\sum_{n=0}^{\infty} a_{n} x^{n} = f(x), \quad \forall x \in (-R, R)$
+\begin{align}
+    \Rightarrow f(x) \text{ és derivable} \quad \text{i } \sum\limits_{n=0}^{\infty} na_{n} x^{n-1} = f'(x), \quad \forall x \in (-R, R)
+\end{align}
+
+\subsubsection*{Unicitat de les sèries de potències}
+Si $f(x) = \sum_{n=0}^{\infty} a_{n} x^{n}$ a l'interval $(-R, R)$, derivant-la reiteradament obtenim
+\begin{align}
+\begin{split}
+    f(x) & = \sum\limits_{n=0}^{\infty} a_{n} x^{n} \\
+    f(x)' & = \sum\limits_{n=0}^{\infty} na_{n} x^{n-1} \\
+    f(x)'' & = \sum\limits_{n=0}^{\infty} n(n-1)a_{n} x^{n-2} \\
+    f(x)''' & = \sum\limits_{n=0}^{\infty} n(n-1)(n-2)a_{n} x^{n-3} \\
+    & \, \, \, \vdots \\
+    f(x)^{(k)} & = \sum\limits_{n=0}^{\infty} n(n-1) \dots (n-k+1) a_{n} x^{n-k} = \frac{n!}{(n-k)!} a_{n} x^{n-k}
+\end{split}
+\end{align}
+Substituint $x=0$ a les igualtats anteriors obtenim
+\begin{align}
+\begin{split}
+    f(0) & = a_{0}\\
+    f'(0) & = a_{1}\\
+    f''(0) & = 2 a_{2}\\
+    f'''(0) & = 3 \cdot 2 a_{3}\\
+    &\, \, \, \vdots \\
+    f^{(n)}(0) & = n! a_{n}
+\end{split}
+\end{align}
+Tenim, doncs, la següent relació entre els coeficients d'una sèrie de potències i les derivades de la funció cap a la qual convergeix (dins l'interval de convergència).
+\begin{align}
+    f(x) = \sum\limits_{n=0}^{\infty} a_{n} x^{n} \text{ a l'interval } (-R, R) \Rightarrow a_{n} = \frac{f^{(n)}(0)}{n!}
+\end{align}
+D'aquí podem concloure la unicitat de les sèries de potències:
+\begin{align}
+    f(x) = \sum\limits_{n=0}^{\infty} a_{n} x^{n} = \sum\limits_{n=0}^{\infty} b_{n} x^{n} \Rightarrow a_{n} = b_{n}
+\end{align}
+
+\subsubsection*{Sèrie de Taylor}
+Donada una funció $f(x)$ $\infty$-derivable en el punt $c$, anomenem sèrie de Taylor de $f(x)$ al voltant del punt $c$ a la sèrie de potències
+\begin{align}
+    \sum\limits_{n=0}^{\infty} \frac{f^{(n)}(c)}{n!} (x-c)^{n} \quad \text{si } |x-c| < R
+\end{align}
+No obstant això, hi ha funcions $\infty$-derivables que no són la suma de la seva sèrie de Talyor, com ara $f(x) = \exp (-1/x^{2})$, que és és $\infty$-derivable $\forall x \in \mathbb{R}$, però totes les seves derivades a l'origen són 0 i, per tant, la sèrie de Taylor al voltant de l'origen és 0.
+
+%----------------------------------------------------------------------------------------
+\subsection{Funcions analítiques}
+Quan serà una funció $\infty$-derivable expressable com la suma d'una sèrie de Taylor? Per obtenir la resposta escrivim la Fórmula de Taylor de $f(x)$ al voltant del punt $c$:
+\begin{align}
+    f(x) \sum\limits_{k=0}^{n} \frac{f^{(k)}(c)}{k!} (x-c)^{k} + R_{n}(x,c)
+\end{align}
+Observem que els polinomis de Taylor (i.e., $\sum_{k=0}^{n} \frac{f^{(k)}(c)}{k!} (x-c)^{k}$, de grau $n$) són les sumes parcials de la sèrie de Taylor. Per tant, la sèrie de Taylor serà convergent $n \to \infty \Rightarrow R_{n} (x,c) \to 0$.
+
+Així doncs, les funcions analítiques són aquelles funcions $f(x)$ tals que
+\begin{align}
+    \sum\limits_{n=0}^{\infty} \frac{f^{(n)}(c)}{n!} (x-c)^{n} = f(x)
+\end{align}
+
+\subsubsection*{Exemples}
+\begin{itemize}
+    \item $\displaystyle e^{x} = \sum\limits_{n=0}^{\infty} \frac{x^{n}}{n!}, \quad \forall x \in \mathbb{R}$
+    \item $\displaystyle \sin x = \sum\limits_{n=0}^{\infty} (-1)^{n} \frac{x^{2n+1}}{(2n+1)!}, \quad \forall x \in \mathbb{R}$
+    \item $\displaystyle \cos x = \sum\limits_{n=0}^{\infty} (-1)^{n} \frac{x^{2n}}{(2n)!}, \quad \forall x \in \mathbb{R}$
+\end{itemize}
+De l'expressió d'aquestes funcions com a sèries de potències podem deduir moltes de les seves propietats, com ara $\sin ' x = \cos x$, l'expressió de $\sin (x+y)$, etc.
+
+Tanmateix, podem definir noves funcions a partir de les seva expressió com a sèrie de potències, i partir de l'expressió d'altres funcions com a sèries trobar una expressió general de les noves funcions:
+\begin{itemize}
+    \item $\displaystyle \sum\limits_{n=0}^{\infty}  \frac{x^{2n+1}}{(2n+1)!} \equiv \sinh x = \frac{e^{x} - e^{-x}}{2} $
+    \item $\displaystyle \sum\limits_{n=0}^{\infty} \frac{x^{2n}}{(2n)!} \equiv \cosh x = \frac{e^{x} + e^{-x}}{2} $
+\end{itemize}
+\bigskip
+\begin{example}
+    Sigui $\displaystyle f(x) = \frac{1}{1 + x^{2}} = \sum\limits_{n}^{\infty} a_{n} x^{n}$. Intentar trobar la sèrie de Taylor derivant indefinidament pot ser molt complicat, però tenim altres mètodes per fer-ho.
+    
+    Sabem que $\displaystyle\frac{1}{1 - y} = \sum\limits_{n}^{\infty} y^{n}, \quad |y| < 1 $, llavors fem $y = -x^{2}, \quad |x| < 1$ $\Rightarrow$ $\displaystyle\frac{1}{1 + x^{2}} = \sum\limits_{n}^{\infty} (-x^{2})^{n} = \sum\limits_{n}^{\infty} (-1)^{n} x^{2n} $. 
+    
+    A partir d'aquesta nova expressió podem definir una nova funció. Sabem que $\displaystyle \frac{\dif}{\dif x} (\arctan x) = \frac{1}{1+x^{2}}$, llavors
+    \begin{align}
+        \int_{0}^{x} f(t) \diff t \equiv \arctan x = \sum\limits_{0}^{\infty} (-1)^{n} \frac{x^{2n+1}}{2n+1}
+    \end{align}
+\end{example}
+Com hem vist, l'expressió de funcions analítiques com a sèries de potències són de gran utilitat per estudiar les seves propietats i ens poden ajudar a definir noves funcions a partir de funcions de les quals sabem la seva expressió com a sèrie de potències.
+%----------------------------------------------------------------------------------------
+\subsection{Sèries de Fourier}
+Les sèries de Fourier són molt importants a la Física. Les escriurem de la següent forma:
+\begin{align}
+    S(x) = \frac{a_{0}}{2} + \sum\limits_{k=1}^{\infty} \left( a_{k} \cos \frac{k \pi x}{L} + b_{k} \sin \frac{k \pi x}{L} \right)
+\end{align}
+Aquesta sèrie funcional pot ser o no convergent, i en cas de convergir, pot fer-ho puntualment o uniforme. Com que les funcions $\cos (k \pi x / L)$ i $\sin (k \pi x / L)$ són periòdiques amb període $2L$, si la sèrie convergeix cap a la funció $S(x)$, aquesta també serà periòdica, és a dir,
+\begin{align}
+    S(x) = S(x + 2L)
+\end{align}
+
+\subsubsection*{Càlcul dels coeficients}
+A partir de la funció $f(x)$ donada, calculem les integrals següents:
+\begin{align}
+    a_{k} = \frac{1}{L} \int_{c}^{c+2L} f(x) \cos \frac{k \pi x}{L} \dif x , \quad (k = 0, 1, 2 \dots)
+\end{align}
+\begin{align}
+    b_{k} = \frac{1}{L} \int_{c}^{c+2L} f(x) \sin \frac{k \pi x}{L} \dif x , \quad (k = 1, 2, 3 \dots)
+\end{align}
+on $c$ és un punt qualsevol. De fet, podem integrar sobre qualsevol interval de longitud $2L$. Pel que fa a l'existència de les integrals, n'hi ha prou amb que $f$ sigui integrable al llarg d'un període.
+
+En particular, 
+\begin{align}
+    a_{0} = \frac{1}{L} \int_{c}^{c+2L} f(x) \dif x
+\end{align}
+
+\subsubsection*{Teorema de convergència}
+Si $f(x)$ i $f'(x)$ són contínues a l'interval $[-L, L]$ (és a dir, només tenen un nombre finit de discontinuïtats de salt o evitables), llavors:
+\begin{align}
+    \frac{a_{0}}{2} + \sum\limits_{k=1}^{\infty} \left( a_{k} \cos \frac{k \pi x}{L} + b_{k} \sin \frac{k \pi x}{L} \right) \overset{\text{punt}}{\longrightarrow} \frac{1}{2} \left[ f(x^{+}) + f(x^{-}) \right]
+\end{align}
+on $f(x^{\pm})$ són respectivament els límits per la dreta i per l'esquerra de la funció $f$ en el punt $x$. Per tant, els punts on $f$ sigui contínua, la sèrie convergirà cap a $f(x)$.
+
+Una condició suficient per a la convergència uniforme és que $f(x)$ sigui contínua i que les sèries numèriques $\sum a_{k}$ i $\sum b_{k}$ siguin absolutament sumables.
+
+\subsubsection*{Funcions parelles i senars}
+En el cas que ens trobem amb funcions parelles o senars, l'expressió de les sèries de Fourier se simplifica força.
+\begin{itemize}
+    \item Funcions parelles: $f(-x) = f(x) \sim \frac{a_{0}}{2} + \sum a_{k} \dots$
+        \subitem $\displaystyle b_{k} = 0 $
+        \subitem $\displaystyle a_{k} = \frac{1}{L} \int_{c}^{c+2L} f(x) \cos \frac{k \pi x}{L} \dif x $
+    \item Funcions senars: $f(-x) = -f(x) \sim \sum b_{k} \dots$
+        \subitem $\displaystyle a_{k} = 0$
+        \subitem $\displaystyle b_{k} = \frac{1}{L} \int_{c}^{c+2L} f(x) \sin \frac{k \pi x}{L} \dif x $
+\end{itemize}

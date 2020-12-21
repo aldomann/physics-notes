@@ -1,0 +1,66 @@
+%----------------------------------------------------------------------------------------
+%    ANELLS
+%----------------------------------------------------------------------------------------
+\section{Anells}
+\subsection{Anells}
+Un anell és un conjunt $R$ amb dues operacions: $(R,+, \cdot)$.
+\begin{align}
+    \begin{matrix}
+        +: & R \times R & \to & R \\
+        & (a,b) & \mapsto & a + b
+    \end{matrix}
+\end{align}
+\begin{align}
+    \begin{matrix}
+        \cdot: & R \times R & \to & R \\
+        & (a,b) & \mapsto & ab
+    \end{matrix}
+\end{align}
+
+\subsubsection*{Propietats}
+\begin{itemize}
+    \item $(R,+)$ és un grup abelià.
+    \item Associativa del producte: $(ab)c = a(bc), \quad \forall a,b,c \in R$.
+    \item Doble distributiva: $a(b+c) = ab + ac, \;(b+c)a = ba + ca, \quad \forall a,b,c \in R$.
+    \item Si el producte és commutatiu$\Leftrightarrow$R és un anell commutatiu.
+\end{itemize}
+
+%----------------------------------------------------------------------------------------
+\subsection{Subanells}
+Sigui $S \subseteq R$. $S$ és un subanell de $R$ $\Leftrightarrow$
+\begin{enumerate}[i)]
+    \item $S$ és un subanell de $(R,+)$.
+    \item $ab \in S, \quad \forall a,b \in S$.
+    \item $1_{R} \in S$.
+\end{enumerate}
+
+%----------------------------------------------------------------------------------------
+\subsection{Anell de matrius}
+$M(m,n,R) = M_{m \times n} (R) \equiv$ matriu de $m$ files i $n$ columnes sobre l'anell $R$. Si la matriu és quadrada ($M(n,n,R) = M_{n \times n} (R)$), s'escriu $M(n,R) = M_{n} (R)$. Si pel context se sobreentén l'anell sobre el qual es treballa, es pot escriure $M(m,n) = M_{m \times n}$.
+
+\subsubsection*{Operacions}
+\begin{itemize}
+    \item Suma (per a matrius del mateix tipus).
+        \subitem $A+B = (a_{ij} + b_{ij}) \quad e=0$.
+    \item Producte per escalars.
+        \subitem $kA = k(a_{ij})$.
+    \item Producte.
+        \subitem $M(m,l) \times M(l,n) = M(m,n), \quad$ en $M(n), \; \exists e, \; e = I(n)$.
+        \subitem $AB=C \Rightarrow A_{i} B = C_{i} \text{ i } AB^{j} = C^{j}$.
+\end{itemize}
+
+%----------------------------------------------------------------------------------------
+\subsection{Elements invertibles d'un anell}
+$a \in R$ és invertible$\Leftrightarrow \exists b$ tal que $ab = ba = 1_{R} \Rightarrow b = a^{-1}$.
+
+\subsubsection*{Grup d'elements invertibles}
+$U(R) \equiv \{ x \mid x \textrm{ és invertible} \}$.
+
+\subsubsection*{Divisors de zero}
+$a \neq 0$ i $b \neq 0$ són divisors de zero si $ab=0$ o $ba=0$.
+
+\subsubsection*{Domini d'integritat i cos}
+Un anell $R$ sense divisors de zero és un domini d'integritat. Un cos $K$ (cas particular de domini d'integritat) és un anell commutatiu no nul on tot element $a \neq 0$ és invertible.
+
+\subsubsection*{Grup lineal de matrius}
+$GL(n,K) \equiv \{ M(n,K) \mid M \textrm{ és invertible} \}$

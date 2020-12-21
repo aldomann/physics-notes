@@ -1,0 +1,269 @@
+%----------------------------------------------------------------------------------------
+%    EQUACIONS DIFERENCIALS LINEALS
+%----------------------------------------------------------------------------------------
+\section{Equacions diferencials lineals}
+\subsection{Equacions reduïdes i completes}
+\begin{defi}[Equació diferencial d'ordre $n$]
+    \begin{align}\label{ed-lineal-n}
+        \frac{\dif^{n} y}{\dif x^{n}} + P_{1}(x) \frac{\dif^{n-1} y}{\dif x^{n-1}} + \cdots + P_{n-1}(x) \frac{\dif y}{\dif x} + P_{n}(x) y = R(x)
+	\end{align}
+	\begin{itemize}
+		\item Si $R(x) = 0$, es tracta d'una ED reduïda.
+		\item Si $R(x) \neq 0$, es tracta d'una ED completa.
+	\end{itemize}
+\end{defi}
+
+\subsubsection*{Propietats de les equacions reduïdes i completes}
+\begin{enumerate}[i)]
+    \item Si una solució de la reduïda s'anul·la, al igual que les seves $n-1$ derivades en algun punt $x_{0}$, aquesta solució és $y(x) \equiv 0$.
+	\item Si $u_{1}, \dots , u_{k}$ són solucions de la reduïda, també ho són $Cu_{1}, \dots , Cu_{k}$.
+	\item Si $y_{1}, y_{2}$ són solucions de la completa, $y_{2} - y_{1}$ és solució de la reduïda.
+\end{enumerate}
+\begin{cor}
+    Si $y_{1}$ és una solució particular de la completa, i $u_{1}$ la solució general de la reduïda, llavors $y_{1} + u_{1}$ és la solució general de la completa.
+\end{cor}
+Sabem per resultats de capítols anteriors que:
+\begin{itemize}
+	\item Solució general d'una ED d'ordre $n$: funció $y(x)$ amb $n$ constants arbitràries.
+	\item $\exists! y(x)$ amb valors predeterminats per a $y(x_{0}), y'(x_{0}), \dots , y^{(n-1)}(x_{0})$.
+\end{itemize}
+
+\begin{thm}
+	La solució general d'una ED lineal completa s'obté sumant la solució general de la reduïda i una solució particular de la completa.
+\end{thm}
+\begin{defi}[Wronskià]
+	\begin{align}
+		W(u_{1}(x), \dots , u_{n}(x)) \equiv \begin{vmatrix} u_{1} & \dots & u_{n} \\ u'_{1} & \dots & u'_{n} \\ \vdots & & \vdots \\ u^{(n-1)}_{1} & \dots & u^{(n-1)}_{n} \end{vmatrix} \equiv f(x)
+	\end{align}
+\end{defi}
+\begin{thm}
+	Si $n$ funcions són linealment dependents (LD) i $\exists$ les seves derivades fins a $n-1$, el seu wronskià és $\equiv 0$.
+\end{thm}
+\begin{thm}
+	Tota solució de l'ED reduïda es pot expressar com a combinació lineal de $n$ solucions linealment independents (LI) de la reduïda.
+\end{thm}
+\begin{cor}
+	La forma de trobar la solució general de l'ED reduïda és trobar $n$ solucions particulars LI (mitjançant el wronskià és fàcil comprovar si ho són).
+\end{cor}
+
+%----------------------------------------------------------------------------------------
+\subsection{Equacions reduïdes amb coeficients constants}
+\begin{defi}
+	\begin{align}\label{ed-red-ct-n}
+		\frac{\dif^{n} y}{\dif x^{n}} + p_{1} \frac{\dif^{n-1} y}{\dif x^{n-1}} + \dots + p_{n-1} \frac{\dif y}{\dif x} + p_{n} y = 0
+	\end{align}
+\end{defi}
+
+\subsubsection*{Resolució}
+\begin{defi}[Equació auxiliar]
+	$\exists$ solucions de l'ED~\eqref{ed-red-ct-n} de la forma $y = e^{mx}$ on $m$ és arrel de l'equació auxiliar $m^{n} + p_{1} m^{n-1} + \dots + p_{n-1} m + p_{n} = 0$.
+\end{defi}
+Segons com siguin les arrels de l'equació auxiliar, tindrem diferents solucions:
+\begin{enumerate}[i)]
+	\item Si són $n$ arrels reals diferents: $m_{1}, \dots , m_{n}$.
+		\subitem $\Rightarrow \boxed{y = C_{1}e^{m_{1}x} + \dots + C_{n}e^{m_{n}x}}$ és solució.
+	\item Si són $n$ arrels reals, però alguna múltiple: $m_{k}$ amb multiplicitat $r$.
+		\subitem Se substitueixen els $r$ sumands amb $e^{m_{k}x}$ de la solució anterior per
+		\subitem $\boxed{(B_{1} + B_{2} x + \dots + B_{r} x^{r-1}) e^{m_{k}x}}$.
+	\item Si hi ha alguna arrel complexa: $m = \alpha \pm \beta \imath$.
+		\subitem Se substitueixen els termes $C e^{(\alpha + \beta \imath) x} + D e^{(\alpha + \beta \imath) x}$ per $\boxed{e^{\alpha x} (A \cos \beta + B \sin \beta)}$.
+	\item Si hi ha alguna arrel complexa múltiple: $m_{k} = \alpha \pm \beta \imath$ arrel de multiplicitat $r$
+		\subitem Se substitueixen $2r$ termes de la primera solució per
+		\subitem $\boxed{e^{\alpha x} \left[ (A_{1} + A_{2} x + \dots + A_{r} x^{r-1})\cos \beta x \right]}$
+		\subitem $+ \boxed{e^{\alpha x} \left[ (B_{1} + B_{2} x + \dots + B_{r} x^{r-1})\sin \beta x \right]}$.
+\end{enumerate}
+
+\begin{example}
+	$y'' + 4y' + 4y = x + 1 \Rightarrow m^2 + 4m + 4 = 0 \Rightarrow m = -2$ (doble).
+
+	$\Rightarrow \boxed{y = e^{-2x} (A + Bx)}$ és solució de la reduïda.
+\end{example}
+\begin{example}
+	$y^{(4)} + 5y'' + 4y = 0 \Rightarrow m^{4} + 5m^{2} + 4 = 0 \Rightarrow m_{1} = \pm \imath, m_{2} = \pm 2 \imath$.
+
+	$\Rightarrow \boxed{y = A \cos x + B \sin x + C \cos 2x + D \sin 2x}$ és solució.
+\end{example}
+
+%----------------------------------------------------------------------------------------
+\subsection{Equacions completes amb coeficients constants}
+\begin{defi}
+	\begin{align}\label{ed-comp-ct-n}
+		\frac{\dif^{n} y}{\dif x^{n}} + p_{1} \frac{\dif^{n-1} y}{\dif x^{n-1}} + \dots + p_{n-1} \frac{\dif y}{\dif x} + p_{n} y = R(x)
+	\end{align}
+\end{defi}
+\subsubsection*{Mètode dels anihiladors}
+\begin{defi}
+    Emprant la notació d'Euler ($y^{(n)} = D^{n}y$), l'equació~\eqref{ed-comp-ct-n} s'escriurà:
+    \begin{align}
+        L(y) = (D^{n} + p_{1} D^{n-1} + \dots + p_{n-1} D + p_{n}) y = R(x)
+    \end{align}
+    On $L$ és l'operador lineal diferencial $D^{n} + p_{1} D^{n-1} + \dots + p_{n-1} D + p_{n}$. És fàcil veure que $L = (D-m_{1}) (D-m_{2}) \dots (D-m_{n})$, on $m_{i}$ śon les arrels de l'equació auxiliar.
+\end{defi}
+\begin{defi}[Operador anihilador]
+Un operador anihilador és un operador lineal $L_{i}$ que anihila $R(x)$, és a dir $L_{1} L_{2} \dots L_{k} R(x) = 0$.
+\begin{itemize}
+    \item $\boxed{(D-\alpha)^{n+1}}$ anihila les funcions que tenen forma de $\boxed{x^{n} e^{\alpha x}}$.
+    \item $\boxed{(D^{2}-2\alpha D + \alpha^{2} + \beta^{2})^{n+1}}$ anihila les funcions que tenen forma de
+
+    $\boxed{x^{n} e^{\alpha x} (C_{1} \cos \beta x + C_{2} \sin \beta x)}$.
+\end{itemize}
+\end{defi}
+\subsubsection*{Resolució}
+\begin{enumerate}[i)]
+    \item Solucionar l'ED reduïda $L(y) = 0$.
+    \item Multiplicar pels operadors anihiladors a ambdues bandes de l'ED:
+
+    $L'(y) \equiv (L_{1}L_{2} \dots L)(y) = L_{1}L_{2} \dots R(x) \equiv 0$.
+    \item Trobar les arrels de $L'$ i expressar solució general corresponent a l'equació $L'(y) = 0$.
+    \item Els sumands de la solució de $L'(y) = 0$ que no siguin ja a la solució de la reduïda són la solució particular de la completa que busquem. És a dir, tenim $y_{p} = C_{1} P_{1}(x) + C_{2} P_{2}(x) + \dots$.
+    \item Substituir $y$ de l'ED inicial per $y_{p}$, aplicar l'operador $L$ i trobar els valors de les constants $C_{i}$ per tal que es compleixi $L(y_{p}) = R(x)$.
+\end{enumerate}
+\begin{example}
+    $y''' - y' = x e^{x} \Rightarrow (D^{3} - D) y = xe^{x}$
+
+    Reduïda: $(D^{3} - D) = D (D-1) (D+1) = 0 \Rightarrow \boxed{y = A + Be^{x} + Ce^{-x}}$.
+
+    L'operador que anihila $x e^{x}$ és $(D-1)^{2} \Rightarrow D (D-1)^{3} (D+1) = 0$. Llavors tenim $m_{1} = 0$, $m_{2} = 1$ (triple), $m_{3} = -1$. La solució general és $\boxed{y = (B + Ex + Fx^{2})e^{x} + A + Ce^{-x}}$.
+
+    $\Rightarrow \boxed{y_{p} = Exe^{x} + Fx^{2} e^{x}} \Rightarrow (D^{3}-D) (Exe^{x} + Fx^{2} e^{x}) = xe^{x} = (2E + 6F)e^{x} + 4Fxe^{x}$.
+
+    $\displaystyle \Rightarrow E = -\frac{3}{4}, F = \frac{1}{4} \Rightarrow \boxed{y_{p} = -\frac{3}{4} xe^{x} + \frac{1}{4} x^{2} e^{x}}$.
+\end{example}
+
+%----------------------------------------------------------------------------------------
+\subsection{Mètode de la variació de paràmetres (2n ordre)}
+En general és un mètode vàlid $\forall$ funció $R(x)$. A més no es limita al cas dels coeficients constants, sinó que és vàlid sempre que s'hagi resolt l'ED reduïda.
+\begin{defi}
+	\begin{align}\label{ed-var-par-2}
+		y'' + P(x) y' + Q(x) y = R(x)
+	\end{align}
+\end{defi}
+
+\subsubsection*{Resolució}
+Siguin $u_{1}, u_{2}$ solucions LI de la reduïda ($u''_{i} + Pu'_{i} + Q_{i} = 0$). Cerquem una solució de la concreta de la forma
+\begin{align*}
+	y = t_{1}(x) u_{1} + t_{2}(x) u_{2}
+\end{align*}
+i, a més, compleix la següent propietat: $t'_{1}(x) u_{1} + t'_{2}(x) u_{2} = 0$.
+\\
+Derivant, substituint a~\eqref{ed-var-par-2}, tenim: $t'_{1}(x) u'_{1} + t'_{2}(x) u'_{2} = R \Rightarrow \exists t_{1}, t_{2} \mid y = t_{1}(x) u_{1} + t_{2}(x) u_{2}$. Així doncs, tenim el següent sistema d'equacions algebràiques:
+\begin{align*}
+	\begin{cases} t'_{1}(x) u_{1} + t'_{2}(x) u_{2} = 0 \\ t'_{1}(x) u'_{1} + t'_{2}(x) u'_{2} = R \end{cases}
+\end{align*}
+La solució del sistema és $\displaystyle t'_{1} = - \frac{Ru_{1}}{W}, t'_{2} = \frac{Ru_{2}}{W}$, on el wronskià val $W = u_{1} u'_{2} - u'_{1} u_{2}$. Integrant les $t'_{i}$ respecte $x$, tenim:
+\begin{align}
+	\boxed{y_{p} = - u_{1}(x) \int_{a}^{x} \frac{R(x) u_{2}(x)}{W(x)} \diff x + u_{2}(x) \int_{a}^{x} \frac{R(x) u_{1}(x)}{W(x)} \diff x}
+\end{align}
+
+\begin{example}
+    $\displaystyle y'' + y = \frac{1}{\sin x}$. $m = \pm \imath$.
+    La solució de la reduïda és $\boxed{y = A \cos x + B \sin x}$. Llavors definim $u_{1} = \cos x$ i $u_{2} = \sin x$.
+
+    $W(u_{1}(x), u_{2}(x)) = \cos^{2} x + \sin^{2} x = 1 \neq 0$.
+
+    $\displaystyle y_{p} = \cos x \int_{a}^{x} \frac{\sin x}{\sin x} \diff x + \sin x \int_{a}^{x} \frac{\cos x}{\sin x} \diff x$
+
+    $y_{p} = \cos x (a-x) + \sin x \ln (\sin x) - \sin x (\ln (\sin a))$,
+
+    però $a \cos x$ i  $\sin x (\ln (\sin a))$ s'absorveixen en la solució de la reduïda.
+
+    Llavors, $\boxed{y_{p} = - x \cos x + \sin x \ln (\sin x)}$ és una solució particular de la completa.
+
+    $\Rightarrow \boxed{y = A \cos x + B \sin x - x \cos x + \sin x \ln (\sin x)}$.
+\end{example}
+
+%----------------------------------------------------------------------------------------
+%\subsection{Mètode de la variació de paràmetres (ordre $n$)} %WIP
+
+%----------------------------------------------------------------------------------------
+\subsection{Reducció de l'ordre d'una equació}
+\subsubsection*{Equació lineal de 2n ordre}
+Sigui $y'' + P(x) y' + Q(x) y = R(x)$ i sigui $u(x)$ no $\equiv 0$ una solució de la reduïda.
+
+Fem el canvi de variable $\boxed{y = tu}$. Llavors $y' = tu' + t'u$, $y'' = tu'' + 2t'u' + t''u$.
+
+Substituïm en l'ED completa: $t(u'' + Pu' + Qu) + t'(2u' + Pu) + t'' u = R$. Com que $u$ és solució de la reduïda, $u'' + Pu' + Qu = 0 \Rightarrow t(u'' + Pu' + Qu) + t'' u = R$ i fem el canvi de variable $\boxed{v = t'} \Rightarrow$
+\begin{align}
+    \boxed{v(2u' +P(x)u) + vu' = R(x)}
+\end{align}
+Llavors, determinem $v$, desfem el canvi per trobar $t$ i tornem a desfer el canvi per trobar la solució de $y(x)$.
+\begin{example}
+$x y'' - 2 (x + 1) y' + (x+2) y = x^{3} e^{2x}$, amb $u = e^{x}$.
+
+$\displaystyle \Rightarrow v \left( 2 - 2 \frac{x + 1}{x} \right) + v' = x^{2} e^{x} \Rightarrow - \frac{2v}{x} + v' = x^{2} e^{x} \Rightarrow \frac{v' x^{2} - 2vx}{x^{4}} = e^{x} \Rightarrow e^{x} = \frac{\dif}{\dif x} \left( \frac{v}{x^{2}} \right) \Rightarrow \frac{v}{x^{2}} = e^{x} + C \Rightarrow \boxed{v = C x^{2} + x^{2} e^{x}}$
+
+$\displaystyle t = (x^{2} - 2x + 2) e^{x} + \frac{C}{3} + D \Rightarrow \boxed{ y = \left[ (x^{2} - 2x + 2)e^{x} + \frac{C}{3} + D \right] e^{x}}$.
+\end{example}
+Altrament, si tenim $y'' + P(x) y' + Q(x) y = R(x)$ i $y_{1}(x)$ no $\equiv 0$ és una solució. Llavors, $y_{2} = y_{1} t$ és una altra solució linealment independent respecte $y_{1}$.
+
+En particular, $\displaystyle y_{2} = y_{1} \int \frac{e^{-\int P(x) \diff x}}{y_{1}^{2}} \diff x$. I per tant, la solució general és $\boxed{y = C_{1}y_{1} + C_{2} y_{2}}$.
+\begin{example}
+    $\displaystyle y'' + \frac{1}{x} y' + \left( 1 - \frac{1}{4x^{2}} \right) y = 0$, amb solució $\displaystyle y_{1} = \frac{\sin x}{\sqrt{x}}$.
+
+    $\Rightarrow \displaystyle y_{2} = y_{1} \int \frac{e^{-\int \frac{1}{x} \diff x}}{y_{1}^{2}} \diff x = - \frac{\cos x}{\sqrt{x}}$
+
+    $\Rightarrow \boxed{y = C_{1} \frac{\sin x}{\sqrt{x}} + C_{2} \frac{\cos x}{\sqrt{x}}}$ és la solució general de l'ED (notem que el signe negatiu de $y_{2}$ ja el conté la constant).
+\end{example}
+
+%\subsubsection*{Equació d'ordre $n$} %WIP
+%Sigui una ED reduïda d'ordre $n$:
+%\begin{align}\label{ed-reduc-n}
+%    	y^{(n)} + y^{(n-1)} P_{1}(x) + \dots + P_{n}(x) y = 0
+%\end{align}
+%\begin{thm}
+%    Si es coneixen $u_{1}(x), \dots u_{p}(x)$ LI, l'equació~\eqref{ed-reduc-n} es pot reduir a una equació d'ordre $n-p$ en la variable $v$.
+%    \begin{align*}
+%        v = \begin{vmatrix} u_{1} & \dots & u_{p} & y \\  \vdots & &  & \vdots \\ u_{1}^{(p)} & \dots & u_{p}^{(p)} & y^{(p)} \end{vmatrix} \phi(x)
+%    \end{align*}
+%    on $\phi(x)$ és una funció arbitrària.
+%\end{thm}
+
+%\subsubsection*{Casos}
+%1) Es coneix $u(x)$ no $\equiv 0$.
+
+%$v = \begin{vmatrix} u & y \\ u' & y' \end{vmatrix} \phi(x)$, convé fer $\displaystyle \phi(x) = \frac{1}{u(x)^{2}}$.
+
+%$v = \left( \frac{y}{u} \right)' \Rightarrow y = tu$ amb $t' = v$.
+
+%----------------------------------------------------------------------------------------
+\subsection{Equació de Cauchy-Euler}
+\begin{defi}
+\begin{align}
+    x^{2} \frac{\partial^{2} y}{\partial x^{2}} + px \frac{\partial y}{\partial x} + qy = R(x)
+\end{align}
+\end{defi}
+Es redueix a una de coeficients constants amb el canvi de variable $x= e^{t}$ o $t = \ln x$. Així doncs, per la regla de la cadena, l'equació queda
+\begin{align}
+    \frac{\partial^{2} y}{\partial t^{2}} - \frac{\partial y}{\partial t} + p \frac{\partial y}{\partial t} + qy = R(t)
+\end{align}
+
+\begin{example}
+    $x^{2}y'' -4y' +6y = 2x + 5$ queda, fent el canvi $x = e^{t}$, $y'' -5 y' + 6y = 2e^{t} + 5$.
+
+    $\displaystyle \Rightarrow \boxed{y = Ae^{2t} + Be^{3t} + e^{t} + \frac{5}{6}}$.
+\end{example}
+
+%----------------------------------------------------------------------------------------
+\subsection{Equacions exactes de 2n ordre}
+\begin{defi}
+    \begin{align}
+        P_{2}(x) \frac{\dif^{2} y}{\dif x^{2}} + P_{1}(x) \frac{\dif y}{\dif x} + P_{0} y = R(x)
+    \end{align}
+\end{defi}
+\begin{thm}
+    Una ED de segon ordre és exacta $\Leftrightarrow P_{2}''(x) - P_{1}'(x) + P_{0}(x) \equiv 0$.
+\end{thm}
+\subsubsection*{Resolució}
+Per a les equacions exactes de segon ordre hi haurà prou amb resoldre una equació lineal de primer ordre. En particular, l'ED que s'ha de resoldre és
+\begin{align}
+    P_{2}(x)y' + [P_{1}(x) - P_{2}'(x)] y = C + \int R(x) \diff x
+\end{align}
+\begin{example}
+    $(x+3) y'' + (2x+8) y' + 2y = 2$ és exacta ja que $P_{2}'' - P_{1}' + P_{0} = 0 -2 +2 \equiv 0$.
+
+    Llavors hem de resoldre $(x+3) y' + [2x-8-x]y = C + 2 \int \diff x = C + 2x$. Estandaritzant la seva forma, tenim $\displaystyle y' + \frac{x-8}{x+3} y = C + \frac{2x}{x+3}$, i la seva solució és $\boxed{y = \frac{C e^{-2x} + x + B}{x+3}}$.
+\end{example}
+
+%----------------------------------------------------------------------------------------
+%\subsection{Equacions fraccionàries lineals} %WIP
+%\subsubsection*{Estudi geomètric de l'ED fraccional lineal}

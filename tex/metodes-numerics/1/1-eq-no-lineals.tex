@@ -1,0 +1,215 @@
+%-----------------------------------------------------------------
+%    TEMA
+%-----------------------------------------------------------------
+\section{Resolució d'equacions no lineals}
+L'objectiu és trobar $\{ x \in \mbb{R} \mid f(x) = 0 \}$, on $f: \mbb{R} \to \mbb{R}$.
+Cal tenir en compte que potser no hi ha solució o bé pot ser que sí que n'hi hagi però el «mètode» seguit no sigui vàlid per torbar-la.
+
+\subsection{Mètode zero}
+\begin{thm}
+    Sigui $g(x) \in \mbb{R}$ contínua en $[a,b]$. Si $\{ \exists L < 1 \mid \abs{g(x) - g(y)} \leq L \abs{x-y} \}, \forall x,y \in [a,b]$, llavors:
+    \begin{enumerate}[i)]
+        \item $\exists!$ solució a l'equació $x = g(x)$ en $[a,b]$.
+        \item La solució és $x = \lim_{i \to x} \{ x_{i} \}$, amb
+        \begin{align}
+            \boxed{x_{i+1} = g(x_{i})}
+        \end{align}
+        on $x_{0}$ és qualsevol $x \in [a,b]$.
+    \end{enumerate}
+\end{thm}
+
+\begin{example}
+    Volem resoldre $\ln x = 1$. Analíticament sabem que la solució és $x = e$ ($\approx \num{2.71828}$).
+    \begin{enumerate}[i)]
+        \item Estudiem l'equació $g(x) = 1 - x - \ln x = x$.
+        \item Intuïm que la solució és $0 < x < 10$.
+        \item $g(x) - g(y) \dots = \abs{1 + \frac{\ln (y/x)}{x-y}} < 1 \Rightarrow \exists!$ solució $\in (0,10)$.
+    \end{enumerate}
+    Fent moltes iteracions arribem a $x_{15} = \num{2.717346}\dots$, és a dir hem obtingut 3 xifres significatives. Com es pot veure, aquest mètode té un error que decau molt lentament.
+\end{example}
+
+
+%-----------------------------------------------------------------
+\subsection{Mètode de Newton--Raphson}
+Sigui $f(x)$ una funció de la qual volem trobar els punts on $f(x) = 0$. El mètode consisteix en agafar un punt inicial $x_{0}$ i trobar la recta tangent al punt: $y = f'(x_{0}) (x-x_{0}) + f(x_{0})$ i igualant-la a zero. És fàcil veure que la següent recurrència ens porta a la solució $x = \lim_{i \to x} \{ x_{i} \}$:
+\begin{align}
+    \boxed{x_{i+1} = x_{i} - \frac{f(x_{i})}{f'(x_{i})}}
+\end{align}
+
+Ara bé, no sempre és possible trobar una solució $\forall x_{0} \in \mbb{R}$.
+\begin{thm}
+    Es pot demostrar que $\exists!$ arrel de $f(x) = 0$ en $[a,b]$ si es compleixen les següents condicions:
+    \begin{enumerate}
+        \item $f(x) \in C^{1}_{[a,b]}$.
+        \item $f'(x) \neq 0, \quad \forall x \in [a,b]$.
+        \item $f''(x) \neq 0, \quad \forall x \in [a,b]$.
+        \item $f(a) f(b) < 0$.
+        \item $\max \lrcur{ \abs{\frac{f(a)}{f'(a)}}, \abs{\frac{f(b)}{f'(b)}} } < b-a$.
+    \end{enumerate}
+\end{thm}
+
+\begin{example}\label{ex:newton}
+    Volem trobar $\sqrt{3}$ ($\approx \num{1.7320508075}$). Llavors estudiarem l'equació $f(x) = x^{2} - 3 = 0$. La seva derivada és $f'(x) = 2x$.
+    \begin{enumerate}[i)]
+        \item $f(x) \in C^{\infty}_{\mbb{R}}$, en particular agafem l'interval $[-1,4]$.
+        \item $f''(x)$ no canvia de signe (és sempre positiva).
+        \item $f(-1) f(4) = -26 < 0$.
+        \item $\max \lrcur{ \abs{\frac{-3}{-2}}, \abs{\frac{16}{8}} } < 5$.
+    \end{enumerate}
+    Agafant $x_{0} = 2$ arribem a $x_{3} = \num{1.7320508}\dots$, és a dir, amb tres iteracions arribem a un resultat exacte en 8 xifres decimals.
+
+\begin{Verbatim}
+for(i = 0; i < N; ++i) {
+	x[i+1] = x[i] - (x[i]**2 - 3)/(2*x[i]));
+	if (fabsl(x[i+1]-x[i]) < pow(10, -tolerance)) {
+		N = i+1; // Es redefineix per loops posteriors
+		break;
+	}
+}
+\end{Verbatim}
+\end{example}
+
+
+%-----------------------------------------------------------------
+\subsection{Mètode de regula falsi}
+El mètode consisteix en fer la següent iteració, on $a_{i}$ i $b_{i}$ són variables.
+\begin{align}
+    c_{i} = \frac{f(b_{i})a_{i} - f(a_{i})b_{i}}{f(b_{i}) - f(a_{i})}
+\end{align}
+En particular, els intervals $[a_{i}, b_{i}]$ venen definits de la següent manera:
+\begin{itemize}
+    \item Si $f(c_{i}) f(a_{i}) < 0 \Rightarrow b_{i+1} = c_{i}$ i $a_{i+1} = a_{i}$.
+    \item Si $f(c_{i}) f(b_{i}) < 0 \Rightarrow a_{i+1} = c_{i}$ i $b_{i+1} = b_{i}$.
+\end{itemize}
+És a dir, volem intervals on sempre es pugui aplicar el teorema de Bolzano.
+
+\begin{example}\label{ex:regula}
+    Volem trobar $\sqrt{3}$ ($\approx \num{1.7320508075}$). Llavors estudiarem l'equació $f(x) = x^{2} - 3 = 0$ a l'interval $[1,2]$. Agafant aquest interval, arribem a $c_{5} = 3691/2131 = \num{1.732050680}$, és a dir, amb 6 iteracions (la primera és la iteració que genera $c_{0}$) arribrem a un resultat exacte en 6 xifres decimals.
+
+\begin{Verbatim}
+for (i = 0; i < N; ++i) {
+	if (!((c[i]<a[i]) || (c[i]>b[i])) && \ 
+	    (((a[i]**2 - 3)*(c[i]**2 - 3))) < 0 )) {
+		b[i] = c[i];
+		a[i+1] = a[i];
+		c[i+1] = ((b[i]**2 - 3)*a[i] - (a[i]**2 - 3)*b[i]) \
+		          /(b[i]**2 - a[i]**2 - 4);
+		if (fabsl(c[i+1]-c[i]) < pow(10, -tolerance))
+			{
+				N = i+1; // Es redefineix per loops posteriors
+				break;
+			}
+	}
+	else if (!((c[i]<a[i]) || (c[i]>b[i])) && \
+	         !(((a[i]**2 - 3)*(c[i]**2 - 3))) < 0 )) {
+		a[i] = c[i];
+		b[i+1] = b[i];
+		c[i+1] = ((b[i]**2 - 3)*a[i] - (a[i]**2 - 3)*b[i]) \
+		          /(b[i]**2 - a[i]**2 - 4);
+		if (fabsl(c[i+1]-c[i]) < pow(10, -tolerance))
+		{
+			N = i+1; // Es redefineix per loops posteriors
+			break;
+		}
+	}
+}
+\end{Verbatim}
+\end{example}
+Si bé el mètode de regula falsi és relativament més complicat de programar que el de Newton--Raphson, la seva interpretació geomètrica és molt senzilla i no requereix tantes condicions de validesa, ja que només és necessari un interval $[a,b]$ on $f(x)$ sigui contínua i que es pugui aplicar el teorema de Bolzano.
+
+No només això, sinó que, com hem pogut veure als exemples \ref{ex:newton} i \ref{ex:regula}, el mètode de regula falsi és considerablement més lent que el de Newton--Raphson.
+
+%-----------------------------------------------------------------
+\subsection{Resolució de sistemes d'equacions no lineals}
+Sigui $\vec{f}(\vec{x}) = \vec{0}$ un sistema d'equacions. El mètode emprat per trobar solucions és una generalització del mètode de Newton--Raphson:
+\begin{align}
+    \boxed{\vec{x}_{i+1} = \vec{x}_{i} - \lrpar{ \mat{J}^{\vec{f}}_{\vec{x}_{i}} }^{-1} \vec{f}(\vec{x}_{i})}
+\end{align}
+on $\mat{J}^{\vec{f}}_{\vec{x}_{i}}$ és la matriu jacobiana de $\vec{f}(\vec{x})$ avaluada a $\vec{x}_{i}$. Anàlogament, s'ha de complir la següent condició per l'existència de la solució:
+
+\begin{enumerate}[i)]
+    \item $\det \mat{J}^{\vec{f}}_{\vec{x}_{i}} \neq 0 \Leftrightarrow \exists \lrpar{ \mat{J}^{\vec{f}}_{\vec{x}_{i}} }^{-1}$.
+\end{enumerate}
+
+\begin{example}
+    Sigui $\begin{cases} x^{2} + y^{2} - 1 = 0 \\ x^{2} - y^{2} + 1/2 = 0 \end{cases}$. La construcció de la recurrència seria la següent:
+    
+    \begin{align*}
+    \begin{aligned}
+        \begin{pmatrix} 
+            x_{i+1} \\ 
+            y_{i+1} 
+        \end{pmatrix} 
+        & = \begin{pmatrix} 
+            x_{i} \\ 
+            y_{i} 
+        \end{pmatrix} 
+        - \begin{pmatrix} 
+            2x_{i} & 2y_{i} \\ 
+            2x_{i} & -2y_{i} 
+        \end{pmatrix}^{-1} 
+        \begin{pmatrix} 
+            x^{2} + y^{2} - 1 \\ 
+            x^{2} - y^{2} + 1/2 
+        \end{pmatrix} \\
+        & = \begin{pmatrix} 
+            x_{i} \\ 
+            y_{i} 
+        \end{pmatrix} 
+        - \begin{pmatrix} 
+            \dfrac{2x_{i}^{2} -y_{i}^{2} + 1/y_{i} + 1/2 }{4x_{i}} \\ 
+            \dfrac{2x_{i}^{2} -y_{i}^{2} + 1/y_{i} + 1/2 }{4y_{i}}
+        \end{pmatrix}
+        = \frac{1}{8}\begin{pmatrix} 
+            \dfrac{4x_{i}^{2} + 1}{x_{i}} \\ 
+            \dfrac{4y_{i}^{2} + 3}{y_{i}}
+        \end{pmatrix}
+    \end{aligned}
+    \end{align*}
+
+    Amb $x_{0} = 1$, $y_{0} = 1$, arribem a $x_{3} = \dfrac{3281}{6560} \approx \num{0.500152439}$, $y_{3} = \dfrac{18817}{21728} \approx \num{0.866025405}$, que és una de les quatre solucions amb 3 xifres exactes a $x$ i 8 xifres significatives a $y$.
+        
+\begin{Verbatim}
+for(i = 0; i < N; ++i) {
+	x[i+1] = (4 * x[i]**2 + 1)/(8*x[i]);
+	y[i+1] = (4 * y[i]**2 + 3)/(8*y[i]);
+	if ((fabsl(x[i+1]-x[i]) < pow(10, -tolerance)) && \
+	    (fabsl(y[i+1]-y[i]) < pow(10, -tolerance))) {
+		N = i+1; // Es redefineix per loops posteriors
+		break;
+	}
+}
+\end{Verbatim}
+\end{example}
+
+%-----------------------------------------------------------------
+\subsection{Estimació dels errors}
+Per a mètodes iteratius es pot fitar l'error $e$ comès entre cada iteració. Sigui $\bar{x} \equiv$ la solució exacta de $f(x) = 0$ i $x_{n} \equiv$ valor aproximat de la $n-$èsima iteració. Llavors tenim
+\begin{align*}
+\begin{gathered}
+    e_{n+1} = \bar{x} - x_{n+1} = \bar{x} - x_{n} + \frac{f(x_{n})}{f'(x_{n})} \quad \text{(Newton--Raphson)}\\
+    f(\bar{x}) = f(x_{n} + e_{n}) \approx f(x_{n}) + f'(x_{n}) e_{n} + f''(\zeta) e_{n}^{2} = 0\quad \text{(Taylor)} \\
+    \Rightarrow \boxed{e_{n+1} = \frac{\abs{f''(\zeta)}}{\abs{2f'(x_{n})}} e_{n}^{2} \leq k e_{n}^{2}}, \quad k \in \mbb{R}
+\end{gathered}
+\end{align*}
+on $\zeta \in (\bar{x}, x_{n})$ o bé $\zeta \in (x_{n}, \bar{x})$ segons la situació, i per tant és un valor fitat. 
+
+\subsubsection*{Estimar l'error en un programa}
+Una de les coses que volem controlar en un programa és el temps de càlcul. Com ens podem assegurar que passat $x$ temps el nostre programa ha trobat la solució amb l'exactitud que volem? Per controlar el càlcul podem emprar les següents estratègies:
+\begin{enumerate}[i)]
+\item Comparar $x_{i}$ amb valors anteriors: l'objectiu és parar de calcular quan el resultat ha arribat a una tolerància (i.e., xifres exactes) predeterminada, és a dir, que pari si $\abs{x_{i}-x_{i-1}} < \varepsilon$.
+
+\item Predeterminar un nombre màxim d'iteracions: l'objectiu és evitar que el programa es quedi calculant infinitament. El nombre màxim d'iteracions no sempre és trivial d'establir de manera òptima, però mentre major sigui, més exacte hauria de ser el resultat.
+\end{enumerate}
+\begin{example} A la línia 1 establim el nombre màxim d'iteracions \verb|N|. A la línia 4 establim $\varepsilon = 10^{\small{\verb|-tolerance|}}$.
+\begin{Verbatim}
+for(i = 0; i < N; ++i) {
+    [...]
+    if (fabsl(x[i+1]-x[i]) < pow(10, -tolerance)) {
+        printf("S'ha arribat a la tolerància desitjada.\n");
+        break;
+    }
+    [...]
+}
+\end{Verbatim}
+\end{example}

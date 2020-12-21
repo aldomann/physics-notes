@@ -1,0 +1,72 @@
+%----------------------------------------------------------------------------------------
+%    ALTRES RESULTATS DE VARIABLE COMPLEXA
+%----------------------------------------------------------------------------------------
+\section{Altres resultats de variable complexa}
+\subsection{Fórmules integrals de Poisson}
+Sigui un disc de radi $R$ amb punts interiors $z=r\,e^{i\theta}$, i $f(z)$ és analítica a dins el disc i la frontera. Llavors,
+\begin{align}
+    u(r\,e^{i\theta}) = \frac{1}{2\pi} \int_{0}^{2\pi} \frac{R^{2} - r^{2}}{R^{2} + r^{2} - 2Rr \cos(\theta - \phi)} u(Re^{i\phi}) \diff \phi
+\end{align}
+El mateix càlcul és vàlid per a $v(r\,e^{i\theta})$.
+
+Sigui $f(z)$ analítica al semiplà superior del pla complex, i sigui aquesta fitada ( $\abs{f(z)} < M$ si $\abs{z} \to \infty$). Llavors,
+\begin{align}
+    u(x,y) = \frac{y}{\pi} \int_{-\infty}^{\infty} \frac{u(r,0)}{(r - x)^{2} + y^{2}} f(Re^{i\phi}) \diff r
+\end{align}
+El mateix càlcul és vàlid per a $v(x,y)$.
+
+%----------------------------------------------------------------------------------------
+\subsection{Continuació analítica}
+\begin{defi}[Continuació analítica]
+    Sigui $f_{0}$ una funció analítica a la regió $\mc{R}_{0}$ definida per la corba tancada simple $\mc{C}_{0}$, i sigui $f_{1}$ una funció analítica a la regió $\mc{R}_{1}$ definida per la corba tancada simple $\mc{C}_{1}$.
+    
+    Si $f_{0}(z) = f_{1}(z)$, $\forall z \in \mc{R}_{0} \cap \mc{R}_{1}$, diem que $f_{1}(z)$ és la continuació analítica de $f_{0}(z)$ en $\mc{R}_{0} \cup \mc{R}_{1}$.
+\end{defi}
+\begin{example}
+    Sigui $f(z) = \displaystyle \int_{0}^{\infty} e^{-zt} \diff t = \frac{1}{z} \mid \operatorname{Re} z > 0$. Llavors $F(z) = \dfrac{1}{z}$, $\forall z \in \mbb{C} \backslash \lrcur{0}$ és la continuació analítica de $f(z)$ a $\mbb{C} \backslash \lrcur{0}$.
+\end{example}
+
+\begin{thm}[d'unicitat]
+    Si $f_{1}(z)$ i $f_{2}(z)$ són analítiques en un domini $\mc{D}$ i els seus valors coincideixen sobre una successió $\lrcur{a_{k}} \to a \in \mc{D}$: $f(a_{k}) = f_{2}(a_{k})$. Llavors $f_{1}(z) = f_{2}(z)$, $\forall z \in \mc{D}$.
+\end{thm}
+
+%----------------------------------------------------------------------------------------
+\subsection{Principis de reflexió d'Schwartz}
+\begin{thm}
+    Sigui $\mc{D}$ una regió tal que $D \cap \mbb{R} \neq \varnothing$ sigui un interval finit, i $f(z)$ sigui real $\forall z \in D \cap \mbb{R}$. Llavors, $f(z^{\star}) \equiv f^{\star}(z)$, $\forall z \in \mc{D}$.
+\end{thm}
+\begin{example}
+    Sigui $f(z)$ una funció real, $z = x + i0$, i $x \in [-\infty, 0)$. Podem determinar l'expressió de $f(z)$, $\forall z \in \mbb{C}$ sabent les següents condicions?
+    \begin{itemize}
+        \item $f(z)$ és analítica a $\mbb{C} \backslash \lrbra{0,\infty}$.
+        \item $f(z) \underset{\abs{z} \to 0}{\longrightarrow} 0$.
+        \item $\operatorname{Im} f(x + i\varepsilon)$ és conegut (on $0 < \varepsilon \to 0$).
+    \end{itemize}
+    A partir de la fórmula integral de Cauchy diem, sobre la corba $\mc{C} = \mc{C}_{1} + \mc{C}_{R} + \mc{C}_{2} + \mc{C}_{\rho}$,
+    \begin{align*}
+    \begin{aligned}
+        f(z) &= \frac{1}{2\pi i} \oint_{\mc{C}} \frac{f(\zeta)}{\zeta - z} \diff \zeta =  \oint_{\mc{C}_{1}+\mc{C}_{2}} \frac{f(\zeta)}{\zeta - z} \diff \zeta \\
+        &= \frac{1}{2\pi i} \int_{0}^{\infty} \frac{f(x + i \varepsilon)}{x + i \varepsilon - z} \diff x + \frac{1}{2\pi i} \int_{\infty}^{0} \frac{f(x - i \varepsilon)}{x - i \varepsilon - z} \diff x \\
+        &= \frac{1}{2\pi i} \int_{0}^{\infty} \frac{f(x + i \varepsilon) - f^{\star}(x + i \varepsilon)}{x-z} \diff x = \frac{1}{\pi} \int_{0}^{\infty} \frac{\operatorname{Im}f(x + i \varepsilon)}{x - z} \diff x
+    \end{aligned}
+    \end{align*}
+    \begin{align*}
+        \Rightarrow f(z) = \frac{1}{\pi} \int_{0}^{\infty} \frac{\operatorname{Im}f(x + i \varepsilon)}{x - z} \diff x, \quad \forall z \in \mbb{C}
+    \end{align*}
+\end{example}
+
+%----------------------------------------------------------------------------------------
+\subsection{Teorema de l'argument}
+\begin{thm}
+    Sigui $f(z)$ analítica excepte $P$ pols $\alpha_{1}, \alpha_{2}, \dots, \alpha_{P}$ d'ordre $m_{1}, m_{2}, \dots, m_{P}$, respectivament, en una regió $\mc{R}$ determinada per $\delta \mc{R} \equiv \mc{C}$. La funció $f(z)$ té alhora $N$ zeros $\beta_{1}, \beta_{2}, \dots, \beta_{N}$ d'ordre $n_{1}, n_{2}, \dots, n_{N}$, respectivament. Llavors, es compleix
+    \begin{align}
+        \frac{1}{2\pi i} \oint \frac{f'(z)}{f(z)} \diff z \equiv (m_{1} + m_{2} + \dots + m_{P}) - (n_{1} + n_{2} + \dots + n_{N})
+    \end{align}
+\end{thm}
+
+\begin{cor}
+    Sigui $f(z)$ analítica excepte $P$ pols simples ($s_{1}, s_{2}, \dots, s_{P}$) en una regió $\mc{R}$ determinada per $\delta \mc{R} \equiv \mc{C}$. La funció $f(z)$ té alhora $N$ zeros d'ordre 1 ($z_{1}, z_{2}, \dots, z_{N}$). Llavors, es compleix
+    \begin{align}
+        \frac{1}{2\pi i} \oint \frac{f'(z)}{f(z)} \diff z \equiv N - P
+    \end{align}
+\end{cor}

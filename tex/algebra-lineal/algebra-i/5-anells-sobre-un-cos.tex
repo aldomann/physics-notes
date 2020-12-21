@@ -1,0 +1,111 @@
+%----------------------------------------------------------------------------------------
+%    ANELL DE POLINOMIS SOBRE UN COS COMMUTATIU
+%----------------------------------------------------------------------------------------
+\section{Anell de polinomis sobre un cos commutatiu}
+\subsection{L'anell dels polinomis}
+Sigui $a(x) \in K [x] = a_{n}x^{n} + a_{n-1}x^{n-1} + \dots + a_{i}x^{i} + \dots + a_{1}x + a_{0}, \; (n \in \mathbb{N}, \, a_{i} \in K)$.
+\begin{itemize}
+    \item $a_{i}$ són els coefincients del polinomi, essent $a_{n}$ el coeficient principal.
+    \item $i$ són els graus del polinomi, essent $n$ el grau màxim del polinomi. S'expressa com a $\operatorname{gr}(a(x)) = n$.
+\end{itemize}
+\subsubsection*{Definicions}
+\begin{itemize}
+    \item Monomi: polinomi d'un sol element.
+    \item Polinomi mònic: polinomi amb el coeficient principal $= 1$.
+\end{itemize}
+
+\subsubsection*{Operacions}
+\begin{itemize}
+    \item Suma:
+        \subitem $\operatorname{gr}(a(x) + b(x)) \leq \max \{ \operatorname{gr}(a(x)), \operatorname{gr}(b(x)) \}$
+    \item Producte:
+        \subitem $\operatorname{gr}(a(x) b(x)) = \operatorname{gr}(a(x)) + \operatorname{gr}(b(x))$
+    \item Divisió entera:
+        \subitem Siguin $a(x), b(x) \in K [x], \; (b(x) \neq 0), \quad \exists$ dos úncs $q(x)$ i $r(x)$ tals que:
+        \begin{enumerate}[i)]
+            \item $a(x) = q(x) b(x) + r(x)$.
+            \item $\operatorname{gr}(r(x)) < \operatorname{gr}(b(x))$.
+        \end{enumerate}
+\end{itemize}
+
+%----------------------------------------------------------------------------------------
+\subsection{Arrels d'un polinomi}
+$r \in K$ és una arrel de $a(x) \Leftrightarrow a(r) = 0$
+
+\subsubsection*{Teorema de la resta}
+$u \in K$ és una arrel de $a(x) \Leftrightarrow a(x)$ és divisible, exactament, per $x-u$.
+\begin{align}
+    a(x) = q(x) (x-u) + a(u), \quad a(u) = r(x) = 0
+\end{align}
+
+%----------------------------------------------------------------------------------------
+\subsection{Divisibilitat a un anell}
+Siguin $a,b \in R$,
+
+$D(a) \equiv \{ d \in R \mid a \in dR \}, \quad D(a,b) \equiv D(a) \cap D(b) = \{ d \in R \mid d|a \text{ i } d|b \}$
+
+\subsubsection*{Lema d'Euclides}
+\begin{align}
+    a = qb + r,
+    \begin{cases}
+        R = \mathbb{Z} \Rightarrow 0 \leq r < |b| \\
+        R = K [x] \Rightarrow \operatorname{gr} (r) < \operatorname{gr} (b)
+    \end{cases}
+    \Rightarrow
+\end{align}
+
+\begin{enumerate}[i)]
+    \item $D (a,b) = D (b,r)$.
+    \item $aR + bR = bR + rR$.
+\end{enumerate}
+
+\subsubsection*{Algoritme}
+\begin{align}
+\begin{gathered}
+    a = b q_{0} + r_{0} \\
+    b = r_{0} q_{1} + r_{1} \\
+    \dots \\
+    r_{n-2} = r_{n-1} q_{n} + (r_{n} = 0)
+\end{gathered}
+\end{align}
+
+Per força, després d'un nombre finit $n$ d'iteracions, arribem a tenir $r_{n}=0 \Rightarrow$ (pel Lema d'Euclides) $D (a,b) = D (r_{n-1}) \Rightarrow aR + bR = r_{n-1}R \Rightarrow$
+\begin{enumerate}[i)]
+    \item $\operatorname{mcd} (a,b) = r_{n-1} $
+    \item $\operatorname{mcm} (a,b) = \frac{ab}{\operatorname{mcd} (a,b)}$
+\end{enumerate}
+
+Tant $\operatorname{mcd}$ i $\operatorname{mcm}$ són únics i de la següent forma: 
+$\begin{cases} < 0 \text{ a } R = \mathbb{Z} \\ \text{ mònic a } R = K [x] \end{cases}$
+
+\subsubsection*{Identitat de Bezout}
+\begin{align}
+    aR + bR = r_{n-1}R \Rightarrow a \alpha + b \beta = r_{n-1}
+\end{align}
+\begin{example}
+\begin{align*}
+    a = b q_{0} + r_{0}, \; b = r_{0} q_{1} + r_{1}, \; r_{0} = r_{1} q_{2} + 0 \Rightarrow a \alpha + b \beta = r_{1}
+\end{align*}
+\end{example}
+\begin{enumerate}[a)]
+    \item Mètode 1.
+        \subitem $ r_{1} = b - r_{0} q_{1} = b - q_{1} (a - b q_{0}) = a \underbrace{( - q_{1})}_{\alpha} + \, b \underbrace{( 1 + q_{0} q_{1})}_{\beta}$
+    \item Mètode 2.
+        \subitem $\begin{pmatrix} b \\ r_{0} \end{pmatrix} = \begin{pmatrix} 0 & 1 \\ 1 & -q_{0} \end{pmatrix} \begin{pmatrix} a \\ b \end{pmatrix}$, 
+        \subitem $\begin{pmatrix} r_{0} \\ r_{1} \end{pmatrix} = \begin{pmatrix} 0 & 1 \\ 1 & -q_{1} \end{pmatrix} \begin{pmatrix} b \\ r_{0} \end{pmatrix} = \begin{pmatrix} 0 & 1 \\ 1 & -q_{1} \end{pmatrix} \begin{pmatrix} 0 & 1 \\ 1 & -q_{0} \end{pmatrix} \begin{pmatrix} a \\ b \end{pmatrix}$,
+         \subitem $\begin{pmatrix} r_{1} \\ 0 \end{pmatrix} = \begin{pmatrix} 0 & 1 \\ 1 & -q_{2} \end{pmatrix} \begin{pmatrix} r_{0} \\ r_{1} \end{pmatrix} = \dots = \begin{pmatrix} \alpha & \beta \\ \ast & \ast \end{pmatrix} \begin{pmatrix} a \\ b \end{pmatrix}$.
+\end{enumerate}
+
+%----------------------------------------------------------------------------------------
+\subsection{Factorització}
+Tot $a(x) \in \mathbb{K} [x]$ és factoritzable en polinomis irreductibles $b(x) \in \mathbb{K} [x]$. La factorització d'un polinomi pot variar segons el cos $K$ sobre el qual s'estengui l'anell de polinomis.
+
+\subsubsection*{Polinomis irreductibles}
+\begin{itemize}
+    \item Els polinomis irreductibles a $\mathbb{Q} [x]$ poden ésser de qualsevol grau possitiu.
+    \item Els polinomis irreductibles a $\mathbb{R} [x]$ són els de garu $1$ i els de grau $2$ de la forma $a x^{2} + b x +c$ amb $\Delta < 0$.
+    \item Els polinomis irreductibles a $\mathbb{C} [x]$ són els de grau $1$.
+\end{itemize}
+
+\subsubsection*{Teorema fonamental de l'àlgebra}
+Tot $a(x) \in \mathbb{C} [x]$ de $\operatorname{gr} (a(x)) = n > 0$ té exactament $n$ arrels complexes $\Rightarrow a(x) = \lambda (x - \alpha_{1}) (x - \alpha_{2}) \dots (x - \alpha_{n-1}) (x - \alpha_{n})$. 

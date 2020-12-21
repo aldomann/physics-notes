@@ -1,0 +1,121 @@
+%----------------------------------------------------------------------------------------
+%    DIAGONALITZACIÓ
+%----------------------------------------------------------------------------------------
+\section{Diagonalització}
+\subsection{Conceptes bàsics}
+Diem que una matriu $A \in M(n, K)$ és diagonalitzable si $\exists P \in M(n, K)$ invertible tal que $P^{-1} A P \in D(n, K)$, és a dir
+\begin{align}
+    P^{-1} A P = \begin{pmatrix} \lambda_{1} & & 0 \\ & \ddots & \\ 0 & & \lambda_{n} \end{pmatrix}
+\end{align}
+per a certs $\lambda_{1}, \dots , \lambda_{n} \in K$.
+
+Un endomorfisme $f$ de $V$ és diagonalitzable si existeix una base $B$ de $V$ tal que la matriu $A$ de $f$ en aquesta base sigui diagonal.
+
+Sigui $f: V \to V$ un enfomorfisme. Suposem que $B = (v_{1}, \dots , v_{n})$ és una base de $V$ tal que $M(f, B)$ és la matriu diagonal $\begin{pmatrix} \lambda_{1} & & 0 \\ & \ddots & \\ 0 & & \lambda_{n} \end{pmatrix}$. Això vol dir que, per a $i = 1, \dots , n$
+\begin{align}
+f(v_{i}) = \lambda_{1} v_{i}
+\end{align}
+és a dir $B$ és una base tal que tots els seus elements satisfan que la seva imatge per $f$ és un múltiple d'ell mateix. Aquest tipus de vectors es diuen vectors propis de $f$.
+
+Sigui $A = M(f, B)$ i $B' = (u_{1}, \dots , u_{n})$. Llavors $A$ diagonalitza en $A' = P^{-1} A P = M(f, B')$, i en particular $P = \begin{pmatrix} u_{1} & \dots & u_{n} \end{pmatrix}$.
+
+%----------------------------------------------------------------------------------------
+\subsection{Vectors i valors propis}
+Sigui $f$ un endomorfisme de $V$. Un valor propi ($\vap$) de $f$ és un escalar $\lambda \in K$ tal que $\exists u \in V \backslash \{0_{V}\}$ que compleix:
+\begin{align}
+    f(u) = \lambda u
+\end{align}
+Un vector propi ($\vep$) de $f$ és un vector no nul $v \in V$ tal que 
+\begin{align}
+    f(v) = \lambda v \quad \text{per a algun } \lambda \in K
+\end{align}
+
+En aquest cas diem que $v$ és un $\vep$ de $f$ amb $\vap$ $\lambda$.
+\begin{example}
+\begin{align*}
+    \begin{pmatrix} 2 & 2 \\ 1 & 3 \end{pmatrix} \begin{pmatrix} 1 \\ 1 \end{pmatrix} = \begin{pmatrix} 4 \\ 4 \end{pmatrix} = 4 \begin{pmatrix} 1 \\ 1 \end{pmatrix}
+\end{align*}
+$\Rightarrow u = (1,1)$ és un vector propi de $f$ amb valor propi $\lambda = 4$.
+\end{example}
+
+\subsubsection*{Subespai propi d'un $\vap$}
+Si $\lambda$ és un $\vap$ de $f$, es diu que $\ker (f - \lambda id)$ és el subespai propi de $f$ de $\vap$ $\lambda$.
+\\ \\
+Sigui $f: V \to V$ un endomorfisme. Per a un vector $v \in V$ les afirmacions següents són equivalents.
+\begin{enumerate}[i)]
+    \item $v$ és un $\vep$ de $f$.
+    \item $\exists \lambda \in K$ tal que $v$ és un vector no nul de $\ker (f - \lambda id)$.
+\end{enumerate}
+Sigui $\lambda$ un $\vap$ de $f$ de $V$. Llavors:
+\begin{align}
+    \left< \vep \text{ de } \vap \: \lambda \right> \equiv \ker (f - \lambda id) \backslash \{0_{V}\}
+\end{align}
+
+%----------------------------------------------------------------------------------------
+\subsection{Polinomi característic d'un endomorfisme}
+Sigui $A \in M(n,K)$. Definim el polinomi característic de $A$ com:
+\begin{align}
+    p_{A} (x) \equiv \det (A - x I(n))
+\end{align}
+Sigui $f$ un endomorfisme de $V$ i sigui $\lambda \in K$. Llavors:
+\begin{align}
+    \lambda \text{ és } \vap \text{ de } f \Leftrightarrow p_{f} (\lambda) = 0
+\end{align}
+Sigui $f$ un endomorfisme de $V$. Suposem que $p_{f} (x) = (x - \lambda)^{m} q(x)$, $q(\lambda) \neq 0$ i $m \geq 1 \equiv$ multiplicitat de l'arrel. Llavors:
+\begin{align}
+    1 \leq \dim (\ker (f - \lambda id) \leq m
+\end{align}
+
+\subsubsection*{Teorema de diagonalització}
+Un endomorfisme $f$ de $V$ és diagonalitzable si i només si $\exists \lambda_{1} , \dots , \lambda_{r} \in K$ diferents i $n_{1}, \dots , n_{r} \in \mathbb{N}$ tals que
+\begin{align}
+\begin{gathered}
+    p_{f} (x) = (-1)^{n} (x - \lambda_{1})^{m_{1}} \dots (x - \lambda_{k})^{m_{k}} \\
+    \text{i} \quad \dim (\ker (f - \lambda_{i} id)) = m_{i}, \quad \forall i \in \{ 1, \dots , k \}
+\end{gathered}
+\end{align}
+
+En particular, tot endomorfisme $f$ de $V$ tal que
+\begin{align}
+    p_{f} (x) = (x - \lambda_{1}) \dots (x - \lambda_{n})
+\end{align}
+
+amb $\lambda_{1}, \dots , \lambda_{n} \in K$ diferents, és diagonalitzable.
+\\ \\
+\begin{example}
+Sigui $g: \mathbb{R}^{2} \to \mathbb{R}^{2}$ l'endomorfisme definit per $g(x,y) = (x-y, x+y)$. La matriu de $g$ respecte de la base canònica de $\mathbb{R}^{2}$ és
+\begin{align*}
+    A = \begin{pmatrix} 1 & -1 \\ -1 & 1 \end{pmatrix}
+\end{align*}
+El polinomi característic de $g$ és 
+\begin{align*}
+    p_{A}(x) = (x-2) x
+\end{align*}
+
+Per tant, $g$ diagonalitza amb $\vap$ $\lambda_{1} = 0$ i $\lambda_{2} = 2$. $(1,1)$ és un $\vep$ de $\vap$ 0 i $(1, -1)$ és un $\vep$ de $\vap$ 2. Llavors:
+\begin{align*}
+P = \begin{pmatrix} 1 & 1 \\ -1 & 1 \end{pmatrix} \Rightarrow P^{-1} = \begin{pmatrix} \sfrac{1}{2} & \sfrac{1}{2} \\ -\sfrac{1}{2} & \sfrac{1}{2} \end{pmatrix}
+\end{align*}
+
+i 
+\begin{align*}
+P^{-1} A P = \begin{pmatrix} 2 & 0 \\ 0 & 0 \end{pmatrix}
+\end{align*}
+\end{example}
+%----------------------------------------------------------------------------------------
+\subsection{Aplicacions de la diagonalització}
+\subsubsection*{Potències de matrius/endomorfismes}
+Si $A \in M(n,K)$ és diagonalitzable, $\exists P \in GL(n,K)$ tal que
+\begin{align}
+    D = P^{-1}AP \quad
+\end{align}
+
+Llavors, es compleix que
+\begin{align}
+    A^{n} = P D^{n} P^{-1} \quad
+\end{align}
+
+\subsubsection*{Recurrència i dinàmica}
+\begin{example}
+    WIP: problema 20 de la primera entrega d'Àlgebra II
+\end{example}

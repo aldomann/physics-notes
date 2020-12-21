@@ -1,0 +1,155 @@
+%----------------------------------------------------------------------------------------
+%    MATRIUS
+%----------------------------------------------------------------------------------------
+\section{Matrius}
+\subsection{Transformacions elementals}
+\subsubsection*{Tipus de transformacions elementals}
+\begin{itemize}
+    \item Intercanviar les files $i$ i $j$: $F_{i} \leftrightarrow F_{j}$.
+    \item Multiplicar una fila $i$ per un escalar $\mu$: $F_{i} \mapsto \mu F_{i}$.
+    \item Sumar a la fila $i$ la fila $j$ multiplicada per $\mu$: $F_{i} \mapsto F_{i} + \mu F_{j}$.
+\end{itemize}
+El mateix és aplicable per a columnes.
+
+\subsubsection*{Matrius elementals}
+Si apliquem una transformació elemental a la matriu identitat $I(n)$, obtenim una matriu elemental $E(n)$ que compleix:
+\begin{enumerate}[i)]
+    \item $E$ és invertible.
+    \item $E$ és un operador universal.
+\end{enumerate}
+
+Sigui $A \in M(m,n,K), \quad EA$ coincideix amb aplicar la mateixa transformació elemental a $A$.
+
+Si apliquem una sèrie finita de transformacions ($I \mapsto P$), aleshores:
+\begin{enumerate}[i)]
+    \item $P$ és invertible.
+    \item $P$ és un operador universal.
+\end{enumerate}
+
+$PA$ coincideix amb aplicar les mateixes transformacions elementals a $A$ amb la propietat que no es perd l'informació que proporciona la matriu $A$: $PA = A' \Rightarrow A = P^{-1} A'$.
+
+El mateix és aplicable per a columnes, amb la diferència que aplicar les transformacions elementals coincideix amb multiplicar per la dreta ($AQ = A'$).
+
+%----------------------------------------------------------------------------------------
+\subsection{Matriu de Gauss--Jordan}
+\subsubsection*{Definicions prèvies}
+\begin{itemize}
+    \item El pivot d'una fila $\neq 0$ és el primer element $\neq 0$ d'esquerra a dreta.
+    \item Una matriu és esglaonada si les files zero estan a la part inferior de la matriu i si els pivots estan en columnes que creixen estrictament.
+\end{itemize}
+Una matriu de Gauss--Jordan és una matriu esglaonada que compleix:
+\begin{enumerate}[i)]
+    \item Els pivots són tots $1$.
+    \item A cada columna dels pivots, tots elements són $0$ excepte el pivot.
+\end{enumerate}
+Tota matriu $A$ pot convertir-se en una de Gauss--Jordan aplicant una sèrie adequada de transformacions elementals, i aquesta ($\operatorname{GJ} (A)$) és única.
+
+\subsubsection*{Algoritme de Gauss--Jordan}
+Fase de Gauss (esglaonar):
+\begin{enumerate}[i)]
+    \item Buscar col·lumnes nul·les i posar-les al principi de la matriu.
+    \item Buscar un pivot $\neq 0$ i canviar files tal que el pivot de la matriu sigui $\neq 0$.
+    \item Transformar la columna tal que tot el que hi ha a baix del pivot sigui $0$.
+    \item Reiterar amb la resta de columnes no nul·les.
+\end{enumerate}
+Fase de Jordan (reduir):
+\begin{enumerate}[i)]
+    \item Començant pel pivot més avançat, transformar tots els pivots en $1$.
+    \item Transformar tots els elements d'una columna en $0$. 
+\end{enumerate}
+
+%----------------------------------------------------------------------------------------
+\subsection{Criteri d'invertibilitat}
+Sigui $A \in M (n,K)$, les condicions següents són equivalents:
+\begin{enumerate}[i)]
+    \item $A$ és invertible.
+    \item $A$ és producte de matrius elementals.
+    \item $\operatorname{GJ} (A) = I(n)$.
+\end{enumerate}
+\subsubsection*{Algoritme d'inversa d'una matriu}
+\begin{align}
+\begin{gathered}
+    PA=I \Rightarrow PI = A^{-1} \\
+    ( A | I ) \mapsto ( I | A^{-1} )
+\end{gathered}
+\end{align}
+
+%----------------------------------------------------------------------------------------
+\subsection{Relació d'equivalència}
+Siguin $A, B \in M(m,n,K)$, les condicions següents són equivalents:
+\begin{enumerate}[i)]
+    \item $A \sim B$.
+    \item $ \exists P \in GL(n,K)$ tal que $PA = B$.
+    \item $\operatorname{GJ} (A) = \operatorname{GJ} (B)$.
+\end{enumerate}
+
+$\Rightarrow M(m,n,K)/ \sim \, = \{ [\operatorname{GJ}_{i}] \mid \operatorname{GJ} \in M(m,n,K) \} \Rightarrow [A] = GL(n,K) A$.
+
+%----------------------------------------------------------------------------------------
+\subsection{Resolució de sistemes lineals}
+Sigui un sistema $(\ast)$ de, per exemple, 5 incògnites $x$, $y$, $z$, $t$ i $u$,
+\begin{itemize}
+    \item Una solució de $(\ast)$ és una $5\text{-tupla} (x,y,z,t,u) \in K^{5}$ que satisfà totes les equacions.
+    \item El conjunt de solucions forma una varietat lineal $L$ de $K^{5}$:
+        \subitem $L \equiv \{ (x,y,z,t,u) \in K^{5} \mid \text{satisfan } (\ast) \} \subseteq K^{5}$.
+    \item Diem que $(\ast)$ és una equació cartesiana de $V$.
+    \begin{itemize}
+        \item Sistema compatible $\Leftrightarrow V \neq \varnothing$.
+        \item Sistema incompatible $\Leftrightarrow V = \varnothing$.
+    \end{itemize}
+    \item Resoldre el sistema vol dir trobar una equació paramètrica de $V$ que descrigui com són tots els seus punts en funció d'uns paràmetres que prenen valors lliurement. El nombre de paràmetres lliures s'anomena dimensió de V $\equiv \dim{(V)}$.
+    \end{itemize}
+
+\subsubsection*{Mètode de Gauss--Jordan}
+\begin{enumerate}[i)]
+    \item Calcular $\operatorname{GJ} (A|B)$ del sistema.
+    \item Reinterpretar aquesta matriu en el llenguatge de les equacions.
+\end{enumerate}   
+\begin{align*}
+\begin{pmatrix}[cccc|c]
+    1 & -\sfrac{1}{2} & 0 & 0 & 2 \\
+    0 & 0 & 1 & 0 & 3 \\
+    0 & 0 & 0 & 1 & 2
+\end{pmatrix}
+\text{(Gauss--Jordan del sistema)}
+\end{align*}
+\begin{align*}
+\begin{cases}
+    x &= 2 + \frac{1}{2} y \\
+    y &= y \\
+    z &= 3 \\
+    t &= 2
+\end{cases}
+\text{(Eq. paramètrica de $V$)}
+\end{align*}
+\begin{align*}
+\begin{gathered}
+    \begin{pmatrix} x \\ y \\ z \\ t \end{pmatrix}
+    = \begin{pmatrix} 2 \\ 0 \\ 3 \\ 2 \end{pmatrix}
+    + y \begin{pmatrix} \sfrac{1}{2} \\ 1 \\ 0 \\ 0 \end{pmatrix}
+    \text{(Eq. paramètrica vectorial de $V$)} \\
+    \\
+    (2,0,3,2) \in V, \quad (\sfrac{1}{2},1,0,0) \text{ és un vector director de $V$}
+\end{gathered}
+\end{align*}
+\begin{align*}
+    L = \{ (2+ \frac{1}{2}y,y,3,2) \mid y \in \mathbb{R} \}
+\end{align*}
+
+%----------------------------------------------------------------------------------------
+\subsection{Rang d'una matriu}
+El rang d'una matriu $A$ és el nombre de files no nul·les a la forma de Gauss--Jordan de $A$, i s'escriu $\rank(A)$.
+
+\subsubsection*{Teorema de Rouché-Capelli}
+Sigui $AX = B$, amb $A \in M(m,n,K)$, $X \in M(n,1,K)$, $B \in M(m,1,K)$. Llavors, podem veure el següent
+\begin{enumerate}[i)]
+    \item Sistema compatible $\Leftrightarrow \rank(A) = \rank(A|B)$.
+    \item $\dim{(V)} = n - \rank (A)$.
+\end{enumerate}
+
+\subsubsection*{Propietats}
+\begin{itemize}
+    \item $\rank(A) = \rank(A^{t})$.
+    \item $\rank(PA) = \rank(A) =\rank(AQ)$.
+    \item Sigui $B$ una columna de la mateixa mida que les columnes, $B$ és combinació lineal de les columnes de $A \Leftrightarrow \rank(A) = \rank(A |B)$. El mateix és aplicable per a files.
+\end{itemize}

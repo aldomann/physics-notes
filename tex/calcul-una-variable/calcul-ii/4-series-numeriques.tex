@@ -1,0 +1,153 @@
+%----------------------------------------------------------------------------------------
+%    SÈRIES NUMÈRIQUES
+%----------------------------------------------------------------------------------------
+\section{Sèries numèriques}
+\subsection{Sèries de números reals}
+Sigui $\{a_{n}\}$ una successió de números reals. Considerem la successió de sumes parcials $\{S_{n}\}$, on $S_{n} = \sum_{k=1}^{n} a_{k}$, llavors definim la suma de la sèrie $\sum_{k=1}^{\infty} a_{k}$ com el límit (si existeix):
+\begin{align}
+    \sum\limits_{k=1}^{\infty} a_{k} \equiv \lim \{S_{n}\} \equiv \lim_{n \to \infty} \left( \sum\limits_{k=1}^{n} a_{k} \right)
+\end{align}
+En altres paraules, el significat de «suma infinita» és, per definició,
+\begin{align}
+    \sum\limits_{k=1}^{\infty} \equiv \lim_{n \to \infty} \sum\limits_{k=1}^{n} 
+\end{align}
+Si el límit és finit direm que la sèrie és sumable o convergent. Si el límit és $\pm \infty$ direm que és divergent, i si el límit no existeix direm que la sèrie no és sumable.
+
+\subsubsection*{Linealitat de les sèries convergents}
+Si $\sum_{k=1}^{\infty} a_{k}$ i $\sum_{k=1}^{\infty} b_{k}$ són convergents i $\lambda, \mu \in \mathbb{R}$, es compleix:
+\begin{align}
+    \sum\limits_{k=1}^{\infty} (\lambda a_{k} + \mu b_{k}) = \lambda \sum\limits_{k=1}^{\infty} a_{k} + \mu \sum\limits_{k=1}^{\infty} b_{k}
+\end{align}
+
+\subsubsection*{Criteri general de convergència d'una sèrie}
+Ja hem vist que $\sum_{k=1}^{\infty} a_{k}$ és convergent si i només si la successió de sumes parcials $\{S_{n}\}$ és convergent. Però això equival a dir que la successió $\{S_{n}\}$ és de Cauchy, és a dir,
+\begin{align}
+\begin{gathered}
+    \forall \varepsilon > 0 , \quad \exists n_{0} \in \mathbb{N} \text{ tal que } | a_{n+1} + a_{n+2} + \dots + a_{n+p} | < \varepsilon , \\
+    \quad \forall n > n_{0}, \forall p \geq 1
+\end{gathered}
+\end{align}
+Aquesta és, doncs, una condició necessària i suficient per a la convergència de la sèrie.
+
+Una conseqüència d'aquest criteri de convergència és que
+\begin{align}
+    \sum\limits_{k=1}^{\infty} a_{k} \text{ convergent } \Rightarrow \lim \{a_{n}\} = 0
+\end{align}
+
+%----------------------------------------------------------------------------------------
+\subsection{Exemples de sèries numèriques}
+\subsubsection*{Sèrie geomètrica}
+\begin{align} 
+    & \sum\limits_{k=0}^{n} r^{k} = 
+    \begin{cases} 
+        n+1 & \text{si } r = 1. \\ 
+        (r^{n+1} - 1)/(r - 1) & \text{si } r \neq 1. 
+    \end{cases}  \\
+    & \sum\limits_{k=0}^{\infty} r^{k} = 
+    \begin{cases} 
+        1/(1 - r) & \text{si } |r| < 1. \\ 
+        \text{divergent} & \text{si } r \geq 1. \\ 
+        \text{no sumable} & \text{si } r \leq -1. 
+    \end{cases} 
+\end{align}
+
+\subsubsection*{Sèrie aritmètica}
+\begin{align} 
+    & \sum\limits_{k=1}^{n} k = \frac{1}{2} n (n+1). \\ 
+    & \sum\limits_{k=1}^{\infty} k \text{ divergeix}.
+\end{align}
+
+\subsubsection*{Sèrie harmònica}
+\begin{align} 
+    & \sum\limits_{k=1}^{n} \frac{1}{k} = H_{k} \equiv \int_{0}^{1} \frac{1-x^{k}}{1-x} \, dx. \\
+    & \sum\limits_{k=1}^{\infty} \frac{1}{k} \text{ divergeix}.
+\end{align}
+
+\subsubsection*{Sèrie harmònica generalitzada}
+\begin{align} 
+    & \sum\limits_{k=1}^{n} \frac{1}{k^{p}} = H_{k}^{(p)}. \\
+    & \sum\limits_{k=1}^{\infty} \frac{1}{k^{p}}
+    \begin{cases} 
+        \text{convergeix} & \text{si } p > 1. \\ 
+        \text{divergeix} & \text{si } p \leq 1. \\
+    \end{cases} 
+\end{align}
+
+%----------------------------------------------------------------------------------------
+\subsection{Sèries de termes no negatius}
+Un cas particular interessant de les sèries numèriques és el del cas de les sèries de termes no negatius, és a dir, que compleixen $a_{k} \geq 0$. En aquest cas hi ha una nova condició necessària i suficient per a la sumabilitat:
+
+Si $\sum_{k=1}^{\infty} a_{k}$ és una sèrie de termes no negatius, llavors:
+\begin{align}
+    \sum\limits_{k=1}^{\infty} a_{k} \text{ convergeix } \Leftrightarrow \text{la successió } \{S_{n}\} \text{ és fitada superiorment.}
+\end{align}
+
+\subsubsection*{Criteri de comparació}
+Si $\sum_{k=1}^{\infty} a_{k}$ i $\sum_{k=1}^{\infty} b_{k}$ són sèries de termes no negatius i $\lambda \in \mathbb{R}$ tal que, a partir d'un subíndex, es compleix que $a_{k} < \lambda b_{k}$, llavors:
+\begin{align}
+    \sum\limits_{k=1}^{\infty} b_{k} \text{ convergent} \Rightarrow \sum\limits_{k=1}^{\infty} a_{k} \text{ convergent}.
+\end{align}
+(i consegüentment, $\sum\limits_{k=1}^{\infty} a_{k}$ divergent $\Rightarrow$ $\sum\limits_{k=1}^{\infty} b_{k}$ divergent).
+
+La següent condició és una conseqüència directa del criteri de comparació:
+
+Si $\sum_{k=1}^{\infty} a_{k}$ i $\sum_{k=1}^{\infty} b_{k}$ són sèries de termes no negatius, i $A = \lim \frac{a_{n}}{b_{n}}$, llavors:
+\begin{enumerate}[i)]
+    \item Si $A \neq \infty$: $\sum\limits_{k=1}^{\infty} b_{k}$ convergent $\Rightarrow \sum\limits_{k=1}^{\infty} a_{k}$ convergent.
+    \item Si $A \neq 0$: $\sum\limits_{k=1}^{\infty} a_{k}$ convergent $\Rightarrow \sum\limits_{k=1}^{\infty} b_{k}$ convergent.
+\end{enumerate}
+
+En conseqüència, si $A \neq 0, \infty$, les integrals $\sum\limits_{k=1}^{\infty} a_{k}$ i $\sum\limits_{k=1}^{\infty} b_{k}$ són ambdues convergents o divergents.
+
+\subsubsection*{Criteri de la integral}
+Sigui $n_{0} \in \mathbb{N}$, i $f(x)$ una funció localment integrable, no negativa i decreixent a l'interval $[n_{0}, + \infty)$, llavors:
+\begin{align}
+    \sum\limits_{k=n_{0}}^{\infty} f(x) \text{ convergent} \Leftrightarrow \int_{k=n_{0}}^{\infty} f(x) \, dx \text{ convergent}.
+\end{align}
+
+\subsubsection*{Criteri de l'arrel (o de Cauchy)}
+Si $\sum_{k=1}^{\infty} a_{k}$ és una sèrie qualsevol i $\alpha = \lim \{\sqrt[n]{|a_{n}|}\}$, llavors:
+\begin{itemize}
+    \item $\alpha < 1$: la sèrie és convergent.
+    \item $\alpha = 1$: no es pot concloure res.
+    \item $\alpha > 1$: la sèrie és divergent.
+\end{itemize}
+
+\subsubsection*{Criteri del quocient (o d'Alambert)}
+Si $\sum_{k=1}^{\infty} a_{k}$ és una sèrie qualsevol i $\alpha = \lim \{ \frac{|a_{n+1}|}{|a_{n}|} \}$, llavors:
+\begin{itemize}
+    \item $\alpha < 1$: la sèrie és convergent.
+    \item $\alpha = 1$: no es pot concloure res.
+    \item $\alpha > 1$: la sèrie és divergent.
+\end{itemize}
+Si els límits (de Cauchy i d'Alambert) existeixen, ambdós tenen el mateix valor.
+%----------------------------------------------------------------------------------------
+\subsection{Sèries alternades}
+Són sèries del tipus
+\begin{align}
+    \sum\limits_{k=1}^{\infty} (-1)^{k+1} a_{k} = a_{1} - a_{2} + a_{3} - \dots 
+\end{align}
+o també
+\begin{align}
+    \sum\limits_{k=1}^{\infty} (-1)^{k} a_{k} = - a_{1} + a_{2} - a_{3} + \dots 
+\end{align}
+
+\subsubsection*{Convergència absoluta}
+Direm que una sèrie $\sum_{k=1}^{\infty} a_{k}$ és absolutament convergent si la sèrie $\sum_{k=1}^{\infty} |a_{k}|$ és convergent. Com a conseqüència d'aquest criteri de convergència, tenim que:
+\begin{align}
+    \sum_{k=1}^{\infty} a_{k} \text{ absolutament convergent } \Rightarrow \sum_{k=1}^{\infty} a_{k} \text{ és convergent}.
+\end{align}
+
+\subsubsection*{Convergència condicional}
+És possible que $\sum_{k=1}^{\infty} a_{k}$ sigui convergent, però que $\sum_{k=1}^{\infty} |a_{k}|$ sigui divergent. En aquest cas, una condició suficient per a la convergència de les sèries alternades ens ve donada pel següent teorema:
+
+Si $\{a_{n}\}$ és una successió decreixent de termes positius, que convergeix cap a 0
+\begin{align}
+    \Rightarrow \text{ la sèrie alternada } \sum_{k=1}^{\infty} (-1)^{k+1} a_{k} \text{ és convergent}.
+\end{align}
+
+\subsubsection*{Propietat commutativa}
+\begin{itemize}
+    \item Si $\sum_{k=1}^{\infty} a_{k}$ és absolutament convergent, totes les reordenacions convergeixen a la mateixa suma.
+    \item Si $\sum_{k=1}^{\infty} a_{k}$ és condicionalment convergent, és possible reordenar la sèrie, però aquesta pot convergir a qualsevol real o, fins i tot, divergir.
+\end{itemize}

@@ -1,0 +1,85 @@
+%----------------------------------------------------------------------------------------
+%    TRANSFORMADES DE LAPLACE
+%----------------------------------------------------------------------------------------
+\section{Transformades de Laplace}
+\subsection{Transformada d'una funció}
+La transformada de Laplace és un operador integral. Pot ser útil quan es resolen equacions diferencials, ja que transforma una equació diferencial és una equació algebraica ordinària.
+\begin{defi}
+    La transformada de Laplace d'una funció $f(t)$ ve donada per
+    \begin{align}
+        \mathcal{L}[f(t)] \equiv \int_{0}^{\infty} e^{-st} f(t) \diff t
+    \end{align}
+    Denotem la funció resultant com $\mathcal{L}[f(t)] = F(s)$.
+\end{defi}
+La següent llista resumeix la transformada de Laplace d'algunes funcions utilitzades freqüentment.
+\begin{itemize}
+    \item $\mathcal{L}[1] = \displaystyle \frac{1}{s}$.
+    \item $\mathcal{L}[t^{n}] = \displaystyle \frac{n!}{s^{n+1}}$.
+    \item $\mathcal{L}[\sin at] = \displaystyle \frac{a}{s^2 + a^2}$.
+    \item $\mathcal{L}[\cos at] = \displaystyle \frac{s}{s^2 + a^2}$.
+    \item $\mathcal{L}[\sinh at] = \displaystyle \frac{a}{s^2 - a^2}$.
+    \item $\mathcal{L}[\cosh at] = \displaystyle \frac{s}{s^2 - a^2}$.
+\end{itemize}
+
+\subsubsection*{Propietats}
+\begin{enumerate}[i)]
+    \item $\mathcal{L}\left[a f(t) + b g(t) \right] = a \mathcal{L}[f(t)] + b \mathcal{L}[g(t)]$.
+    \item $\mathcal{L}\left[ e^{ct} f(t) \right] = F(s - c)$.
+    \item $\mathcal{L}\left[ f^{(n)}(t) \right] = s^{n} \mathcal{L}\left[f(t)\right] - s^{n-1} f(0) - s^{n-2} f'(0) - \dots - f^{(n-1)}(0)$.
+\end{enumerate}
+\begin{defi}[Convolució]
+    Definim la convolució de $f(t)$ amb $g(t)$ com
+    \begin{align}
+        f(t) \ast g(t) = \int_{0}^{t} f(t - \tau) g(\tau) \diff \tau = \int_{0}^{t} f(t) g(t - \tau) \diff \tau
+    \end{align}
+\end{defi}
+La significança d'aquesta operació per a les transformades de Laplace és perquè es compleix
+\begin{align}
+    \mathcal{L}\left[ f(t) \ast g(t) \right] = \mathcal{L}\left[ f(t) \right] \cdot \mathcal{L}\left[ g(t) \right]
+\end{align}
+
+%----------------------------------------------------------------------------------------
+\subsection{Transformada inversa d'una funció}
+\begin{defi}
+    \begin{align}
+        \mathcal{L}^{-1} \left[ F(s) \right] = f(t) \quad \text{si} \quad \mathcal{L} \left[ f(t) \right] = F(s)
+    \end{align}
+\end{defi}
+La següent llista resumeix algunes transformades inverses interessants:
+\begin{enumerate}[i)]
+    \item $\displaystyle \mathcal{L}^{-1}\left[ \frac{\dif}{ \dif s} F(s) \right] = -t \, f(t)$.
+    \item $\mathcal{L}^{-1}\left[ e^{-cs} F(S) \right] = f(t-c) \,H(t-a)$.
+\end{enumerate}
+\begin{defi}[Funció esglaó de Heaviside]
+    \begin{align}
+        H(t-c) = \begin{cases} 1, & \quad t \geq c. \\ 0, & \quad t < c. \end{cases}
+    \end{align}
+    La seva transformada de Laplace és
+    \begin{align*}
+        \mathcal{L}[H(t-c)] = \int_{c}^{\infty} e^{-st} \diff t = \frac{e^{-cs}}{s}
+    \end{align*}
+\end{defi}
+
+%----------------------------------------------------------------------------------------
+\subsection{Transformada d'una equació diferencial}
+Gràcies a la linealitat de la transformada de Laplace es poden resoldre equacions diferencials de manera molt senzilla.
+
+\begin{example}
+    Sigui $y'' -2y' + 2y = e^{-t}$, amb $y(0) = 0$, $y'(0) = 1$.
+    
+    Denotant $\mathcal{L}[y] = Y$, tenim $\displaystyle s^{2} Y - 1 - 2sY + 2Y = \frac{1}{s+1}$. Solucionant l'equació per $Y$, obtenim
+    \begin{align*}
+        Y = \frac{s+2}{(s+1)(s^2-2s+2)}
+    \end{align*}
+    La seva descomposició en fraccions parcials és
+    \begin{align*}
+    \begin{aligned}
+        Y & = \frac{1}{5(s+1)} + \frac{1}{5}\frac{8-s}{(s-1)^{2} + 1} \\
+        & = \frac{1}{5(s+1)} - \frac{1}{5}\frac{s-1}{(s-1)^{2} + 1} + \frac{7}{5}\frac{1}{(s-1)^{2} + 1}
+    \end{aligned}
+    \end{align*}
+    Llavors, fent la transformada inversa, obtenim trivialment
+    \begin{align*}
+        \boxed{y(t) = \frac{1}{5} (e^{-t} - e^{t} \cos t + 7e^{t} \sin t)}.
+    \end{align*}
+\end{example}

@@ -1,0 +1,247 @@
+%----------------------------------------------------------------------------------------
+%    DERIVACIÓ DE CAMPS ESCALARS
+%----------------------------------------------------------------------------------------
+\section{Derivació de camps escalars}
+L'extensió del concepte de derivada a funcions de més d'una variable no és automàtica i requereix algunes modificacions. Ho farem des de dues perspectives diferents: la derivada direccional i la diferencial.
+
+\subsection{Derivades direccionals i derivades parcials}
+\begin{defi}[Derivada direccional]
+    Si $f(\vec{x})$ és un camp escalar i $\hat{u}$ un vector unitari de $\mathbb{R}^{n}$, definim la derivada en la direcció $\hat{u}$ de $f(\vec{x})$ en el punt $\vec{a}$:
+    \begin{align}
+        (D_{\hat{u}} f) (\vec{a}) \equiv (D_{\hat{u}} f)_{\vec{a}} \equiv \lim_{\lambda \to 0} \frac{f(\vec{a} + \lambda \hat{u}) - f(\vec{a})}{\lambda}
+    \end{align}
+\end{defi}
+Es compleixen, per tant, els teoremes de les funcions derivables d'una variable:
+\begin{thm}[del valor mitjà]\label{thm-tmv}
+    Sigui $\hat{u} = (\vec{b} - \vec{a})/\| \vec{b} - \vec{a} \|$. Si $D_{\hat{u}} f \exists$ en tots els punts del segment rectilini que uneix $\vec{a}$ i $\vec{b} \Rightarrow \exists \vec{c}$ dins aquest segment que compleix
+    \begin{align*}
+        f(\vec{b}) - f(\vec{a}) = (D_{\hat{u}} f)_{\vec{c}} \| \vec{b} - \vec{a} \|
+    \end{align*}
+\end{thm}
+\begin{thm}[Continuïtat de $f(\vec{a} + \lambda \hat{u})$]
+    Si $\exists (D_{\hat{u}} f)_{\vec{a}} \Rightarrow f(\vec{a} + \lambda \hat{u})$ és contínua en el punt $\lambda = 0$, és a dir, $\lim\limits_{\lambda \to 0} f(\vec{a} + \lambda \hat{u}) = f(\vec{a})$.
+\end{thm}
+
+\begin{defi}[Derivades parcials]
+    Les derivades parcials són les derivades direccionals en les direccions $\hat{e}_{i}$.
+    \begin{align}
+        \left( \frac{\partial f}{\partial x_{i}} \right)_{\vec{a}} \equiv (D_{\hat{e}_{i}} f)_{\vec{a}} \equiv (\partial_{i} f)_{\vec{a}}
+    \end{align}
+    La derivada parcial respecte $x_{i}$ en el punt $\vec{a}$ és la derivada de la funció $f(\vec{x})$ respecte la variable $x_{i}$ fixant les altres variables al punt $\vec{a}$:
+    \begin{align}
+        \left( \frac{\partial f}{\partial x_{i}} \right)_{\vec{a}} = \left[ \frac{\dif}{\dif x_{i}} f(a_{1}, \dots , x_{i}, \dots , a_{n}) \right]_{x_{i}=a_{i}}
+    \end{align}
+\end{defi}
+
+\subsubsection*{Derivades direccionals i continuïtat}
+El fet que de l'existència de $D_{\hat{u}}f$ (i, menys encara, la simple existència de les derivades parcials) no és suficient per garantir la continuïtat. Aquest fet evidencia que les derivades direccionals no són una extensió una extensió satisfactòria del concepte de derivada per a les funcions de $n$ variables. Un concepte més adient és el de diferenciabilitat.
+
+%----------------------------------------------------------------------------------------
+\subsection{Camps escalars diferenciables}
+\subsubsection*{Infinitèsims}
+\begin{defi}
+    $f(\vec{x})$ és un «infinitèsim quan $\vec{x} \to \vec{a}$» si $\lim\limits_{\vec{x} \to \vec{a}} f(\vec{x}) = 0$.
+\end{defi}
+\begin{defi}
+    $f(\vec{x})$ és un «infinitèsim d'ordre superior a $n$ quan $\vec{x} \to \vec{a}$» si $\displaystyle \lim_{\vec{x} \to \vec{a}} \frac{f(\vec{x})}{\| \vec{x} - \vec{a} \|^{n}} = 0$. Diem, llavors, que $f(\vec{x}) \to 0$ «més ràpidament» que $\| \vec{x} - \vec{a} \|^{n}$ quan $\vec{x} \to \vec{a}$, i ho expressem: 
+    \begin{align*}
+        f(\vec{x}) = o[\| \vec{x} - \vec{a} \|^{n}]
+    \end{align*}
+\end{defi}
+\begin{defi}
+    Quan només es pot afirmar que $\displaystyle \lim_{\vec{x} \to \vec{a}} \frac{f(\vec{x})}{\| \vec{x} - \vec{a} \|^{n}} \neq \infty$, diem que $f(\vec{x})$ és un «infinitèsim d'ordre igual o superior a $n$ (i que $f(\vec{x}) \to 0$ «tan o més ràpidament» que $\| \vec{x} - \vec{a} \|^{n}$) quan $\vec{x} \to \vec{a}$», i ho expressem:
+    \begin{align*}
+        f(\vec{x}) = O[\| \vec{x} - \vec{a} \|^{n}]
+    \end{align*}
+\end{defi}
+
+\subsubsection*{Camps escalars diferenciables}
+\begin{defi}
+    Sigui $f(\vec{x})$ un camp escalar definit a $D \subseteq \mathbb{R}^{n}$ i sigui $\vec{a} \in D$. Direm que $f(\vec{x})$ és diferenciable en el punt $\vec{a}$ si $\exists \vec{K} \in \mathbb{R}^{n}$ tal que
+    \begin{align}
+        f(\vec{x}) = f(\vec{a}) + \vec{K} (\vec{x} - \vec{a}) + o[\| \vec{x} - \vec{a} \|]
+    \end{align}
+\end{defi}
+
+\begin{thm}[Diferenciabilitat i continuïtat]
+    Si $f(\vec{x})$ és diferenciable en el punt $\vec{a} \Rightarrow f(\vec{x})$ és contínua en el punt $\vec{a}$.
+\end{thm}
+\begin{thm}[Diferenciabilitat i l'existència de les derivades parcials]
+    Si $f(\vec{x})$ és diferenciable en el punt $\vec{a} \Rightarrow \exists (D_{\hat{u}} f)_{\vec{a}}, \forall \hat{u}$ i es compleix $(D_{\hat{u}} f)_{\vec{a}} = \vec{K} \cdot \hat{u}$.
+\end{thm}
+\begin{cor}
+    Si $f$ és diferenciable en el punt $\vec{a}$, es compleix
+        \begin{align*}
+            \left( \frac{\partial f}{\partial x_{i}} \right)_{\vec{a}} = (D_{\hat{e}_{i}} f)_{\vec{a}} = \vec{K}\cdot \hat{e}_{i} \Rightarrow \vec{K} \text{ és únic.}
+    \end{align*}
+\end{cor}
+
+\subsubsection*{Gradient d'un camp escalar diferenciable}
+Introduïm l'operador nabla: $\displaystyle \vnabla = \left( \frac{\partial}{\partial x_{1}}, \frac{\partial}{\partial x_{2}}, \dots, \frac{\partial}{\partial x_{n}} \right)$.
+\begin{defi}[Gradient]
+    Si $f$ és diferenciable en el punt $\vec{a}$, 
+    \begin{align}
+        (\operatorname{grad} f)_{\vec{a}} \equiv (\vnabla f)_{\vec{a}} = \left( \left( \frac{\partial}{\partial x_{1}} \right)_{\vec{a}}, \left( \frac{\partial}{\partial x_{2}} \right)_{\vec{a}}, \dots, \left( \frac{\partial}{\partial x_{n}} \right)_{\vec{a}} \right) 
+    \end{align}
+\end{defi}
+El vector gradient, és doncs, en cada punt, el vector $\vec{K}$ del camp escalar diferenciable $f(\vec{x})$:
+\begin{align}\label{eq:taylor1}
+    f(\vec{x}) = f(\vec{a}) + (\vnabla f)_{\vec{a}} \cdot (\vec{x} - \vec{a}) + o[\| \vec{x} - \vec{a} \|]
+\end{align}
+O dit d'una altra manera:
+\begin{align}
+    \lim_{\vec{x} - \vec{a} \to \vec{0}} \frac{f(\vec{x}) - f(\vec{a}) - (\vnabla f)_{\vec{a}} \cdot (\vec{x} - \vec{a})}{\| \vec{x} - \vec{a} \|} = 0
+\end{align}
+La fórmula~\eqref{eq:taylor1} s'anomena també fórmula de Taylor de primer ordre del camp diferenciable $f(\vec{x})$ en el punt $\vec{a}$.
+
+Geomètricament, el gradient es pot interpretar com el vector que té mòdul de la derivada direccional màxima i que té la direcció en què aquesta derivada direccional és màxima.
+
+\subsubsection*{Diferencial d'un camp escalar diferenciable}
+\begin{defi}[Diferencial total]
+    Reexpressant el «pla» tangent a $y = f(\vec{a}) + (\vnabla f)_{\vec{a}} \cdot (\vec{x} - \vec{a})$ en un sistema de coordenades $\dif x_{1}, \dif x_{2}, \dots , \dif x_{n}$ local, tenim la diferencial o diferencial total de $f(\vec{x})$ en el punt $\vec{a}$:
+    \begin{align}
+        \dif y = (\vnabla f)_{\vec{a}} = \left( \frac{\partial}{\partial x_{1}} \right)_{\vec{a}} \diff x_{1} + \dots + \left( \frac{\partial}{\partial x_{n}} \right)_{\vec{a}} \diff x_{n}
+    \end{align}
+\end{defi}
+
+\begin{thm}[Condició suficient per a la diferenciabilitat]
+    Si $f(\vec{x})$ té derivades parcials en algun entorn del punt $\vec{a}$ i són contínues en el punt $\vec{a} \Rightarrow f(\vec{x})$ és diferenciable en el punt $\vec{a}$. 
+\end{thm}
+\begin{cor}
+    Si $f(\vec{x})$ és de classe $C_{D}^{1} \Rightarrow f(\vec{x})$ és diferenciable a $D$.
+\end{cor}
+
+%----------------------------------------------------------------------------------------
+\subsection{Regla de la cadena $1-n-1$}
+Sigui $\vec{x} = \vec{g}(u)$ una funció $\mathbb{R} \to \mathbb{R}^{n}$ diferenciable en el punt $u = a$; sigui $y=f(\vec{x})$ una funció $\mathbb{R}^{n} \to \mathbb{R}$ diferenciable en el punt $\vec{x} = \vec{g}(u)$; sigui $F(u) \equiv (f \circ \vec{g})(u)$. Llavors $F(u)$ és diferenciable en el punt $u = a$ i es compleix
+\begin{align}
+    F'(a) = (\vnabla f)_{\vec{g}(a)} \cdot \vec{g}'(a)
+\end{align}
+o, també
+\begin{align}
+    \left( \frac{\partial F}{\partial u} \right)_{a} = \sum_{i=1}^{n}  \left( \frac{\partial f}{\partial x_{i}} \right)_{\vec{g}(a)}  \left( \frac{\partial x_{i}}{\partial u} \right)_{a}
+\end{align}
+
+\subsubsection*{Corbes de nivell}
+Sigui un $y = f(x_{1},x_{2})$ un camp escalar diferenciable definit a $\mathbb{R}^{2}$. El seu gràfic és una superfície de $\mathbb{R}^{3}$. La intersecció d'aquesta superfície amb el pla $y \equiv c$ determina una corba sobre el gràfic que, projectada sobre el pla de les variables $x_{1}, x_{2}$, és la corba de nivell $f(x_{1}, x_{2}) \equiv c$. El vector gradient és, en cada punt de $\mathbb{R}^{2}$, ortogonal a les corbes de nivell.
+
+Generalitzant aquesta propietat a un camp escalar definit a $\mathbb{R}^{n}$, $\vnabla f$ és, en cada punt, ortogonal a l'hiper-pla tangent a la hiper-superfície de nivell.
+%----------------------------------------------------------------------------------------
+\subsection{Derivades parcials d'ordre superior}
+Si el camp escalar $f(\vec{x})$ té derivades parcials en el domini $D \subseteq \mathbb{R}^{n}$, considerem els camps escalars $\displaystyle \left( \frac{\partial f}{\partial x_{i}} \right) (\vec{x})$ que poden tenir o no derivades parcials les quals, en cas d'existir, anomenem derivades parcials de segon ordre
+\begin{align}
+    \left ( \frac{\partial}{\partial x_{j}} \left[ \left( \frac{\partial f}{\partial x_{i}} (\vec{x}) \right) \right] \right)_{\vec{a}} \equiv \left( \frac{\partial^{2} f}{\partial x_{j} \partial x_{i}} \right)_{\vec{a}}
+\end{align}
+Reiterant el procés podem parlar de derivades de tercer, quart, cinquè, etc. ordre. Cal remarcar que l'ordre en què es fan les successives derivades és, en principi, no permutable.
+\begin{thm}[de Schwarz]
+Si $f(\vec{x}) = f(x_{1}, \dots, x_{m})$ té derivades parcials d'ordre $m$ en algun entorn de $\vec{x}_{0}$ i són contínues en aquest punt, es compleix
+\begin{align}
+    \left( \frac{\partial^{m} f}{\partial x_{i_{1}} \partial x_{i_{2}} \dots \partial x_{i_{m}}} \right)_{\vec{x}_{0}} = \left( \frac{\partial^{m} f}{\partial x_{j_{1}} \partial x_{j_{2}} \dots \partial x_{j_{m}}} \right)_{\vec{x}_{0}}
+\end{align}
+On $x_{i_{1}}, x_{i_{2}}, \dots, x_{i_{m}}$ i $x_{j_{1}}, x_{j_{2}}, \dots, x_{j_{m}}$ són dues permutacions d'un conjunt de $m$ variables de les $n$ variables $x_{1}, x_{2}, \dots, x_{n}$.
+\end{thm}
+\begin{cor}
+    Si $f(\vec{x})$ és de classe $C_{D}^{m}$, llavors l'ordre derivació de les derivades parcials mixtes d'ordre $m$ és indiferent.
+\end{cor}
+%----------------------------------------------------------------------------------------
+\subsection{Fórmula de Taylor per a un camp escalar}
+Sigui $f(\vec{x}$ un camp escalar de $n$ variables de classe $C^{m}$ en algun entorn del punt $\vec{a}$. Com en el cas de les funcions d'una variable, volem trobar la millor aproximació polinòmica de $f$ en aquest punt. Es tracta, doncs, de trobar un polinomi $P_{m}^{(\vec{a})} (\vec{x})$ de $n$ variables, de gray $m$, que tingui contacte d'ordre superior a $m$ amb $f(\vec{x})$ en el punt $\vec{a}$, és a dir, que compleixi
+\begin{align}
+    f(\vec{x}) - P_{m}^{(\vec{a})}(\vec{x}) = o [\| \vec{x} - \vec{a} \|^{m}]
+\end{align}
+
+\subsubsection*{Polinomi de Taylor de grau $m$ de $f(\vec{x})$ en el punt $\vec{a}$}
+L'expressió del polinomi amb millor ajust polinòmic (de grau $m$) de la funció $f(\vec{x})$ en el punt $\vec{a}$ és
+\begin{align}
+    \begin{aligned}
+        P_{m}^{(\vec{a})}(\vec{x}) = & f(\vec{a}) + \sum_{i_{1}} \left( \frac{\partial f}{\partial x_{i_{1}}} \right)_{\vec{a}} (x_{i_{1}} - a_{i_{1}}) \\
+        & + \frac{1}{2!} \sum_{i_{1}, i_{2}} \left( \frac{\partial^{2} f}{\partial x_{i_{1}} \partial x_{i_{2}}} \right)_{\vec{a}} (x_{i_{1}} - a_{i_{1}}) (x_{i_{2}} - a_{i_{2}}) + \dots \\
+        & + \frac{1}{m!} \sum_{i_{1}, \dots, i_{m}} \left( \frac{\partial^{m} f}{\partial x_{i_{1}} \dots \partial x_{i_{m}}} \right)_{\vec{a}} (x_{i_{1}} - a_{i_{1}}) \dots (x_{i_{m}} - a_{i_{m}})
+    \end{aligned}
+\end{align}
+
+\subsubsection*{Fórmula de Taylor}
+Si $f(\vec{x})$ és de classe $C^{m+1}$ en algun entorn del punt $\vec{a}$, el terme $o[\| \vec{x} - \vec{a} \|^{m}]$ es pot precisar més. 
+\begin{thm}[de la Fórmula de Taylor]
+    Si $f(\vec{x})$ és de classe $C^{m+1}$ en algun entorn del punt $\vec{a} \Rightarrow f(\vec{x}) = P_{m}^{(\vec{a})}(\vec{x}) + R_{m}^{(\vec{a})}(\vec{x})$. On $R_{m}^{(\vec{a})}(\vec{x})$ és la resta de Lagrange, que s'expressa: $\exists \tilde{t} \in (0,1)$ tal que 
+    \begin{align}
+        \begin{aligned}
+            R_{m}^{(\vec{a})}(\vec{x}) = & \frac{1}{(m+1)!} \sum_{i_{1}, \dots, i_{m+1}} \left( \frac{\partial^{m+1} f}{\partial x_{i_{1}} \dots \partial x_{i_{m+1}}} \right)_{\vec{a} + \tilde{t} (\vec{x} - \vec{a}) } \\
+            & \cdot (x_{i_{1}} - a_{i_{1}}) \dots (x_{i_{m+1}} - a_{i_{m+1}})
+        \end{aligned}
+    \end{align}
+\end{thm}
+
+%----------------------------------------------------------------------------------------
+\subsection{Hessià}
+Sigui $f(\vec{x})$ un camp escalar de, al menys, classe $C^{2}$ en algun entorn del punt $\vec{a}$. La fórmula de Taylor de segon ordre s'escriu
+\begin{align}
+    \begin{aligned}
+        f(\vec{x}) = & f(\vec{a}) + \sum_{i} \left( \frac{\partial f}{\partial x_{i}} \right)_{\vec{a}} (x_{i} - a_{i}) \\
+        & + \frac{1}{2!} \sum_{i, j} \left( \frac{\partial^{2} f}{\partial x_{i} \partial x_{j}} \right)_{\vec{a}} (x_{i} - a_{i}) (x_{j} - a_{j}) \\
+        & + o[\| \vec{x} - \vec{a} \|^{2}]
+    \end{aligned}
+\end{align}
+que podem escriure de forma matricial
+\begin{align}
+    f(\vec{x}) = f(\vec{a}) + (\vnabla f)_{\vec{a}} \cdot (\vec{x} - \vec{a}) + \frac{1}{2!} (\vec{x} - \vec{a}) \cdot ((H^{f})_{\vec{a}}(\vec{x} - \vec{a})) + \dots
+\end{align}
+On $(H^{f})_{\vec{a}}(\vec{x} - \vec{a})$ és l'hessià, o matriu hessiana, multiplicat per la matriu del vector $\vec{x} - \vec{a}$
+\begin{align}
+    (H^{f})_{\vec{a}}(\vec{x} - \vec{a}) = \begin{pmatrix} \displaystyle \frac{\partial^{2} f}{\partial x_{1}^{2}} & \displaystyle \frac{\partial^{2} f}{\partial x_{1} \partial x_{2}} & \dots & \displaystyle \frac{\partial^{2} f}{\partial x_{1} \partial x_{n}} \\ \displaystyle \frac{\partial^{2} f}{\partial x_{2} \partial x_{1}} & \displaystyle \frac{\partial^{2} f}{\partial x_{2}^{2}} & \dots & \displaystyle \frac{\partial^{2} f}{\partial x_{2} \partial x_{n}} \\ \vdots & \vdots & \ddots & \vdots \\ \displaystyle \frac{\partial^{2} f}{\partial x_{n} \partial x_{1}} & \displaystyle \frac{\partial^{2} f}{\partial x_{n} \partial x_{2}} & \dots & \displaystyle \frac{\partial^{2} f}{\partial x_{n}^{2}} \end{pmatrix}_{\vec{a}} \begin{pmatrix} x_{1} - a_{1} \\ \vdots \\ x_{n} - a_{n} \end{pmatrix}
+\end{align}
+L'hessià té un paper important en la determinació dels màxims i mínims relatius dels camps escalars.
+
+%----------------------------------------------------------------------------------------
+\subsection{Punts estacionaris}
+\begin{thm}
+    Si $f(\vec{x})$ té un extrem relatiu en el punt $\vec{a}$ i és diferenciable en aquest punt, llavors $(\vnabla f)_{\vec{a}} = \vec{0}$.
+\end{thm}
+El recíproc no és cert. Direm, però, que $\vec{a}$ és un punt estacionari o crític.
+
+Si $f(\vec{x})$ és diferenciable en el punt $\vec{a}$ i aquest punt és estacionari hi ha dues possibilitats:
+\begin{itemize}
+    \item Extrem (màxim o mínim) relatiu: quan en algun entorn de $\vec{a}$ hi ha punts $\vec{x}$ on $f(\vec{x}) \leq f(\vec{a})$ o $f(\vec{x}) \geq f(\vec{a})$.
+    \item Punt de sella: quan en tot entorn de $\vec{a}$ hi ha punts $\vec{x}$ on $f(\vec{x}) < f(\vec{a})$ i punts on $f(\vec{x}) > f(\vec{a})$.
+\end{itemize}
+
+\subsubsection*{Caracterització dels punts estacionaris a partir de l'hessià}
+Si $f(\vec{x})$ és un camp escalar de classe $C^{2}$ en algun entorn d'un punt estacionari $\vec{a}$, $(\vnabla f)_{\vec{a}} \cdot (\vec{x} - \vec{a}) = 0$). Llavors la fórmula de Taylor de segon ordre al voltant de $\vec{a}$ la podem expressar com
+\begin{align}
+    f(\vec{x}) - f(\vec{a}) = \frac{1}{2!} (\vec{x} - \vec{a}) \cdot ((H^{f})_{\vec{a}}(\vec{x} - \vec{a})) + \dots
+\end{align}
+O dit d'una altra manera (de forma matricial)
+\begin{align}
+    f(\vec{x}) - f(\vec{a}) = \frac{1}{2!} h^{t} H h + \dots
+\end{align}
+Per tant,
+\begin{itemize}
+    \item Si $h^{t} H h > 0, \, \forall h$, es tracta d'un mínim relatiu.
+    \item Si $h^{t} H h < 0, \, \forall h$, es tracta d'un màxim relatiu.
+    \item Si per alguns $h$ tenim $h^{t} H h > 0$ i per altres $h^{t} H h < 0$, es tracta d'un punt de sella.
+    \item Si per algun $h$ tenim $h^{t} H h = 0$, no és conclusiu.
+\end{itemize}
+
+\subsubsection*{Caracterització dels punts estacionaris a partir dels valors propis de l'hessià}
+Un punt estacionari $\vec{a}$ de $f(\vec{x})$ (de classe $C^{2}$) és:
+\begin{itemize}
+    \item Mínim relatiu: si tots els valors propis de $(H^{f})_{\vec{a}}$ són $>0$.
+    \item Màxim relatiu: si tots els valors propis de $(H^{f})_{\vec{a}}$ són $<0$.
+    \item Punt de sella: si hi ha valors propis $>0$ i també valors propis $<0$.
+    \item Si hi ha valors propis $=0$ i $>0$ (o $=0$ i $<0$) no es pot concloure res.
+\end{itemize}
+
+\subsubsection*{Criteri de Sylvester}
+És un criteri pràctic que dóna una condició necessària i suficient per què els valors propis siguin estrictament positius o negatius (és fàcil de demostrar a partir del teorema de Sylvester).
+
+Si $H^{(1)}, H^{(2)}, H^{(3)}, \dots, H^{(n)}$ són els menors principals del vèrtex superior esquerre de $(H^{f})_{\vec{a}}$.
+\begin{itemize}
+    \item Els valors propis són $>0 \Leftrightarrow$
+        \subitem $\det H^{(1)} > 0, \det H^{(2)} > 0,  \det H^{(3)} > 0, \dots, \det H^{(n)} > 0$ (mínim relatiu).
+    \item Els valors propis són $<0 \Leftrightarrow$
+        \subitem $\det H^{(1)} < 0, \det H^{(2)} > 0,  \det H^{(3)} < 0, \dots,$
+        \subitem $\det H^{(n)}\begin{cases} >0 & (n \text{ parell}) \\ <0 & (n \text{ senar}) \end{cases}$ (màxim relatiu).
+    \item En altres situacions:
+        \subitem Si $\det (H^{f})_{\vec{a}} \neq 0$, els valors propis són tots $\neq 0$, però tenen signes diferents (punt de sella).
+        \subitem Si $\det (H^{f})_{\vec{a}} = 0$ algun valor propi és $0$ (no és conclusiu).
+\end{itemize}

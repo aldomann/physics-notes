@@ -1,0 +1,127 @@
+%----------------------------------------------------------------------------------------
+%    GRUPS
+%----------------------------------------------------------------------------------------
+\section{Grups}
+\subsection{Grups}
+Un grup és un conjunt G amb una operació $\ast$ qualsevol.
+\begin{align} 
+\begin{matrix}
+    (G, \ast ) \textrm{, on } \quad \ast : & G \times G & \to &G \\
+    & (a,b) & \mapsto & a \ast b
+\end{matrix}
+\end{align}
+
+\subsubsection*{Propietats}
+\begin{itemize}
+    \item Associativa: $(a \ast b) \ast c = a \ast (b \ast c), \quad \forall a,b,c \in G$.
+    \item Element neutre: $\exists e$ tal que $a \ast e = e \ast a = a, \quad \forall a \in G$.
+    \item Element simètric: $\forall a \in G, \quad \exists a'$ tal que $a \ast a' = a' \ast a = e$. 
+    \item (Commutativa): Si $a \ast b = b \ast a, \quad \forall a \in G \Rightarrow$ $G$ és un grup abelià o commutatiu.
+\end{itemize}
+
+\subsubsection*{Notacions}
+\begin{itemize}
+    \item Additiva: 
+        \subitem $a \ast b = a+b, \;\quad e = 0$ (zero de $G$), $\quad a' = -a$ (oposat de $a$). 
+    \item Multiplicativa: 
+    \subitem $a \ast b = ab, \;\quad e = 1_{G}$ (unitat de $G$), $\quad a' = a^{-1}$ (invers de $a$).
+\end{itemize}
+
+%----------------------------------------------------------------------------------------
+\subsection{Subgrups}
+Sigui $H \subseteq G$. $H$ és un subanell de $G$ $\Leftrightarrow$
+\begin{enumerate}[i)]
+    \item $ab \in H, \quad \forall a,b \in H$.
+    \item $a^{-1} \in H, \quad \forall a \in H$.
+    \item $1_{G} \in S$.
+\end{enumerate}
+O equivalentment:
+\begin{enumerate}[i)]
+    \item $H \neq \varnothing$.
+    \item $ab^{-1} \in H, \quad \forall a,b \in H$.
+\end{enumerate}
+
+%----------------------------------------------------------------------------------------
+\subsection{Construcció de grups}
+\begin{itemize}
+    \item Producte cartesià:
+        \subitem Siguin $( G_{1} , \ast)$ i $( G_{2} , \perp )$ grups,
+        \subitem $G_{1} \times G_{2} = (a,b) (x,y) = (a \ast x , b \perp y)$ és grup.
+    \item Intersecció de grups:
+        \subitem $H_{1}, H_{2} \subseteq G \Rightarrow H_{1} \cap H_{2} \subseteq G$.
+    \item Subgrup generat per un subconjunt:
+        \subitem $S \subseteq G \Rightarrow \left< S \right> \equiv$ mínim subgrup que conté $S$. 
+        \subitem e.g., en $(\mathbb{Z} , +), \quad \left< 3 \right> = 3 \mathbb{Z}$.
+\end{itemize}
+
+%----------------------------------------------------------------------------------------
+\subsection{Grups cíclics i grups finits}
+\subsubsection*{Grups cíclics}
+$( G , \cdot )$ és un grup cíclic si $\exists a \in G$ tal que $\left< a \right> = G$ 
+\begin{align}
+    \left< a \right> \equiv \{ a^{n} \mid n \in \mathbb{Z} \} = G
+\end{align}
+
+\begin{example}
+\begin{align*}
+    \mathbb{Z} / n \mathbb{Z} = \left< [1] \right>
+\end{align*}
+\end{example}
+
+\subsubsection*{Grups finits}
+Sigui $( G , \cdot )$ un grup finit i $a \in G$,
+\begin{enumerate}[i)]
+    \item $\{ a_{n} \} = a, a^{2}, a^{3}, \dots , a^{m}, \dots$
+    \item $\exists n \geq m, \; m,n \in \mathbb{N} $ tal que $a^{n} = a^{m} \Rightarrow a^{m} (a^{m})^{-1} = a^{n} (a^{m})^{-1} \Rightarrow a^{n-m} = 1_{G}$.
+\end{enumerate}
+\subsubsection*{Ordre de grups i d'elements d'un grup}
+\begin{itemize}
+    \item L'ordre de $G \equiv \# G$: nombre d'elements de $G$.
+    \item L'ordre de $a \in G \equiv \operatorname{ord}(a) $ és el mínim $m \in \mathbb{N}$ tal que $a^{m} = 1_{G} \Rightarrow \operatorname{ord} (a) = m \Rightarrow \left< a \right> = \{a, a^{2}, a^{3}, \dots a^{m-2}, a^{m-1}, a^{m} = 1_{G} \} $. $\operatorname{ord} (a) = \text{ mínim } b \text{ tal que } \operatorname{mcm} (a,b) = \dot{n} = 1_{G}, \quad \forall a \in \mathbb{Z} / n\mathbb{Z}$.
+    \item $\operatorname{ord} (a) = \# \left< a \right>$.
+\end{itemize}
+
+\subsubsection*{Teorema de Lagrange}
+Sigui $( G , \cdot )$ un grup finit,
+\begin{align}
+\# G = n \Rightarrow a^{n} = 1_{G}, \quad \forall a \in G \Rightarrow \# \left< S \right> \leq n, \quad \forall a \in G
+\end{align}
+
+\subsubsection*{Teorema d'estructura dels grups cíclics}
+Sigui $( G , \cdot )$ un grup cíclic,
+\begin{align}
+\# G \textrm{ infinit } \Rightarrow ( G , \cdot ) \leftrightarrow (\mathbb{Z} , + )
+\end{align}
+\begin{align}
+\# G \textrm{ finit } \Rightarrow ( G , \cdot ) \leftrightarrow (\mathbb{Z} / n , + )
+\end{align}
+
+%----------------------------------------------------------------------------------------
+\subsection{Morfismes de grups}
+Siguin $G_{1}$ i $G_{2}$ grups. $f: G_{1} \to G_{2}$ és morfisme de grups o homomorfisme $\Leftrightarrow$
+\begin{enumerate}[i)]
+    \item $f(xy) = f(x) f(y)$.
+\end{enumerate}
+
+\subsubsection*{Tipus d'homomorfismes}
+\begin{itemize}
+    \item $\iota$: monomorfisme.
+    \item $\pi$: epimorfisme.
+    \item $\tilde{f}$: isomorfisme.
+\end{itemize}
+Si $f$ és isomorfisme, $f^{-1}$ és morfisme de grups.
+
+%----------------------------------------------------------------------------------------
+\subsection{Nucli ($\ker$) i imatge ($\im$) d'un grup}
+Sigui $f: G \to G'$,
+\begin{align}
+    \ker(f) \equiv \{ x \in G \mid f(x) = 1_{G} \}
+\end{align}
+\begin{align}
+    \im(f) \equiv \{ y \in G' \mid f(x) = y \} \equiv f(G) \subseteq G'
+\end{align}
+Observació:
+\begin{itemize}
+    \item Monomorfisme $\Leftrightarrow \ker(f) = \{ 1_{G} \}$.
+    \item Epimorfisme $\Leftrightarrow \im(f) = G' $.
+\end{itemize}

@@ -1,0 +1,102 @@
+%----------------------------------------------------------------------------------------
+%    TEMA
+%----------------------------------------------------------------------------------------
+\section{\mytitle}
+
+\subsection*{Equacions de primer ordre}
+\subsubsection*{Equacions homogènies}
+$\boxed{M(x,y) \diff x + N(x,y) \diff y = 0}$ amb $M$ i $N$ del mateix grau. 
+Es resolen per separació de variables: $\displaystyle \frac{\dif y}{\dif x} = - \frac{M}{N} \equiv f\left( \frac{y}{x} \right)$.
+\begin{align}
+    \text{Canvi: } y = vx \Rightarrow v + \frac{\dif v}{\dif x} x = f(v)
+\end{align}
+
+\subsubsection*{Mètode de Picard}
+$\boxed{y' = f(x,y)}$ amb solució $y(x_{0}) = y_{0}$.
+\begin{align}
+    y_{n} = y_{n-1} + \int_{x_{n-1}}^{x} f(x, y_{n-1}) \diff x
+\end{align}
+
+\subsubsection*{Equacions lineals}
+$\boxed{y' + P(x) y = Q(x)}$.
+\begin{align}
+    y = C e^{-\int P(x) \diff x} + e^{-\int P(x) \diff x} \int Q(x) e^{\int P(x) \diff x} \diff x
+\end{align}
+
+\subsubsection*{Equacions de Bernoulli}
+$\boxed{y' + P(x)y = Q(x)y^{n}}$.
+\begin{align}
+    \text{Canvi: } z = y^{1-n} 
+\end{align}
+
+\subsubsection*{Equacions de Ricatti}
+$\boxed{y' = P(x)y^{2} + Q(x)y + R(x)}$ amb solució partitcular $y_{p}$.
+\begin{align}
+    \text{Canvi: } y - y_{p} = z
+\end{align}
+
+\subsubsection*{Equacions de Clairaut}
+$\boxed{y = xy''  + f(y')}$.
+\begin{align}
+    \text{Canvi: } y' = C \Rightarrow y = xC^{2} + f(C)
+\end{align}
+Envolvent $\Rightarrow x = - f'(C)$; és una solució singular no inclosa a la general.
+
+\subsubsection*{Equacions exactes}
+$\boxed{M(x,y) \diff x + N(x,y) \diff y = 0}$. Exacta si $\partial M / \partial y = \partial N / \partial x$ 
+
+($\dif f = M \diff x + N \diff y \equiv 0)$.
+\begin{align}
+    C = \int M \diff x + \int \left( N - \frac{\partial}{\partial y} \int M \diff x \right) \diff y
+\end{align}
+
+\subsubsection*{Factors integrants}
+$\boxed{\mu M(x,y) \diff x + \mu N(x,y) \diff y = 0}$ exacta.
+\begin{align}
+\begin{gathered}
+    \mu = e^{\int \text{FI}} \\
+    \text{FI} = \begin{cases} \displaystyle G = \frac{1}{M} \left( \frac{\partial N}{\partial x} - \frac{\partial M}{\partial y}\ \right) \\ \displaystyle H = \frac{1}{N} \left( \frac{\partial M}{\partial y} - \frac{\partial N}{\partial x}\ \right) \end{cases}
+\end{gathered}
+\end{align}
+
+%----------------------------------------------------------------------------------------
+\subsection*{Equacions lineals}
+\subsubsection*{Coeficients constants}
+$\boxed{y^{(n)} + p_{1} y^{(n-1)} + \dots + p_{n}y = Q(x)}$.
+
+La solució de la reduïda depèn de l'arrel del polinomi de derivades $P(D)$:
+\begin{itemize}
+    \item $m \in \mathbb{R}$: $y = e^{m_{1}x} (A_{1} + A_{2} x + \dots ) + e^{m_{2}x} (B_{1} + B_{2} x + \dots) + \dots$
+    \item $\alpha \pm \beta \imath \in \mathbb{C}$: $y = e^{\alpha x} [(A_{1} + A_{2} x + \dots ) \sin (\beta x) + (B_{1} + B_{2} x + \dots ) \cos (\beta x)] + \dots$
+\end{itemize}
+Per a $Q(x)$ amb forma $x^{n} e^{\alpha x}$ o $x^{n} e^{\alpha x} (\cos \beta x + \sin \beta x)$ es fa a través dels anihiladors.
+
+\subsubsection*{Variació de paràmetres}
+$\boxed{y'' + P(x) y' + Q(x) y = R(x)}$. Amb solucions LI de la reduïda $u_{1}$ i $u_{2}$.
+
+Permet trobar la solució per a $R(x)$ diferents del casos del mètode dels anihiladors. 
+\begin{align}
+    y = -u_{1} \int \frac{R u_{2}}{W} + u_{2} \int \frac{R u_{1}}{W}
+\end{align}
+
+\subsubsection*{Equació de Cauchy--Euler}
+$\boxed{x^{2} y'' + pxy' + qy =R(x)}$.
+\begin{align}
+    \text{Canvi: } x = e^{t} \Rightarrow y'' - y' + pxy' + qy = R(t)
+\end{align}
+
+\subsubsection*{Equacions exactes de 2n ordre}
+$\boxed{P_{2}(x)y'' + P_{1}(x)y' + P_{0}(x)y = R(x)}$. Exacta si $P_{2}'' - P_{1}' + P_{0} \equiv 0$.
+\begin{align}
+    P_{2}y' + (P_{1} - P_{2}') y = C + \int R \diff x
+\end{align}
+
+\subsection*{Reducció d'ordre}
+$\boxed{y'' + P(x) y' + Q(x) y = R(x)}$ amb una solució particular $u(x)$.
+\begin{align}
+    \text{Canvis successius: } y = t u \quad t' = v
+\end{align}
+
+%----------------------------------------------------------------------------------------
+\newpage
+\subsection*{Transformades de Laplace}

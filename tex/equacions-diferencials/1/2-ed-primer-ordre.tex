@@ -1,0 +1,282 @@
+%----------------------------------------------------------------------------------------
+%    EQUACIONS DIFERENCIALS DE PRIMER ORDRE
+%----------------------------------------------------------------------------------------
+\section{Equacions diferencials de primer ordre}
+\subsection{Equacions homogènies}
+\subsubsection*{Funció homogènia}
+\begin{defi}
+$F(x,y)$ és homogènia de grau $n \Leftrightarrow F(tx, ty) = t^{n} F(x,y)$, $\quad \forall t$.
+\end{defi}
+Propietats:
+\begin{enumerate}[i)]
+    \item Si $F(x,y)$ és homogènia de grau $n$ i $G(x,y)$ és homogènia de grau $m$, llavors $FG$ i $\displaystyle \frac{F}{G}$ són homogènies de grau $n+m$ i $n-m$ respectivament.
+    \item Si $F(x,y)$ és de grau zero, llavors $F(x,y)$ és funció únicament de $\displaystyle \frac{y}{x}$.
+\end{enumerate}
+
+\subsubsection*{Equació diferencial homogènia}
+\begin{defi}
+\begin{align}
+    M(x,y) \diff x + N(x,y) \diff y = 0
+\end{align}
+amb $M$, $N$ homogènies del mateix grau.
+\end{defi}
+
+\subsubsection*{Resolució}
+Es resolen per separació de variables.
+\begin{example}
+    $\displaystyle \frac{\dif y}{\dif x} = - \frac{M(x,y)}{N(x,y)} = f \left( \frac{y}{x} \right)$ i fent $y = vx$, $\displaystyle v + \frac{\dif v}{\dif x} x = f(v)$
+
+    $\Rightarrow \boxed{\frac{\dif x}{x} = \frac{\dif v}{f(v) - v}}$.
+\end{example}
+
+\subsubsection*{Representació gràfica}
+\begin{defi}[Homotècia]
+$(x,y) \mapsto (kx, ky)$.
+\end{defi}
+Les corbes integrals es transformen unes en altres mitjançant homotècia.
+\begin{example}
+ $\displaystyle \frac{\dif y}{\dif x} = - \frac{x^{2} + y^{2}}{2x^{2}} = - \frac{1}{2} - \frac{y^{2}}{2x^{2}}$, funció només de $\displaystyle \frac{y}{x}$. Llavors, fem $\displaystyle v = \frac{y}{x}$ i separem $x, v$: $\displaystyle \frac{\dif v}{- \frac{1}{2} - \frac{v^{2}}{2} - v} = \frac{\dif x}{x} \Rightarrow - \frac{2 \diff v}{(1+v)^{2}} = \frac{\dif x}{x} \Rightarrow \ln x = \frac{2}{1+v} + C$
+
+ $\Rightarrow \boxed{y = \left( \frac{2x}{\ln x + C} - x \right)}$.
+\end{example}
+\begin{example}
+    $\displaystyle ky = \frac{2kx}{\ln kx + C} - kx \Rightarrow \boxed{y = \frac{2x}{\ln k + \ln x - C} - x} \Rightarrow$ fent $C' = C - \ln k$, obtenim una altra corba de la família.
+\end{example}
+%----------------------------------------------------------------------------------------
+\subsection{Equacions lineals}
+\begin{defi}
+\begin{align}\label{ed-lineal}
+   \frac{\dif y}{\dif x} + P(x) y = Q(x)
+\end{align}
+\end{defi}
+
+\subsubsection*{Resolució}
+Observem que $\displaystyle \frac{\dif}{\dif x} \left( y e^{\int P(x) \diff x} \right) = e^{\int P(x) \diff x} \left( \frac{\dif y}{\dif x} + y P(x) \right)$.
+
+A partir de \eqref{ed-lineal} tenim: $\displaystyle e^{\int P(x) \diff x} \left( \frac{\dif y}{\dif x} + P(x) y \right) = Q(x) e^{\int P(x) \diff x}$. Integrant: $\displaystyle y e^{\int P(x) \diff x} = \int Q(x) e^{P(x) \diff x} \diff x + C \Rightarrow$
+\begin{align}
+    \boxed{y = C e^{-\int P(x) \diff x} + e^{-\int P(x) \diff x} \int Q(x) e^{\int P(x) \diff x} \diff x}
+\end{align}
+
+\begin{example}
+	$\displaystyle x y' + (1 - x) y = e^{2x}$.
+
+	$\displaystyle \Rightarrow P(x) \equiv \frac{1 - x}{x}, \, Q(x) = \frac{e^{2x}}{x} \Rightarrow \int P(x) \diff x = \ln x - x \Rightarrow y = C \frac{e^{x}}{x} + \frac{e^{x}}{x} \int \frac{x e^{-x}}{x} e^{2x} \diff x$
+
+	$\Rightarrow \boxed{y = C \frac{e^{x}}{x} + \frac{e^{2x}}{x}}$.
+\end{example}
+
+\subsubsection*{Propietats de les solucions de l'equació diferencial de 1r ordre}
+\begin{enumerate}[i)]
+	\item Si $y_{1}$ és una solució particular de la reduïda, la solució general de la reduïda és $y = C y_{1}$.
+	\item Si $y_{1}$ és una solució particular de la reduïda i $y_{2}$ una solució particular de la completa, llavors la solució general de la completa és $y = C y_{1} + y_{2}$.
+	\item Si $y_{1}$, $y_{2}$ són dues solucions particulars diferents de la completa, la solució general de la completa és $y = y_{2} + C(y_{2} - y_{1})$.
+\end{enumerate}
+\begin{example}
+	$y' + y = 10$, amb una solució particular de la reduïda $y = e^{-x}$; de la completa $y = 10$. Llavors, $\boxed{y = C e^{-x} + 10}$.
+\end{example}
+\begin{example}
+	$\displaystyle y' + \frac{y}{x^{2}} = 2x + 1$, amb una solució particular de la completa $y = x^{2}$. Llavors, $\boxed{y = C e^{\sfrac{1}{x}} + x^{2}}$.
+\end{example}
+
+%----------------------------------------------------------------------------------------
+\subsection{Equació de Bernoulli}
+\begin{defi}
+	\begin{align}
+		\frac{\dif y}{\dif x} + P(x) y = Q(x) y^{n}
+	\end{align}
+\end{defi}
+
+\subsubsection*{Resolució}
+Aquesta ED ja és lineal per a $n = 0$ i $n = 1$. A la resta de casos, es pot linealitzar amb el canvi de variable $\boxed{z = y^{1-n}}$.
+
+Tenim $\displaystyle \frac{\dif z}{\dif x} = (1-n) y^{-n} \frac{\dif y}{\dif x}$, i l'ED queda: $\displaystyle y^{-n} \frac{\dif y}{\dif x} + P(x) y^{1-n} = Q(x) \Rightarrow$
+\begin{align}
+    \boxed{\frac{\dif z}{\dif x} + (1-n) P(x) z = (1-n) Q(x)}
+\end{align}
+\begin{example}
+	$\displaystyle \frac{\dif y}{\dif x} + \frac{y}{x} = y^{2} \frac{x \cos x - \sin x}{x}$.
+
+	És una equació de Bernoulli amb $\displaystyle n = 2 \Rightarrow z = \frac{1}{y}$. Llavors, queda $\displaystyle \frac{\dif z}{\dif x} - \frac{z}{x} = \frac{\sin x - x \cos x}{x}.$
+
+	Resolem l'ED lineal: $\displaystyle P(x) = - \frac{1}{x} \Rightarrow e^{- \int P(x) \diff x} = x \Rightarrow z = Cx + x \int \frac{\sin x - x \cos x}{x^{s}} \diff x = Cx - \sin x \Rightarrow \boxed{y = \frac{1}{Cx - \sin x}}$
+\end{example}
+
+%----------------------------------------------------------------------------------------
+\subsection{Equació de Ricatti}
+\begin{defi}
+	\begin{align}
+		\frac{\dif y}{\dif x} = P(x) y^{2} + Q(x) y + R(x)
+	\end{align}
+\end{defi}
+\subsubsection*{Resolució}
+És una ED no resoluble en general, però sí a partir d'una solució particular $y_{p}$. Sigui $\displaystyle y_{p}' = P(x) y^{2}_{p} + Q(x) y_{p} + R(x)$.
+
+Cerquem $\boxed{z = y - y_{p}} \Rightarrow z' = Pz (y + y_{p}) + Qz \Leftrightarrow$
+\begin{align}
+    \boxed{z' - (2y_{p} P + Q)z = Pz^{2}}
+\end{align}
+que és una equació de Bernoulli amb $n = 2$, que es resol amb el canvi $\displaystyle w = \frac{1}{z}$.
+\begin{example}
+	$\displaystyle y' = x^{3} (y-x)^{2} + \frac{y}{x}$, amb $y_{p} = x$.
+
+	Tenim $P(x) = x^{3}$, $\displaystyle Q(x) = -2x^{4} + \frac{1}{x}$, $R(x) = x^{5}$.
+	\begin{enumerate}[i)]
+		\item Ricatti $\mapsto$ Bernoulli:
+			\subitem $\displaystyle z = y - x \Rightarrow z' - \left(2x^{4} - 2x^{4} + \frac{1}{x} \right) z  = x^{3} z^{2} \Rightarrow z' - \frac{z}{x} = x^{3} z^{2} \Rightarrow P = - \frac{1}{x}, \, Q = x^{3}, \, n=2$.
+		\item Bernoulli $\mapsto$ lineal:
+			\subitem $\displaystyle w = \frac{1}{z} \Rightarrow w' + \frac{w}{x} = -x^{3}$.
+			\subitem Resolem: $\displaystyle \Rightarrow w = \frac{C}{x} - \frac{x^{4}}{5}$.
+		\item Retorn $w \mapsto z \mapsto y$.
+			\subitem $\boxed{y = \frac{5x}{5C - x^{5}}}$.
+	\end{enumerate}
+\end{example}
+
+%----------------------------------------------------------------------------------------
+\subsection{Equacions exactes}
+\begin{defi}
+	\begin{align}
+    \begin{gathered}
+		M(x,y) \diff x + N(x,y) \diff y = 0 \text{ és exacta} \Leftrightarrow \\
+        \exists f(x,y) \mid \dif f \equiv M \diff x + N \diff y
+    \end{gathered}
+	\end{align}
+\end{defi}
+\begin{thm}[d'Euler]
+	Una ED de la forma $M(x,y) \diff x + N(x,y) \diff y = 0$ és exacta si i només si $\displaystyle \frac{\partial M}{\partial y} = \frac{\partial N}{\partial x}$.
+\end{thm}
+
+\subsubsection*{Resolució}
+Si l'ED és exacta, llavors $\dif f = 0$. Així doncs,
+\begin{align}
+    \boxed{f(x,y) \equiv C = \int_{a}^{x} M(x,y) \diff x + \int N(a,y) \diff y}
+\end{align}
+Alternativament, podem considerar el següent: $\displaystyle f = \int M(x,y) \diff x + g(y)$ i $\displaystyle g'(y) \equiv N(x,y) - \frac{\partial}{\partial y} \left( \int M(x,y) \diff x \right)$. Llavors,
+\begin{align}
+	\boxed{C = \int M \diff x + \int \left( N - \frac{\partial}{\partial y} \int M \diff x \right) \diff y}
+\end{align}
+
+\begin{example}
+	$\displaystyle \left( \frac{y}{x} + y^{3} \right) \diff x + \left( \ln x + 3x y^{2} + 4y \right) \diff y = 0$.
+
+	Comprovem que sigui exacta: $\displaystyle \frac{\partial M}{\partial y} = \frac{1}{x} + 3y^{2} = \frac{\partial N}{\partial x} = \frac{1}{x} + 3y^{2}$.
+
+	Tenim  $\displaystyle f(x,y) = \int_{a}^{x} M(x,y) \diff x + \int N(a,y) \diff y \Rightarrow f = y \ln x + x y^{3} + 2y^{2}$. La solució és $\boxed{y \ln x + x y^{3} + 2y^{2} = C}$.
+
+    Altrament podem fer $f = y \ln x + xy^{3} + g(y) \Rightarrow g'(y) = \ln x + 3xy^{2} + 4y - \ln x  3xy^{2} = 4y \Rightarrow g(y) = 2y^{2}$. La solució és $\boxed{y \ln x + x y^{3} + 2y^{2} = C}$.
+\end{example}
+
+%----------------------------------------------------------------------------------------
+\subsection{Factors integrants}
+\begin{defi}
+	Una funció $\mu(x,y)$ és factor integrant de l'equació $M \diff x + N \diff y = 0 \Leftrightarrow$
+	\begin{align}
+		\mu M(x,y) \diff x + \mu N(x,y) \diff y = 0 \text{ és exacta}
+	\end{align}
+\end{defi}
+\begin{example}
+	$2y \diff x + x \diff y = 0$ no és exacta, però agafant $\mu = x \Rightarrow 2xy \diff x + x^{2} \diff y = 0$ és exacta.
+\end{example}
+Propietat: $\exists$ sempre una infinitat de factors integrants. Ja que $\exists$ una solució $f(x,y) = C$, es té $\displaystyle \frac{\partial f}{\partial x} \diff x + \frac{\partial f}{\partial y} \diff y = 0$. Llavors, només cal fer:
+\begin{align}
+	\boxed{\mu = \frac{\partial f / \partial x}{M} = \frac{\partial f / \partial y}{N}}
+\end{align}
+\begin{example}
+	Per a $2y \diff x + x \diff y = 0$, qualsevol factor de la forma $x F(x^{2}y)$ és factor integrant.
+\end{example}
+
+\subsubsection*{Mètode per trobar $\mu$}
+Segons convingui s'ha de trobar una funció $G$ o una funció $H$ tal que $e^{\int G}$ o $e^{\int H}$ sigui factor integrant.
+\begin{align}
+	\boxed{G \equiv \frac{1}{N} \left( \frac{\partial M}{\partial y} - \frac{\partial N}{\partial x} \right) \Rightarrow \mu = \mu = e^{\int G}}
+\end{align}
+\begin{align}
+	\boxed{H \equiv \frac{1}{M} \left( \frac{\partial N}{\partial x} - \frac{\partial M}{\partial y} \right) \Rightarrow \mu = \mu = e^{\int H}}
+\end{align}
+\begin{example}
+	$(4x^{2} + y) \diff x - x \diff y = 0$ no exacta.
+
+	$\displaystyle G = - \frac{1}{x} (1 - (-1)) = - \frac{2}{x} \Rightarrow \mu = e^{-2 \ln x} = \frac{1}{x^{2}}$
+
+	Resolent la nova equació exacta, obtenim: $\boxed{4x - \frac{y}{x} = C}$.
+\end{example}
+%----------------------------------------------------------------------------------------
+\subsection{Equacions de 2n ordre resoltes per mètodes de 1r ordre}
+Les ED de la forma $\displaystyle f \left( x, y, \frac{\dif y}{\dif x}, \frac{\dif^{2} y}{\dif x^{2}} \right) = 0$ es resol per mètodes de 1r ordre ens dos casos:
+\begin{enumerate}[i)]
+	\item $\displaystyle f \left( x, \frac{\dif y}{\dif x}, \frac{\dif^{2} y}{\dif x^{2}} \right) = 0$, només cal fer el canvi $\displaystyle v = \frac{\dif y}{\dif x}$.
+	\item $\displaystyle f \left( y, \frac{\dif y}{\dif x}, \frac{\dif^{2} y}{\dif x^{2}} \right) = 0$, només cal fer el canvi $\displaystyle v = \frac{\dif y}{\dif x}$ i $\displaystyle v \frac{\dif v}{\dif y} = \frac{\dif^{2} y}{\dif x^{2}}$.
+\end{enumerate}
+\begin{example}
+	$\displaystyle y \frac{\dif^{2} y}{\dif x^{2}} = 2 \left( \frac{\dif y}{\dif x} \right)^{2}$.
+
+	Fent els canvis de variable, tenim $\displaystyle y v \frac{\dif v}{\dif y} = 2v^{2}$. Separant les variables i integrant, obtenim $2 \ln y = \ln v + A$. Fent $\ln B = A$ i desfent els logaritmes tenim $y^{2} = Bv$.
+
+	Desfem el canvi de variable i obtenim $\displaystyle y^{2} = B \frac{\dif y}{\dif x} \Rightarrow \dif x = B \frac{\dif y}{y^{2}} \Rightarrow x = - \frac{B}{y} + C \Rightarrow y = - \frac{B}{x-C} \Rightarrow \boxed{y = \frac{1}{C_{1} x + C_{2}}}$.
+\end{example}
+
+%----------------------------------------------------------------------------------------
+\subsection{Equació de Clairaut}
+\begin{defi}
+	Sigui la família de rectes no paral·leles a un paràmtre.
+	\begin{align}
+		y = Cx + f(C)
+	\end{align}
+	L'ED més general que compleix aquesta solució és la que s'obté fent $\displaystyle \frac{\dif y}{\dif x} = C$:	\begin{align}
+		y = \frac{\dif y}{\dif x} x + f\left( \frac{\dif y}{\dif x} \right)
+	\end{align}
+\end{defi}
+
+\begin{example}\label{sol-sing}
+	$\displaystyle y = x \frac{\dif y}{\dif x} - \frac{1}{4} \left( \frac{\dif y}{\dif x} \right)^{2}$. La solució és $\boxed{y = Cx - \frac{1}{4} C^{2}}$.
+\end{example}
+\begin{example}
+	$\displaystyle y = x \frac{\dif y}{\dif x} - \frac{\dif x}{\dif y}$. La solució és $\boxed{y = Cx - C^{-1}}$.
+\end{example}
+\begin{example}
+	$\displaystyle \left(y - x \frac{\dif y}{\dif x} \right) + \frac{\dif y}{\dif x} = \left( \frac{\dif y}{\dif x} \right)^{2}$.
+
+    La solució és $\boxed{y = Cx \pm \sqrt{C^{2} - C}}$.
+\end{example}
+
+\begin{defi}[Solució singular]
+	És una solució adicional de l'ED, no inclosa en la solució general.
+\end{defi}
+\begin{example}
+	A l'equació de l'exemple~\ref{sol-sing}, $\boxed{y = x^{2}}$ és una solució singular.
+\end{example}
+
+\subsubsection*{Corba envolvent}
+\begin{defi}
+	És una corba tangent en cadascun dels seus punts a alguna de les rectes. Si $\exists$ l'envolvent, aquesta és solució de l'ED.
+\end{defi}
+Una condició necessària de l'envolvent és que $\displaystyle x = - \frac{\dif f(C)}{\dif C}, \quad \forall x$. Com que l'envolvent també verifica $y = Cx + f(C)$, l'envolvent s'obté aïllant $C$ a les dues equacions.
+\begin{example}
+	$y = Cx - C^{-1}$.
+
+	$\displaystyle x = \frac{\dif}{\dif C} (C^{-1}) = - C^{-2} \Rightarrow C^{2} = -x^{-1}$.
+
+	Pel binomi de Newton $\Rightarrow y^{2} = C^{2} x^{2} - 2x + C^{-2} \Rightarrow \boxed{y^{2} = -4x}$ és l'envolvent.
+\end{example}
+\begin{example}[amb dues envolvents]
+	$\displaystyle y = \frac{\dif y}{\dif x} x - \frac{1}{3} \left( \frac{\dif y}{\dif x} \right)^{3} \Rightarrow$
+
+    $\boxed{y = Cx - \frac{1}{3} C^{3}}$ és la solució general, però $\boxed{y = \pm x^{\sfrac{3}{2}}}$ són dues solucions singulars.
+\end{example}
+Observació: les solucions que trobem per aquest mètode són candidats a envolvents; s'ha de comprovar directament a l'ED per substitució.
+
+%----------------------------------------------------------------------------------------
+\subsection{Família de corbes a $n$ paràmetres}
+\begin{defi}
+	Una relació de la forma $F(x,y,C_{1}, \dots, C_{n}) = 0$ representa una família de corbes a $n$ paràmetres. Satisfan una ED d'ordre $n$ (si els $n$ paràmetres són essencials), la qual s'obté derivant $n$ vegades, és a dir, fins a $\displaystyle F(x,y,C_{1}, \dots, C_{n}, \frac{\dif y}{\dif x}, \dots , \frac{\dif^{n} y}{\dif x^{n}})$ i eliminant $C_{1}, \dots , C_{n}$ entre aquestes $n+1$ relacions.
+\end{defi}
+\begin{example}
+	ED de tots els cercles de radi unitat: $(x-a)^{2} + (y-b)^{2} = 1$.
+	\begin{enumerate}[i)]
+	    \item $\displaystyle 2(x-a) \diff x + 2 (y-b) \diff y = 0 \Rightarrow x-a = (b-y) \frac{\dif y}{\dif x}$.
+	    \item $\displaystyle 1 = -1 \left( \frac{\dif y}{\dif x} \right)^{2} + (b-y) \frac{\dif^{2} y}{\dif x^{2}} \Rightarrow y-b = \frac{1+y'^{2}}{-y''}$.
+	    \item Substituint l'ED del pas i) a l'equació del cercle, obtenim $\displaystyle (y-b)^{2} \left[ 1 + \left( \frac{\dif y}{\dif x} \right) \right]$.
+	    \item Finalment, considerant els resultats dels passos ii) i iii), obtenim $\boxed{(1 + y'^{2})^{3} = y''^{2}}$.
+	\end{enumerate}
+	Observem, llavors, que el radi de curvatura d'una corba és $\boxed{\frac{(1 + y'^{2})^{\sfrac{3}{2}}}{|y''|}}$.
+\end{example}

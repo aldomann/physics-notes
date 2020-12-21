@@ -1,0 +1,333 @@
+%-----------------------------------------------------------------
+%	BASIC DOCUMENT LAYOUT
+%-----------------------------------------------------------------
+\documentclass[paper=a4, fontsize=12pt, twoside=semi]{scrartcl}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage{slantsc}
+\usepackage{microtype}
+\usepackage[catalan]{babel}
+\usepackage[fixlanguage]{babelbib}
+\selectbiblanguage{catalan}
+
+% Sectioning layout
+\addtokomafont{sectioning}{\normalfont\scshape}
+\usepackage{tocstyle}
+\usetocstyle{standard}
+\renewcommand*\descriptionlabel[1]{\hspace\labelsep\normalfont\bfseries{#1}}
+
+% Empty pages
+\usepackage{etoolbox}
+\pretocmd{\section}{\cleardoubleevenemptypage}{}{}
+\pretocmd{\part}{\cleardoubleevenemptypage\thispagestyle{empty}}{}{}
+\renewcommand\partheadstartvskip{\clearpage\null\vfil}
+\renewcommand\partheadmidvskip{\par\nobreak\vskip 20pt\thispagestyle{empty}}
+
+% Paragraph indentation behaviour
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.3\baselineskip plus2pt minus2pt}
+\newcommand{\sk}{\medskip\noindent}
+
+% Fancy header and footer
+\usepackage{fancyhdr}
+\pagestyle{fancyplain}
+\fancyhead[LO]{\thepage}
+\fancyhead[CO]{}
+\fancyhead[RO]{\nouppercase{\mytitle}}
+\fancyhead[LE]{\nouppercase{\leftmark}}
+\fancyhead[CE]{}
+\fancyhead[RE]{\thepage}
+\fancyfoot{}
+\renewcommand{\headrulewidth}{0.3pt}
+\renewcommand{\footrulewidth}{0pt}
+\setlength{\headheight}{13.6pt}
+
+%-----------------------------------------------------------------
+%	MATHS AND SCIENCE
+%-----------------------------------------------------------------
+\usepackage{amsmath,amsfonts,amsthm,amssymb}
+\usepackage{xfrac}
+\usepackage[a]{esvect}
+\usepackage{chemformula}
+\usepackage{graphicx}
+
+% SI units
+\usepackage[separate-uncertainty=true]{siunitx}
+	%\DeclareSIUnit\micron{\micro\metre}
+
+% Custom commands and operators
+\newcommand*{\dif}{\mathrm{d}}
+\newcommand*{\diff}{\mathop{}\!\mathrm{d}}
+\newcommand*{\der}[3][]{\frac{\dif^{#1}#2}{\dif #3^{#1}}}
+\newcommand*{\pder}[3][]{\frac{\partial^{#1}#2}{\partial #3^{#1}}}
+
+\newcommand*{\abs}[1]{\left| #1 \right|}
+\newcommand*{\avg}[1]{\left< #1 \right>}
+\newcommand*{\norm}[1]{\| #1 \|}
+\newcommand*{\lrpar}[1]{\left( #1 \right)}
+\newcommand*{\lrbra}[1]{\left[ #1 \right]}
+\newcommand*{\lrcur}[1]{\left\{ #1 \right\}}
+\newcommand*{\eval}[1]{\left. #1 \right|}
+
+\newcommand*{\vnabla}{\vec{\nabla}}
+\newcommand*{\grad}[1]{\vnabla #1}
+\let\divsymb=\div
+\renewcommand*{\div}[1]{\vnabla \cdot #1}
+\newcommand*{\rot}[1]{\vnabla \times #1}
+
+\DeclareMathOperator{\Sin}{s}
+\DeclareMathOperator{\Cos}{c}
+\DeclareMathOperator{\Tan}{t}
+
+% Dirac quantum notation
+\newcommand{\ket}[1]{\left| #1 \right>} % for Dirac kets
+\newcommand{\bra}[1]{\left< #1 \right|} % for Dirac bras
+\newcommand{\braket}[2]{\left< #1 \vphantom{#2} \right| \left. #2 \vphantom{#1} \right>} % for Dirac brackets
+\newcommand{\matrixel}[3]{\left< #1 \vphantom{#2#3} \right| #2 \left| #3 \vphantom{#1#2} \right>} % for Dirac matrix elements
+
+% Hat-style notation for matrices
+\newcommand{\mat}[1]{\hat{\mathcal{#1}}}
+
+% Matrices in (A|B) form via [c|c] option
+\makeatletter
+\renewcommand*\env@matrix[1][*\c@MaxMatrixCols c]{%
+  \hskip -\arraycolsep
+  \let\@ifnextchar\new@ifnextchar
+  \array{#1}}
+\makeatother
+
+% Shorter \mathcal and \mathbb
+\newcommand*{\mc}[1]{\mathcal{#1}}
+\newcommand*{\mbb}[1]{\mathbb{#1}}
+
+% Extra integrals symbols
+\usepackage{esint}
+\newcommand*{\cwoint}{\varointclockwise}
+\newcommand*{\ctrcwoint}{\ointctrclockwise}
+
+
+%-----------------------------------------------------------------
+%	OTHER PACKAGES
+%-----------------------------------------------------------------
+\usepackage{environ}
+
+% Plots and graphics
+\usepackage{pgfplots}
+\usepackage{tikz}
+\usepackage{color}
+	\makeatletter
+		\color{black}
+		\let\default@color\current@color
+	\makeatother
+
+% Richer enumerate, figure, and table support
+\usepackage{enumerate}
+\usepackage{float}
+\usepackage{booktabs}
+	%\setlength{\intextsep}{8pt}
+\numberwithin{equation}{section}
+\numberwithin{figure}{section}
+\numberwithin{table}{section}
+
+% No indentation after certain environments
+\makeatletter
+\newcommand*\NoIndentAfterEnv[1]{%
+	\AfterEndEnvironment{#1}{\par\@afterindentfalse\@afterheading}}
+\makeatother
+%\NoIndentAfterEnv{thm}
+\NoIndentAfterEnv{defi}
+\NoIndentAfterEnv{example}
+\NoIndentAfterEnv{table}
+
+% Misc packages
+\usepackage{ccicons}
+\usepackage{lipsum}
+
+%-----------------------------------------------------------------
+%	THEOREMS
+%-----------------------------------------------------------------
+\usepackage{thmtools}
+
+% Proofatend environment
+\makeatletter
+\providecommand{\@fourthoffour}[4]{#4}
+\newcommand\fixstatement[2][\proofname\space del]{%
+	\ifcsname thmt@original@#2\endcsname
+		\AtEndEnvironment{#2}{%
+			\xdef\pat@label{\expandafter\expandafter\expandafter
+				\@fourthoffour\csname thmt@original@#2\endcsname\space\@currentlabel}%
+			\xdef\pat@proofof{\@nameuse{pat@proofof@#2}}%
+		}%
+	\else
+		\AtEndEnvironment{#2}{%
+			\xdef\pat@label{\expandafter\expandafter\expandafter
+				\@fourthoffour\csname #1\endcsname\space\@currentlabel}%
+			\xdef\pat@proofof{\@nameuse{pat@proofof@#2}}%
+		}%
+	\fi
+	\@namedef{pat@proofof@#2}{#1}%
+}
+\globtoksblk\prooftoks{1000}
+\newcounter{proofcount}
+\NewEnviron{proofatend}{%
+	\edef\next{%
+		\noexpand\begin{proof}[\pat@proofof\space\pat@label]%
+		\unexpanded\expandafter{\BODY}}%
+	\global\toks\numexpr\prooftoks+\value{proofcount}\relax=\expandafter{\next\end{proof}}
+	\stepcounter{proofcount}}
+\def\printproofs{%
+	\count@=\z@
+	\loop
+		\the\toks\numexpr\prooftoks+\count@\relax
+			\ifnum\count@<\value{proofcount}%
+			\advance\count@\@ne
+	\repeat}
+\makeatother
+
+% Theroems layout
+\declaretheoremstyle[
+	spaceabove=6pt, spacebelow=6pt,
+	headfont=\normalfont\itshape,
+	notefont=\mdseries, notebraces={(}{)},
+	bodyfont=\small,
+	postheadspace=1em,
+]{small}
+
+\declaretheorem[style=plain,name=Teorema,qed=$\square$,numberwithin=section]{thm}
+\declaretheorem[style=plain,name=Corol·lari,qed=$\square$,sibling=thm]{cor}
+\declaretheorem[style=plain,name=Lema,qed=$\square$,sibling=thm]{lem}
+\declaretheorem[style=definition,name=Definició,qed=$\blacksquare$,numberwithin=section]{defi}
+\declaretheorem[style=definition,name=Exemple,qed=$\blacktriangle$,numberwithin=section]{example}
+\declaretheorem[style=small,name=Demostració,numbered=no,qed=$\square$]{sproof}
+\fixstatement{thm}
+\fixstatement[Demostració del]{lem}
+
+%-----------------------------------------------------------------
+%	ELA MOTHERFUCKING GEMINADA
+%-----------------------------------------------------------------
+\def\xgem{%
+	\ifmmode
+		\csname normal@char\string"\endcsname l%
+	\else
+		\leftllkern=0pt\rightllkern=0pt\raiselldim=0pt
+		\setbox0\hbox{l}\setbox1\hbox{l\/}\setbox2\hbox{.}%
+		\advance\raiselldim by \the\fontdimen5\the\font
+		\advance\raiselldim by -\ht2
+		\leftllkern=-.25\wd0%
+		\advance\leftllkern by \wd1
+		\advance\leftllkern by -\wd0
+		\rightllkern=-.25\wd0%
+		\advance\rightllkern by -\wd1
+		\advance\rightllkern by \wd0
+		\allowhyphens\discretionary{-}{}%
+		{\kern\leftllkern\raise\raiselldim\hbox{.}%
+			\kern\rightllkern}\allowhyphens
+	\fi
+}
+\def\Xgem{%
+	\ifmmode
+		\csname normal@char\string"\endcsname L%
+	\else
+		\leftllkern=0pt\rightllkern=0pt\raiselldim=0pt
+		\setbox0\hbox{L}\setbox1\hbox{L\/}\setbox2\hbox{.}%
+		\advance\raiselldim by .5\ht0
+		\advance\raiselldim by -.5\ht2
+		\leftllkern=-.125\wd0%
+		\advance\leftllkern by \wd1
+		\advance\leftllkern by -\wd0
+		\rightllkern=-\wd0%
+		\divide\rightllkern by 6
+		\advance\rightllkern by -\wd1
+		\advance\rightllkern by \wd0
+		\allowhyphens\discretionary{-}{}%
+		{\kern\leftllkern\raise\raiselldim\hbox{.}%
+			\kern\rightllkern}\allowhyphens
+	\fi
+}
+
+\expandafter\let\expandafter\saveperiodcentered
+	\csname T1\string\textperiodcentered \endcsname
+
+\DeclareTextCommand{\textperiodcentered}{T1}[1]{%
+	\ifnum\spacefactor=998
+		\Xgem
+	\else
+		\xgem
+	\fi#1}
+
+%-----------------------------------------------------------------
+%	PDF INFO AND HYPERREF
+%-----------------------------------------------------------------
+\usepackage{hyperref}
+\hypersetup{colorlinks, citecolor=black, filecolor=black, linkcolor=black, urlcolor=black}
+
+\newcommand*{\mytitle}{Complements de matemàtiques}
+\newcommand*{\mysubtitle}{}
+\newcommand*{\myauthor}{Alfredo Hernández Cavieres}
+\newcommand*{\myuni}{Universitat Autònoma de Barcelona, Departament de Física}
+\newcommand*{\mydate}{\normalsize 2014-2015}
+
+\pdfstringdefDisableCommands{\def\and{i }}
+
+\usepackage{hyperxmp}
+\hypersetup{pdfauthor={\myauthor}, pdftitle={\mytitle}}
+
+%-----------------------------------------------------------------
+%	TITLE SECTION AND DOCUMENT BEGINNING
+%-----------------------------------------------------------------
+\newcommand{\horrule}[1]{\rule{\linewidth}{#1}}
+\title{
+	\normalfont
+	\small \scshape{\myuni} \\ [25pt]
+	\horrule{0.5pt} \\[0.4cm]
+	\huge \mytitle \\
+	%\Large \scshape{\mysubtitle} \\
+	\horrule{2pt} \\[0.5cm]
+}
+\author{\myauthor}
+\date{\mydate}
+
+\begin{document}
+
+\clearpage\maketitle
+\thispagestyle{empty}
+\addtocounter{page}{-1}
+
+%-----------------------------------------------------------------
+%	LICENCE
+%-----------------------------------------------------------------
+\section*{}\thispagestyle{empty}
+\begin{centering}
+	\href{http://creativecommons.org/licenses/by-nc-sa/4.0/deed.ca}{\huge \ccbyncsaeu}
+
+	\normalsize Aquesta obra està subjecta a una llicència de
+
+	Reconeixement-NoComercial-CompartirIgual 4.0
+
+	Internacional de Creative Commons.
+
+\end{centering}
+
+%-----------------------------------------------------------------
+%	DOCUMENT BODY
+%-----------------------------------------------------------------
+\cleardoubleevenemptypage
+\pdfbookmark[1]{\contentsname}{toc}
+\tableofcontents
+
+%\part*{Primera}
+%\addcontentsline{toc}{part}{Primera}
+	\include{./1/1-intro}
+	\include{./1/2-funcions}
+	\include{./1/3-derivades}
+	\include{./1/4-integrals}
+	\include{./1/5-series}
+	\include{./1/6-series-fourier}
+	\include{./1/7-transformades-fourier}
+	\include{./1/8-altres-resultats}
+
+%\section*{Demostracions}
+%\printproofs
+
+\end{document}

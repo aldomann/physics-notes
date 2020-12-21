@@ -1,0 +1,99 @@
+%----------------------------------------------------------------------------------------
+%    APLICACIONS LINEALS
+%----------------------------------------------------------------------------------------
+\section{Aplicacions lineals}
+\subsection{Aplicacions lineals}
+Siguin $V$ i $V'$ $K$-espais vectorials. Una aplicació lineal de $V$ a $V'$ és una aplicació $f: V \to V'$ que compleix les propietats següents:
+\begin{enumerate}[i)]
+    \item $f (u + v) = f(u) + f(v) , \quad \forall u ,v \in V$.
+    \item $f (\lambda u) = \lambda f(u) , \quad \forall \lambda \in K , \forall u \in V$.
+\end{enumerate}
+O equivalenment:
+\begin{enumerate}[i)]
+    \item $f (\lambda u + \mu v) = \lambda f(u) + \mu f(v) , \quad \forall \lambda , \mu \in K , \quad \forall u , v \in V$.
+\end{enumerate}
+En particular, $f$ envia subespais vectorials de $V$ a subespais vectorials de $V'$.
+\begin{align}
+    f( \left< u_{1}, \dots , u_{n} \right>) =  \left< f (u_{1}), \dots , f (u_{n}) \right>
+\end{align}
+
+%----------------------------------------------------------------------------------------
+\subsection{L'espai vectorial de totes les aplicacions lineals}
+\begin{align}
+    \mathcal{L}(V , V') \equiv \{ f: V \to V' \mid f \text{ aplicació lineal} \}
+\end{align}
+
+%----------------------------------------------------------------------------------------
+\subsection{Coordenades respecte d'una base}
+Sigui $B = (u_{1}, \dots , u_{n})$ una base de $V$ i $c_{B}: K^{n} \to V$ una aplicació lineal.
+\begin{align}
+    c_{B}(\lambda_{1}, \dots , \lambda_{n}) \mapsto \lambda_{1} u_{1} + \dots + \lambda_{n} u_{n} = u \in V
+\end{align}
+
+Llavors, escriurem $C(u, B) = \begin{pmatrix} \lambda_{2} \\ \vdots \\ \lambda_{n} \end{pmatrix}$ per denotar que $u$ té coordenades $\lambda_{1}, \dots , \lambda_{n}$ respecte de la base $B$.
+
+Observacions i conseqüències:
+\begin{enumerate}[i)]
+    \item Aquesta coordenació és una aplicació lineal bijectiva.
+    \item A $K$-espai vectorial $V$ finitament generat es pot establir una aplicació bijectiva amb $K^{\dim (V)}$.
+    \item Qualsevol problema lineal sobre $V$ es pot traduir en un problema numèric a $K^{\dim (V)}$, que es pot resoldre amb ordinador fàcilment.
+\end{enumerate}
+
+%----------------------------------------------------------------------------------------
+\subsection{Matriu d'una aplicació lineal}
+Sigui $f_{A}: V_{1} \to V_{2}$ una aplicació entre $K$-espais vectorials de dimensió finita no nuls. Siguin $B_{1} = (v_{1}, \dots , v_{n})$ una base de $V_{1}$ i $B_{2} = (u_{1}, \dots , u_{n})$ una base de $V_{2}$. Llavors:
+\begin{align}
+    A = M (f, B_{1}, B_{2})
+\end{align}
+
+Així doncs, 
+\begin{align}
+    C(f_{A} (v), B_{2}) = M (f, B_{1}, B_{2}) C(v, B_{1})
+\end{align}
+Observacions sobre la matriu $A$:
+\begin{enumerate}[i)]
+    \item Les files de $A$ són els coeficients de les formes lineals que descriuen les coordenades del vector imatge.
+    \item Les columnes de $A$ són les imatges per $f_{A}$ de la base $B_{1}$ de $V_{1}$.
+\end{enumerate}
+
+\subsubsection*{Canvi de coordenades}
+Siguin $B = (v_{1}, \dots , v_{n})$ i $B' = (u_{1}, \dots , u_{n})$ bases de $V$ i $u \in V$. Llavors:
+\begin{align}
+    C(u, B') = M (id, B, B') C(u, B)
+\end{align}
+Aquesta matriu, que denotarem simplement per $M(B, B')$ transforma les coordenades de $u$ respecte $B$ e coordenades del mateix vector resoecte de $B'$. Aquesta matriu s'anomena matriu del canvi de coordenades de $B$ a $B'$.
+
+%----------------------------------------------------------------------------------------
+\subsection{Nucli i imatge d'una aplicació lineal}
+Sigui $f: V \to V'$ una apliació lineal.
+\begin{enumerate}[i)]
+    \item $f$ és monomorfisme $\Leftrightarrow \ker (f) = \{ 0_{V} \}$. $f$ envia famílies $LI$ de $V$ a famílies $LI$ de $V'$.
+    \item $f$ és epimorfisme $\Leftrightarrow \im (f) = f(V) = V'$. $f$ envia generadors de $V$ a generadors de $V'$.
+    \item $f$ és isomorfisme $\Leftrightarrow f$ és monomorfisme i epimorfisme alhora. $f$ envia bases de $V$ a bases de $V'$.
+\end{enumerate}
+
+\subsubsection*{Criteri a $f_{A}: K^{n} \to K^{m}$}
+\begin{enumerate}[i)]
+    \item Monomorfisme: $\rank (A) = n$.
+    \item Epimorfisme: $\rank (A) = m$.
+    \item Isomorfisme: $\rank (A) = n = m$.
+\end{enumerate}
+
+%----------------------------------------------------------------------------------------
+\subsection{Problema típic}
+Donada una aplicació lineal $f: V \to V'$, trobar una base i la dimensió de $\ker (f) \subseteq V'$ i $\im (f) \subseteq V'$.
+\begin{example}
+\begin{align*}
+\begin{gathered}
+    \quad f: \mathbb{R}^{5} \to \mathbb{R}^{3} \\
+    f (x,y,z,t,u) = (4z + 8t + 2u , x + y + 2t + u , 3y + z + 2t + 2u)
+\end{gathered}
+\end{align*}
+\end{example}
+Procediment:
+\begin{enumerate}[i)]
+    \item Calculem la varietat lineal del sistema igualat a zero (nucli), tot simplificant per Gauss--Jordan el sistema. $\dim (\ker (f)) = \rank (A)$. 
+    \item Transformem la matriu de Gauss--Jordan a la forma paramètrica. Una base del nucli són els vectors directors del sistema.
+    \item Tenint en compte que $\dim (\ker (f)) + \dim (\im (f)) = \dim (V)$, calculem $\dim (\im (f))$.
+    \item Una base de $\im (f)$ és qualsvol família $LI$ dels vectors columna de $A$ (sense simplificar per Gauss--Jordan). En concret les columnes de la matriu original que a Gauss--Jordan tenen pivot, són una base.
+\end{enumerate}

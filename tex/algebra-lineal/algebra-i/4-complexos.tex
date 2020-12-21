@@ -1,0 +1,88 @@
+%----------------------------------------------------------------------------------------
+%    EL COS DELS COMPLEXOS
+%----------------------------------------------------------------------------------------
+\section{El cos dels complexos}
+\subsection{Els nombres complexos}
+Els nombres complexos són expressions de la forma:
+\begin{align}
+    a + b \imath \in \mathbb{C}, \quad a,b \in \mathbb{R}, \quad \imath ^{2} = -1
+\end{align}
+
+\subsubsection*{Definicions}
+\begin{itemize}
+    \item El conjugat d'un nombre complex $z = a + b \imath$ és $a - b \imath$, i es denota per $\bar{z}$.
+    \item La norma o mòdul d'un nombre complex $z = a + b \imath$ és $\sqrt{a^{2} + b^{2}}$, i es denota per $|z|$.
+    \item L'argument d'un nombre complex $z = a + b \imath$ és l'angle que forma $z$ amb la recta dels reals al pla dels complexos, i es denota per $\operatorname{arg}(z) = \theta$.
+\end{itemize}
+
+\subsubsection*{Operacions}
+\begin{itemize}
+    \item Suma: $ (a + b \imath) + (c + d \imath) = (a + c) + (b + d) \imath$.
+    \item Producte: $(a + b \imath) (c + d \imath) = (ac - bd) + (ad + bc) \imath$.
+\end{itemize}
+$\mathbb{C}$ és un abelià amb la suma i el producte.
+
+%----------------------------------------------------------------------------------------
+\subsection{Coordenades polars}
+\begin{align}
+    \text{Fórmula d'Euler: } e^{\imath \theta} = \cos \theta + \imath \sin \theta
+\end{align}
+
+Tot $z \in \mathbb{C}$ por ésser expressat com a
+\begin{align}
+    z = |z| e^{\imath \theta}
+\end{align}
+Aleshores, el producte de complexos en forma polar compleix:
+\begin{enumerate}[i)]
+    \item $|zw| = |z| |w|$.
+    \item $\operatorname{arg}(zw) = \operatorname{arg}(z) + \operatorname{arg} (w)$.
+\end{enumerate}
+
+%----------------------------------------------------------------------------------------
+\subsection{Arrels $n$-èsimes d'un complex}
+Tot nombre complex té $n$ arrels $n$-èsimes.
+\begin{align}
+    w = z_{k}^{n} \Rightarrow z_{k} = \sqrt[n]{|w|} \exp \left[\imath \left(\frac{\theta}{n} + \frac{2 \pi k}{n} \right) \right], \quad 0 \leq k < n
+\end{align}
+
+%----------------------------------------------------------------------------------------
+\subsection{Els 16 arguments bonics}
+\subsubsection*{Angles de la forma $\frac{1}{4}k \pi , \; k \in \mathbb{Z}$ }
+\begin{align}
+    \pm \frac{\sqrt{2}}{2} \pm \frac{\sqrt{2}}{2} \imath
+\end{align}
+\begin{itemize}
+    \item Ambdues components són $\pm \frac{\sqrt{2}}{2} R$.
+\end{itemize}
+
+\subsubsection*{Angles de la forma $\frac{1}{6}k \pi , \; k \in \mathbb{Z}$ }
+\begin{align}
+    \pm \frac{\sqrt{3}}{2} \pm \frac{1}{2} \imath \quad \text{o} \quad \pm \frac{1}{2} \pm \frac{\sqrt{3}}{2}
+\end{align}
+\begin{itemize}
+    \item La component gran és $\pm \frac{\sqrt{3}}{2} R$.
+    \item La component petita és $\pm \frac{1}{2} R$.
+\end{itemize}
+
+%----------------------------------------------------------------------------------------
+\subsection{Conceptes trigonomètrics}
+\subsubsection*{La funció arctangent}
+Sigui $z = a + b \imath$, $\Rightarrow \tan \theta = \frac{a}{b}$, 
+\begin{align}
+    \theta =
+    \begin{cases}
+        \arctan \left( \frac{a}{b} \right) , & \text{si } a > 0 \\
+        \frac{\pi}{2} , & \text{si } a=0, \; b>0 \\ 
+        - \frac{\pi}{2} , & \text{si } a=0, \; b<0 \\
+        \arctan \left( \frac{a}{b} \right) + \pi , & \text{si } a < 0
+    \end{cases} 
+\end{align}
+
+\subsubsection*{Identitats trigonomètriques}
+\begin{align}
+\begin{gathered}
+    \sin ^{2} x + \cos ^{2} x = 1 \\
+    \sin (x \pm y) = \sin x \cos y \pm \cos x \sin y \\
+    \cos (x \pm y) = \cos x \cos y \mp \sin x \sin y
+\end{gathered}
+\end{align}

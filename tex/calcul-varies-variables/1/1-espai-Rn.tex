@@ -1,0 +1,124 @@
+%----------------------------------------------------------------------------------------
+%    L'ESPAI R^N
+%----------------------------------------------------------------------------------------
+\section{L'espai $\mathbb{R}^{n}$}
+\subsection{El cos dels números reals}
+$\mathbb{R}$ és un cos ordenat arquimedià complet.
+\begin{itemize}
+    \item Cos ordenat: cos $(\mathbb{R}, +, \cdot)$ amb ordenació total ($\leq$) que compleix:
+        \subitem $x \leq y \Rightarrow x + z \leq y + z$.
+        \subitem $x,y \geq 0 \Rightarrow xy \geq 0$.
+    \item Arquimedià: no és fitat superiorment: $\forall b>0, \quad \exists a\in \mathbb{R} \mid na>b,  \quad  n  \in  \mathbb{N}$.
+    \item Complet: tota successió de Cauchy és convergent en aquest cos. Això és equivalent a dir que $\mathbb{R}$ té la propietat de l'extrem.
+\end{itemize}
+
+%---------------------------------------------------------------------------------------
+\subsection{Espai $\mathbb{R}^{n}$}
+\begin{defi}[Producte escalar]
+    És una operació $\mathbb{R}^{n} \times \mathbb{R}^{n} \to \mathbb{R}$.
+    \begin{align}
+        \vec{x} \cdot \vec{y} = (x_{1} y_{1}, x_{2} y_{2}, \dots , x_{n} y_{n})
+    \end{align}
+\end{defi}
+El producte escalar compleix les següents propietats:
+\begin{enumerate}[i)]
+     \item És bilineal: 
+        \subitem $\vec{x} \cdot (\vec{y} + \vec{z}) = \vec{x} \cdot \vec{y} + \vec{x} \cdot \vec{z}$.
+        \subitem $(\vec{x} + \vec{y}) \cdot \vec{z} = \vec{x} \cdot \vec{z} + \vec{y} \cdot \vec{z}$.
+        \subitem $\vec{x} \cdot (\lambda \vec{y}) = \lambda (\vec{x} \cdot \vec{y})$.
+        \subitem $(\lambda \vec{x}) \cdot \vec{y} = \lambda (\vec{x} \cdot \vec{y})$.
+    \item És simètric: $\vec{x} \cdot \vec{y} = -\vec{y} \cdot \vec{x}$.
+    \item $\vec{x} \cdot \vec{x} > 0, \quad \forall \vec{x} \neq 0$.
+\end{enumerate}
+
+\begin{defi}[Mòdul d'un vector]
+    \begin{align}
+        \| \vec{x} \| \equiv \sqrt{\vec{x} \cdot \vec{x}} = \sqrt{x_{1}^{2} + x_{2}^{2} + \dots + x_{n}^{2}}
+    \end{align}
+    A més es compleix que $\vec{x} \cdot \vec{y} = \| \vec{x} \| \| \vec{y} \| \cos \alpha$.
+\end{defi}
+Propietats del mòdul:
+\begin{enumerate}[i)]
+    \item $\| \vec{x} \| > 0, \quad \forall \vec{x} \neq \vec{0}$.
+    \item $ \| \vec{0} \| = 0$.
+    \item $\| \lambda \vec{x} \| = \lambda \| \vec{x} \|$.
+    \item $\|\vec{x} + \vec{y}\| \leq \| \vec{x} \| + \| \vec{y} \|$  (desigualtat triangular).
+\end{enumerate}
+
+\begin{defi}[Desigualtat de Schwarz]
+    \begin{align}
+        | \vec{x} \cdot \vec{y} | \leq \| \vec{x} \| \| \vec{y} \| 
+    \end{align}
+\end{defi}
+
+\begin{defi}[Distància entre dos vectors]
+    \begin{align}
+        d(\vec{x}, \vec{y}) \| \vec{x} - \vec{y} \| = \sqrt{(x_{1} - y_{1})^{2} + (x_{2} - y_{2})^{2} + \dots + (x_{n} - y_{n})^{2}}
+    \end{align}
+\end{defi}
+Propietats de la distància:
+\begin{enumerate}[i)]
+    \item $d(\vec{x}, \vec{y}) > 0, \quad \forall \vec{x} \neq \vec{y}$.
+    \item $d(\vec{x}, \vec{x}) = 0$.
+    \item $d(\vec{x}, \vec{y}) = d(\vec{y}, \vec{x})$.
+    \item $d(\vec{x}, \vec{z}) \leq d(\vec{x}, \vec{y}) + d(\vec{y}, \vec{z})$  (desigualtat triangular).
+\end{enumerate}
+%----------------------------------------------------------------------------------------
+\subsection{Successions a $\mathbb{R}^{n}$}
+Una successió de $\mathbb{R}^{n}$ és una aplicació de $\mathbb{N}$ sobre $\mathbb{R}^{n}$: $m \mapsto \vec{x}^{(m)}$, que denotem $\{ \vec{x}^{(m)} \} = \{ \vec{x}^{(1)}, \vec{x}^{(2)}, \vec{x}^{(3)}, \dots \}$.
+
+\begin{defi}[Successió convergent]
+    $\lim \{ \vec{x}^{(m)} \} = \vec{l}$ si $\forall \varepsilon > 0, \quad \exists n_{o} \mid d\left(\vec{x}^{(m)}, \vec{l}\right) < \varepsilon, \quad \forall m > n_{0}$.
+\end{defi}
+
+\begin{defi}[Successió de Cauchy]
+    $\{ \vec{x}^{(m)} \}$ és de Cauchy si $\forall \varepsilon > 0, \quad \exists n_{o} \mid d(\vec{x}^{(l)}, \vec{x}^{(m)}) < \varepsilon, \quad \forall l, m > n_{0}$.
+    
+    Com que totes les successions de Cauchy a $\mathbb{R}^{n}$ són convergents, $\mathbb{R}^{n}$ és complet.
+\end{defi}
+
+%----------------------------------------------------------------------------------------
+\subsection{Topologia de $\mathbb{R}^{n}$}
+\subsubsection*{Entorns}
+\begin{itemize}
+    \item Entorn de centre $\vec{a}$ i radi $r$: $\varepsilon (\vec{a}, r) \equiv \{ \vec{x} \mid d(\vec{x}, \vec{a} < r \}$.
+    \item Entorn perforat: $\varepsilon^{\ast} (\vec{a}, r) = \varepsilon (\vec{a}, r) \backslash \{ \vec{a} \}$.
+\end{itemize}
+\subsubsection*{Tipus de punts}
+\begin{itemize}
+    \item Punt $\vec{a}$ interior a $A$: si $\exists r \mid \varepsilon (\vec{a}, r) \subset A$.
+    \item Punt $\vec{a}$ exterior a $A$: si $\vec{a}$ és interior a $\bar{A}$.
+    \item Punt $\vec{a}$ frontera de $A$: si no és interior ni exterior ($\Leftrightarrow$ tot entorn de $\vec{a}$ conté algun element de $A$ i de $\bar{A}$.
+    \item Punt $\vec{a}$ d'acumulació de $A$: si tot entorn de $\vec{a}$ conté algun punt de $A$ diferent de $\vec{a}$.
+\end{itemize}
+\subsubsection*{Tipus de conjunts}
+\begin{itemize}
+    \item Conjunt obert: si tots els seus punts són interiors.
+    \item Conjunt tancat: si conté tots els seus punts d'acumulació ($\Leftrightarrow$ el complementari és obert).
+    \item Conjunt fitat: si està contingut en algun entorn de $\vec{0}$.
+    \item Conjunt compacte: si tota successió té alguna successió parcial convergent ($\Leftrightarrow$ tancat i fitat).
+\end{itemize}
+
+%----------------------------------------------------------------------------------------
+\subsection{Producte vectorial (a $\mathbb{R}^{3}$)}
+\begin{defi}
+    És una operació $\mathbb{R}^{3} \times \mathbb{R}^{3} \to \mathbb{R}^{3}$. Siguin $\vec{x}$ , $\vec{y} \in \mathbb{R}^{3}$, llavors
+    \begin{align}
+        \vec{x} \times \vec{y} = \begin{vmatrix} \hat{e}_{1} & \hat{e}_{2} & \hat{e}_{3} \\ x_{1} & x_{2} & x_{3} \\ y_{1} & y_{2} & y_{3} \end{vmatrix}
+    \end{align}
+\end{defi}
+Propietats del producte vectorial:
+\begin{enumerate}[i)]
+    \item És bilineal: 
+        \subitem $\vec{x} \times (\vec{y} + \vec{z}) = \vec{x} \times \vec{y} + \vec{x} \times \vec{z}$.
+        \subitem $(\vec{x} + \vec{y}) \times \vec{z} = \vec{x} \times \vec{z} + \vec{y} \times \vec{z}$.
+        \subitem $\vec{x} \times (\lambda \vec{y}) = \lambda (\vec{x} \times \vec{y})$.
+        \subitem $(\lambda \vec{x}) \times \vec{y} = \lambda (\vec{x} \times \vec{y})$.
+    \item És antisimètric: $\vec{x} \times \vec{y} = -\vec{y} \times \vec{x}$.
+    \item $\| \vec{x} \times \vec{y} \| = \| \vec{x} \| \| \vec{y} \| \sin \alpha$, on $\alpha$ és l'angle que formen.
+\end{enumerate}
+
+\subsubsection*{Producte mixt}
+\begin{align}
+    \vec{x} (\vec{y} \times \vec{z}) = \begin{vmatrix} x_{1} & x_{2} & x_{3} \\ y_{1} & y_{2} & y_{3} \\ z_{1} & z_{2} & z_{3} \end{vmatrix}
+\end{align}

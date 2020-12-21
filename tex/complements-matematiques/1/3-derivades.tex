@@ -1,0 +1,168 @@
+%-----------------------------------------------------------------
+%    DERIVADES
+%-----------------------------------------------------------------
+\section{Derivades}
+\subsection{Definició}
+\begin{defi}
+    Sigui $f(z)$ una funció de variable complexa. La seva derivada al punt $z_{0}$ es defineix com
+    \begin{align}
+        f'(z_{0}) = \lim_{z \to z_{0}} \frac{f(z) - f(z_{0})}{z - z_{0}} \Leftrightarrow \der{w}{z} = \lim_{\Delta z \to 0} \frac{\Delta w}{\Delta z}
+    \end{align}
+\end{defi}
+
+\begin{example}\label{ex:absz2}
+    Sigui $f(z) = \abs{z}^{2}$ una funció de la qual volem trobar la seva derivada.
+    
+    \begin{align*}
+    \begin{aligned}
+        \dfrac{f(z + \Delta z) - f(z)}{\Delta z} &= \dfrac{\abs{z + \Delta z}^{2} - \abs{z}^{2}}{\Delta z} = \dfrac{(z + \Delta z) (\bar{z} + \bar{\Delta z}) - z \bar{z}}{\Delta z} \\
+        &= \bar{z} + \bar{\Delta z} + \dfrac{\bar{\Delta z}}{\Delta z}
+    \end{aligned}
+    \end{align*}
+    Per estudiar com es comporta la derivada, farem dos límits diferents:
+    \begin{enumerate}[i)]
+        \item $\Delta x \to 0$ i $\Delta y = 0$: 
+        
+        $\dfrac{\bar{\Delta z}}{\Delta z} = 1 \Rightarrow f'(z_{0}) = \lim_{z \to z_{0}} \dfrac{f(z) - f(z_{0})}{z - z_{0}} = \bar{z} + z$.
+        \item $\Delta x = 0$ i $\Delta y \to 0$: 
+        
+        $\dfrac{\bar{\Delta z}}{\Delta z} = -1 \Rightarrow f'(z_{0}) = \lim_{z \to z_{0}} \dfrac{f(z) - f(z_{0})}{z - z_{0}} = \bar{z} - z$.
+    \end{enumerate}
+    Així doncs, $\nexists f'(z_{0})$ si $z \neq 0$.
+\end{example}
+
+\subsubsection*{Propietats}
+\begin{enumerate}[i)]
+    \item Linealitat: $\displaystyle \der{}{z}\lrpar{\alpha f(z) + \beta g(z)} = \alpha f'(z) + \beta g'(z)$.
+    \item Multiplicació: $\displaystyle \der{}{z} \lrpar{f(z) g(z)} = f'(z)g(z) + g'(z)f(z)$.
+    \item Divisió: $\displaystyle \der{}{z} \lrpar{\frac{f(z)}{g(z)}} = \frac{f'(z) g(z) - g'(z) f(z)}{\lrpar{g(z)}^{2}}$.
+    \item Composició: $\displaystyle \omega = f(z), \, W = g(\omega) \Rightarrow \der{W}{z} = \der{W}{\omega} \der{\omega}{z}$.
+\end{enumerate}
+
+%-----------------------------------------------------------------
+\subsection{Condicions per a la derivabilitat}
+\subsubsection*{Condicions necessàries (equacions de Cauchy--Riemann)}
+Sigui $f(z) = u(x,y) + i v(x,y)$. Definim $z_{0} = x_{0} + i y_{0}$, $\Delta z = \Delta x + i \Delta y$, i $\Delta w = f(z_{0} + \Delta z) - f(z_{0})$. Llavors,
+\begin{align}
+    f'(z_{0}) = \lim_{\Delta z \to 0} \frac{\Delta}{\Delta z} = \lim_{(\Delta x, \Delta y) \to (0,0)} \operatorname{Re} \lrpar{\frac{\Delta}{\Delta z}} + i \operatorname{Im} \lrpar{\frac{\Delta}{\Delta z}}
+\end{align}
+
+Considerem el camí $\Delta x \to 0$ i $\Delta y = 0$ ($\Rightarrow \Delta z = \Delta x$). Llavors, tenim
+\begin{itemize}
+    \item $\displaystyle \lim_{\Delta z \to 0} \operatorname{Re} \dfrac{\Delta w}{\Delta z} = \lim_{\Delta x \to 0} \dfrac{u(x_{0} + \Delta x, y_{0}) - u(x_{0}, y_{0})}{\Delta x} = u_{x}(x_{0}, y_{0})$.
+    \item $\displaystyle \lim_{\Delta z \to 0} \operatorname{Im} \dfrac{\Delta w}{\Delta z} = \lim_{\Delta x \to 0} \dfrac{v(x_{0} + \Delta x, y_{0}) - v(x_{0}, y_{0})}{\Delta x} = v_{x}(x_{0}, y_{0})$.
+\end{itemize}
+Llavors, si $\exists f'(z_{0})$ es compleix la següent relació:
+\begin{align}\label{eq:c-r1}
+    f'(z_{0}) = u_{x}(x_{0},y_{0}) + i v_{x}(x_{0},y_{0})
+\end{align}
+
+En canvi si considerem el camí $\Delta x = 0$ i $\Delta y \to 0$ ($\Rightarrow \Delta z = i\Delta y$), tenim
+\begin{itemize}
+    \item $\displaystyle \lim_{\Delta z \to 0} \operatorname{Re} \dfrac{\Delta w}{\Delta z} = \lim_{\Delta y \to 0} \dfrac{v(x_{0}, y_{0} + \Delta y) - v(x_{0}, y_{0})}{i \Delta y} = v_{y}(x_{0}, y_{0})$.
+    \item $\displaystyle \lim_{\Delta z \to 0} \operatorname{Im} \dfrac{\Delta w}{\Delta z} = \lim_{\Delta y \to 0} \dfrac{u(x_{0}, y_{0} + \Delta y) - u(x_{0}, y_{0})}{i \Delta y} = - u_{y}(x_{0}, y_{0})$.
+\end{itemize}
+Llavors, si $\exists f'(z_{0})$ es compleix la següent relació:
+\begin{align}\label{eq:c-r2}
+    f'(z_{0}) = v_{y}(x_{0},y_{0}) - i u_{y}(x_{0},y_{0})
+\end{align}
+
+A partir de \eqref{eq:c-r1} i \eqref{eq:c-r1} és trivial veure que
+\begin{align}\label{eq:c-r3}
+    \begin{cases} u_{x}(x_{0},y_{0}) = v_{y}(x_{0},y_{0}) \\ u_{y}(x_{0},y_{0}) = - v_{x}(x_{0},y_{0}) \end{cases}
+\end{align}
+
+Les equacions \eqref{eq:c-r1}, \eqref{eq:c-r2}, i \eqref{eq:c-r3} són les equacions de Cauchy-Riemann.
+\subsubsection*{Condicions suficients}
+\begin{thm}
+    Donada $f(z) = u(x,y) + iv(x,y)$, si $\exists f'(z_{0})$, llavors, es compleix
+    \begin{align}
+        \begin{cases}u_{x} = v_{y} \\ u_{y} = - v_{x} \end{cases} \Rightarrow f'(z_{0}) = u_{x} + i v_{x}
+    \end{align}
+\end{thm}
+
+\begin{thm}
+    Donada $f(z) = u(x,y) + iv(x,y)$, si $\exists f'(z_{0})$ definida a un entorn de radi $\varepsilon$ al punt $z_{0} = x_{0} + i y_{0}$ i que $\exists$ les derivades parcials de primer ordre de les funcions $u$ i $v$ respecte $x$ i $y$, $\forall z \in B(z_{0}, \varepsilon)$. 
+    
+    Si $\exists$ aquestes derivades parcials, són contínues a $z_{0}$, i satisfan Cauchy--Riemann $\Rightarrow \exists f'(z_{0})$.
+\end{thm}
+
+%-----------------------------------------------------------------
+\subsection{Fórmules de derivació}
+A partir de Cauch--Riemann ($u_{x} = v_{y}$ i $u_{y} = - v_{x}$) podem arribar al següent resultat:
+\begin{align}
+    \pder{f}{x} = - i \pder{f}{y} \Leftrightarrow \lrpar{\pder{}{x} + i \pder{}{y}} f = 0 \Leftrightarrow \frac{\partial f}{\partial z^{\star}} = 0
+\end{align}
+
+\begin{example}
+    $f(z) = \abs{z}^{2} = z z^{\star} \Rightarrow \dfrac{\partial f}{\partial z^{\star}} \Rightarrow \exists f'(z)$ només per $z = 0$.
+    
+    Com podem veure, comparant amb el procediment dut a terme a l'exemple \ref{ex:absz2}, aquest procediment és molt útil ja que ens porta de manera trivial a la solució, mentre que la manera tradicional és considerablement més llarga.
+\end{example}
+
+\subsubsection*{Derivació en forma polar}
+A partir de l'expressió en coordenades cartesianes dels nombres complexos i la seva correspondència en polars podem reexpressar les derivades parcials de primer ordre:
+\begin{align}
+    \begin{cases} u_{r} = v_{r} = u_{x} \Cos \theta + u_{y} \Sin \theta \\ u_{\theta} = v_{\theta} = r \lrpar{u_{y} \Sin \theta - u_{x} \Cos \theta} \end{cases} \Rightarrow \begin{cases} u_{x} = u_{r} \Cos \theta - u_{\theta} \dfrac{\Sin \theta}{r} \\ u_{y} = u_{r} \Sin \theta + u_{\theta} \dfrac{\Cos \theta}{r} \end{cases} 
+\end{align}
+Tanmateix podem reexpressar l'equació \eqref{eq:c-r3} de Cauchy--Riemann:
+\begin{align}
+    \begin{cases}r u_{r} = v_{\theta} \\ r u_{\theta} = - r v_{r} \end{cases}
+\end{align}
+
+\subsubsection*{Exemples de derivades de funcions}
+\begin{itemize}
+    \item $f(z) = e^{z} = e^{x} \cos y + i e^{x} \sin y \Rightarrow f'(z) = e^{z}, \quad (f: \mbb{C} \to \mbb{C})$.
+    \item $f(z) = \dfrac{1}{z} \Rightarrow f'(z) = -\dfrac{1}{z^{2}}, \quad (f: \mbb{C}\backslash \lrcur{0} \to \mbb{C})$.
+    \item $f(z) = \operatorname{Ln} z = \ln r + i \operatorname{Arg} z \Rightarrow f'(z) = \dfrac{1}{z}, \quad (f: \text{“}\mbb{C}\text{”} \to \mbb{C})$.
+    \item $f(z) = z^{n} \Rightarrow f'(z) = n z^{n-1}, \quad (f: \mbb{C} \to \mbb{C})$.
+\end{itemize}
+%-----------------------------------------------------------------
+\subsection{Funcions analítiques}
+\begin{defi}[Funció analítica]
+    Si $\exists f'(z), \; \forall z \in \mc{D}$, llavors direm que $f(z)$ és analítica a $\mc{D}$. Una funció $f(z)$ és analítica a un punt $z_{0}$ si $\exists B(z_{0}, \varepsilon) \mid \exists f'(z), \; \forall z \in B(z_{0}, \varepsilon)$.
+\end{defi}
+\begin{defi}[Funció entera]
+    Sigui $f(z)$ una funció de variable complexa. Diem que és entera si és analítica a tot el pla $\mbb{C}$.
+\end{defi}
+
+\begin{thm}\label{thm:exists-pder-cont}
+    Si $f(z)$ és analítica a un domini $\mc{D}$, llavors $\exists f^{(n)}(z)$ i són analítiques a $\mc{D}, \; \forall n$.
+\end{thm}
+
+\subsubsection*{Regla de l'Hôpital}
+Siguin $f(z)$ i $g(z)$ funcions analítiques a $\mc{D}$. Si $f(z_{0}) = g(z_{0}) = 0$, i $g'(z_{0}) \neq 0$, amb $z_{0} \in \mc{D}$; llavors es compleix
+\begin{align}
+    \lim_{z \to z_{0}} \frac{f(z)}{g(z)} = \frac{f'(z_{0})}{g'(z_{0})}
+\end{align}
+
+\begin{defi}[Punt singular]
+    Punt on la funció $f(z)$ està mal definida en algun sentit. N'hi ha de diferents tipus:
+    \begin{itemize}
+        \item Singularitat aïllada: punt $z = z_{0} \mid \exists \varepsilon > 0 \mid \forall z \in B^{\star}(z_{0}, \varepsilon) \; f(z)$ és analítica.
+        \item Pol: si $\exists n \in \mbb{N} \mid \lim_{z \to z_{0}} \lrpar{z - z_{0}}^{n} f(z) = A \neq 0$, llavors $z = z_{0}$ és un pol d'ordre $n$. Si $n = 1$, parlem d'un pol simple.
+        \item Punt de ramificació: sense entrar en més detalls, són punts singulars que no són singularitats aïllades.
+        \item Singularitat essencial: no és ni pol, ni punt de ramificació, ni punt removible ($e^{\frac{1}{z-z_{0}}}$).
+    \end{itemize}
+\end{defi}
+
+%-----------------------------------------------------------------
+\subsection{Funcions harmòniques}
+\begin{defi}[Funció harmònica]
+    Diem que una funció real de dues variables reals $H(x,y)$ és una funció harmònica si $\forall (x,y) \in \mc{D} \subseteq \mbb{R}$ $\exists$ les derivades parcials de primer i segon ordre, són contínues, i $H(x,y)$ satisfà l'equació de Laplace:
+    \begin{align}
+        H_{xx}(x,y) + H_{yy}(x,y) = 0
+    \end{align}
+\end{defi}
+
+\begin{thm}
+    Si una funció de variable complexa $f(z) = u(x,y) + iv(x,y)$ és analítica a un domini $\mc{D}$, llavors $u$ i $v$ són harmòniques a $\mc{D}$.
+\end{thm}
+
+\begin{defi}[Funció harmònica conjugada]
+        Siguin $u$ i $v$ funcions harmòniques a un domini $\mc{D}$ amb $u_{x} = v_{y}$ i $u_{y} = - v_{x}$. Llavors, es diu que $v$ és l'harmònica conjugada de $u$.
+\end{defi}
+
+\begin{thm}
+    Una funció $f(z) = u(x,y) + iv(x,y)$ és analítica a $\mc{D}$ sí i només si $v$ és harmònica conjugada de $u$.
+\end{thm}

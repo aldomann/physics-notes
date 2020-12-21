@@ -1,0 +1,195 @@
+%----------------------------------------------------------------------------------------
+%    INTEGRAL DE RIEMANN
+%----------------------------------------------------------------------------------------
+\section{Integral de Riemann}
+\subsection{El problema de l'àrea}
+Sigui $f$ una funció acotada en $[a , b]$. Quant val l'àrea sota el gràfic entre els punts $a$ i $b$?
+
+\subsubsection*{Particions}
+Una partició de $\Pi$ de $f$ és:
+\begin{align}
+\begin{gathered}
+    \Pi \equiv \{ x_{0} , x_{1} , \dots , x_{n-1} , x_{n} \}, \\
+    a = x_{0} < x_{1} < \dots < x_{n-1} < x_{n} = b
+\end{gathered}
+\end{align}
+
+Així doncs, la partició $\Pi$ descompon l'interval $[a , b]$ en $n$ intervals $I_{i}$, on $I_{i} = [x_{i-1} , x_{i}]$. Denotarem la seva llargada com a $\Delta x_{i}$:
+\begin{align}
+    \Delta x_{i} = (x_{i} - x_{i-1}) \Rightarrow \sum\limits_{i=1}^{n} \Delta x_{i} = b - a
+\end{align}
+
+\subsubsection*{Sumes superiors i inferiors}
+Com que $f$ és fitada en $[a , b]$, també ho és en cadascun dels seus intervals $I_{i}$. Així doncs, hi haurà un ínfim i un suprem per a cada interval:
+\begin{align}
+    M_{i} = \sup \{ f(x) \mid x \in I_{i} \}, \qquad m_{i} = \inf \{ f(x) \mid x \in I_{i} \}
+\end{align}
+
+Definim la suma superior i la suma inferior de $f$ associades a la partició $\Pi$ com:
+\begin{align}
+    S(f , \Pi) \equiv \sum\limits_{i=1}^{n} M_{i} \Delta x_{i}, \qquad s(f , \Pi) \equiv \sum\limits_{i=1}^{n} m_{i} \Delta x_{i} \\
+    m_{i} \leq M_{i} \Rightarrow s(f , \Pi) \leq S(f , \Pi), \quad \forall \Pi
+\end{align}
+Direm que $\Pi '$ és més fina que $\Pi$ si $\Pi '$ s'obté afegint punts a $\Pi$. Llavors escriurem $\Pi ' > \Pi$. Així doncs, es compleix:
+\begin{itemize}
+    \item $S(f , \Pi ') \leq S(f , \Pi)$.
+    \item $s(f , \Pi ') \geq s(f , \Pi)$.
+    \item $\Pi_{1} , \Pi_{2} \Rightarrow s(f , \Pi_{1}) \leq S(f , \Pi_{2})$.
+\end{itemize}
+
+\subsubsection*{Integral de Riemann}
+Siguin $s(f) \equiv \{ \text{sumes inferiors} \}$ i $S(f) \equiv \{ \text{sumes superiors} \}$.
+\begin{align}
+\begin{gathered}
+    \underline{\int_{a}^{b}} f \equiv \sup (s(f)) \equiv \text{Integral inferior de Riemann} \\ 
+    \overline{\int_{a}^{b}} f \equiv \inf (S(f)) \equiv \text{Integral superior de Riemann}
+\end{gathered}
+\end{align}
+En general,
+\begin{align}
+    \underline{\int_{a}^{b}} f \leq \overline{\int_{a}^{b}} f
+\end{align}
+
+%----------------------------------------------------------------------------------------
+\subsection{Integrabilitat d'una funció}
+\subsubsection*{1r criteri d'integrabilitat}
+Diem que $f$ és integrable (de Riemann) si es compleix que:
+\begin{align}
+    \underline{\int_{a}^{b}} f = \overline{\int_{a}^{b}} f \Leftrightarrow \forall \varepsilon > 0, \quad \exists \Pi \text{ de } [a , b] \text{ tal que } S(f , \Pi) - s(f , \Pi) < \varepsilon
+\end{align}
+\subsubsection*{Condicions per a la integrabilitat}
+\begin{itemize}
+    \item Si $f$ és contínua a $[a , b] \Rightarrow f$ és integrable a $[a , b]$.
+    \item Si $f$ és monòtona a $[a , b] \Rightarrow f$ és integrable a $[a , b]$.
+    \item Si $f$ és integrable a $[a , b] , f([a , b]) \subseteq [c , d]$, i $g$ és contínua a $[c , d] \Rightarrow g \circ f$ és integrable a $[a , b]$.
+    \item Si $f$ és integrable a $[a , b]$, llavors també ho és en qualsevol subinterval $[c , d] \subseteq [a , b]$.
+\end{itemize}
+
+%----------------------------------------------------------------------------------------
+\subsection{Integral com a límit de sumes de Riemann}
+Sigui $f$ una funció definida i fitada a $[a , b]$, sigui $\Pi$ una partició de $[a , b]$ en $n$ intervals $I_{i}$ i siguin $z_{i} \in I_{i}$ una col·lecció de punts. Anomenem suma de Riemann de $f$, associada a la partició $\Pi$ i als punts $z_{i}$ a la quantitat:
+\begin{align}
+    \sum\limits_{i=1}^{n} f(z_{i}) \Delta x_{i}
+\end{align}
+Evidentment, sempre es compleix que $S(f , \Pi) \leq \sum\limits_{i=1}^{n} f(z_{i}) \Delta x_{i} \leq s(f , \Pi)$.
+\subsubsection*{2n criteri d'integrabilitat}
+Diem que $f$ és integrable (de Riemann) si es compleix que:
+\begin{align}
+    \forall \varepsilon > 0, \exists \Pi \text{ tal que } S(f , \Pi) - s(f , \Pi) < \varepsilon \Leftrightarrow \exists \lim_{\Pi} \sum\limits_{i=1}^{n} f(z_{i}) \Delta x_{i} = \int_{a}^{b} f
+\end{align}
+
+%----------------------------------------------------------------------------------------
+\subsection{Propietats de la integral}
+Si les funcions $f$ i $g$ són integrables en $[a , b]$, llavors:
+\begin{itemize}
+    \item Linealitat de la integral:
+        \subitem La funció $f + g$ és integrable en $[a , b]$ i $\int_{a}^{b} (f + g) = \int_{a}^{b} f + \int_{a}^{b} g$.
+        \subitem Si $k \in \mathbb{R} \Rightarrow$ la funció $k f$ és integrable en $[a , b]$ i $\int_{a}^{b} (k f) = k \int_{a}^{b} f$.
+    \item Integrabilitat del producte i del quocient:
+        \subitem $fg$ és integrable a $[a , b]$.
+        \subitem Si $g(x) \geq k > 0 \Rightarrow \frac{f}{g}$ és integrable a $[a , b]$.
+    \item Àrea sota un punt:
+        \subitem Si $f$ i $g$ són integrables a $[a , b]$ i $f(x) = g(x)$ en tot l'interval $[a , b]$ excepte en un nombre finit de punts $\Rightarrow \int_{a}^{b} f = \int_{a}^{b} g$.
+    \item Additivitat dels intervals d'integració:
+        \subitem Si $c \in (a , b) \Rightarrow f$ és integrable en $[a , c]$ i en $[c , b]$, i es té $\int_{a}^{b} f = \int_{a}^{c} f + \int_{c}^{b} f$.
+    \item Desigualtats:
+        \subitem Si $f(x) \leq g(x) \, \forall x \in [a , b] \Rightarrow \int_{a}^{b} f \leq \int_{a}^{b} g$.
+        \subitem La funció $|f|$ és integrable en $[a , b]$ i $|\int_{a}^{b} f| \leq \int_{a}^{b} |f|$.
+    \item Valor mitjà d'una funcio integrable:
+        \subitem $\left< f \right>_{[a , b]} \equiv \frac{1}{b-a} \int_{a}^{b} f$.
+        \subitem Teorema del valor mitjà: $\exists c \in [a , b]$ tal que $f(c) = \left< f \right>_{[a , b]}$.
+\end{itemize}
+En tot el desenvolupament de la teoria de la integral de Riemann hem suposat que $a < b$. Es pot estendre el concepte d'integral al cas en què el límit inferior d'integració sigui més gran que el superior. Només cal definir:
+\begin{align}
+    \int_{b}^{a} f \equiv - \int_{a}^{b} f
+\end{align}
+Tret de les desigualtats, les propietats anteriors segueixen sent vàlides quan el límit inferior és més gran que el superior.
+    
+%----------------------------------------------------------------------------------------
+\subsection{Integració i derivació}
+Suposem que $f$ és integrable a $[a , b]$, $\forall x \in [a , b]$ definim la funció àrea:
+\begin{align}
+    S(x) \equiv \int_{a}^{x} f
+\end{align}
+\begin{itemize}
+    \item $S$ és uniformement contínua a $[a , b]$.
+    \item En els punts de $[a , b]$ on $f$ és contínua, la funció $S$ és derivable i la seva derivada coincideix amb $f$.
+\end{itemize}
+
+%----------------------------------------------------------------------------------------
+\subsection{Teorema fonamental del càlcul}
+Si $f$ és integrable a $[a , b]$ i $F$ és una primitiva de $f$:
+\begin{align}
+    \int_{a}^{b} f = F(b) - F(a) \equiv \left. F \right|_{a}^{b}
+\end{align}
+
+%----------------------------------------------------------------------------------------
+\subsection{Notacions per a la integració i la derivació}
+\subsubsection*{Notació de Lagrange}
+Una de les notacions més modernes per a la derivació de funcions és la de Lagrange, en què utilitza el símbol \textit{prima} per a indicar la derivada. Sigui $f$ una funció, llavors, tenim:
+\begin{align}
+    f' , f'', f''' , f^{(4)} \dots , f^{(n)}
+\end{align}
+
+\subsubsection*{Notació de Liebniz}
+La notació original emprada per Gottfried Leibniz es fa servir en matemàtiques. És particularment comú quan l'equació $y = f(x)$ és utilitzada per a referir-se a la relació funcional entre les variables dependents i independents $y$ i $x$. En aquest cas la derivada es pot escriure com a:
+\begin{align}
+    \frac{\dif y}{\dif x} \equiv \frac{\dif}{\dif x}(f(x))
+\end{align}
+En general, la derivada $n$-èsima de $f(x)$ s'escriu:
+\begin{align}
+    \frac{\dif^{n}y}{\dif x^{n}} \equiv \frac{\dif^{n}}{\dif x^{n}}(f(x))
+\end{align}
+Per a la integral, fa servir la següent notació:
+\begin{align}
+    \int_{a}^{b} f(x) \diff x \equiv \int_{a}^{b} f
+\end{align}
+
+\subsubsection*{Notació de Newton}
+Sir Isaac Newton fa servir el concepte de \textit{fluent} per a la seva notació de integrals i derivades:
+\begin{align*}
+    x^{'''} , \; x^{''} , \; x^{'} , \; x , \; \ddot{x} , \; \ddot{x} , \; \dddot{x}
+\end{align*}
+Per passar d'equacions de l'esquerra a equacions de la dreta, Newton aplica \textit{fluxions} (i.e., deriva). En general, quan Newton fa fluxions, deriva respecte de $t$. Sigui $x = f(t)$, llavors, tenim:
+\begin{align}
+    \dot{x} \equiv \frac{\dif x} {\dif t} , \quad x^{'} \equiv \int x \diff t
+\end{align}
+En l'actualitat aquesta notació s'utilitza principalment en mecànica i altres àrees de la física per indicar la derivació respecte el temps. 
+
+%----------------------------------------------------------------------------------------
+\subsection{Expressió integral de la resta de Taylor}
+Si $f^{(n+1)} (t)$ és integrabl entre $a$ i $x$:
+\begin{align}
+    f(x) = \sum\limits_{k=0}^{n} \frac{f^{k}(a)}{k!} (x-a)^{k} + R_{n} (x,a), \\
+    \text{on } \quad R_{n} (x,a) = \int_{a}^{x} \frac{f^{n+1}(t)}{n!} (x-t)^{n} \diff t
+\end{align}
+
+\subsubsection*{Fitar $R_{n} (x,a)$}
+\begin{example}
+    $f(x) = e^{-x} \Rightarrow f^{(n)}(x) = (-1)^{n} e^{-x}$; $f^{(n)}(0) = (-1)^{n}$
+    
+    $\Rightarrow e^{-x} = 1 - \frac{1}{1!}x + \frac{1}{2!}x^{2} + \dots + \frac{(-1)^{n}}{n!}x^{n}+ \frac{1}{n!} \int_{0}^{x} (x-t)^{n} (-1)^{(n+1)}(t) \diff t$
+    
+    $\Rightarrow |R_{n}| = \frac{1}{n!} \int_{0}^{x} (x-t)^{n} e^{-x} \diff t \leq \frac{1}{n!} \int_{0}^{x} (x-t)^{n} \diff t = \left. \frac{-1}{n!} \frac{(x-t)^{n+1}}{n+1} \right|_{0}^{x}$
+    
+    $\Rightarrow |R_{n}| = \frac{x^{n+1}}{(n+1)!}$
+\end{example}
+
+%----------------------------------------------------------------------------------------
+\subsection{Aplicacions de la integral}
+Sigui $f(x)$ una funció contínua a $[a , b]$.
+
+\subsubsection*{Longitud d'un arc de corba}
+\begin{align}
+    L = \int_{a}^{b} \sqrt{1 + f'(x)^{2}} \diff x
+\end{align}
+
+\subsubsection*{Superfície lateral d'un cos de revolució}
+\begin{align}
+    S_{L} = 2 \pi \int_{a}^{b} f(x) \sqrt{1 + f'(x)^{2}}  \diff x
+\end{align}
+
+\subsubsection*{Volum d'un cos de revolució}
+\begin{align}
+    V = \pi \int_{a}^{b} f(x)^{2} \diff x
+\end{align}

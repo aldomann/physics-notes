@@ -1,0 +1,184 @@
+%----------------------------------------------------------------------------------------
+%    ESPAIS VECTORIALS
+%----------------------------------------------------------------------------------------
+\section{Espais vectorials}
+\subsection{Espais vectorials}
+Un espai vectorial sobre $K$ o $K$-espai vectorial és un grup abelià $(V,+)$ junt amb el producte per elements de $K$, 
+\begin{align}
+    \begin{matrix}
+        \cdot: & K \times V & \to & V \\
+        & (\lambda, u) & \mapsto & \lambda u
+    \end{matrix}
+\end{align}
+que compleix les propietats següents:
+\begin{enumerate}[i)]
+    \item $\lambda (u + v) = \lambda u + \lambda v , \quad \forall \lambda \in K, \forall u , v \in V$.
+    \item $(\lambda + \mu) u = \lambda u + \mu u , \quad \forall \lambda , \mu \in K, \forall u \in V$.
+    \item $(\lambda \mu) u = \lambda (\mu u) , \quad \forall \lambda , \mu \in K, \forall u \in V$.
+    \item $ 1 \cdot u = u, \quad \forall u \in V$.
+\end{enumerate}
+
+Els elements de $V$ es diuen vectors i els de $K$ escalars.
+
+\subsubsection*{Exemples}
+\begin{itemize}
+    \item $K^{n}$ amb la suma de $n$-tuples i el producte per elements de $K$.
+    \item $M(m,n,K)$ amb la suma de matrius i el producte per elements de $K$.
+    \item $K [x]$ amb la suma de polinomis i el producte per elements de $K$.
+\end{itemize}
+
+%----------------------------------------------------------------------------------------
+\subsection{Subespais vectorials}
+Un subconjunt $W \neq \varnothing$ d'un $K$-espai vectorial $V$ és un subespai vectorial de $V \Leftrightarrow$
+\begin{enumerate}[i)]
+    \item $(W,+)$ és un subgrup de $(V,+)$.
+    \item $\lambda \in K, \; u \in W \Rightarrow \lambda u \in W$.
+\end{enumerate}
+
+O equivalentment,
+\begin{enumerate}[i)]
+    \item Suma de vectors tancada: $u, v \in W \Rightarrow u + v \in W$.
+    \item Magnificació tancada: $\lambda u \in W, \quad \forall \lambda \in K, \; u \in W$.
+\end{enumerate}
+
+\subsubsection*{Exemples}
+\begin{itemize}
+    \item El subespai trivial: $\{ 0_{V} \}$.
+    \item El subespai total: $V$.
+    \item Les varietats lineals $L$ de $V = K^{n}$ que passen per l'origen.
+        \subitem En efecte, $L = \{ (x_{1}, \dots , x_{n}) \mid A \begin{pmatrix} x_{1}  \\ \vdots \\ x_{n}  \end{pmatrix} = \begin{pmatrix} 0 \\ \vdots \\ 0 \end{pmatrix} \} \subseteq K^{n}$ és un subespai vectorial.
+\end{itemize}
+
+%----------------------------------------------------------------------------------------
+\subsection{Dependència i independència lineal}
+\subsubsection*{Combinació lineal}
+El vector $u$ del $K$-espai vectorial $V$ és una combinació lineal dels vectors $u_{1}, \dots, u_{n} \in V$, si $\exists \lambda_{1}, \dots, \lambda_{n} \in K$ tals que:
+\begin{align}
+    u = \lambda_{1} u_{1} + \dots + \lambda_{n} u_{n}.
+\end{align}
+
+Sigui $S \in V$ un subespai vectorial, $\left< S \right>$ és el conjunt de totes les combinacions lineals de $S$. $\left< S \right>$ és un subespai vectorial de $V$ i, a més, és el mínim subespai que conté $S$.
+
+\subsubsection*{Generadors}
+Si $W$ és un subespai vectorial de $V$ i $W = \left< A \right>$, llavors diem que $A$ genera $W$ o equivalentment que $A$ és un conjunt de generadors de $W$.
+
+Si existeix un subconjunt finit $A$ de $V$ que generi $V$, llavors diem que $V$ és un espai vectorial finitament generat. 
+
+\subsubsection*{Independència lineal}
+Diem que $u_{1}, \dots , u_{m} \in V$ són una família linealment independent ($LI$) si cap vector $u_{i}$ és combinació lineal de la resta de vectors. Si no és així, diem que són una família linealment dependent ($LD$).
+
+\subsubsection*{Criteri teòric d'independència lineal}
+Siguin $u_{1}, \dots , u_{m} \in V$ i $c: K^{m} \to V$ una funció tal que $c (\lambda _{1}, \dots , \lambda _{m}) = \lambda _{1} u_{1}, \dots , \lambda _{m} u_{m}$. Les condicions següents són equivalents:
+\begin{enumerate}[i)]
+    \item $u_{1}, \dots , u_{m}$ són una família $LI$.
+    \item $\lambda _{1} u_{1} + \dots + \lambda _{m} u_{m} = 0_{V} \Leftrightarrow \lambda _{1} = \dots = \lambda _{m} = 0$. (A la pràctica és el més útil).
+    \item $c$ és una aplicació injectiva.
+\end{enumerate}
+\begin{align}
+\begin{gathered}
+    (\ast): \begin{pmatrix} u_{1} & \dots & u_{m} \end{pmatrix} \begin{pmatrix} \lambda_{1} \\ \vdots \\ \lambda_{m} \end{pmatrix} = 0_{V} \Rightarrow \\
+    \Rightarrow W = \{ (\lambda _{1}, \dots , \lambda_{m}) \in K^{m} \mid \text{ satisfan } (\ast) \} \\
+        \Rightarrow \begin{cases} LI: \dim{(W)} = 0 \Leftrightarrow 0_{W} \text{ és l'únic element } \in V. \\ LD: \dim{(W)} > 0 \Leftrightarrow 0_{W} \text{ no és l'únic element } \in W. \end{cases}
+\end{gathered}
+\end{align}
+
+\subsubsection*{Criteri pràctic d'independència lineal}
+$u_{1}, \dots , u_{m} \in V$ són una família $LI$ $\Leftrightarrow \rank \begin{pmatrix} u_{1} \\ \vdots \\ u_{m} \end{pmatrix} =m$.
+
+%----------------------------------------------------------------------------------------
+\subsection{Bases i dimensió}
+Una base d'un $K$-espai vectorial $V$ és una família de vectors de $V$, $\{v_{1}, \dots , v_{n} \}$ tal que:
+\begin{enumerate}[i)]
+    \item $V = \left< \{v_{1}, \dots , v_{n} \} \right>$.
+    \item $\{v_{1}, \dots , v_{n} \}$ són una família $LI$.
+\end{enumerate}
+Si una base de $V$ és finita, l'escriurem en la forma $(v_{1} , \dots , v_{n})$.
+
+\subsubsection*{Amplació d'una família linealment independent}
+Siguin $v_{1}, \dots , v_{m} \in V$ una família $LI$. Considerem un vector $v \in V$, aleshores:
+\begin{align}
+    \{v_{1}, \dots , v_{m}, v\} \; LI \Leftrightarrow v \notin \left< v_{1}, \dots , v_{m} \right>
+\end{align}
+
+\subsubsection*{Teorema de la base}
+Sigui $V$ és un $K$-espai vectorial. Si $V = \left< v_{1}, \dots , v_{m} \right>$, aleshores qualsevol subfamília $LI$ maximal de $\{ v_{1}, \dots , v_{m} \}$ és una base de $V$.
+\begin{enumerate}[i)]
+    \item Totes les bases tenen el mateix nombre de vectors; aquest nombre l'anomenem $\dim (V)$.
+    \item $\#$generadors $\geq \dim (V) \geq \#$ família $LI$.
+    \item Si $\dim (V)= n$ i tenim $n$ vectors $u_1, \dots , u_n \in V$, aleshores, si $u_1, \dots , u_n$ són $LI$ $\Leftrightarrow$ base $\Leftrightarrow$ generadors. A $K^{n}$, a més, $\rank = n \Leftrightarrow GJ (A) = I(n)$.
+    \item Qualsevol subespai $W \subseteq V$ és generat finitament i $\dim (W) \leq \dim (V)$. Així doncs, $\dim (W) = \dim (V) \Leftrightarrow W = V$.
+\end{enumerate}
+
+\subsubsection*{Completació d'una família $LI$ en base}
+Siguin $e_{1}, \dots , e_{n} \in V$ una família $LI$ i $\left< v_{1}, \dots , v_{m} \right> = V$, aleshores es poden afegir a la família $e_{1}, \dots , e_{n} \in V$ vectors $v_{i}$ (convenientment escollits) tals que $e_{1}, \dots , e_{n}, \dots , v_{i} \in V$ siguin una base de $V$. 
+
+\subsubsection*{Teorema de Steinitz}
+Sigui $(v_1, \dots , v_n)$ una base d'un $K$-espai vectorial $V$ i sigun $u_1, \dots , u_m \in V$ una família de vectors $LI$. Alerhores:
+\begin{enumerate}[i)]
+    \item $m \leq n$.
+    \item Es poden substituir $m$ vectors de la base $(v_1, \dots , v_n)$ per $u_1, \dots , u_m$ amb tal d'obtenir una nova base.
+\end{enumerate}
+
+\subsubsection*{Propietat fonamental de les bases}
+$(v_{1}, \dots , v_{n})$ és una base de $V \Leftrightarrow c: K^{n} \to V$ és una aplicació bijectiva. Aleshores, $\exists$ una única $n$-tupla que multiplicada per la base doni un vector $v_{i}$ (les bases finites són conjunts ordenats).
+
+\subsubsection*{Càlcul de bases i dimensió d'un espai vectorial $V = K^{n}$}
+Mètode I:
+\begin{enumerate}[i)]
+    \item Sigui $W = \left< v_{1}, \dots , v_{m} \right> \subseteq V$. Aplicant la fase de Gauss, obtenim una família de vectors $LI$ maximal i, per tant, una base de $W$ i la seva dimensió.
+    \item Apliquem la fase de Jordan per obtenir una base canònica de $W$.
+\end{enumerate}
+Mètode II (e.g.,):
+
+$\quad F = \{ (x,y,z,t,u) \in K^{5} \mid \begin{pmatrix} 0 & 1 & 2 & 4 & 6 \\ 0 & 1 & 3 & 6 & 9 \\ 0 & 1 & 4 & 8 & 12 \end{pmatrix} \begin{pmatrix} x \\ y \\ z \\ t\\ u \end{pmatrix} = \begin{pmatrix} 0 \\ 0 \\ 0 \end{pmatrix} \} \subseteq K^{5}$.
+
+Aleshores, 
+\begin{itemize}
+    \item $\dim (W) = \# \text{vectors directors} = \# \text{paràmetres lliures} = n - \rank (A)$.
+    \item Una base és la família de vectors directors de l'equació paramètrica.
+\end{itemize}
+
+%----------------------------------------------------------------------------------------
+\subsection{Teorema del rang}
+Els següents 5 nombres coincideixen $\forall A \in M (m,n,K)$:
+\begin{enumerate}[i)]
+    \item $\rank (A)$.
+    \item $\dim (\left< \text{files de } A \right> )$.
+    \item $\text{màxim nre. files de } A \mid \text{família } LI$ 
+    \item $\dim (\left< \text{columnes de } A \right> )$.
+    \item $\text{màxim nre. columnes de } A \mid \text{família } LI$ 
+\end{enumerate}
+$\Rightarrow$ $\rank (A) = \rank (A^{t})$
+
+%----------------------------------------------------------------------------------------
+\subsection{Suma i intersecció de subespais vectorials}
+Siguin $W_{1}$ i $W_{2}$ subespais vectorials d'un $K$-espai vectorial $V$.
+
+\subsubsection*{Operacions}
+\begin{itemize}
+    \item Suma: $W_{1}+W_{2} = \left< W_{1} \cup W_{2} \right> \subseteq V \equiv$ mínim subespai $W'$ tal que $W_{1}, W_{2} \subseteq W' \subseteq V$.
+    \item Intersecció: $W_{1} \cap W_{2} \equiv$ màxim subespai $W'$ tal que $W' \subseteq W_{1}$ i $W' \subseteq W_{3}$ alhora.
+    \item Suma directa: $W_{1} \oplus W_{2} \equiv W_{1} + W_{2}$ si $W_{1} \cap W_{2} = \left\{ 0_{V} \right\}$. $W_{1} \oplus W_{2} \Leftrightarrow B_{W_{1}} \cup B_{W_{2}} = B_{W_{1} \oplus W_{2}}$.
+\end{itemize}
+
+\subsubsection*{Teorema de Grassman}
+\begin{align}
+    \dim (W_{1}) + \dim (W_{2}) = \dim (W_{1} + W_{2}) + \dim (W_{1} \cap W_{2})
+\end{align}
+
+\subsubsection*{Algoritme de la suma i intersecció}
+Si ens proporcionen famílies de vectors que generin $W_{1}$ i $W_{2}$, podem aplicar el següent algoritme (esglaonant la matriu inicial per Gauss):
+\begin{align}
+    \begin{pmatrix}[c|c]
+        \text{gen. } W_{1} & \text{gen. } W_{1} \\ \hline 
+        \text{gen. } W_{2} & 0 
+    \end{pmatrix} 
+    \mapsto 
+    \begin{pmatrix}[c|c]
+        \text{base } W_{1} + W_{2} & \star \\ \hline 
+        0 & \text{base } W_{1} \cap W_{2} \\ \hline 
+        0 & 0 
+    \end{pmatrix}
+\end{align}
+
+Cal observar que la matriu es construeix amb els vectors en fila.

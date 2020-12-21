@@ -1,0 +1,106 @@
+%----------------------------------------------------------------------------------------
+%    OSCIL·LACIONS
+%----------------------------------------------------------------------------------------
+\section{Oscil·lacions}
+\subsection{Moviment oscil·latori harmònic simple}
+
+\subsubsection*{Equació del moviment}
+\begin{align}
+    \boxed{\frac{\partial^{2} x}{\partial t^{2}} = - \frac{k}{m} x}
+\end{align}
+
+\subsubsection*{Correlació amb MCU}
+%----------------------------------------------------------------------------------------
+\subsection{Energia d'un oscil·lador}
+\subsubsection*{Energia potencial ($U$)}
+\begin{align}
+    \boxed{U = \frac{1}{2} k x^{2} = \frac{1}{2} k A^{2} \cos^{2} (\omega t + \varphi_{0})}
+\end{align}
+
+\subsubsection*{Energia cinètica ($K$)}
+\begin{align}
+    \boxed{K = \frac{1}{2} m v^{2} = \frac{1}{2} k A^{2} \sin^{2} (\omega t + \varphi_{0})}
+\end{align}
+
+\subsubsection*{Energia mecànica total ($E$)}
+\begin{align}
+    \boxed{E = U + K = \frac{1}{2} k A^{2}}
+\end{align}
+\begin{figure}[H]
+\centering
+    WIP: GRAFIC BONIC 
+\caption{Pou de potencial. La particula està confinada en $x \in [-A, +A]$}
+\end{figure}
+%----------------------------------------------------------------------------------------
+\subsection{Pèndol simple}
+\begin{figure}[H]
+\centering
+    WIP: GRAFIC BONIC 
+\caption{Pèndol simple}
+\end{figure}
+
+\subsubsection*{Equació del moviment}
+\begin{align}
+    \boxed{\frac{\partial^{2} \phi}{\partial t^{2}} = - \frac{g}{L} \sin \phi}
+\end{align}
+
+%----------------------------------------------------------------------------------------
+\subsection{Pèndol físic}
+\begin{figure}[H]
+\centering
+    WIP: GRAFIC BONIC 
+\caption{Pèndol físic}
+\end{figure}
+
+\subsubsection*{Equació del moviment}
+\begin{align}
+    \boxed{\frac{\partial^{2} \phi}{\partial t^{2}} = - \frac{M g L}{I} \sin \phi}
+\end{align}
+
+%----------------------------------------------------------------------------------------
+\subsection{Pèndol de torsió}
+\begin{figure}[H]
+\centering
+    WIP: GRAFIC BONIC 
+\caption{Pèndol de torsió}
+\end{figure}
+
+\subsubsection*{Equació del moviment}
+\begin{align}
+    \boxed{\frac{\partial^{2} \phi}{\partial t^{2}} = - \frac{k \phi}{I}}
+\end{align}
+
+%----------------------------------------------------------------------------------------
+\subsection{Oscil·lacions amortides}
+
+\subsubsection*{Equació del moviment}
+\begin{align}
+    \boxed{\frac{\partial^{2} x}{\partial t^{2}} + \frac{\gamma}{m} \frac{\partial x}{\partial t} + \frac{k}{m} x = 0}
+\end{align}
+
+\subsubsection*{Subamortiment}
+
+\subsubsection*{Amortiment crític i sobreamortiment}
+\begin{figure}[H]
+\centering
+    WIP: GRAFIC BONIC 
+\caption{Posició ($x$) d'un oscil·lador en amortiment crític ($\beta \ll \omega_{0}$) i sobreamortiment ($\beta \gg \omega_{0}$). Per a l'amortiment crític, $t$ per a l'equilibri és el mínim possible}
+\end{figure}
+
+\subsubsection*{Energia}
+\begin{align}
+    \boxed{E = \frac{1}{2} k A^{2} = \frac{1}{2} m \omega_{0}^{2} A_{0}^{2} e^{-2 \beta t}}
+\end{align}
+\begin{figure}[H]
+\centering
+    WIP: GRAFIC BONIC 
+\caption{Amortiment de l'energia d'un oscil·lador. Notem que podem definir un temps d'amortiment de l'energia $\tau_{0}' = \frac{m}{\gamma}$, tal que l'energia sigui $E(\tau_{0}') = E_{max}/e$. }
+\end{figure}
+
+%----------------------------------------------------------------------------------------
+\subsection{Oscil·lacions forçades}
+
+\subsubsection*{Equació del moviment}
+\begin{align}
+    \boxed{m \frac{\partial^{2} x}{\partial t^{2}} + \gamma \frac{\partial x}{\partial t} + m \omega_{0}^{2} x = F_{0} \cos (\omega t)}
+\end{align}

@@ -1,0 +1,109 @@
+%----------------------------------------------------------------------------------------
+%    PERMUTACIONS
+%----------------------------------------------------------------------------------------
+\section{Permutacions}
+\subsection{Permutacions}
+Una permutació de $n$ elements és una aplicació bijectiva $\sigma : \left\{ 1 , \dots , n \right\} \to \left\{ 1 , \dots , n \right\}$. S'escriu $\sigma$ posant els valors que pren en tots els nombres $\left( 1 , \dots , n \right)$.
+\begin{align}
+    \begin{pmatrix} 1 & 2 & \dots & n-1 & n \\ \sigma (1) & \sigma (2) & \dots & \sigma (n-1) & \sigma (n) \end{pmatrix}
+\end{align}
+El conjunt de les permutacions de $n$ elments s'anomena $S_{n}$. N'hi ha $n!$ permutacions possibles:
+\begin{align}
+\begin{aligned}
+    & S_{1} = \left\{ I \right\} \quad (1!) \\
+    & S_{2} = \left\{ I , \begin{pmatrix} 1 & 2 \\ 2 & 1 \end{pmatrix} \right\} \quad (2!) \\
+    & S_{3} = \left\{ I , \begin{pmatrix} 1 & 2 & 3 \\ 1 & 3 & 2 \end{pmatrix} , \dots , \begin{pmatrix} 1 & 2 & 3 \\ 3 & 2 & 1 \end{pmatrix} \right\} \quad (3!) \\
+    & \dots
+\end{aligned}
+\end{align}
+ A $S_{n}$ hi ha una operació (composició): $\sigma \circ \tau : S_{n} \times S_{n} \to S_{n}$.
+\begin{example}
+\begin{align*}
+    \sigma = \begin{pmatrix} 1 & 2 & 3 \\ 2 & 1 & 3 \end{pmatrix}, \, \tau = \begin{pmatrix} 1 & 2 & 3 \\ 3 & 2 & 1 \end{pmatrix} \Rightarrow \sigma \circ \tau = \begin{pmatrix} 1 & 2 & 3 \\ 3 & 1 & 2 \end{pmatrix}
+\end{align*}
+\end{example}
+
+\subsubsection*{Propietats}
+\begin{itemize}
+    \item Té propietat associativa.
+    \item Té element neutre: $e \equiv I$.
+    \item $\forall \sigma, \, \exists \sigma^{-1}$.
+\end{itemize}
+
+\subsubsection*{Inversa d'una permutació}
+Sigui $\sigma = \tau_{1} \dots \tau_{n}$, on $\tau_{i} = (x_{1} \dots x_{n})$ són cicles disjunts. 
+\begin{align*}
+\begin{gathered}
+    \tau_{i}: x_{1} \mapsto x_{2}, \quad \dots , \quad x_{n-1} \mapsto x_{n}, \\
+    \tau_{i}^{-1}: x_{n} \mapsto x_{n-1}, \quad \dots , \quad x_{2} \mapsto x_{1}
+\end{gathered}
+\end{align*}
+
+Així doncs, per calcular $\sigma^{-1}$ escribim els cicles $\tau_{i}$ del revés:
+\begin{align}
+\begin{gathered}
+    \sigma = \begin{pmatrix}1 & 2 & 3 & 4 & 5 \\ 2 & 5 & 4 & 3 & 1\end{pmatrix},\\
+    \sigma^{-1} = \begin{pmatrix}2 & 5 & 4 & 3 & 1\\ 1 & 2 & 3 & 4 & 5 \end{pmatrix} =\begin{pmatrix}1 & 2 & 3 & 4 & 5 \\ 5 & 1 & 4 & 3 & 2\end{pmatrix}
+\end{gathered}
+\end{align}
+\begin{align}
+    \sigma = (1 \, 2 \, 5) (3 \, 4), \quad \sigma^{-1} = (5 \, 2 \, 1) (4 \, 3) = (1 \, 5 \, 2) (3 \, 4)
+\end{align}
+
+%----------------------------------------------------------------------------------------
+\subsection{Cicles de permutacions}
+Un cicle de longitud $k$ a $S_{n} = \left\{ \text{permutacions de $n$ elements} \right\}$ és una $\sigma$ que mou $k$ elements $n_{1} , n_{2} , \dots , n_{k-1} , n_{k}$: $\sigma (n_{1}) = n_{2} , \dots , \sigma (n_{i}) = n_{i+1} , \dots , \sigma (n_{k}) = n_{1}$.
+\begin{example}
+\begin{align*}
+    \begin{pmatrix} 1 & 2 & 3 & 4 & 5 \\ 3 & 1 & 4 & 2 &5 \end{pmatrix} \in S_{5} \equiv (1 \, 3 \, 4 \, 2) \text{ és un cicle de longitud $4$}.
+\end{align*}
+\end{example}
+
+\subsubsection*{Descomposició en cicles disjunts}
+Qualsevol permutació es pot escriure com a un producte (composició) de cicles en què intervenen elements diferents.
+\begin{example}
+\begin{align*}
+\begin{gathered}
+    \begin{pmatrix} 1 & 2 & 3 & 4 & 5 & 6 \\ 1 & 4 & 6 & 5 & 2 & 3 \end{pmatrix} \in S_{6} = (2 \, 4 \, 5) (3 \, 6) = (3 \, 6)  (2 \, 4 \, 5)\\
+    \text{Quan dues permutacions mouen elements diferents, commuten.}
+\end{gathered}
+\end{align*}
+\end{example}
+Un cicle de longitud $n$ qualsevol es pot escriure com a producte de $n-1$ transposicions (cicles de longitud $2$):
+\begin{align}
+    (n_{1} \, n_{2} \, \dots \, n_{k-1} \, n_{n}) = (n_{1} \, n_{2}) \dots (n_{k-1} \, n_{k})
+\end{align}
+
+\begin{example}
+\begin{align*}
+    (1 \, 3 \, 4 \, 2) = (1 \, 3) (3 \, 4) (4 \, 2)
+\end{align*}
+\end{example}
+$\Rightarrow$ Qualsevol permutació $\sigma$ es pot expressar com a un producte de transposicions no únic.
+
+%----------------------------------------------------------------------------------------
+\subsection{Ordre d'una permutació}
+L'ordre d'una permutació $\sigma$ és el mínim enter positiu $m$ tal que $\sigma^{m}$ sigui la identitat.
+
+Sigui $\sigma$ una permutació de cicles disjunts. Com que els cicles disjunts commuten, 
+\begin{align}
+    \sigma = \sigma_{1} \sigma_{2} \dots \sigma_{n} \Rightarrow \sigma^{m} = \sigma_{1}^{m} \sigma_{2}^{m} \dots \sigma_{n}^{m} 
+\end{align}
+
+Així doncs, és fàcil veure que l'ordre d'una permutació és el mínim comú múltiple de les longituds dels cicles que formen la descomposició de la permutació en cicles disjunts. 
+\begin{example}
+\begin{align*}
+\begin{gathered}
+    \sigma =\begin{pmatrix} 1 & 2 & 3 & 4 & 5 \\ 2 & 1 & 5 & 3 & 4 \end{pmatrix} = (1 \, 2) (3 \, 5 \, 4) \\
+    \text{L'ordre de $\sigma$} = \operatorname{mcm} (2 , 3) = 6 \Rightarrow \sigma^{6} = (1 \, 2)^{6} (3 \, 5 \, 4)^{6} = I 
+\end{gathered}
+\end{align*}
+\end{example}
+
+%----------------------------------------------------------------------------------------
+\subsection{Signe d'una permutació}
+El signe o paritat d'una permutació $\sigma$ es defineix com a:
+\begin{align}
+    \operatorname{sgn} (\sigma) = (-1)^{m}, \quad \text{on } m \text{ és el nombre de transposicions.}
+\end{align}
+Per a una $\sigma$ donada, la paritat és independent de la tria de transposicions. 
