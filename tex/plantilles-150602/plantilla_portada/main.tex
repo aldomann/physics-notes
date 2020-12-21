@@ -1,0 +1,127 @@
+%-----------------------------------------------------------------
+%	BASIC DOCUMENT LAYOUT
+%-----------------------------------------------------------------
+\documentclass[paper=a4, fontsize=12pt, twoside=semi]{scrartcl}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage{slantsc}
+\usepackage{microtype}
+\usepackage[catalan]{babel}
+
+%-----------------------------------------------------------------
+%	PACKAGES
+%-----------------------------------------------------------------
+% Maths
+\usepackage{amsmath,amsfonts,amsthm,amssymb}
+\usepackage{graphicx}
+
+% Plots and graphics
+\usepackage{pgfplots}
+\usepackage{tikz}
+\usepackage{color}
+	\makeatletter
+		\color{black}
+		\let\default@color\current@color
+	\makeatother
+
+%-----------------------------------------------------------------
+%	ELA MOTHERFUCKING GEMINADA
+%-----------------------------------------------------------------
+\def\xgem{%
+	\ifmmode
+		\csname normal@char\string"\endcsname l%
+	\else
+		\leftllkern=0pt\rightllkern=0pt\raiselldim=0pt
+		\setbox0\hbox{l}\setbox1\hbox{l\/}\setbox2\hbox{.}%
+		\advance\raiselldim by \the\fontdimen5\the\font
+		\advance\raiselldim by -\ht2
+		\leftllkern=-.25\wd0%
+		\advance\leftllkern by \wd1
+		\advance\leftllkern by -\wd0
+		\rightllkern=-.25\wd0%
+		\advance\rightllkern by -\wd1
+		\advance\rightllkern by \wd0
+		\allowhyphens\discretionary{-}{}%
+		{\kern\leftllkern\raise\raiselldim\hbox{.}%
+			\kern\rightllkern}\allowhyphens
+	\fi
+}
+\def\Xgem{%
+	\ifmmode
+		\csname normal@char\string"\endcsname L%
+	\else
+		\leftllkern=0pt\rightllkern=0pt\raiselldim=0pt
+		\setbox0\hbox{L}\setbox1\hbox{L\/}\setbox2\hbox{.}%
+		\advance\raiselldim by .5\ht0
+		\advance\raiselldim by -.5\ht2
+		\leftllkern=-.125\wd0%
+		\advance\leftllkern by \wd1
+		\advance\leftllkern by -\wd0
+		\rightllkern=-\wd0%
+		\divide\rightllkern by 6
+		\advance\rightllkern by -\wd1
+		\advance\rightllkern by \wd0
+		\allowhyphens\discretionary{-}{}%
+		{\kern\leftllkern\raise\raiselldim\hbox{.}%
+			\kern\rightllkern}\allowhyphens
+	\fi
+}
+
+\expandafter\let\expandafter\saveperiodcentered
+	\csname T1\string\textperiodcentered \endcsname
+
+\DeclareTextCommand{\textperiodcentered}{T1}[1]{%
+	\ifnum\spacefactor=998
+		\Xgem
+	\else
+		\xgem
+	\fi#1}
+
+%-----------------------------------------------------------------
+%	PDF INFO AND HYPERREF
+%-----------------------------------------------------------------
+\usepackage{hyperref}
+\hypersetup{colorlinks, citecolor=black, filecolor=black, linkcolor=black, urlcolor=black}
+\usepackage{cleveref}
+	\crefname{section}{\S}{\SS}
+	\Crefname{section}{\S}{\SS}
+
+\newcommand*{\mytitle}{Introducció a l'astrofísica}
+\newcommand*{\mysubtitle}{Transparències}
+\newcommand*{\myauthor}{Carles Domingo}
+\newcommand*{\myuni}{Universitat Autònoma de Barcelona, Departament de Física}
+% \newcommand*{\mydate}{\normalsize \today}
+\newcommand*{\mydate}{\normalsize 2014-2015}
+
+\pdfstringdefDisableCommands{\def\and{i }}
+
+\usepackage{hyperxmp}
+\hypersetup{pdfauthor={\myauthor}, pdftitle={\mytitle}}
+
+%-----------------------------------------------------------------
+%	DOCUMENT TITLE
+%-----------------------------------------------------------------
+\newcommand{\horrule}[1]{\rule{\linewidth}{#1}}
+\title{
+	\normalfont
+	\small \scshape{\myuni} \\ [25pt]
+	\horrule{0.5pt} \\[0.4cm]
+	\huge \mytitle \\
+	\Large \scshape{\mysubtitle} \\
+	\horrule{2pt} \\[0.5cm]
+}
+\author{\myauthor}
+\date{\mydate}
+
+\begin{document}
+
+\clearpage\maketitle
+\thispagestyle{empty}
+\addtocounter{page}{-1}
+
+\newpage
+\null
+\thispagestyle{empty}
+
+\end{document}
