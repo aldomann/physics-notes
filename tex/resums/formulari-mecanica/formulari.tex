@@ -1,0 +1,78 @@
+%----------------------------------------------------------------------------------------
+%    TEMA
+%----------------------------------------------------------------------------------------
+\section{\mytitle}
+\subsection{Tensor d'inèrcia}
+\begin{align}
+    \mat{I} = \hat{\int} \dif m \begin{pmatrix} x^{2} & -xy & -xz \\ -yx & y^{2} & -yz \\ -zx & -zy & z^{2} \end{pmatrix}
+\end{align}
+on $x^{2} \equiv y^{2} + z^{2}$, $y^{2} \equiv x^{2} + z^{2}$, i $z^{2} \equiv x^{2} + y^{2}$.
+
+\begin{align}
+    T = T_{tras} + T_{rot}
+\end{align}
+\begin{align}
+    T_{rot} = \frac{1}{2} \lrbra{\vec{\omega}^{t} \cdot \mat{I} \cdot \vec{\omega}}
+\end{align}
+
+\begin{align}
+    \vec{L} = \vec{L}_{cm} + \vec{L}_{rot}
+\end{align}
+\begin{align}
+    \vec{L}_{rot} = \mat{I} \times \vec{\omega} \mid \vec{L} = \vec{r} \times \vec{p}
+\end{align}
+%----------------------------------------------------------------------------------------
+\subsection{Angles d'Euler (rotacions)}
+Rotació: $\mat{O} \cdot \vec{x}$.
+\begin{align}
+    \text{Eix $z_{f}$: } \mat{O}_{\varphi} = \begin{pmatrix} \Cos \varphi & \Sin \varphi & 0 \\ -\Sin \varphi & \Cos \varphi & 0 \\ 0 & 0 & 1 \end{pmatrix}
+\end{align}
+\begin{align}
+    \text{Eix $x_{girat}$: } \mat{O}_{\theta} = \begin{pmatrix} 1 & 0 & 0 \\ 0 & \Cos \theta & \Sin \theta \\ 0 & -\Sin \theta & \Cos \theta \end{pmatrix}
+\end{align}
+\begin{align}
+    \text{Eix $z_{m}$: } \mat{O}_{\psi} = \begin{pmatrix} \Cos \psi & \Sin \psi & 0 \\ -\Sin \psi & \Cos \psi & 0 \\ 0 & 0 & 1 \end{pmatrix}
+\end{align}
+
+\begin{align}
+    \begin{pmatrix} N_{1} \\ N_{2} \\ N_{3} \end{pmatrix} = \begin{pmatrix} I_{1} \dot{\omega}_{1} + (I_{3} - I_{2}) \omega_{2} \omega_{3} \\ I_{2} \dot{\omega}_{2} + (I_{1} - I_{3}) \omega_{3} \omega_{1} \\ I_{3} \dot{\omega}_{3} + (I_{2} - I_{1}) \omega_{1} \omega_{2} \end{pmatrix}
+\end{align}
+
+\begin{align}
+    \text{Precessió: } \vec{N} = \vec{\Omega} \times \vec{L}
+\end{align}
+
+%----------------------------------------------------------------------------------------
+\subsection{Sistemes de referència mòbils}
+\begin{align}
+\begin{aligned}
+    m \ddot{\vec{r}}' &=  m \vec{a}_{f} \overbrace{- m \ddot{\vec{R}}_{f} - m \dot{\vec{\omega}} \times \vec{r}'}^{\text{arrossegament}} \\
+    & \underbrace{- 2m \vec{\omega} \times \dot{\vec{r}}'}_{\text{coriol·lis}} \underbrace{- m \vec{\omega} \times \lrpar{\vec{\omega} \times \vec{r}'}}_{\text{centrífuga}} \\
+\end{aligned}
+\end{align}
+$m \vec{a}_{f}$ és la for\c{c}a al SR inercial, mentre que $m \ddot{\vec{r}}'$ és la for\c{c} aparent al SR mòbil.
+
+\begin{align}
+\begin{aligned}
+    \vec{\omega}_{T} &\mapsto \text{SRm (per coriolis): } \\
+    \vec{\omega} &= \omega \lrpar{-\Cos \lambda, 0, \Sin \lambda} \text{(nord)} \\
+    \vec{\omega} &= \omega \lrpar{-\Cos \lambda, 0, -\Sin \lambda} \text{(sud)}
+\end{aligned}
+\end{align}
+
+%----------------------------------------------------------------------------------------
+\subsection{Foucault}
+\begin{align}
+    \begin{pmatrix} x \\ y \end{pmatrix} = \begin{pmatrix} \Cos \omega_{z} t & \Sin \omega_{z} t \\ -\Sin \omega_{z} t & \Cos \omega_{z} t \end{pmatrix} \begin{pmatrix} x_{0} \\ y_{0} \end{pmatrix}
+\end{align}
+\begin{align}
+    \Delta t = \frac{2 \pi}{ \omega_{z}} = \frac{2 \pi}{ \omega \Sin \lambda}
+\end{align}
+on $\omega_{z}$ és la component $z$ de $\omega$ al SRm i $\lambda$ és la latitud.
+
+%----------------------------------------------------------------------------------------
+\subsection{Punt de percussió}
+\begin{align}
+    p_{p} = \frac{I}{m R}
+\end{align}
+on $R$ és la distància del centre de masses a l'extrem.

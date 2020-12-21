@@ -1,0 +1,200 @@
+%-----------------------------------------------------------------
+%	FORMULARI
+%	!TEX root = main.tex
+%-----------------------------------------------------------------
+\section{\mytitle}
+% TODO: other useful constants
+\subsection{Efecte fotoelèctric}
+\begin{align*}
+\begin{gathered}
+	K = h \nu - W \qc W = h\nu_{\min} = \frac{hc}{\lambda_{\max}} = \frac{hc}{\lambda_{\text{llindar}}} \\
+	\frac{N_{\max}(e^{-})}{A \cdot t} = \frac{I}{h\nu}
+\end{gathered}
+\end{align*}
+$\hbar c \approx \SI{197}{\femto\m \MeV}$ ($\SI{1}{\femto\m} = \SI{e-15}{\m}$).
+
+%-----------------------------------------------------------------
+\subsection{Efecte Compton}
+\begin{align*}
+\begin{gathered}
+	\begin{cases}
+		h \nu_{i} + mc^{2} = h \nu_{f} + \sqrt{p^{2}c^{2} + m^{2}c^{4}} \\
+		\va{p}_{i,\gamma} + \va{0} = \va{p}_{f,\gamma} + \va{p}_{e}
+	\end{cases}
+	\Rightarrow \Delta \lambda = \frac{h}{mc} \qty(1 - \cos \theta)
+	% E = \frac{hc}{\lambda} = pc
+\end{gathered}
+\end{align*}
+
+%-----------------------------------------------------------------
+\subsection{Longitud d'ona de de Broglie}
+\begin{align*}
+	\lambda_{dB} = \frac{h}{p} = \frac{2\pi \hbar c}{pc} = \frac{2\pi \hbar c}{\sqrt{E^2 - m^2 c^4}} = \frac{2\pi \hbar c}{K\sqrt{1+\dfrac{2mc^{2}}{K}}}
+\end{align*}
+% $m_{e} = \SI{0.51}{\mega\eV \per\square\clight}$, $m_{n} = \SI{939.57}{\mega\eV \per\square\clight}$, $m_{p} = \SI{938.27}{\mega\eV \per\square\clight}$.
+Masses ($\si{\mega\eV}/ \si{\square\clight}$): $m_{e} = \num{0.51}$, $m_{n} = \num{939.57}$, $m_{p} = \num{938.27}$.
+
+%-----------------------------------------------------------------
+\subsection{Espèctre atòmic}
+\begin{align*}
+	\frac{1}{\lambda} = R_{H} z^{2} \qty(\frac{1}{n_{f}^{2}} - \frac{1}{n_{i}^2})
+\end{align*}
+$R_{H} \equiv \SI{1.097 e 7}{\per\m}$ (constant de Rydberg a l'hidrogen).
+
+$n_{f} = 2$: sèrie de Balmer; $n_{f} = 3$: sèrie de Paschen.
+
+%-----------------------------------------------------------------
+\subsection{Model de Bohr}
+\begin{align*}
+	r_{n} = 4 \pi \varepsilon_{0} \frac{n^{2} \hbar^{2}}{mze^{2}} = \frac{n^{2}}{z} a_{0}, \quad v_{n} = \frac{n\hbar}{mr_{n}}, \quad E_{n} = -\frac{R_{y}z^{2}}{n^{2}}
+\end{align*}
+$a_{0} \equiv \SI{0.053 e-9}{\m}$ (radi de Bohr).
+
+$R_{y} \equiv \SI{13.6}{eV} = 2\pi \hbar c \cdot R_{H}$ (constant de Rydberg).
+
+%-----------------------------------------------------------------
+\subsection{Postulats de la quàntica}
+\begin{align*}
+\begin{gathered}
+	p_{a_{i}} = p(a_{i}, \ket{b_{j}}) = \abs{\braket{a_{i}}{b_{j}}}^{2} \\
+	H \Rightarrow \ket{\varphi (t)} = \sum \exp \qty[-\frac{iE_{i}}{\hbar}t] \ket{E_{i}} \braket{E_{i}}{\varphi (0)} \\
+	\qty(\Delta A)^{2}_{\psi} = \ev*{A^{2}}_{\psi} - \ev*{A}^{2}_{\psi} \\
+	\dv{}{t} \ev*{A}_{\psi} = \frac{1}{i\hbar} \ev*{\comm{A}{H}}_{\psi} \Rightarrow \comm{A}{H} = 0 \Rightarrow \ev*{A}_{\psi(t)} \neq f(t)
+\end{gathered}
+\end{align*}
+
+%-----------------------------------------------------------------
+\subsection{Matrius de Pauli (spin $1/2$)}
+\begin{align*}
+\begin{gathered}
+	\sigma_{x} = \mqty( 0 & 1 \\ 1 & 0 ) \qc
+	\sigma_{y} = \mqty( 0 & -i \\ i & 0 ) \qc
+	\sigma_{z} = \mqty( 1 & 0 \\ 0 & -1 ) \\
+	\sigma_{i} \sigma_{j} = \delta_{ij} \mbb{I} + i \epsilon_{ijk} \sigma_{k} \\
+	\sigma_{\vu{n}} = \vu{n} \vdot \mqty(\sigma_{x} \\ \sigma_{y} \\ \sigma_{z}) = \mqty(\cos \theta & e^{-i\phi} \sin \theta \\ e^{i\phi} \sin \theta & - \cos \theta) \\
+	\ket{+}_{\vu{n}} = \mqty( \cos \frac{\theta}{2} e^{-i \frac{\varphi}{2}} \\ \sin \frac{\theta}{2} e^{i \frac{\varphi}{2}}) \qc \ket{-}_{\vu{n}} = \mqty( - \sin \frac{\theta}{2} e^{-i \frac{\varphi}{2}} \\ \cos \frac{\theta}{2} e^{i \frac{\varphi}{2}})
+\end{gathered}
+\end{align*}
+\begin{align*}
+	\begin{aligned}
+		\ket{+}_{x} &= (1 , 1) / \sqrt{2}, \\
+		\ket{+}_{y} &= (1 , i) / \sqrt{2}, \\
+		\ket{+}_{z} &= (1 , 0),
+	\end{aligned}
+	\quad
+	\begin{aligned}
+		\ket{-}_{x} &= (1 , -1) / \sqrt{2}, \\
+		\ket{-}_{y} &= (i , 1) / \sqrt{2}, \\
+		\ket{-}_{z} &= (0 , 1),
+	\end{aligned}
+	\quad
+	\begin{aligned}
+		\sigma_{x} \ket{\pm} &= \ket{\mp} \\
+		\sigma_{y} \ket{\pm} &= \pm i \ket{\mp} \\
+		\sigma_{z} \ket{\pm} &= \pm \ket{\pm}
+	\end{aligned}
+\end{align*}
+
+%-----------------------------------------------------------------
+\subsection{Matrius d'spin 1}
+\begin{align*}
+\begin{aligned}
+	J_{x} = \frac{\hbar}{\sqrt{2}} \mqty( 0 & 1 & 0 \\ 1 & 0 & 1 \\ 0 & 1 & 0 ), &\quad
+	\begin{aligned}
+		\begin{aligned}
+		\ket{+\hbar}_{x} &= (1, \sqrt{2}, 1)/2 \\
+		\ket{-\hbar}_{x} &= (1, -\sqrt{2}, 1)/2 \\
+		\ket{0}_{x} &= (1, 0, -1)/\sqrt{2} \\
+	\end{aligned}
+	\end{aligned} \\
+	J_{y} = \frac{\hbar}{\sqrt{2}} \mqty( 0 & -i & 0 \\ i & 0 & -i \\ 0 & i & 0 ), &\quad
+	\begin{aligned}
+		\begin{aligned}
+		\ket{+\hbar}_{y} &= (-1, -\sqrt{2}i, 1)/2 \\
+		\ket{-\hbar}_{y} &= (-1, \sqrt{2}i, 1)/2 \\
+		\ket{0}_{y} &= (1, 0, 1)/\sqrt{2} \\
+	\end{aligned}
+	\end{aligned} \\
+	J_{z} = \hbar \mqty( 1 & 0 & 0 \\ 0 & 0 & 0 \\ 0 & 0 & -1 ), &\quad
+	\begin{aligned}
+		\ket{+\hbar}_{z} &= (1, 0, 0) \\
+		\ket{-\hbar}_{z} &= (0, 0, 1) \\
+		\ket{0}_{z} &= (0, 1, 0) \\
+	\end{aligned}
+\end{aligned}
+\end{align*}
+
+%-----------------------------------------------------------------
+\subsection{Matrius d'spin 1 al quadrat}
+\begin{align*}
+\begin{aligned}
+	J^{2}_{x} = \frac{\hbar^{2}}{2} \mqty( 1 & 0 & 1 \\ 0 & 2 & 0 \\ 1 & 0 & 1 ), &\quad
+	\begin{aligned}
+		\ket{\hbar^{2}} &= (1, 0, 1)/\sqrt{2} \\
+		\ket{\hbar^{2}} &= (0, 1, 0) \\
+		\ket{0} &= (1, 0, -1)/\sqrt{2}
+	\end{aligned} \\
+	J^{2}_{y} = \frac{\hbar^{2}}{2} \mqty( 1 & 0 & -1 \\ 0 & 2 & 0 \\ -1 & 0 & 1 ), &\quad
+	\begin{aligned}
+		\ket{\hbar^{2}} &= (1, 0, -1)/\sqrt{2} \\
+		\ket{\hbar^{2}} &= (0, 1, 0) \\
+		\ket{0} &= (1, 0, 1)/\sqrt{2}
+	\end{aligned} \\
+	J^{2}_{z} = \hbar^{2} \mqty( 1 & 0 & 0 \\ 0 & 0 & 0 \\ 0 & 0 & 1 ), &\quad
+	\begin{aligned}
+		\ket{\hbar^{2}} &= (1, 0, 0) \\
+		\ket{\hbar^{2}} &= (0, 0, 1) \\
+		\ket{0} &= (0, 1, 0)
+	\end{aligned}
+\end{aligned}
+\end{align*}
+
+%-----------------------------------------------------------------
+\subsection{Trigonometria}
+\begin{align*}
+	\begin{aligned}
+		\sin^{2} \theta &= \frac{1}{2}(1 - \cos 2\theta) \\
+		\cos^{2} \theta &= \frac{1}{2}(1 + \cos 2\theta) \\
+		\sin(\theta \pm \phi) &= \sin \theta \cos \phi \pm \cos \theta \sin \phi \\
+		\cos(\theta \pm \phi) &= \cos \theta \cos \phi \mp \sin \theta \sin \phi
+	\end{aligned}
+	\quad
+	\begin{aligned}
+		\cos \frac{\pi}{3} &= \sin \frac{\pi}{6} = \frac{1}{2} \\
+		\cos \frac{\pi}{4} &= \sin \frac{\pi}{4} = \frac{1}{\sqrt{2}} \\
+		\cos \frac{\pi}{6} &= \sin \frac{\pi}{3} = \frac{\sqrt{3}}{2}
+	\end{aligned}
+\end{align*}
+
+%-----------------------------------------------------------------
+\subsection{Eigenstuff a $2\times2$ (RMT)}
+\begin{align*}
+\begin{aligned}
+	\mqty(a & c - id \\ c + id & b) &= \frac{a+b}{2} \bbid + \frac{a-b}{2} \sigma_{z} + c \sigma_{x} + d \sigma_{y} \\
+	&= \varepsilon \bbid + \va{v} \vdot \va{\sigma} \\
+	\Rightarrow vaps: \lambda_{\pm} &= \varepsilon \pm \norm{\va{v}} \\
+	% \Rightarrow veps: \ket{\pm} &= \mqty(-\frac{-a + b \pm \sqrt{a^2 - 2ba + b^2 + 4c^2 + 4d^2}}{2 (c - i d)} & 1)
+\end{aligned}
+\end{align*}
+
+%-----------------------------------------------------------------
+\subsection{Moment angular (quàntica II)}
+\begin{align*}
+\begin{gathered}
+	J_{\pm} = J_{x} \pm J_{-} \qc J_{x} = \frac{1}{2} \qty(J_{+} + J_{-}) \qc J_{y} = \frac{1}{2i} \qty(J_{+} - J_{-}) \\
+	\begin{aligned}
+		\qty[J_{i},J_{j}] &= i \hbar \epsilon_{ijk} J_{k} \\
+		\qty[J_{+},J_{-}] &= 2\hbar J_{z}
+	\end{aligned}
+	\quad
+	\begin{aligned}
+		&\qty[J_{z},J_{\pm}] = \pm \hbar J_{\pm} \\
+		&\qty[J^{2},J_{z, \pm}] = 0
+	\end{aligned} \\
+	\begin{aligned}
+		J_{\pm} \ket{j,m} &= \hbar \sqrt{j(j + 1) - m(m \pm 1)} \ket{j,m \pm 1} \\
+		J^{2} \ket{j,m} &= \hbar^{2} j(j + 1) \ket{j,m} \\
+		J_{z} \ket{j,m} &= \hbar m \ket{j,m}
+	\end{aligned}
+\end{gathered}
+\end{align*}

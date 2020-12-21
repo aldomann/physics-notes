@@ -1,0 +1,142 @@
+%----------------------------------------------------------------------------------------
+%	FORMULARI QUÀNTICA II
+%	!TEX root = ./main.tex
+%----------------------------------------------------------------------------------------
+\setcounter{section}{2}
+% \setcounter{page}{2}
+
+\section{\mytitle}
+\subsection{Estats de Fock}
+\begin{align*}
+	x = \sqrt{\frac{\hbar}{2m\omega}} \qty(a\sdag + a) \qc p = i \sqrt{\frac{\hbar m \omega}{2}} \qty(a\sdag - a)
+\end{align*}
+
+\begin{align*}
+	N = a\sdag a \qc H = \frac{p^{2}}{2m} + \frac{1}{2} m \omega^{2} x^{2} = \hbar \omega \qty(N + \frac{1}{2})
+\end{align*}
+
+\begin{alignat*}{2}
+	a \ket{n} &= \sqrt{n} \ket{n-1} \qc && a\sdag \ket{n} = \sqrt{n+1}\ket{n+1} \\
+	N \ket{n} &= n \ket{n} \qc && H \ket{n}= \hbar \omega \qty(n+ \frac{1}{2}) \ket{n}
+\end{alignat*}
+
+\begin{align*}
+	\qty(\Delta A)^{2}_{\psi} = \ev{A^2}_{\psi} - \ev{A}^{2}_{\psi}
+\end{align*}
+
+\begin{align}\tag{Evolució temporal}
+	\ket{\psi (t)} = e^{-iHt/\hbar}\ket{\psi (0)}
+\end{align}
+
+%----------------------------------------------------------------------------------------
+\subsection{Commutadors}
+\begin{align*}
+	\qty[a, a\sdag] \equiv 1 \Leftrightarrow \qty[x, p] = i\hbar
+\end{align*}
+\begin{align*}
+	\qty[ f(a), a\sdag] = \dv{f(a)}{a} \qc \qty[a, f(a\sdag)] = \dv{f(a\sdag)}{a\sdag}
+\end{align*}
+
+\begin{align*}
+	\qty[A+B,C] = \qty[A,C] + \qty[B,C] \qc \qty[A,BC] = \qty[A,B] C + B \qty[A,C]
+\end{align*}
+
+%----------------------------------------------------------------------------------------
+\subsection{Estats coherents}
+\begin{align*}
+\begin{gathered}
+	a\ket{\alpha} = \alpha\ket{\alpha} \qc f(a)\ket{\alpha} = f(\alpha)\ket{\alpha} \\
+	\ket{\alpha} = D(\alpha) \ket{0} = e^{a\sdag \alpha - a \alpha\sast} \ket{0} = e^{-\abs{\alpha}^{2}/2} \sum_{n=0}^{\infty} \frac{\alpha^{n}}{\sqrt{n!}} \ket{n}
+\end{gathered}
+\end{align*}
+
+\begin{align}\tag{Baker--Campbell--Hausdorff}
+	e^{A+B} = e^{-\qty[A,B]/2} e^{A} e^{B}
+\end{align}
+
+\begin{align*}
+	D\sdag(\alpha) a D(\alpha) = a + \alpha \qc D\sdag(\alpha) a\sdag D(\alpha) = a\sdag + \alpha\sast
+\end{align*}
+
+\begin{align}\tag{Evolució temporal}
+	\ket{\alpha (t)} = e^{-i\omega t/2}\ket{e^{-i\omega t} \alpha}
+\end{align}
+
+\begin{align*}
+	\ev{x}_{t} = \sqrt{\frac{2\hbar}{m\omega}} \Re{\alpha(t)} = x_{0} \cos(\omega t) - \frac{p_{0}}{m\omega} \sin(\omega t) \\
+	\ev{p}_{t} = \sqrt{2\hbar m\omega} \Im{\alpha(t)} = p_{0} \cos(\omega t) - m\omega x_{0} \sin(\omega t)
+\end{align*}
+
+\begin{align*}
+	(\Delta x)_{t} = (\Delta x)_{0} = \sqrt{\frac{\hbar}{2m\omega}} \qc (\Delta p)_{t} = (\Delta p)_{0} = \sqrt{\frac{\hbar m\omega}{2}}
+\end{align*}
+
+%----------------------------------------------------------------------------------------
+\subsection{Translacions i momentum kicks}
+\begin{align}
+	\alpha \in \mbb{C}\backslash\mbb{R} \Rightarrow D(\alpha) = e^{ip_{0}\hat{x}/\hbar} \tag{Mom. kick de $p_{0}$} \\
+	\alpha \in \mbb{R} \Rightarrow D(\alpha) = e^{-ix_{0}\hat{p}/\hbar} \tag{Translació de $x_{0}$}
+\end{align}
+
+\newpage
+%----------------------------------------------------------------------------------------
+\subsection{Moment angular}
+\begin{align*}
+	J_{\pm} = J_{x} \pm J_{-} \qc J_{x} = \frac{1}{2} \qty(J_{+} + J_{-}) \qc J_{y} = \frac{1}{2i} \qty(J_{+} - J_{-})
+\end{align*}
+
+\begin{alignat*}{2}
+	\qty[J_{i},J_{j}] &= i \hbar \epsilon_{ijk} J_{k} \qc && \qty[J_{z},J_{\pm}] = \pm \hbar J_{\pm} \\
+	\qty[J_{+},J_{-}] &= 2\hbar J_{z} \qc && \qty[J^{2},J_{z, \pm}] = 0
+\end{alignat*}
+
+\begin{align*}
+\begin{aligned}
+	J_{\pm} \ket{j,m} &= \hbar \sqrt{j(j + 1) - m(m \pm 1)} \ket{j,m \pm 1} \\
+	J^{2} \ket{j,m} &= \hbar^{2} j(j + 1) \ket{j,m} \\
+	J_{z} \ket{j,m} &= \hbar m \ket{j,m}
+\end{aligned}
+\end{align*}
+
+%----------------------------------------------------------------------------------------
+\subsection{Spin--1/2}
+\begin{align*}
+	S_{i} = \frac{\hbar}{2} \sigma_{i} \qc \sigma_{i} \sigma_{j} = \delta_{ij} \bbid + i \epsilon_{ijk} \sigma_{k} \qc
+	\begin{aligned}
+		\sigma_{x} \ket{\pm} &= \ket{\mp} \\
+		\sigma_{y} \ket{\pm} &= \pm i \ket{\mp} \\
+		\sigma_{z} \ket{\pm} &= \pm \ket{\pm}
+	\end{aligned}
+\end{align*}
+\begin{align*}
+	S_{z} = \frac{\hbar}{2} \mqty(\dmat[0]{1,-1}) \qc S_{+} = \hbar \mqty(\admat[0]{1,0}) \qc S_{-} = \hbar \mqty(\admat[0]{0,1})
+\end{align*}
+
+\begin{align*}
+	S_{\vu{n}} = \vu{n} \vdot \mqty(S_{x} \\ S_{y} \\ S_{z}) = \frac{\hbar}{2} \mqty(\cos \theta & e^{-i\phi} \sin \theta \\ e^{i\phi} \sin \theta & - \cos \theta)
+\end{align*}
+
+%----------------------------------------------------------------------------------------
+\subsection{Spin--1}
+\begin{align*}
+	S_{z} = \hbar \mqty(\dmat[0]{1,0,-1}) \qc S_{\pm} = \sqrt{2}\hbar \mqty( 0 & 1_{+} & 0 \\ 1_{-} & 0 & 1_{+} \\ 0 & 1_{-} & 0 )
+\end{align*}
+\begin{align*}
+\begin{gathered}
+	S_{+}S_{-} = \hbar^{2} \mqty(\dmat[0]{1,1,0}) \qc S_{-}S_{+} = \hbar^{2} \mqty(\dmat[0]{0,1,1}) \\
+	\Rightarrow S^{2} = S_{z}^{2} + \frac{1}{2} \qty(S_{+}S_{-} + S_{-}S_{+}) = 2\hbar^{2} \bbid
+\end{gathered}
+\end{align*}
+
+%----------------------------------------------------------------------------------------
+\subsection{Sistemes de dues partícules}
+\begin{align*}
+\begin{gathered}
+	J_{z} = S_{z}^{A} + S_{z}^{B} \\
+	J^{2} = \qty(\va{S}^{A} + \va{S}^{B})^{2} = S_{A}^{2} + S_{B}^{2} + 2 S_{z}^{A} S_{z}^{B} + S_{+}^{A} S_{-}^{B} + S_{-}^{A} S_{+}^{B}
+\end{gathered}
+\end{align*}
+
+\begin{align}\tag{Young Tableaux, $SU(2)$}
+	\operatorname{spin} = \frac{p}{2} \qc \operatorname{dim} = p + 1
+\end{align}

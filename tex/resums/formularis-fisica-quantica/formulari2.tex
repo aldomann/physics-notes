@@ -1,0 +1,223 @@
+%-----------------------------------------------------------------
+%	FORMULARI
+%	!TEX root = main.tex
+%-----------------------------------------------------------------
+\setcounter{section}{1}
+\setcounter{page}{2}
+
+\section{\mytitle}
+\subsection{Equació d'Schrödinger}
+\begin{align*}
+	\qty[\frac{p^{2}}{2m} + V(x)] \psi_{n}(x) = E_{n}\psi_{n}(x) \qc p = -ih \pdv{x}
+\end{align*}
+
+%-----------------------------------------------------------------
+\subsection{Pou infinit}
+\begin{align*}
+	\qty[0,L] \Rightarrow
+	\begin{cases}
+		\phi_{n}(x) = \sqrt{\dfrac{2}{L}} \sin \qty(\dfrac{n\pi x}{L}) & x \in [0,L] \\
+		\phi_{n}(x) = 0 & x \not\in [0,L]
+	\end{cases}
+	\\
+	\qty[-\dfrac{L}{2}, \dfrac{L}{2}] \Rightarrow
+	\begin{cases}
+		\phi_{n}(x) = \sqrt{\dfrac{2}{L}} \cos \qty(\dfrac{n\pi x}{L}) & n \text{ senar} \\
+		\phi_{n}(x) = \sqrt{\dfrac{2}{L}} \sin \qty(\dfrac{n\pi x}{L}) & n \text{ parell}
+	\end{cases}
+\end{align*}
+\begin{align*}
+	E_{n} = \dfrac{n^{2} \pi^{2} \hbar^{2}}{2m L^{2}}
+\end{align*}
+
+%-----------------------------------------------------------------
+\subsection{Harmònics 1D}
+\begin{align*}
+\begin{gathered}
+	\text{Gaussiana: } \psi(x) = \frac{1}{(2\pi \sigma_{x}^{2})^{1/4}} \exp[- \frac{x^{2}}{4 \sigma_{x}^{2}}] \\% \qc \int g(x) \dd{x} \equiv 1
+	\boxed{\phi_{n}(x) = C_{n} H_{n}(\tilde{x}) \exp[-\dfrac{\tilde{x}^{2}}{2}]} % \qc \int \phi_{n}\sast(x) \phi_{n}(x) \dd{x} \equiv 1
+\end{gathered}
+\end{align*}
+
+\begin{align*}
+	\tilde{x} = \dfrac{x}{a_{0}} \qc a_{0} = \sqrt{\dfrac{\hbar}{m\omega}} \qc C_{n} = \qty(\frac{1}{\pi a_{0}^{2}})^{1/4} \qty(\frac{1}{2^{n} n!})^{1/2}
+\end{align*}
+
+\begin{align*}
+	\begin{aligned}
+		H_{0}(\tilde{x}) &= 1 \\
+		H_{1}(\tilde{x}) &= 2\tilde{x} \\
+	\end{aligned}
+	\quad
+	\begin{aligned}
+		H_{2}(\tilde{x}) &= 4\tilde{x}^{2} - 2 \\
+		H_{3}(\tilde{x}) &= 8\tilde{x}^{3} -12 \tilde{x}
+	\end{aligned}
+\end{align*}
+
+% Sigui $\psi (x) = \alpha_{0} \phi_{0} + \alpha_{1} \phi_{1} + \alpha_{2} \phi_{2} + \dots$. Llavors,
+\begin{align*}
+\begin{gathered}
+	E_{n} = \hbar \omega \qty(n + \frac{1}{2}) \qc p(E = E_{n})_{\psi} = \abs{\alpha_{n}}^{2}\\
+	% (\Delta E)_{\psi} = \sqrt{\ev{E^{2}}_{\psi} - \ev{E}_{\psi}^{2}}
+\end{gathered}
+\end{align*}
+% \begin{align*}
+% 	\ev{\hat{H}}_{\psi} = \sum \abs{\alpha_{n}}^{2} E_{n} \qc \ev{\hat{H}^{2}}_{\psi} = \sum \abs{\alpha_{n}}^{2} E_{n}^{2}
+% \end{align*}
+
+% \begin{align*}
+% \begin{gathered}
+% 	\ev{x}_{\psi} = \int_{-\infty}^{\infty} \psi\sast x \psi \dd{x} \qc \ev{p}_{\psi} = \int_{-\infty}^{\infty} - \psi\sast i \hbar \pdv{x} \psi \dd{x} \\
+% 	\Delta x \Delta p \geq \dfrac{\hbar}{2}
+% \end{gathered}
+% \end{align*}
+
+% %-----------------------------------------------------------------
+% \subsubsection*{Evolució temporal}
+% \begin{align*}
+% 	\psi(x,t) = \sum_{n} a_{n} \phi_{n}(x,0) \exp[-\frac{i E_{n}}{\hbar} t]
+% \end{align*}
+
+%-----------------------------------------------------------------
+\subsection{Potencials centrals}
+\begin{align*}
+	\boxed{\phi_{nlm}(r, \theta, \varphi) = R_{n}^{l}(r) Y_{l}^{m}(\theta, \varphi)}
+	\qc
+	\begin{cases}
+		l = 0, 1, \cdots, n-1 \\
+		m = -l, -l-1, \cdots, l
+	\end{cases}
+\end{align*}
+
+\begin{align*}
+	\hat{H} \ket{\phi_{nlm}} &= -R_{y}/n^{2} \, \ket{\phi_{nlm}} \qc R_{y} = \SI{13.6}{\eV} \\
+	\hat{L^{2}} \ket{\phi_{nlm}} &= \hbar^{2} l(l+1) \, \ket{\phi_{nlm}} \\
+	\hat{L_{z}} \ket{\phi_{nlm}} &= \hbar m \, \ket{\phi_{nlm}} \\
+	E_{n} &= - \frac{m}{2\hbar^{2}} \qty(\frac{z e^{2}}{4\pi \varepsilon_{0} n})^{2} \quad \text{(en general)}
+\end{align*}
+
+\subsubsection*{Harmònics 3D}
+\begin{align*}
+\begin{aligned}
+	Y_{0}^{0} &= \sqrt{\frac{1}{4\pi}} \\
+	Y_{1}^{0} &= \sqrt{\frac{3}{4\pi}} \cos\theta \\
+	Y_{1}^{\pm 1} &= \mp\sqrt{\frac{3}{8\pi}} \sin\theta e^{\pm i\varphi} \\
+\end{aligned}
+\quad
+\begin{aligned}
+	Y_{2}^{0} &= \sqrt{\frac{5}{16\pi}} (3 \cos^{2}\theta-1) \\
+	Y_{2}^{\pm 1} &= \mp \sqrt{\frac{15}{8\pi}} \sin\theta \cos\theta e^{\pm i\varphi} \\
+	Y_{2}^{\pm 2} &= \sqrt{\frac{15}{32\pi}} \sin^{2}\theta e^{\pm 2i\varphi} \\
+\end{aligned}
+\end{align*}
+
+\subsubsection*{Funcions d'ona radials}
+\begin{align*}
+	R_{1}^{0} &= 2 \qty(\frac{1}{a_{0}})^{3/2} \exp[-\frac{r}{a_{0}}] \\
+	R_{2}^{1} &= \frac{1}{\sqrt{3}} \qty(\frac{1}{2 a_{0}})^{3/2} \qty(\frac{r}{a_{0}}) \exp[-\frac{r}{2a_{0}}] \\
+	R_{2}^{0} &= 2 \qty(\frac{1}{2 a_{0}})^{3/2} \qty(1 - \frac{r}{2a_{0}}) \exp[-\frac{r}{2a_{0}}] \\
+	R_{3}^{2} &= \frac{2\sqrt{2}}{27\sqrt{5}} \qty(\frac{1}{3 a_{0}})^{3/2} \qty(\frac{r}{a_{0}})^{2} \exp[-\frac{r}{3a_{0}}] \\
+	R_{3}^{1} &= \frac{4\sqrt{2}}{3} \qty(\frac{1}{3 a_{0}})^{3/2} \qty(\frac{r}{a_{0}}) \qty(1 - \frac{r}{6 a_{0}}) \exp[-\frac{r}{3a_{0}}] \\
+	R_{3}^{0} &= 2 \qty(\frac{1}{3 a_{0}})^{3/2} \qty(1 - \frac{2r}{3a_{0}} + \frac{2 r^{2}}{27 a_{0}^{2}}) \exp[-\frac{r}{3a_{0}}]
+\end{align*}
+
+\subsubsection*{Àtom d'hidrogen}
+\begin{align*}
+	V(r) = - \frac{e^{2}}{4\pi \varepsilon_{0}r} \quad \text{(energia potencial)}
+\end{align*}
+
+\subsubsection*{Probabilitats marginals}
+\begin{align*}
+	\rho(r,\theta,\varphi) \dd{V} =
+	\begin{cases}
+		\rho(r) \dd{r} \\
+		\rho(\theta) \dd{\theta} \\
+		\rho(\varphi) \dd{\varphi}
+	\end{cases}
+	\Rightarrow
+	P[\zeta \leq a] = \int_{0}^{a} \rho(\zeta) \dd{\zeta}
+\end{align*}
+on $\zeta \text{ pot ser } r, \theta, \varphi$. Recordem $(x,y,z) = (r\Sin \theta \Cos \varphi, r \Sin \theta \Sin \varphi, r\Cos \theta)$ i $\dd{V} = r^{2} \Sin \theta \dd{r} \dd{\theta} \dd{\varphi}$.
+\begin{align*}
+\begin{gathered}
+	\zeta = \zeta_{\max} \Leftrightarrow \dv{\rho(\zeta)}{\zeta} \equiv 0
+\end{gathered}
+\end{align*}
+
+%-----------------------------------------------------------------
+\subsection{Teoremes}
+\begin{align*}
+	\dv{\ev{x}}{t} &= \frac{\ev{p}}{m} \qc \dv{\ev{p}}{t} = \ev{\vec{F}(x)} = - \ev{\grad{V(x)}} \tag{Ehrenfest} \\
+	\dv{\ev{\va{r} \vdot \va{p}}}{t} &= \frac{\ev{p^{2}}}{m} - \ev{\va{r} \cdot \grad{V(x)}} \tag{Virial} \\
+	2 \ev{K} &= \frac{\ev{p^{2}}}{m} = \ev{\va{r} \cdot \grad{V(x)}} \tag{Virial; estat estacionari}
+\end{align*}
+
+%-----------------------------------------------------------------
+\subsection{Integrals i coses maques}
+\begin{align*}
+\begin{gathered}
+	\int_{-\infty}^{\infty} e^{-ax^2} x^{2} \dd{x} = \dfrac{1}{2a} \sqrt{\dfrac{\pi}{a}} \qc \int_{-\infty}^{\infty} e^{-ax^2} x^{4} \dd{x} = \dfrac{3}{4a^{2}} \sqrt{\dfrac{\pi}{a}} \\
+	\int_{0}^{\infty} e^{-ar} r^{n} \dd{r} = \dfrac{n!}{(a)^{n+1}} \qc 0 \leq n \\
+\end{gathered}
+\end{align*}
+\begin{align*}
+	\comm{A}{f(B)} = f'(B) \comm{A}{B}
+\end{align*}
+
+%-----------------------------------------------------------------
+\subsection{Trigonometria}
+\begin{align*}
+	\begin{aligned}
+		\sin^{2} \theta &= \frac{1}{2}(1 - \cos 2\theta) \\
+		\cos^{2} \theta &= \frac{1}{2}(1 + \cos 2\theta) = \frac{3 \cos^{2} \theta - 1 + \sin^{2} \theta}{2} \\
+		\sin(\theta \pm \phi) &= \sin \theta \cos \phi \pm \cos \theta \sin \phi \\
+		\cos(\theta \pm \phi) &= \cos \theta \cos \phi \mp \sin \theta \sin \phi
+	\end{aligned}
+\end{align*}
+
+%-----------------------------------------------------------------
+\newpage
+\subsection{Operadors sobre estats de Fock}
+\begin{align*}
+	x = \sqrt{\frac{\hbar}{2m\omega}} \qty(a\sdag + a) \qc p = i \sqrt{\frac{\hbar m \omega}{2}} \qty(a\sdag - a)
+\end{align*}
+\subsubsection*{Posició}
+\begin{align*}
+\begin{aligned}
+	x \ket{0} &\to \ket{1}, \\
+	x \ket{1} &\to \ket{0} + \sqrt{2} \ket{3}, \\
+	x \ket{2} &\to \sqrt{2} \ket{1} + \sqrt{3} \ket{3}, \\
+	x \ket{3} &\to \sqrt{3} \ket{2} + \sqrt{4} \ket{4}, \\
+	x \ket{4} &\to \sqrt{4} \ket{3} + \sqrt{5} \ket{5}, \\
+	x \ket{5} &\to \sqrt{5} \ket{4} + \sqrt{6} \ket{6},
+\end{aligned} \quad
+\begin{aligned}
+	x^{2} \ket{0} &\to \ket{0} + \sqrt{2} \ket{2} \\
+	x^{2} \ket{1} &\to 3 \ket{1} + \sqrt{6} \ket{3} \\
+	x^{2} \ket{2} &\to \sqrt{2} \ket{0} + 5 \ket{2} + 2 \sqrt{3} \ket{4} \\
+	x^{2} \ket{3} &\to \sqrt{6} \ket{1} + 7 \ket{3} + 2 \sqrt{5} \ket{5} \\
+	x^{2} \ket{4} &\to 2 \sqrt{3} \ket{2} + 9 \ket{4} + \sqrt{30} \ket{6} \\
+	x^{2} \ket{5} &\to 2 \sqrt{5} \ket{3} + 11 \ket{5} + \sqrt{42} \ket{7}
+\end{aligned}
+\end{align*}
+
+\subsubsection*{Moment}
+\begin{align*}
+\begin{aligned}
+	p \ket{0} &\to \ket{1}, \\
+	p \ket{1} &\to -\ket{0} + \sqrt{2} \ket{3}, \\
+	p \ket{2} &\to -\sqrt{2} \ket{1} + \sqrt{3} \ket{3}, \\
+	p \ket{3} &\to -\sqrt{3} \ket{2} + \sqrt{4} \ket{4}, \\
+	p \ket{4} &\to -\sqrt{4} \ket{3} + \sqrt{5} \ket{5}, \\
+	p \ket{5} &\to -\sqrt{5} \ket{4} + \sqrt{6} \ket{6},
+\end{aligned} \quad
+\begin{aligned}
+	p^{2} \ket{0} &\to -\ket{0} + \sqrt{2} \ket{2} \\
+	p^{2} \ket{1} &\to -3 \ket{1} + \sqrt{6} \ket{3} \\
+	p^{2} \ket{2} &\to \sqrt{2} \ket{0} - 5 \ket{2} + 2 \sqrt{3} \ket{4} \\
+	p^{2} \ket{3} &\to \sqrt{6} \ket{1} - 7 \ket{3} + 2 \sqrt{5} \ket{5} \\
+	p^{2} \ket{4} &\to 2 \sqrt{3} \ket{2} - 9 \ket{4} + \sqrt{30} \ket{6} \\
+	p^{2} \ket{5} &\to 2 \sqrt{5} \ket{3} - 11 \ket{5} + \sqrt{42} \ket{7}
+\end{aligned}
+\end{align*}

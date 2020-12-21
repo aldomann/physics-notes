@@ -1,0 +1,154 @@
+%----------------------------------------------------------------------------------------
+%	FORMULARI QUÀNTICA II
+%	!TEX root = ./main.tex
+%----------------------------------------------------------------------------------------
+\setcounter{section}{3}
+% \setcounter{page}{2}
+
+\section{\mytitle}
+\subsection{Estats de Fock}
+\begin{align*}
+\begin{gathered}
+	x = \sqrt{\frac{\hbar}{2m\omega}} \qty(a\sdag + a) \qc p = i \sqrt{\frac{\hbar m \omega}{2}} \qty(a\sdag - a) \qc N = a\sdag a \\
+	a \ket{n} = \sqrt{n} \ket{n-1} \qc a\sdag \ket{n} = \sqrt{n+1}\ket{n+1} \qc N \ket{n} = n \ket{n} \\
+\end{gathered}
+\end{align*}
+
+\begin{align*}
+	H = \frac{p^{2}}{2m} + \frac{1}{2} m \omega^{2} x^{2} = \hbar \omega \qty(N + \frac{1}{2})
+\end{align*}
+
+\begin{align*}
+	2 \ev{K} = \ev{x \dv{V}{x}} \tag{Teroema del virial}
+\end{align*}
+
+%----------------------------------------------------------------------------------------
+\subsection{Mètode variacional}
+\begin{align*}
+	E_{1} \leq \min \qty{\frac{\ev{H}{\psi_{\alpha}}} {\norm{\psi_{\alpha}}}}
+\end{align*}
+
+\begin{align*}
+\begin{aligned}
+	\ev{K} &= \frac{\hbar^{2}}{2m} \int \abs{\dv{\psi(x)}{x}}^{2} \dd{x} = - \frac{\hbar^{2}}{2m} \int \psi\sast(x) \, \psi''(x) \dd{x} \\
+	\ev{V} &= \int \psi\sast(x) \, V(x) \, \psi(x) \dd{x}
+\end{aligned}
+\end{align*}
+
+%----------------------------------------------------------------------------------------
+\subsection{Pou infinit}
+\begin{align*}
+	\qty[-\dfrac{L}{2}, \dfrac{L}{2}] \Rightarrow
+	\begin{cases}
+		\phi_{n}(x) = \sqrt{\dfrac{2}{L}} \cos \qty(\dfrac{n\pi x}{L}), & n \text{ senar} \\
+		\phi_{n}(x) = \sqrt{\dfrac{2}{L}} \sin \qty(\dfrac{n\pi x}{L}), & n \text{ parell}
+	\end{cases}
+	\qc E_{n} = \dfrac{n^{2} \pi^{2} \hbar^{2}}{2m L^{2}}
+\end{align*}
+
+%----------------------------------------------------------------------------------------
+\subsection{Pertorbacions}
+\begin{align*}
+\begin{gathered}
+	H = H_{0} + H_{1} \\
+	E_{n}^{(0)} = \mel{n}{H_{0}}{n} \qc E_{n}^{(1)} = \mel{n}{H_{1}}{n} \qc E_{n}^{(2)} = \sum_{m \neq n} \frac{\abs{\mel{n}{H_{1}}{m}}^{2} }{E_{n}^{(0)} - E_{m}^{(0)}}
+\end{gathered}
+\end{align*}
+
+%----------------------------------------------------------------------------------------
+\subsection{Posició (Fock)}
+\begin{align*}
+\begin{aligned}
+	x^{2}\ket{0} & = \ket{0} + \sqrt{2} \ket{2} \\
+	x^{2}\ket{1} & = 3 \ket{1} + \sqrt{6} \ket{3} \\
+	x^{2}\ket{2} & = \sqrt{2} \ket{0} + 5 \ket{2} + 2 \sqrt{3} \ket{4} \\
+	%
+	x^{3}\ket{0} & = 3 \ket{1} + \sqrt{6} \ket{3} \\
+	x^{3}\ket{1} & = 3 \ket{0} + 6 \sqrt{2} \ket{2} + 2 \sqrt{6} \ket{4} \\
+	x^{3}\ket{2} & = 6 \sqrt{2} \ket{1} + 9 \sqrt{3} \ket{3} + 2 \sqrt{15} \ket{5} \\
+	%
+	x^{4}\ket{0} & = 3 \ket{0} + 6 \sqrt{2} \ket{2} + 2 \sqrt{6} \ket{4} \\
+	x^{4}\ket{1} & = 15 \ket{1} + 10 \sqrt{6} \ket{3} + 2 \sqrt{30} \ket{5} \\
+	x^{4}\ket{2} & = 6 \sqrt{2} \ket{0} + 39 \ket{2} + 28 \sqrt{3} \ket{4} + 6 \sqrt{10} \ket{6} \\
+\end{aligned}
+\end{align*}
+
+%----------------------------------------------------------------------------------------
+\subsection{Integrals}
+\begin{align*}
+	\dv{\abs{x}}{x} = 2 \vartheta(x) - 1 \qc \dv{\vartheta(x)}{x} = \delta(x) \qc \int \delta(x - x_{0}) f(x) \dd{x} = f(x_{0})
+\end{align*}
+
+\begin{align*}
+\begin{gathered}
+	\int_{0}^{\infty} e^{-ax^2} x^{m} \dd{x} = \frac{1}{2} \frac{\Gamma\qty(\frac{m+1}{2})}{a^{(m+1)/2}} \qc \Gamma(n+1) = n \Gamma(n) \qc \Gamma\qty(\frac{1}{2}) = \sqrt{\pi} \\
+	\int_{-\infty}^{\infty} e^{-ax^2} x^{2} \dd{x} = \dfrac{1}{2a} \sqrt{\dfrac{\pi}{a}} \qc \int_{-\infty}^{\infty} e^{-ax^2} x^{4} \dd{x} = \dfrac{3}{4a^{2}} \sqrt{\dfrac{\pi}{a}} \\
+	\int_{0}^{\infty} e^{-ax} x^{n} \dd{x} = \dfrac{n!}{a^{n+1}} \qc 0 \leq n \\
+\end{gathered}
+\end{align*}
+
+%---------------------------------------------------------------------------------------
+\subsection{Moment angular}
+\begin{align*}
+	J_{\pm} = J_{x} \pm J_{-} \qc J_{x} = \frac{1}{2} \qty(J_{+} + J_{-}) \qc J_{y} = \frac{1}{2i} \qty(J_{+} - J_{-})
+\end{align*}
+
+\begin{alignat*}{2}
+	\qty[J_{i},J_{j}] &= i \hbar \epsilon_{ijk} J_{k} \qc && \qty[J_{z},J_{\pm}] = \pm \hbar J_{\pm} \\
+	\qty[J_{+},J_{-}] &= 2\hbar J_{z} \qc && \qty[J^{2},J_{z, \pm}] = 0
+\end{alignat*}
+
+\begin{align*}
+\begin{aligned}
+	J_{\pm} \ket{j,m} &= \hbar \sqrt{j(j + 1) - m(m \pm 1)} \ket{j,m \pm 1} \\
+	J^{2} \ket{j,m} &= \hbar^{2} j(j + 1) \ket{j,m} \\
+	J_{z} \ket{j,m} &= \hbar m \ket{j,m}
+\end{aligned}
+\end{align*}
+
+%----------------------------------------------------------------------------------------
+\subsection{Spin--1/2}
+\begin{align*}
+	S_{i} = \frac{\hbar}{2} \sigma_{i} \qc \sigma_{i} \sigma_{j} = \delta_{ij} \bbid + i \epsilon_{ijk} \sigma_{k} \qc
+	\begin{aligned}
+	\sigma_{x} \ket{\pm} &= \ket{\mp} \\
+	\sigma_{y} \ket{\pm} &= \pm i \ket{\mp} \\
+	\sigma_{z} \ket{\pm} &= \pm \ket{\pm}
+\end{aligned}
+\end{align*}
+\begin{align*}
+	S_{z} = \frac{\hbar}{2} \mqty(\dmat[0]{1,-1}) \qc S_{+} = \hbar \mqty(\admat[0]{1,0}) \qc S_{-} = \hbar \mqty(\admat[0]{0,1})
+\end{align*}
+
+\begin{alignat*}{3}
+	\ket{+}_{x} &= \frac{1}{\sqrt{2}} \mqty(1 \\ 1) \qc && \ket{+}_{y} = \frac{1}{\sqrt{2}} \mqty(1 \\ i) \qc & \ket{+}_{z} = \mqty(1 \\ 0) \\
+	\ket{-}_{x} &= \frac{1}{\sqrt{2}} \mqty(1 \\ -1) \qc && \ket{-}_{y} = \frac{1}{\sqrt{2}} \mqty(1 \\ -i) \qc & \ket{-}_{z} = \mqty(0 \\ 1) \\
+\end{alignat*}
+
+%----------------------------------------------------------------------------------------
+\subsection{Spin--1}
+\begin{align*}
+	S_{z} = \hbar \mqty(\dmat[0]{1,0,-1}) \qc S_{\pm} = \sqrt{2}\hbar \mqty( 0 & 1_{+} & 0 \\ 1_{-} & 0 & 1_{+} \\ 0 & 1_{-} & 0 )
+\end{align*}
+\begin{align*}
+\begin{gathered}
+	S_{+}S_{-} = \hbar^{2} \mqty(\dmat[0]{1,1,0}) \qc S_{-}S_{+} = \hbar^{2} \mqty(\dmat[0]{0,1,1}) \\
+	\Rightarrow S^{2} = S_{z}^{2} + \frac{1}{2} \qty(S_{+}S_{-} + S_{-}S_{+}) = 2\hbar^{2} \bbid
+\end{gathered}
+\end{align*}
+
+\begin{alignat*}{3}
+	\ket{+}_{x} &= \frac{1}{\sqrt{2}} \mqty(1/\sqrt{2} \\ 1 \\ 1\sqrt{2}) \qc && \ket{0}_{x} = \frac{1}{\sqrt{2}} \mqty(1 \\ 0 \\ -1) \qc && \ket{-}_{x} = \frac{1}{\sqrt{2}} \mqty(1/\sqrt{2} \\ -1 \\ 1\sqrt{2}) \\
+	\ket{+}_{y} &= \frac{1}{\sqrt{2}} \mqty(1/\sqrt{2} \\ i \\ -1\sqrt{2}) \qc && \ket{0}_{y} = \frac{1}{\sqrt{2}} \mqty(1 \\ 0 \\ 1) \qc && \ket{-}_{y} = \frac{1}{\sqrt{2}} \mqty(1/\sqrt{2} \\ -i \\ -1\sqrt{2}) \\
+	\ket{+}_{z} &= \mqty(1 \\ 0 \\ 0) \qc && \ket{0}_{z} = \mqty(0 \\ 1 \\ 0) \qc && \ket{-}_{z} = \mqty(0 \\ 0 \\ 1) \\
+\end{alignat*}
+
+%----------------------------------------------------------------------------------------
+\subsection{Eigenstuff a $2\times2$}
+\begin{align*}
+\begin{gathered}
+	\mqty(a & c + id \\ c - id & b) = \frac{a+b}{2} \bbid + \frac{a-b}{2} \sigma_{z} + c \sigma_{x} + d \sigma_{y} = \varepsilon \bbid + \norm{\va{v}} \frac{\va{v}}{\norm{\va{\sigma}}} \va{\sigma} \\
+	vaps: \lambda_{\pm} = \varepsilon \pm \norm{\va{v}} \\
+	veps: \ket{\pm} = \mqty(-\frac{-a + b \pm \sqrt{a^2 - 2ba + b^2 + 4c^2 + 4d^2}}{2 (c - i d)} & 1)
+\end{gathered}
+\end{align*}

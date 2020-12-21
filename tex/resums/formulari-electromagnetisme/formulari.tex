@@ -1,0 +1,168 @@
+%----------------------------------------------------------------------------------------
+%	FORMULARI ELECTROMAGNETISME
+%	!TEX root = ./main.tex
+%----------------------------------------------------------------------------------------
+\section{\mytitle}
+%----------------------------------------------------------------------------------------
+\subsection{Electrostàtica}
+\begin{align*}
+	\va{D} = \varepsilon_{0} \va{E} + \va{P} = \varepsilon \va{E}
+\end{align*}
+
+\begin{align}\tag{Gauss}
+	% \int_{\mc{S}} \va{E} \vdot \dd{\va{\mc{S}}} = \frac{Q_{int}}{\varepsilon}
+	\int_{\mc{S}} \va{D} \vdot \dd{\va{\mc{S}}} = \int \rho \dd{\mc{S}}
+\end{align}
+
+\begin{align*}
+	\va{E}(\va{r}) = \frac{1}{4\pi \varepsilon_{0}} \int \rho(\va{r}') \frac{\va{r} - \va{r}'}{\norm{\va{r} - \va{r}'}^{3}} \dd[3]{r'}
+\end{align*}
+
+\begin{align*}
+	\phi = \frac{1}{4\pi \varepsilon_{0}} \int \frac{\rho(\va{r}')}{\norm{\va{r} - \va{r}'}^{3}} \dd[3]{r'} \qc \Delta \phi = - \int_{\infty} \va{E} \vdot \dd{\va{l}}
+\end{align*}
+
+\begin{align*}
+	\va{P} = \int r' \rho(\va{r}') \dd[3]{r'}
+\end{align*}
+
+\begin{align*}
+	C = \frac{Q}{\Delta \phi} \qc W_{E} = \frac{1}{2} \frac{Q^{2}}{C} = \frac{1}{2} Q \Delta \phi
+\end{align*}
+
+\begin{align*}
+	 \div{E} = 0 \qc \div{D} = \rho \qc -\div{P} = \rho_{p} \qc \va{P} \vdot \vu{n} = \sigma_{p}
+\end{align*}
+
+\begin{align}\tag{LIU}
+	\va{P} = \varepsilon_{0} \chi_{e} \va{E} \qc \varepsilon = \varepsilon_{0}\qty(1 + \chi_{e})
+\end{align}
+
+\subsubsection*{Condicions de contorn}
+\begin{align*}
+\begin{aligned}
+	\vu{n}_{21} \vdot \qty(\va{D}_{1} - \va{D}_{2}) = \sigma &\Longleftrightarrow D_{1n} - D_{2n} = \sigma \\
+	\vu{n}_{21} \cross \qty(\va{E}_{1} - \va{E}_{2}) = 0 &\Longleftrightarrow E_{1t} = E_{2t}
+\end{aligned}
+\end{align*}
+
+%----------------------------------------------------------------------------------------
+\subsection{Magnetostàtica}
+\begin{align*}
+	\va{B} = \mu_{0} (\va{H} + \va{M}) = \mu \va{H}
+\end{align*}
+
+\begin{align}\tag{Ampère}
+	\oint_{\mc{C}} \va{B} \vdot \dd{\va{l}} = \mu_{0} \int_{\mc{S}} \va{J} \vdot \dd{\va{\mc{S}}}
+\end{align}
+
+\begin{align*}\tag{Biot--Savart}
+	\va{B}(\va{r}) = \frac{\mu_{0}}{4\pi} \int \va{J}(\va{r}') \cross \frac{\va{r} - \va{r}'}{\norm{\va{r} - \va{r}'}^{3}} \dd[3]{r'}
+\end{align*}
+
+\begin{align*}\tag{Per un mat. mag.}
+	\va{B}(\va{r}) = \frac{\mu_{0}}{4\pi} \int \rho_{m}(\va{r}') \frac{\va{r} - \va{r}'}{\norm{\va{r} - \va{r}'}} \dd[3]{r'} + \mu_{0} M'
+\end{align*}
+
+\begin{align}\tag{Ohm}
+	\va{J} = g \va{E}
+\end{align}
+
+\begin{align*}
+	\va{J} = \rho \va{v} \qc J\dd[3]{r} = I \dd{l}
+\end{align*}
+
+\begin{align*}
+	\va{F}_{1 \to 2} = \int \va{J}_{2}(\va{r}_{2}) \cross \va{B}_{1}(\va{r}_{2}) \dd{V_{2}}
+\end{align*}
+
+\begin{align*}
+	\va{H}(\va{r}) = \frac{1}{4\pi} \int \rho_{m}(\va{r}') \frac{\va{r} - \va{r}'}{\norm{\va{r} - \va{r}'}^{3}} \dd[3]{r'}
+\end{align*}
+
+\begin{align*}
+	\va{m} = \frac{1}{2} \int \va{r}' \cross \va{J}(\va{r}') \dd[3]{r'}
+\end{align*}
+
+\begin{align}\tag{LIU}
+	\va{M} = \chi_{m} \va{H} \qc \mu = \mu_{0}\qty(1 + \chi_{m})
+\end{align}
+
+\begin{align*}
+\begin{gathered}
+	\va{M} \vdot \vu{n} = \sigma_{m} \qc \va{M} \cross \vu{n} = \va{K}_{m} \\
+	 \div{B} = 0 \qc \div{H} = -\div{M} = \rho_{m} \\
+	\rot{B} = \mu_{0} \va{J}_{T} \qc \rot{H} = \va{J} \qc \rot{M} = \va{J}_{m}
+\end{gathered}
+\end{align*}
+
+\subsubsection*{Condicions de contorn}
+\begin{align*}
+\begin{aligned}
+	\vu{n}_{21} \vdot \qty(\va{B}_{1} - \va{B}_{2}) = 0 &\Longleftrightarrow B_{1n} = B_{2n} \\
+	\vu{n}_{21} \cross \qty(\va{H}_{1} - \va{H}_{2}) = \va{K} &\Longleftrightarrow H_{1t} - H_{2t} = K
+\end{aligned}
+\end{align*}
+
+%----------------------------------------------------------------------------------------
+\subsection{Camps de variació lenta}
+\begin{align*}
+	\Phi = \int_{\mc{S}} \va{B} \vdot \dd{\va{\mc{S}}}
+\end{align*}
+
+\begin{align*}\tag{\emph{fem}}
+	\xi = \oint_{\mc{C}} \va{E} \vdot \dd{\va{l}} = - \dv{\Phi}{t}
+\end{align*}
+
+\begin{align*}
+	\Phi_{21} = M_{21} I_{1} \qc M_{21} = \frac{\mu_{0}}{4\pi} \oint_{\mc{C}_{1}} \oint_{\mc{C}_{2}} \frac{\dd{\va{l}_{2}} \vdot \dd{\va{l}_{1}}}{\norm{\va{r}_{2} - \va{r}_{1}}}
+\end{align*}
+
+\begin{align*}
+	W_{M} = \begin{cases} I \Phi & (\va{B} \text{ extern}) \\ \dfrac{1}{2} L I^{2} & (\va{B} \text{ propi}) \end{cases}
+	% W_{M,B\text{ext.}} = I \Phi \qc W_{M,B\text{propi}} = \frac{1}{2} L I^{2}
+\end{align*}
+%----------------------------------------------------------------------------------------
+\subsection{Lleis de Maxwell}
+\begin{align}
+	\div{D} &= \rho                     \tag{Gauss E} \\
+	\rot{E} &= -\pdv{\va{B}}{t}         \tag{Faraday} \\
+	\div{B} &= 0                        \tag{Gauss M} \\
+	\rot{H} &= \va{J} + \pdv{\va{D}}{t} \tag{Ampère}
+\end{align}
+
+\begin{align*}\tag{Força de Lorentz}
+	\va{F}(\va{r}) = \int \qty[\rho(\va{r}') \va{E}(\va{r}') + \va{J}(\va{r}') \cross \va{B}(\va{r}')] \dd[3]{r'}
+\end{align*}
+
+\begin{align*}
+\begin{gathered}
+	\va{D} = \varepsilon_{0} \va{E} + \va{P} = \varepsilon \va{E} \\
+	\va{B} = \mu_{0} (\va{H} + \va{M}) = \mu \va{H}
+\end{gathered}
+\end{align*}
+
+\begin{align*}
+	\va{S} = \va{E} \cross \va{H} \qc \dv{}{t} \qty(W_{EM} + E_{cin}) = - \oint \va{S} \vdot \dd{\mc{S}}
+\end{align*}
+
+\begin{align*}
+	W_{EM} = \frac{1}{2} \int (\va{E}\vdot\va{D} + \va{H}\vdot\va{B}) \dd[3]{r'}
+\end{align*}
+
+%----------------------------------------------------------------------------------------
+\subsection{Dimensions}
+\begin{align*}
+\begin{gathered}
+	\qty[E] = \si{\V \per\m} \qc \qty[D] = \qty[P] = \si{\coulomb \per\square\m} \qc \qty[p] = \si{\coulomb \m} \\
+	\qty[B] = \si{\tesla} = \si{\weber \per\square\m} \qc \qty[H] = \qty[M] = \si{\A \per\m} \qc \qty[m] = \si{\A \square\m}\\
+	\qty[\xi] = \si{\V} \qc \qty[\Phi] = \si{\weber} = \si{\V \s} \qc \qty[L] = \si{\henry} \\
+\end{gathered}
+\end{align*}
+
+\begin{align*}
+\begin{gathered}
+	\qty[\rho] = \si{\coulomb \per\cubic\m} \qc \qty[\sigma] = \si{\coulomb \per\cubic\m} \qc \qty[J] = \si{\A \per\square\m} \qc \qty[K] = \si{\A \per\m} \\
+	\qty[\varepsilon] = \si{\coulomb \per\V \per\m} \qc \qty[\mu] = \si{\weber \per\A \per\m } \qc \qty[\chi] = 1 \\
+\end{gathered}
+\end{align*}

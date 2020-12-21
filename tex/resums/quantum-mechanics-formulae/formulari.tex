@@ -1,0 +1,312 @@
+%-----------------------------------------------------------------
+%	FORMULARI
+%	!TEX root = main.tex
+%-----------------------------------------------------------------
+\section{\mytitle}
+%-----------------------------------------------------------------
+\subsection{Postulates}
+\begin{align*}
+\begin{gathered}
+	p_{a_{i}} = p(a_{i}, \ket{b_{j}}) = \norm{P_{i}\ket{b_{j}}}^{2} \\
+	% H \Rightarrow \ket{\varphi (t)} = \sum \exp \qty[-\frac{iE_{i}}{\hbar}t] \ket{E_{i}} \braket{E_{i}}{\varphi (0)} \\
+	\qty(\Delta A)^{2}_{\psi} = \ev*{A^{2}}_{\psi} - \ev*{A}^{2}_{\psi}% \\
+	% \dv{}{t} \ev*{A}_{\psi} = \frac{1}{i\hbar} \ev*{\comm{A}{H}}_{\psi} \Rightarrow \comm{A}{H} = 0 \Rightarrow \ev*{A}_{\psi(t)} \neq f(t)
+\end{gathered}
+\end{align*}
+
+%-----------------------------------------------------------------
+\subsection{Temporal evolution}
+\begin{align*}
+\begin{gathered}
+	U(t,t_{0}) = e^{-i H(t-t_{0}) / \hbar} = \sum_{i} e^{-i E_{i}(t-t_{0})/\hbar} \dyad{i} \\
+	S: \ket{\psi(t)} = U(t,t_{0}) \ket{\psi(t_{0})} \qc H: A(t) = U\sdag(t,t_{0}) A \,U(t,t_{0}) \\
+	\dv{}{t} \ev*{A_{H} (t)}_{\psi} = \frac{1}{i\hbar} \ev*{\comm{A_{H}}{H}}_{\psi} + \ev{\pdv{A}{t}}_{\psi}
+\end{gathered}
+\end{align*}
+
+%-----------------------------------------------------------------
+\subsection{Infinite well}
+\begin{align*}
+	\qty[0,L] \Rightarrow
+	\begin{cases}
+		\phi_{n}(x) = \sqrt{\dfrac{2}{L}} \sin \qty(\dfrac{n\pi x}{L}) & x \in [0,L] \\
+		\phi_{n}(x) = 0 & x \not\in [0,L]
+	\end{cases}
+	\\
+	\qty[-\dfrac{L}{2}, \dfrac{L}{2}] \Rightarrow
+	\begin{cases}
+		\phi_{n}(x) = \sqrt{\dfrac{2}{L}} \cos \qty(\dfrac{n\pi x}{L}) & n \text{ odd} \\
+		\phi_{n}(x) = \sqrt{\dfrac{2}{L}} \sin \qty(\dfrac{n\pi x}{L}) & n \text{ even}
+	\end{cases}
+\end{align*}
+\begin{align*}
+	E_{n} = \dfrac{n^{2} \pi^{2} \hbar^{2}}{2m L^{2}}
+\end{align*}
+
+%-----------------------------------------------------------------
+\subsection{Harmonic oscillator (1D)}
+\begin{align*}
+\begin{gathered}
+	\text{Gaussian: } \psi(x) = \frac{1}{(2\pi \sigma_{x}^{2})^{1/4}} \exp[- \frac{x^{2}}{4 \sigma_{x}^{2}}] \\% \qc \int g(x) \dd{x} \equiv 1
+	\phi_{n}(x) = C_{n} H_{n}(\tilde{x}) \exp[-\dfrac{\tilde{x}^{2}}{2}] \qc E_{n} = \hbar \omega \qty(n + \frac{1}{2})
+\end{gathered}
+\end{align*}
+
+\begin{align*}
+\begin{gathered}
+	\tilde{x} = \dfrac{x}{a_{0}} \qc a_{0} = \sqrt{\dfrac{\hbar}{m\omega}} \qc C_{n} = \qty(\frac{1}{\pi a_{0}^{2}})^{1/4} \qty(\frac{1}{2^{n} n!})^{1/2} \\
+	\begin{aligned}
+		H_{0}(\tilde{x}) &= 1 \\
+		H_{1}(\tilde{x}) &= 2\tilde{x} \\
+	\end{aligned}
+	\quad
+	\begin{aligned}
+		H_{2}(\tilde{x}) &= 4\tilde{x}^{2} - 2 \\
+		H_{3}(\tilde{x}) &= 8\tilde{x}^{3} -12 \tilde{x}
+	\end{aligned}
+\end{gathered}
+\end{align*}
+
+%-----------------------------------------------------------------
+%-----------------------------------------------------------------
+%-----------------------------------------------------------------
+\subsection{Symmetries}
+\begin{align*}
+		D_{\vu{n}}(\phi) &= e^{-i \phi \, \vu{n} \vdot \va{\sigma}/2}
+		= \cos \frac{\phi}{2} \bbid - i \sin \frac{\phi}{2} \, \vu{n} \vdot \va{\sigma} \\
+		\vu{n} &= \mqty(\cos \phi \sin \theta, \sin \phi \sin \theta, \cos \theta) \\
+		T_{a} &= e^{-i a \vu{k}} = e^{-i \va{a} \vdot \va{p}/ \hbar} = e^{\alpha (a\sdag - a)} \\
+		\pi \ket{l,m} &= (-1)^{l} \ket{l, m} \qc P_{a} = P_{b} P_{c} (-1)^{l} \\
+		\Theta \ket{l,m} &= (-1)^{m} \ket{l, -m}
+\end{align*}
+
+\begin{align*}
+	\comm{T_{a}}{T_{a'}} \,\text{\cmark} \qc
+	\comm{T_{a}}{\pi} \,\text{\xmark} \qc
+	\comm{D_{\vu{n}}(\phi)}{D_{\vu{n}'}(\phi)'} \,\text{\xmark} \qc
+	\comm{D_{\vu{n}}(\phi)}{\pi} \,\text{\cmark}
+\end{align*}
+
+%-----------------------------------------------------------------
+\subsection{Angular Momentum}
+\begin{align*}
+\begin{gathered}
+	J_{\pm} = J_{x} \pm J_{-} \qc J_{x} = \frac{1}{2} \qty(J_{+} + J_{-}) \qc J_{y} = \frac{1}{2i} \qty(J_{+} - J_{-}) \\
+	\begin{aligned}
+		\comm{J_{i}}{J_{j}} &= i \hbar \epsilon_{ijk} J_{k}, \\
+		\comm{J_{+}}{J_{-}} &= 2\hbar J_{z},
+	\end{aligned}
+	\quad
+	\begin{aligned}
+		&\comm{J_{z}}{J_{\pm}} = \pm \hbar J_{\pm} \\
+		&\comm{J^{2}}{J_{z, \pm}} = 0
+	\end{aligned} \\
+	\begin{aligned}
+		J_{\pm} \ket{j,m} &= \hbar \sqrt{j(j + 1) - m(m \pm 1)} \ket{j,m \pm 1} \\
+		J^{2} \ket{j,m} &= \hbar^{2} j(j + 1) \ket{j,m} \\
+		J_{z} \ket{j,m} &= \hbar m \ket{j,m}
+	\end{aligned}
+\end{gathered}
+\end{align*}
+
+%-----------------------------------------------------------------
+\subsection{Addition of Angular Momentum}
+\begin{align*}
+\begin{gathered}
+	\mc{H}_{J_{1}} \otimes \mc{H}_{J_{1}} = \mc{H}_{J^{(1)}} \oplus \dots \oplus \mc{H}_{J^{(n)}} \qc \dim(\mc{H}_{J}) = 2J + 1 \\
+	J = J_{1} + J_{2}, J_{1} + J_{2} - 1, \dots , \abs{J_{1} - J_{2}} \geq 0
+\end{gathered}
+\end{align*}
+
+%-----------------------------------------------------------------
+\subsection{Pauli matrices (spin-1/2)}
+\begin{align*}
+\begin{gathered}
+	\sigma_{x} = \mqty( 0 & 1 \\ 1 & 0 ) \qc
+	\sigma_{y} = \mqty( 0 & -i \\ i & 0 ) \qc
+	\sigma_{z} = \mqty( 1 & 0 \\ 0 & -1 ) \\
+	\sigma_{i} \sigma_{j} = \delta_{ij} \mbb{I} + i \epsilon_{ijk} \sigma_{k} \\
+	\sigma_{\vu{n}} = \vu{n} \vdot \mqty(\sigma_{x} \\ \sigma_{y} \\ \sigma_{z}) = \mqty(\cos \theta & e^{-i\phi} \sin \theta \\ e^{i\phi} \sin \theta & - \cos \theta) \\
+	\ket{+}_{\vu{n}} = \mqty( \cos \frac{\theta}{2} e^{-i \frac{\varphi}{2}} \\ \sin \frac{\theta}{2} e^{i \frac{\varphi}{2}}) \qc \ket{-}_{\vu{n}} = \mqty( - \sin \frac{\theta}{2} e^{-i \frac{\varphi}{2}} \\ \cos \frac{\theta}{2} e^{i \frac{\varphi}{2}})
+\end{gathered}
+\end{align*}
+\begin{align*}
+	\begin{aligned}
+		\ket{+}_{x} &= (1 , 1) / \sqrt{2}, \\
+		\ket{+}_{y} &= (1 , i) / \sqrt{2}, \\
+		\ket{+}_{z} &= (1 , 0),
+	\end{aligned}
+	\quad
+	\begin{aligned}
+		\ket{-}_{x} &= (1 , -1) / \sqrt{2}, \\
+		\ket{-}_{y} &= (i , 1) / \sqrt{2}, \\
+		\ket{-}_{z} &= (0 , 1),
+	\end{aligned}
+	\quad
+	\begin{aligned}
+		\sigma_{x} \ket{\pm} &= \ket{\mp} \\
+		\sigma_{y} \ket{\pm} &= \pm i \ket{\mp} \\
+		\sigma_{z} \ket{\pm} &= \pm \ket{\pm}
+	\end{aligned}
+\end{align*}
+
+%-----------------------------------------------------------------
+\subsection{Spin-1 matrices}
+\begin{align*}
+\begin{aligned}
+	J_{x} = \frac{\hbar}{\sqrt{2}} \mqty( 0 & 1 & 0 \\ 1 & 0 & 1 \\ 0 & 1 & 0 ), &\quad
+	\begin{aligned}
+		\begin{aligned}
+		\ket{+\hbar}_{x} &= (1, \sqrt{2}, 1)/2 \\
+		\ket{-\hbar}_{x} &= (1, -\sqrt{2}, 1)/2 \\
+		\ket{0}_{x} &= (1, 0, -1)/\sqrt{2} \\
+	\end{aligned}
+	\end{aligned} \\
+	J_{y} = \frac{\hbar}{\sqrt{2}} \mqty( 0 & -i & 0 \\ i & 0 & -i \\ 0 & i & 0 ), &\quad
+	\begin{aligned}
+		\begin{aligned}
+		\ket{+\hbar}_{y} &= (-1, -\sqrt{2}i, 1)/2 \\
+		\ket{-\hbar}_{y} &= (-1, \sqrt{2}i, 1)/2 \\
+		\ket{0}_{y} &= (1, 0, 1)/\sqrt{2} \\
+	\end{aligned}
+	\end{aligned} \\
+	J_{z} = \hbar \mqty( 1 & 0 & 0 \\ 0 & 0 & 0 \\ 0 & 0 & -1 ), &\quad
+	\begin{aligned}
+		\ket{+\hbar}_{z} &= (1, 0, 0) \\
+		\ket{-\hbar}_{z} &= (0, 0, 1) \\
+		\ket{0}_{z} &= (0, 1, 0) \\
+	\end{aligned}
+\end{aligned}
+\end{align*}
+
+%-----------------------------------------------------------------
+\subsection{Spin-1 squared matrices}
+\begin{align*}
+\begin{aligned}
+	J^{2}_{x} = \frac{\hbar^{2}}{2} \mqty( 1 & 0 & 1 \\ 0 & 2 & 0 \\ 1 & 0 & 1 ), &\quad
+	\begin{aligned}
+		\ket{\hbar^{2}} &= (1, 0, 1)/\sqrt{2} \\
+		\ket{\hbar^{2}} &= (0, 1, 0) \\
+		\ket{0} &= (1, 0, -1)/\sqrt{2}
+	\end{aligned} \\
+	J^{2}_{y} = \frac{\hbar^{2}}{2} \mqty( 1 & 0 & -1 \\ 0 & 2 & 0 \\ -1 & 0 & 1 ), &\quad
+	\begin{aligned}
+		\ket{\hbar^{2}} &= (1, 0, -1)/\sqrt{2} \\
+		\ket{\hbar^{2}} &= (0, 1, 0) \\
+		\ket{0} &= (1, 0, 1)/\sqrt{2}
+	\end{aligned} \\
+	J^{2}_{z} = \hbar^{2} \mqty( 1 & 0 & 0 \\ 0 & 0 & 0 \\ 0 & 0 & 1 ), &\quad
+	\begin{aligned}
+		\ket{\hbar^{2}} &= (1, 0, 0) \\
+		\ket{\hbar^{2}} &= (0, 0, 1) \\
+		\ket{0} &= (0, 1, 0)
+	\end{aligned}
+\end{aligned}
+\end{align*}
+
+%-----------------------------------------------------------------
+%-----------------------------------------------------------------
+%-----------------------------------------------------------------
+\newpage
+\subsection{Trigonometry}
+\begin{align*}
+	\begin{aligned}
+		\sin^{2} \theta &= \frac{1}{2}(1 - \cos 2\theta) \\
+		\cos^{2} \theta &= \frac{1}{2}(1 + \cos 2\theta) \\
+		\sin(\theta \pm \phi) &= \sin \theta \cos \phi \pm \cos \theta \sin \phi \\
+		\cos(\theta \pm \phi) &= \cos \theta \cos \phi \mp \sin \theta \sin \phi
+	\end{aligned}
+	\quad
+	\begin{aligned}
+		\cos \frac{\pi}{3} &= \sin \frac{\pi}{6} = \frac{1}{2} \\
+		\cos \frac{\pi}{4} &= \sin \frac{\pi}{4} = \frac{1}{\sqrt{2}} \\
+		\cos \frac{\pi}{6} &= \sin \frac{\pi}{3} = \frac{\sqrt{3}}{2}
+	\end{aligned}
+\end{align*}
+
+%-----------------------------------------------------------------
+\subsection{Eigenstuff in $SU(2)$ (RMT)}
+\begin{align*}
+\begin{aligned}
+	\mqty(a & c - id \\ c + id & b) &= \frac{a+b}{2} \bbid + \frac{a-b}{2} \sigma_{z} + c \sigma_{x} + d \sigma_{y} \\
+	&= \varepsilon \bbid + \va{v} \vdot \va{\sigma} \\
+	\Rightarrow \text{vaps}: \lambda_{\pm} &= \varepsilon \pm \norm{\va{v}} %\\
+	% \Rightarrow veps: \ket{\pm} &= \mqty(-\frac{-a + b \pm \sqrt{a^2 - 2ba + b^2 + 4c^2 + 4d^2}}{2 (c - i d)} & 1)
+\end{aligned}
+\end{align*}
+
+%-----------------------------------------------------------------
+\subsection{The good stuff}
+\begin{align*}
+\begin{gathered}
+	\int_{-\infty}^{\infty} e^{-ax^2} x^{2} \dd{x} = \dfrac{1}{2a} \sqrt{\dfrac{\pi}{a}} \qc \int_{-\infty}^{\infty} e^{-ax^2} x^{4} \dd{x} = \dfrac{3}{4a^{2}} \sqrt{\dfrac{\pi}{a}} \\
+	\int_{0}^{\infty} e^{-ar} r^{n} \dd{r} = \dfrac{n!}{(a)^{n+1}} \qc 0 \leq n
+\end{gathered}
+\end{align*}
+
+%-----------------------------------------------------------------
+%-----------------------------------------------------------------
+%-----------------------------------------------------------------
+\subsection{Time-dependent perturbation theory}
+\begin{align*}
+\begin{gathered}
+	H = H_{0} + V \quad \Rightarrow \ket{\psi_{S}(t)} \equiv \sum_{n} e^{-i E_{n} t/ \hbar} c_{n}^{(1)}(t) \ket{n}
+	\\
+	c_{n}^{(1)}(t) = - \frac{i}{\hbar} \int_{0}^{t} e^{i \omega_{n0} t} \mel{n}{V(x,t)}{0} \dd{t} \qc p_{0 \to n} = \norm{c_{n}^{(1)}}^{2} \\
+	c_{n}^{(2)}(t) = - \frac{i}{\hbar} \iint_{0}^{t,t'} e^{i \omega_{n0} t} \sum_{m} \mel{n}{V}{m} \mel{m}{V}{0} \dd{t} \dd{t'}
+\end{gathered}
+\end{align*}
+
+%-----------------------------------------------------------------
+%-----------------------------------------------------------------
+%-----------------------------------------------------------------
+\newpage
+\subsection{Fock basis}
+\begin{align*}
+\begin{gathered}
+	x = \sqrt{\frac{\hbar}{2m\omega}} \qty(a\sdag + a) \qc
+	p = i \sqrt{\frac{\hbar m \omega}{2}} \qty(a\sdag - a) \\
+	a \ket{\alpha} = \alpha \ket{\alpha} \qc
+	\ket{\alpha} = e^{-\frac{\abs{\alpha}^{2}}{2}} \sum_{n=0}^{\infty} \frac{\alpha^{n}}{\sqrt{n!}} \ket{n} = e^{-\frac{\abs{\alpha}^{2}}{2}} e^{\alpha a\sdag}\ket{0}
+\end{gathered}
+\end{align*}
+
+\subsubsection*{Position}
+\begin{align*}
+\begin{aligned}
+	x \ket{0} &\to \ket{1}, \\
+	x \ket{1} &\to \ket{0} + \sqrt{2} \ket{3}, \\
+	x \ket{2} &\to \sqrt{2} \ket{1} + \sqrt{3} \ket{3}, \\
+	x \ket{3} &\to \sqrt{3} \ket{2} + \sqrt{4} \ket{4}, \\
+	x \ket{4} &\to \sqrt{4} \ket{3} + \sqrt{5} \ket{5}, \\
+	x \ket{5} &\to \sqrt{5} \ket{4} + \sqrt{6} \ket{6},
+\end{aligned} \quad
+\begin{aligned}
+	x^{2} \ket{0} &\to \ket{0} + \sqrt{2} \ket{2} \\
+	x^{2} \ket{1} &\to 3 \ket{1} + \sqrt{6} \ket{3} \\
+	x^{2} \ket{2} &\to \sqrt{2} \ket{0} + 5 \ket{2} + 2 \sqrt{3} \ket{4} \\
+	x^{2} \ket{3} &\to \sqrt{6} \ket{1} + 7 \ket{3} + 2 \sqrt{5} \ket{5} \\
+	x^{2} \ket{4} &\to 2 \sqrt{3} \ket{2} + 9 \ket{4} + \sqrt{30} \ket{6} \\
+	x^{2} \ket{5} &\to 2 \sqrt{5} \ket{3} + 11 \ket{5} + \sqrt{42} \ket{7}
+\end{aligned}
+\end{align*}
+
+\subsubsection*{Momentum}
+\begin{align*}
+\begin{aligned}
+	p \ket{0} &\to \ket{1}, \\
+	p \ket{1} &\to -\ket{0} + \sqrt{2} \ket{3}, \\
+	p \ket{2} &\to -\sqrt{2} \ket{1} + \sqrt{3} \ket{3}, \\
+	p \ket{3} &\to -\sqrt{3} \ket{2} + \sqrt{4} \ket{4}, \\
+	p \ket{4} &\to -\sqrt{4} \ket{3} + \sqrt{5} \ket{5}, \\
+	p \ket{5} &\to -\sqrt{5} \ket{4} + \sqrt{6} \ket{6},
+\end{aligned} \quad
+\begin{aligned}
+	p^{2} \ket{0} &\to -\ket{0} + \sqrt{2} \ket{2} \\
+	p^{2} \ket{1} &\to -3 \ket{1} + \sqrt{6} \ket{3} \\
+	p^{2} \ket{2} &\to \sqrt{2} \ket{0} - 5 \ket{2} + 2 \sqrt{3} \ket{4} \\
+	p^{2} \ket{3} &\to \sqrt{6} \ket{1} - 7 \ket{3} + 2 \sqrt{5} \ket{5} \\
+	p^{2} \ket{4} &\to 2 \sqrt{3} \ket{2} - 9 \ket{4} + \sqrt{30} \ket{6} \\
+	p^{2} \ket{5} &\to 2 \sqrt{5} \ket{3} - 11 \ket{5} + \sqrt{42} \ket{7}
+\end{aligned}
+\end{align*}

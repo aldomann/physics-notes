@@ -1,0 +1,220 @@
+%----------------------------------------------------------------------------------------
+%    TEMA
+%----------------------------------------------------------------------------------------
+\section{\mytitle}
+\subsection{Termodinàmica}
+\begin{align}
+    U = Q - pV, \quad \dif U = T\diff S - p\diff V
+\end{align}
+\begin{align}
+    H = U + pV
+\end{align}
+\begin{align}
+    \begin{aligned}
+        A = U - TS \\
+        G = H - TS
+    \end{aligned}
+\end{align}
+\begin{align}
+    \dif G = V\diff p - S \diff T + \sum \mu_{i} \diff n_{i}
+\end{align}
+
+\begin{align}
+    \dif S_s = \frac{\dif q_{\text{rev}}}{T_s}
+\end{align}
+\begin{align}
+    \dif S_e = -\frac{\dif q_{\text{rev}}}{T_e} = -\frac{\dif H}{T_e}
+\end{align}
+%----------------------------------------------------------------------------------------
+\subsection{Canvis de fase}
+\begin{align}
+    \text{Clausius--Clapeiron: } \frac{\dif p}{\dif T} = \frac{L_{m}}{T \Delta v_{m}}
+\end{align}
+\begin{align}
+    \ln \left( \frac{p_A}{p_B} \right) = \frac{L}{R} \left( \frac{1}{T_B} - \frac{1}{T_A} \right)
+\end{align}
+%----------------------------------------------------------------------------------------
+\subsection{Dissolucions}
+\begin{align}
+    \begin{aligned}
+        \text{Dalton: } & p_{i} = p \chi_{i} \quad \text{(gasos ideals)} \\
+        \text{Raoult: } & p_{i} = p_{i}^{\ast} \chi_{i} \quad \text{líquids ideals)} \\
+        \text{Henry: } & p_{i} = k_{i} \chi_{i} \quad \text{(líquid diluït)}
+    \end{aligned}
+\end{align}
+\begin{align}
+    \begin{aligned}
+        \text{Gasos id.: } & \mu_{i} = \mu_{o}^{g} + RT \ln \chi_{i} \\
+        \text{Líquids id.: } & \mu_{i} = \mu^{\ast} + RT \ln \chi_{i} \\
+        \text{Líquids dil.: } & \mu_{i} = \mu_{o}^{l} + RT \ln \chi_{i} \\
+        \text{Líquids reals: } & \chi_{i} \mapsto a_{i} = \gamma_{i} \chi_{i}
+    \end{aligned}
+\end{align}
+
+\begin{align}
+    \text{Solubilitats: } \frac{p_A}{p_B} = \frac{S_A}{S_B}
+\end{align}
+%----------------------------------------------------------------------------------------
+\subsection{Propietats col·ligatives}
+\begin{align}
+    \Delta T_e = k_b m
+\end{align}
+\begin{align}
+    \Delta T_c = k_f m
+\end{align}
+\begin{align}
+    \Delta p_1 = p_1^{\ast} \chi_2
+\end{align}
+\begin{align}
+    \pi = mRT
+\end{align}
+%----------------------------------------------------------------------------------------
+\subsection{Estructura de la matèria}
+\begin{itemize}
+    \item $n$: nre. quàntic principal ($0, \dots, \infty$).
+    \item $l$: nre. quàntic azimutal ($0, \dots, n-1$).
+    \item $m_l$: nre. quàntic magnètic ($-l, \dots, l$).
+    \item $m_s$: nre. quàntic d'spin ($-1/2, +1/2$).
+\end{itemize}
+
+\subsubsection*{Orbitals}
+\begin{itemize}
+    \item $l=0$: orbital $s$ (2 electrons màxim).
+    \item $l=1$: orbital $p$ (6 electrons màxim). 
+    \item $l=2$: orbital $d$ (10 electrons màxim).
+    \item $l=3$: orbital $f$ (14 electrons màxim).
+\end{itemize}
+%----------------------------------------------------------------------------------------
+\newpage
+
+\subsection{Canvi químic}
+\subsubsection*{Equilibri químic}
+Sigui \ch{a A + b B <=> c C + d D} una reacció química.
+\begin{align}
+    \Delta_{r} G = \Delta_{r} G^{0} + RT \ln Q_{p}
+\end{align}
+\begin{align*}
+    \Delta_{r} G   \begin{cases} < 0 & \text{reacciona cap a la dreta} \\ = 0 & \text{està en l'equilibri} \\ > 0 & \text{reacciona cap a l'esquerra} \end{cases}
+\end{align*}
+on $Q$ és el quocient de reacció. Quan reacciona cap a la dreta es diu que la reacció és espontània.
+\begin{align}
+    \Delta_{r} G = \Delta_{r} H - T \Delta_{r} S
+\end{align}
+
+Per a gasos ideals tenim:    
+\begin{align}
+    Q_{p} = \frac{\prod (p_{prod}/ p^{0})^{\nu_{prod}}}{\prod (p_{reac}/ p^{0})^{\nu_{reac}}}
+\end{align}
+on $p^{0} = \SI{1}{atm}$. 
+
+Per a dissolucions ideals tenim:
+\begin{align}
+    Q_{c} = \frac{\prod (C_{prod}/C^{0})^{\nu_{prod}}}{\prod (C_{reac}/ C^{0})^{\nu_{reac}}}
+\end{align}
+on $C^{0} = \SI{1}{M}$.
+
+\begin{align*}
+    Q_{x} \begin{cases} < K_{x} & \text{reacciona cap a la dreta} \\ = K_{x} & \text{està en l'equilibri} \\ > K_{x} & \text{reacciona cap a l'esquerra} \end{cases}
+\end{align*}
+
+Es pot demostrar que existeix la següent relació entre les constants $k_p$ en funció de la temperatura:
+\begin{align}
+    \ln \frac{k_{p}^{0}({T_2})}{k_{p}^{0}(T_1)} = - \frac{\Delta H^{0}}{R} \left( \frac{1}{T_{2}} - \frac{1}{T_{1}} \right)
+\end{align}
+%---------------------------------
+\subsubsection*{Reaccions àcid--base}
+Hi ha deferents definicions d'àcid:
+\begin{itemize}
+    \item Brønsted: que dóna protons ($H^{+}$).
+    \item Lewis: que agafa un parell d'electrons.
+\end{itemize}
+
+\begin{align}
+\begin{aligned}
+    K_{w} &= [H_{3}O^{+}] [OH^{-}] \\ &= K_{a} K_{b} = 10^{-14} \\
+    14 &= pH + pOH
+\end{aligned}
+\end{align}
+\begin{align}
+\begin{aligned}
+    pH &= -\log [H_{3}O^{+}] \\
+    pOH &= - \log [OH^{-}]
+\end{aligned}
+\end{align}
+%---------------------------------
+\subsubsection*{Reaccions de precipitació}
+Sigui \ch{cAB -> a A+ + b B-} una reacció química.
+\begin{align}
+    Q_{ps} = [A^+]^{a} [B^-]^{b}
+\end{align}
+\begin{align*}
+    Q_{ps}  \begin{cases} \leq K_{ps} & \text{no precipita} \\ > K_{ps} & \text{precipita} \end{cases}
+\end{align*}
+on $Q_{ps}$ s'anomena el producte de solubilitat.
+%---------------------------------
+\subsubsection*{Cel·les electroquímiques (reaccions d'oxidació--reducció)}
+Si una cel·la opera reversiblement, es compleix
+\begin{align}
+\begin{aligned}
+    W_{\text{elec}} &= - \nu F E_{\text{cel·la}} \\ &= \Delta_{r} G = - RT \ln K
+\end{aligned}
+\end{align}
+on $F$ és la constant de Faraday (\SI{9.6485 e4}{\coulomb \per \mol}), $E_{\text{cel·la}}$ és la for\c{c}a electromotriu de la cel·la, i $\nu$ és el nre. de mols d'electrons transferits en la reacció de la cel·la.
+\begin{align}
+    \text{Eq. Nernst: } E_{\text{c}} = E^{0}_{\text{c}} - \frac{RT}{\nu F} \ln Q
+\end{align}
+on $Q$ és el quocient de reacció.
+\begin{align}
+    E^{0}_{\text{cel·la}} = E^{0}_{\text{càtode}} - E^{0}_{\text{ànode}}
+\end{align}
+\begin{align*}
+    E^{0}_{\text{cel·la}}   \begin{cases} < 0 & \text{no espontània} \\ > 0 & \text{espontània} \end{cases}
+\end{align*}
+on el càtode és a on es produeix la reducció (guany d'electrons) i l'ànode és a on es produeix l'oxidació (pèrdua d'electrons).
+%----------------------------------------------------------------------------------------
+\subsection{Cinètica química}
+\subsubsection*{Velocitat d'una reacció}
+Sigui \ch{a A + b B -> c C + d D} una reacció química.
+\begin{align}
+\begin{aligned}
+    v &= -\frac{1}{a} \frac{\dif [A]}{\dif t} = -\frac{1}{b} \frac{\dif [B]}{\dif t} \\ &= \frac{1}{c} \frac{\dif [C]}{\dif t} = \frac{1}{d} \frac{\dif [D]}{\dif t}
+\end{aligned}
+\end{align}
+on $v$ és la velocitat de la reacció.
+%---------------------------------
+\subsubsection*{Ordre d'una reacció}
+\begin{align}
+    \text{Llei de velocitat: } v = k [A]^{x} [B]^{y}
+\end{align}
+on $k$ s'anomena constant de velocitat, que, com el seu nom indica, és constant $\forall t$; $x$ i $y$ són els ordres de cada reactiu i són determinats experimentalment; poden o no coincidir amb el coeficient estequiomètric. S'anomena ordre de reacció a la suma $x + y$.
+%---------------------------------
+\subsubsection*{Reaccions d'ordre zero}
+Sigui \ch{aA -> bB} una reacció química. Mitjan\c{c}ant el càlcul podem arribar a la següent expressió:
+\begin{align}
+    [A]_{t} = [A]_{0} - akt
+\end{align}
+%---------------------------------
+\subsubsection*{Reaccions de primer ordre}
+Sigui \ch{aA -> bB} una reacció química. Mitjan\c{c}ant el càlcul podem arribar a la següent expressió:
+\begin{align}
+\begin{gathered}
+    \ln [A]_{t} = \ln [A]_{0} -akt \\
+    \text{ o alternativament } \\
+    \ln ([B]_{\infty} - [B]_{t}) = \ln [B]_{\infty} -akt 
+\end{gathered}
+\end{align}
+%---------------------------------
+\subsubsection*{Reaccions de segon ordre}
+Sigui \ch{aA -> bB} una reacció química. Mitjan\c{c}ant el càlcul podem arribar a la següent expressió:
+\begin{align}
+    \frac{1}{[A]_{t}} = \frac{1}{[A]_{0}} + akt 
+\end{align}
+%---------------------------------
+\subsubsection*{Reaccions elementals}
+Sigui \ch{aA -> bB} una reacció química. Llavors, l'ordre de la reacció és el coeficient estequiomètric \ch{a}.
+%---------------------------------
+\subsubsection*{Energia d'activació}
+\begin{align}
+    \text{Eq. Arrhenius: } k = A e^{-E_{a}/RT}
+\end{align}
+on $A$ és la freqüència de col·lisió i $E_{a}$ és l'energia d'activació de la reacció.
